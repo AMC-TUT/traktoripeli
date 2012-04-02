@@ -5,11 +5,12 @@ Crafty.c("Tractor", {
     number: 0,
     slot: 0,
     init: function() {
-        this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
+       //this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
         this.slot = 0,
         this.team = 1,
         this.number = 1,
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Multiway", "Tween")
+        this.movementSpeed = 0.5,
+        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "Tween")
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
         ])
@@ -22,8 +23,13 @@ Crafty.c("Tractor", {
         .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
-        .multiway(0.5)
-        .rotation(45)
+        .multiway(this.movementSpeed, {
+            UP_ARROW: -90, 
+            DOWN_ARROW: 90, 
+            RIGHT_ARROW: 0, 
+            LEFT_ARROW: 180
+        })
+       // .rotation(45)
         .bind("NewDirection",
         function(direction) {
             if (direction.x < 0) {
@@ -36,12 +42,12 @@ Crafty.c("Tractor", {
                     this.stop().animate("FrwdBrwd", 10, -1)
                     
                     // kääntymistestausta
-                    this.origin("center")
+                   // this.origin("center")
                     //define animation
                     
-                    .animate("rotate",0,0,63)
+                   // .animate("rotate",0,0,63)
                     //start animation without end
-                    .animate("rotate",15,-1)
+                   // .animate("rotate",15,-1)
                 }
             }
             if (direction.y < 0) {
@@ -62,7 +68,7 @@ Crafty.c("Tractor", {
     }
 });
 
-
+/*
 Crafty.c("Team1Vechile1", {
     slot: 0,
     init: function() {
@@ -106,6 +112,7 @@ Crafty.c("Team1Vechile1", {
 
     }
 });
+*/
 
 Crafty.c("Base01", {
     slot: 0,
