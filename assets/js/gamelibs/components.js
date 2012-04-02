@@ -41,8 +41,9 @@ Crafty.c("Tractor", {
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
 
+                    this.rotate(45, 0, 0, 40);
 
-                    //this.rotation(45);
+                    this.rotation(45);
                     
                     // kääntymistestausta
                    // this.origin("center")
