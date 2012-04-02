@@ -115,8 +115,8 @@ function() {
 	Crafty.e('Farm5').attr({ x: 50, y: 247, z: 2 });
 	Crafty.e('Farm6').attr({ x: 1156, y: 247, z: 2 });
 
-	var tractor = Crafty.e('Tractor').attr({ x: 240, y: 290, z: 2 });
-	tractor.addComponent('team2vechile2');
+	Crafty.e('Tractor').attr({ x: 240, y: 290, z: 2 });
+	
 
 	// 100 100 400 400
 	// 100 200 300 400

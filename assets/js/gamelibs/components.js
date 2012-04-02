@@ -11,6 +11,7 @@ Crafty.c("Tractor", {
         this.number = 1,
         this.movementSpeed = 2,
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "Tween")
+        .addComponent('team2vechile2')
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
         ])
@@ -78,7 +79,6 @@ Crafty.c("Tractor", {
             }
           
         })
-
     }
 });
 
