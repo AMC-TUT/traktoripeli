@@ -9,7 +9,7 @@ Crafty.c("Tractor", {
         this.slot = 0,
         this.team = 1,
         this.number = 1,
-        this.movementSpeed = 0.5,
+        this.movementSpeed = 2,
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "Tween")
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
@@ -29,7 +29,6 @@ Crafty.c("Tractor", {
             RIGHT_ARROW: 0, 
             LEFT_ARROW: 180
         })
-       // .rotation(45)
         .bind("NewDirection",
         function(direction) {
             if (direction.x < 0) {
@@ -39,15 +38,17 @@ Crafty.c("Tractor", {
             }
             if (direction.x > 0) {
                 if (!this.isPlaying("FrwdBrwd")) {
-                    this.stop().animate("FrwdBrwd", 10, -1)
+                    this.stop().animate("FrwdBrwd", 10, -1);
+
+
+                    //this.rotation(45);
                     
                     // kääntymistestausta
                    // this.origin("center")
                     //define animation
-                    
-                   // .animate("rotate",0,0,63)
-                    //start animation without end
-                   // .animate("rotate",15,-1)
+                   //.animate("rotate",0,0,63)
+                   //start animation without end
+                   //.animate("rotate",15,-1)
                 }
             }
             if (direction.y < 0) {
@@ -63,6 +64,19 @@ Crafty.c("Tractor", {
             if (!direction.x && !direction.y) {
                 this.stop();
             }
+        })
+        .bind("Moved", function(from) {
+            /* Dont allow to move the player out of Screen */
+            if(this.x + this.w > Crafty.viewport.width ||
+                this.x + this.w - 20 < this.w || 
+                this.y + this.h < this.h || 
+                this.y + this.h > Crafty.viewport.height || this.preparing){
+                this.attr({
+                    x:from.x, 
+                    y:from.y
+                });
+            }
+          
         })
 
     }
@@ -119,7 +133,7 @@ Crafty.c("Base01", {
     init: function() {
         this.slot = 0,
         this.addComponent("2D", "Canvas", "Collision", "base01")
-        .onHit("Team1Vechile1",
+        .onHit("Tractor",
             function(ent) {
                 log('before:' + this.slot)
                 tmp = ent.slot;
