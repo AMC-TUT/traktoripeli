@@ -1,3 +1,68 @@
+
+Crafty.c("Tractor", {
+    id: 0,
+    team: 0,
+    number: 0,
+    slot: 0,
+    init: function() {
+        this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
+        this.slot = 0,
+        this.team = 1,
+        this.number = 1,
+        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Multiway", "Tween")
+        .animate("FrwdFrwd", [
+        [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
+        ])
+        .animate("FrwdBrwd", [
+        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
+        ])
+        .animate("BrwdBrwd", [
+        [0, 2], [7, 2], [6, 2], [5, 2], [4, 2], [3, 2], [2, 2], [1, 2]
+        ])
+        .animate("BrwdFrwd", [
+        [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
+        ])
+        .multiway(0.5)
+        .rotation(45)
+        .bind("NewDirection",
+        function(direction) {
+            if (direction.x < 0) {
+                if (!this.isPlaying("BrwdFrwd")) {
+                    this.stop().animate("BrwdFrwd", 10, -1)
+                }
+            }
+            if (direction.x > 0) {
+                if (!this.isPlaying("FrwdBrwd")) {
+                    this.stop().animate("FrwdBrwd", 10, -1)
+                    
+                    // kääntymistestausta
+                    this.origin("center")
+                    //define animation
+                    
+                    .animate("rotate",0,0,63)
+                    //start animation without end
+                    .animate("rotate",15,-1)
+                }
+            }
+            if (direction.y < 0) {
+                if (!this.isPlaying("FrwdFrwd")) {
+                    this.stop().animate("FrwdFrwd", 10, -1)
+                }
+            }
+            if (direction.y > 0) {
+                if (!this.isPlaying("BrwdBrwd")) {
+                    this.stop().animate("BrwdBrwd", 10, -1)
+                }
+            }
+            if (!direction.x && !direction.y) {
+                this.stop();
+            }
+        })
+
+    }
+});
+
+
 Crafty.c("Team1Vechile1", {
     slot: 0,
     init: function() {

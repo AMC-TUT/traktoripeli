@@ -15,18 +15,18 @@ function() {
     
     Crafty.load(
     	[
-    	tractor.game_path + "/assets/img/1kg.png", 
-    	tractor.game_path + "/assets/img/1000gram.png", 
-    	tractor.game_path + "/assets/img/bases.png", 
-    	tractor.game_path + "/assets/img/farm1.png", 
-    	tractor.game_path + "/assets/img/farm2.png", 
-    	tractor.game_path + "/assets/img/traktor_bg.png",
-    	tractor.game_path + "/assets/img/traktor_c1.png", 
-    	tractor.game_path + "/assets/img/traktor_c2.png", 
-    	tractor.game_path + "/assets/img/traktor_c3.png", 
-    	tractor.game_path + "/assets/img/traktor_c4.png", 
-    	tractor.game_path + "/assets/img/traktor_c5.png", 
-    	tractor.game_path + "/assets/img/traktor_c6.png", 
+    	game.path + "/assets/img/1kg.png", 
+    	game.path + "/assets/img/1000gram.png", 
+    	game.path + "/assets/img/bases.png", 
+    	game.path + "/assets/img/farm1.png", 
+    	game.path + "/assets/img/farm2.png", 
+    	game.path + "/assets/img/traktor_bg.png",
+    	game.path + "/assets/img/traktor_c1.png", 
+    	game.path + "/assets/img/traktor_c2.png", 
+    	game.path + "/assets/img/traktor_c3.png", 
+    	game.path + "/assets/img/traktor_c4.png", 
+    	game.path + "/assets/img/traktor_c5.png", 
+    	game.path + "/assets/img/traktor_c6.png", 
     	],
     function() {
         //when loaded
@@ -51,7 +51,7 @@ Crafty.scene("Game",
 function() {
 
     //Crafty.background("#aaa");
-	Crafty.background("url(" + tractor.game_path + "/assets/img/traktor_bg.png)");
+	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
 	
 	Crafty.e('Base01').attr({ x: 414, y: 184, z: 2 });
 	Crafty.e('Base02').attr({ x: 554, y: 184, z: 2 });
@@ -116,6 +116,9 @@ function() {
 	Crafty.e('Farm6').attr({ x: 1156, y: 247, z: 2 });
 
 	Crafty.e('Team1Vechile1').attr({ x: 640, y: 400, z: 2 });
+	
+	
+	Crafty.e('Team1Vechile1').attr({ x: 440, y: 490, z: 2 }).addComponent('team2vechile2');
 
 	// 100 100 400 400
 	// 100 200 300 400
