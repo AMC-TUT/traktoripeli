@@ -35,32 +35,28 @@ Crafty.c("Tractor", {
             if (direction.x < 0) {
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
+
+                    this.rotation = 270;
                 }
             }
             if (direction.x > 0) {
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
 
-                    this.rotate(45, 0, 0, 40);
+                    this.rotation = 90;
 
-                    this.rotation(45);
-                    
-                    // kääntymistestausta
-                   // this.origin("center")
-                    //define animation
-                   //.animate("rotate",0,0,63)
-                   //start animation without end
-                   //.animate("rotate",15,-1)
                 }
             }
             if (direction.y < 0) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
+                    this.rotation = 0;
                 }
             }
             if (direction.y > 0) {
                 if (!this.isPlaying("BrwdBrwd")) {
                     this.stop().animate("BrwdBrwd", 10, -1)
+                    this.rotation = 180;
                 }
             }
             if (!direction.x && !direction.y) {
