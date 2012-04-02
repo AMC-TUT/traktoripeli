@@ -116,6 +116,7 @@ function() {
 	Crafty.e('Farm6').attr({ x: 1156, y: 247, z: 2 });
 
 	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
+	// var tractor = Crafty.map.search({_x: 240, _y: 240, _w: 64, _h: 64 })[0];
 	
 
 	// 100 100 400 400

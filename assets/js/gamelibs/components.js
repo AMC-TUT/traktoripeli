@@ -5,13 +5,17 @@ Crafty.c("Tractor", {
     number: 0,
     slot: 0,
     init: function() {
-       //this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
+        //this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
         this.slot = 0,
         this.team = 1,
         this.number = 1,
-        this.movementSpeed = 2,
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "Tween")
+        this.movement = {
+            speed: 2,
+            difference: 1
+        },
+        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway")
         .addComponent('team2vechile2')
+        // define tractor animations
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
         ])
@@ -24,46 +28,13 @@ Crafty.c("Tractor", {
         .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
-        .multiway(this.movementSpeed, {
+        .multiway( this.movement.speed, {
             UP_ARROW: -90, 
-            DOWN_ARROW: 90, 
-            RIGHT_ARROW: 0, 
-            LEFT_ARROW: 180
+            DOWN_ARROW: 90         
         })
-        .bind("NewDirection",
-        function(direction) {
-            if (direction.x < 0) {
-                if (!this.isPlaying("BrwdFrwd")) {
-                    this.stop().animate("BrwdFrwd", 10, -1)
-
-                    this.rotation = 270;
-                }
-            }
-            if (direction.x > 0) {
-                if (!this.isPlaying("FrwdBrwd")) {
-                    this.stop().animate("FrwdBrwd", 10, -1);
-
-                    this.rotation = 90;
-
-                }
-            }
-            if (direction.y < 0) {
-                if (!this.isPlaying("FrwdFrwd")) {
-                    this.stop().animate("FrwdFrwd", 10, -1)
-                    this.rotation = 0;
-                }
-            }
-            if (direction.y > 0) {
-                if (!this.isPlaying("BrwdBrwd")) {
-                    this.stop().animate("BrwdBrwd", 10, -1)
-                    this.rotation = 180;
-                }
-            }
-            if (!direction.x && !direction.y) {
-                this.stop();
-            }
-        })
+        //.bind("NewDirection", function(direction) { })
         .bind("Moved", function(from) {
+            log('from: ' + from.x + ' x ' + from.y + ' to: ' + this._x + ' x ' + this._y);
             /* Dont allow to move the player out of Screen */
             if(this.x + this.w > Crafty.viewport.width ||
                 this.x + this.w - 20 < this.w || 
@@ -73,75 +44,92 @@ Crafty.c("Tractor", {
                     x:from.x, 
                     y:from.y
                 });
+            }          
+        })
+        .origin("bottom")
+        .bind("EnterFrame", function(frame) {
+
+            if(this.isDown('RIGHT_ARROW')) {
+                if (!this.isPlaying("FrwdBrwd")) {
+                    this.stop().animate("FrwdBrwd", 10, -1);
+                }
+                // 
+                this.rotation = ( (this._rotation + this.movement.difference) % 360);
+                log('this._rotation: ' + this._rotation);
+                log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+            } else if(this.isDown('LEFT_ARROW')) {
+                if (!this.isPlaying("BrwdFrwd")) {
+                    this.stop().animate("BrwdFrwd", 10, -1)
+                }
+                // 
+                this.rotation = ( (this._rotation - this.movement.difference) % 360);
+                log(this._rotation);
+                log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+
+                this.multiway({
+                    UP_ARROW: (this._rotation - 90) % 360,
+                    DOWN_ARROW: (this._rotation + 90) % 360
+                });
+
+
+            } else if(this.isDown('DOWN_ARROW')) {
+                if (!this.isPlaying("FrwdFrwd")) {
+                    this.stop().animate("FrwdFrwd", 10, -1)
+                }
+                
+            } else if(this.isDown('UP_ARROW')) {
+                if (!this.isPlaying("BrwdBrwd")) {
+                    this.stop().animate("BrwdBrwd", 10, -1)
+                } 
             }
-          
+        })
+        .bind('KeyUp', function(e) {
+            // stop animations
+            this.stop();
+        })
+        .bind('Rotate', function(rotate) {
+
+           // this.stop();
+
+            var tractor = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 })[0];
+            log(tractor)
+            /*
+            this.removeComponent('Multiway');
+            this.addComponent('Multiway').multiway( this.movement.speed, {
+                UP_ARROW: -90, 
+                DOWN_ARROW: 90         
+            })
+            */
+            /*
+            this.multiway( this.movement.speed, {
+                UP_ARROW: (this._rotation - 90) % 360, 
+                DOWN_ARROW: (this._rotation + 90) % 360
+            });
+            */
         })
     }
 });
 
-/*
-Crafty.c("Team1Vechile1", {
-    slot: 0,
-    init: function() {
-        this.slot = 0,
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Fourway", "team1vechile1")
-        .animate("FrwdFrwd", [
-        [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
-        ])
-        .animate("FrwdBrwd", [
-        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-        ])
-        .animate("BrwdBrwd", [
-        [0, 2], [7, 2], [6, 2], [5, 2], [4, 2], [3, 2], [2, 2], [1, 2]
-        ])
-        .animate("BrwdFrwd", [
-        [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
-        ])
-        .fourway(0.5)
-        .bind("NewDirection",
-        function(direction) {
-            if (direction.x < 0) {
-                if (!this.isPlaying("BrwdFrwd"))
-                this.stop().animate("BrwdFrwd", 10, -1)
-            }
-            if (direction.x > 0) {
-                if (!this.isPlaying("FrwdBrwd"))
-                this.stop().animate("FrwdBrwd", 10, -1)
-            }
-            if (direction.y < 0) {
-                if (!this.isPlaying("FrwdFrwd"))
-                this.stop().animate("FrwdFrwd", 10, -1)
-            }
-            if (direction.y > 0) {
-                if (!this.isPlaying("BrwdBrwd"))
-                this.stop().animate("BrwdBrwd", 10, -1)
-            }
-            if (!direction.x && !direction.y) {
-                this.stop();
-            }
-        })
-
-    }
-});
-*/
-
-Crafty.c("Base01", {
+Crafty.c("Base", {
     slot: 0,
     init: function() {
         this.slot = 0,
         this.addComponent("2D", "Canvas", "Collision", "base01")
         .onHit("Tractor",
             function(ent) {
-                log('before:' + this.slot)
+                //log('before:' + this.slot)
                 tmp = ent.slot;
                 ent.slot = this.slot;
                 this.slot = tmp;
-                log('before:' + this.slot)
+                //log('before:' + this.slot)
             }
         )
     }
 });
 
+/*
 Crafty.c("Base02", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision", "base02");
@@ -279,6 +267,8 @@ Crafty.c("Base24", {
         this.addComponent("2D", "Canvas", "Collision", "base24");
     }
 });
+
+*/
 
 Crafty.c("Team11", {
     init: function() {
