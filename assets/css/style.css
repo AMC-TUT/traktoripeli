@@ -1,0 +1,38 @@
+
+canvas {
+  -webkit-transform: translateZ(0);
+  -moz-transform:  translate(tx[0, 0);
+  transform:  translate(0, 0);
+  /*width: 940px;*/
+}
+
+body {
+    /*font-family: 'Commodore64PixelizedRegular';
+    color: #4036CD;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;*/
+    overflow: hidden;
+}
+
+nav { }
+
+/*
+nav div { 
+  display: inline-block; }
+nav div span { display: inline-block; }
+.game-start {
+  cursor: pointer; }
+.game-start, .game-time { 
+  color: #4036CD; }
+.game-diamond-info, .game-score {
+  width: 100px; }
+.game-collected {
+  width: 15px; }
+.game-time {
+  width: 200px; }
+.game-diamond-objective, .game-collected {
+  color: goldenrod; }
+.game-diamond-info, .game-time, .game-score, .game-collected {
+  margin-left: 1em; }
+*/

@@ -1,21 +1,21 @@
 Crafty.c("Team1Vechile1", {
-	slot: 0,
+    slot: 0,
     init: function() {
-		this.slot = 0,
+        this.slot = 0,
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Fourway", "team1vechile1")
-		.animate("FrwdFrwd", [
+        .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
         ])
-		.animate("FrwdBrwd", [
+        .animate("FrwdBrwd", [
         [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
         ])
-		.animate("BrwdBrwd", [
+        .animate("BrwdBrwd", [
         [0, 2], [7, 2], [6, 2], [5, 2], [4, 2], [3, 2], [2, 2], [1, 2]
         ])
-		.animate("BrwdFrwd", [
+        .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
-		.fourway(0.5)
+        .fourway(0.5)
         .bind("NewDirection",
         function(direction) {
             if (direction.x < 0) {
@@ -39,23 +39,23 @@ Crafty.c("Team1Vechile1", {
             }
         })
 
-	}
+    }
 });
 
 Crafty.c("Base01", {
-	slot: 0,
+    slot: 0,
     init: function() {
-		this.slot = 0,
+        this.slot = 0,
         this.addComponent("2D", "Canvas", "Collision", "base01")
-		.onHit("Team1Vechile1",
-			function(ent) {
-				log('before:' + this.slot)
-				tmp = ent.slot;
-				ent.slot = this.slot;
-				this.slot = tmp;
-				log('before:' + this.slot)
-			}
-		)
+        .onHit("Team1Vechile1",
+            function(ent) {
+                log('before:' + this.slot)
+                tmp = ent.slot;
+                ent.slot = this.slot;
+                this.slot = tmp;
+                log('before:' + this.slot)
+            }
+        )
     }
 });
 

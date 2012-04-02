@@ -13,7 +13,21 @@ function() {
         "text-align": "center"
     }).text("Ladataan...");
     
-    Crafty.load([tractor.game_path + "/assets/img/1kg.png", tractor.game_path + "/assets/img/1000gram.png", tractor.game_path + "/assets/img/bases.png", tractor.game_path + "/assets/img/farm1.png", tractor.game_path + "/assets/img/farm2.png", tractor.game_path + "/assets/img/traktor_bg.png", tractor.game_path + "/assets/img/traktor_c1.png", tractor.game_path + "/assets/img/traktor_c2.png", tractor.game_path + "/assets/img/traktor_c3.png", tractor.game_path + "/assets/img/traktor_c4.png", tractor.game_path + "/assets/img/traktor_c5.png", tractor.game_path + "/assets/img/traktor_c6.png", ],
+    Crafty.load(
+    	[
+    	tractor.game_path + "/assets/img/1kg.png", 
+    	tractor.game_path + "/assets/img/1000gram.png", 
+    	tractor.game_path + "/assets/img/bases.png", 
+    	tractor.game_path + "/assets/img/farm1.png", 
+    	tractor.game_path + "/assets/img/farm2.png", 
+    	tractor.game_path + "/assets/img/traktor_bg.png",
+    	tractor.game_path + "/assets/img/traktor_c1.png", 
+    	tractor.game_path + "/assets/img/traktor_c2.png", 
+    	tractor.game_path + "/assets/img/traktor_c3.png", 
+    	tractor.game_path + "/assets/img/traktor_c4.png", 
+    	tractor.game_path + "/assets/img/traktor_c5.png", 
+    	tractor.game_path + "/assets/img/traktor_c6.png", 
+    	],
     function() {
         //when loaded
 //        Crafty.audio.play("uncover");
