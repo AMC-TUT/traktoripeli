@@ -1,4 +1,4 @@
 // game path
 var tractor = {     
-  game_path: "/traktoripelike" 
+  game_path: "/traktoripeli" 
 }
