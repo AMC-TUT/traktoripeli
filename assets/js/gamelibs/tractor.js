@@ -184,7 +184,10 @@ var Game = {
                     // rnd int
                     var rnd = Crafty.math.randomInt(0, Game.bases.length-1);
                     // get base obj if not used. if used return empty obj and continue iteration
-                    base = _.isUndefined(Game.bases[rnd].used) ? Game.bases[rnd] : {};
+                    if(_.isUndefined(Game.bases[rnd].used) {
+                        Game.bases[rnd].used = true;
+                        base = Game.bases[rnd];
+                    }
                 } while (base.length == 0);
 
                 var ent = Crafty.e('WeightOnGround').attr({ x: base._x - 16, y: base._y - 16, z: 2 });
