@@ -99,6 +99,15 @@ var Game = {
             "weight4": 400
         }
     ],
+    // add weight to scene
+    generateWeights: function() {
+        _.each(Game.teams, function(team){
+            
+            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
+            ent.addComponent(base.c);
+        });
+    },
+    // base locations
     bases: [
         { "c": "base01", "_x": 414, "_y": 184 },
         { "c": "base02", "_x": 554, "_y": 184 },
@@ -127,6 +136,7 @@ var Game = {
         { "c": "base23", "_x": 694, "_y": 584 },
         { "c": "base24", "_x": 834, "_y": 584 },
     ],
+    // add bases to scene
     generateBases: function() {
         _.each(this.bases, function(base){
             var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });

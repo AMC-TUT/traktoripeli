@@ -56,32 +56,7 @@ function() {
 
     //Crafty.background("#aaa");
 	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
-	/*
-	Crafty.e('Base01').attr({ x: 414, y: 184, z: 2 });
-	Crafty.e('Base02').attr({ x: 554, y: 184, z: 2 });
-	Crafty.e('Base03').attr({ x: 694, y: 184, z: 2 });
-	Crafty.e('Base04').attr({ x: 834, y: 184, z: 2 });
-	Crafty.e('Base05').attr({ x: 344, y: 284, z: 2 });
-	Crafty.e('Base06').attr({ x: 484, y: 284, z: 2 });
-	Crafty.e('Base07').attr({ x: 624, y: 284, z: 2 });
-	Crafty.e('Base08').attr({ x: 764, y: 284, z: 2 });
-	Crafty.e('Base09').attr({ x: 904, y: 284, z: 2 });
-	Crafty.e('Base10').attr({ x: 274, y: 384, z: 2 });
-	Crafty.e('Base11').attr({ x: 414, y: 384, z: 2 });
-	Crafty.e('Base12').attr({ x: 554, y: 384, z: 2 });
-	Crafty.e('Base13').attr({ x: 694, y: 384, z: 2 });
-	Crafty.e('Base14').attr({ x: 834, y: 384, z: 2 });
-	Crafty.e('Base15').attr({ x: 974, y: 384, z: 2 });
-	Crafty.e('Base16').attr({ x: 344, y: 484, z: 2 });
-	Crafty.e('Base17').attr({ x: 484, y: 484, z: 2 });
-	Crafty.e('Base18').attr({ x: 624, y: 484, z: 2 });
-	Crafty.e('Base19').attr({ x: 764, y: 484, z: 2 });
-	Crafty.e('Base20').attr({ x: 904, y: 484, z: 2 });
-	Crafty.e('Base21').attr({ x: 414, y: 584, z: 2 });
-	Crafty.e('Base22').attr({ x: 554, y: 584, z: 2 });
-	Crafty.e('Base23').attr({ x: 694, y: 584, z: 2 });
-	Crafty.e('Base24').attr({ x: 834, y: 584, z: 2 });
-	*/
+
 	Crafty.e('Team11').attr({ x: 254, y: 76, z: 2 });
 	Crafty.e('Team12').attr({ x: 328, y: 76, z: 2 });
 	Crafty.e('Team13').attr({ x: 402, y: 76, z: 2 });
@@ -141,6 +116,9 @@ function() {
 	Game.generateBases();
 
 	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
+
+	// traktorin kääntäminen toimii tällä consolista
 	// var tractor = Crafty.map.search({_x: 240, _y: 240, _w: 64, _h: 64 })[0];
+	// tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
 
 });
