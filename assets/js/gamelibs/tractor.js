@@ -7,42 +7,6 @@ var Game = {
         }
         return numZeropad;
     },
-    masunFunktio: function() {
-
-        // http://documentcloud.github.com/underscore/
-        // esim _.each([1, 2, 3], function(num){ alert(num); });
-        for (i = 0;i<players.length;i+2) {
-            if (players[i].length > 0 && players[i+1].length > 0) {
-                switch (i) {
-                    case 0: // Create farm1 and tractor1
-                        break;
-                    case 2: // Create tractor2
-                        break;
-                    case 4: // Create farm2 and tractor1
-                        break;
-                    case 6: // Create tractor2
-                        break;
-                    case 8: // Create farm3 and tractor1
-                        break;
-                    case 10: // Create tractor2
-                        break;
-                    case 12: // Create farm4 and tractor1
-                        break;
-                    case 14: // Create tractor2
-                        break;
-                    case 16: // Create farm5 and tractor1
-                        break;
-                    case 18: // Create tractor2
-                        break;
-                    case 20: // Create farm6 and tractor1
-                        break;
-                    case 22: // Create tractor2
-                        break;
-                }
-
-            }
-        }
-    },
     teams: [
         {
             "id" : Crafty.math.randomInt(1, 12),
@@ -184,9 +148,11 @@ var Game = {
                     // rnd int
                     var rnd = Crafty.math.randomInt(0, Game.bases.length-1);
                     // get base obj if not used. if used return empty obj and continue iteration
-                    if(_.isUndefined(Game.bases[rnd].used) {
-                        Game.bases[rnd].used = true;
+                    if(_.isUndefined(Game.bases[rnd].used)) {
+                        // get base
                         base = Game.bases[rnd];
+                        // mark as used
+                        base.used = true;
                     }
                 } while (base.length == 0);
 
