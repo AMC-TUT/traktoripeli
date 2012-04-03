@@ -1,28 +1,31 @@
+// traktorin kääntäminen toimii tällä consolista
+// var tractor = Crafty.map.search({_x: 310, _y: 150, _w: 64, _h: 64 })[0];
+// tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
+
 var Game = {
-    jokinmuuttuja: null,
-    zeroPad: function(num, count) {
-        var numZeropad = num + '';
-        while (numZeropad.length < count) {
-            numZeropad = "0" + numZeropad;
-        }
-        return numZeropad;
-    },
+    // teams
     teams: [
         {
             "id" : Crafty.math.randomInt(1, 12),
-            "farm" : 1,
+            "farmId" : 1,
             "tractors" : [
                 {   
                     "id": Crafty.math.randomInt(1000, 2000),
+                    "attr" : {
+                        _x: 310,
+                        _y: 150,
+                        _z: 3,
+                        _rotation: 140
+                    },
                     "c": "team2vechile2",
                     "tyres": [
                         {
                             "left": {
-                                "name" : "matti",
+                                "name" : "Matti",
                                 "id" :  Crafty.math.randomInt(1000, 2000)
                             },
                             "right": {
-                                "name" : "maija",
+                                "name" : "Maija",
                                 "id" :  Crafty.math.randomInt(1000, 2000)
                             }                            
                         }
@@ -95,6 +98,7 @@ var Game = {
     farms:[
         { 
             "id" : 1,
+            "attr": { _x: 228, _y: 50, _z: 3, _rotate: 0 },
             "homebases" : [
                 { "c": "team11", "_x": 254, "_y": 76 },
                 { "c": "team12", "_x": 328, "_y": 76 },
@@ -149,9 +153,43 @@ var Game = {
         }
         
     ],
+    generateFarm: function(farmId) {
+        _.each(this.farms, function(farm){
+            // if right farm
+            if(farm.id == farmId) {
+                // create farm
+                Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotate: farm.attr._rotate });
+                
+                // create farm parts
+                _.each(farm.homebases, function(homebase){
+                    var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
+                    // add image
+                    ent.addComponent(homebase.c);
+                });
+                // find the team based on farmId
+                var team = _.find(Game.teams, function(obj){ return obj.farmId == farmId; });
+
+                // create tractors for farm
+                _.each(team.tractors, function(tractor){
+                    var ent = Crafty.e('Tractor').attr({ x: tractor.attr._x, y: tractor.attr._y, z: tractor.attr._z, rotate: tractor.attr._rotate });
+                    // add image
+                    ent.addComponent(tractor.c);
+                    // rotate
+                    ent.rotation = tractor.attr._rotation;
+                    log(ent.rotate)
+                    // add farmId to know which farm the tracktor is from
+                    ent.farmId = farmId;
+                });
+            }
+
+        });
+    },
     generateFarms: function() {
         _.each(this.farms, function(farm){
-            _.each(farm.homebases, function(homebase){
+            // create farm
+            Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotate: farm.attr._rotate });
+            // create farm parts
+             _.each(farm.homebases, function(homebase){
                 var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
                 ent.addComponent(homebase.c);
             });
@@ -207,6 +245,17 @@ var Game = {
                 ent.weightValue = weight.value;
             });
         });
+    },
+    generateGame: function() {
+        //
+        Game.generateBases();
+        //
+        _.each(this.teams, function(team){
+            Game.generateFarm( team.farmId );
+        });
+        //
+        Game.generateWeightsOnGround();
+
     }
     
 }

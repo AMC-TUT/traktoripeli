@@ -64,7 +64,7 @@ Crafty.c("Tractor", {
                 //log('UP_ARROW: ' + (this._rotation - 90) % 360);
                 //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
             } else if(this.isDown(Crafty.keys.UP_ARROW)) {
-                log(this.movement.rotate.sin + ' ' + this.movement.speed + ' ' + this.movement.rotate.cos)
+                //log(this.movement.rotate.sin + ' ' + this.movement.speed + ' ' + this.movement.rotate.cos)
                 this.x += this.movement.rotate.sin * this.movement.speed;
                 this.y += this.movement.rotate.cos * this.movement.speed;
             } else if(this.isDown(Crafty.keys.S) || this.isDown(Crafty.keys.DOWN_ARROW)) {
@@ -72,7 +72,6 @@ Crafty.c("Tractor", {
                 this.y += -this.movement.rotate.cos * this.movement.speed;
             }
 
-            
         })
         .bind('KeyDown', function(e) {
 

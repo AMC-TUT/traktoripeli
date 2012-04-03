@@ -71,14 +71,15 @@ function() {
 	Crafty.e('Shadow').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
 	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270 });
 	Crafty.e('Shadow').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
-
+/* eka tehty muut lisättävä samalla tavalla
 	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
+    ///
 	Crafty.e('Farm').attr({ x: 746, y: 50, z: 3 });
 	Crafty.e('Farm').attr({ x: 534, y: 750, z: 3, rotation: 180 });
 	Crafty.e('Farm').attr({ x: 1052, y: 750, z: 3, rotation: 180 });
 	Crafty.e('Farm').attr({ x: 50, y: 553, z: 3, rotation: 270 });
 	Crafty.e('Farm').attr({ x: 1230, y: 247, z: 3, rotation: 90 });
-
+*/
 	Crafty.e('Nameplate11').attr({ x: 162, y: 0, z: 2 });
 	Crafty.e('Nameplate12').attr({ x: 381, y: 0, z: 2 });
 	Crafty.e('Nameplate21').attr({ x: 680, y: 0, z: 2 });
@@ -92,16 +93,7 @@ function() {
 	Crafty.e('Nameplate61').attr({ x: 1061, y: 197, z: 2 });
 	Crafty.e('Nameplate62').attr({ x: 1061, y: 553, z: 2 });
 
-	Game.generateFarms();
 
-	Game.generateBases();
-
-	Game.generateWeightsOnGround();
-
-	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
-
-	// traktorin kääntäminen toimii tällä consolista
-	// var tractor = Crafty.map.search({_x: 240, _y: 240, _w: 64, _h: 64 })[0];
-	// tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
+    Game.generateGame();
 
 });
