@@ -1,5 +1,5 @@
 // traktorin kääntäminen toimii tällä consolista
-// var tractor = Crafty.map.search({_x: 310, _y: 150, _w: 64, _h: 64 })[0];
+// var tractor = Crafty.map.search({_x: 310, _y: 150, _w: 64, _h: 64 })[1];
 // tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
 
 var Game = {
