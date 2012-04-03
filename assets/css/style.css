@@ -36,3 +36,7 @@ nav div span { display: inline-block; }
 .game-diamond-info, .game-time, .game-score, .game-collected {
   margin-left: 1em; }
 */
+
+#cr-stage canvas {
+  left: 20px !important;
+}
