@@ -16,17 +16,31 @@ Crafty.sprite(24, 35, game.path + "/assets/img/1000gram.png", {
 });
 
 Crafty.sprite(306, 74, game.path + "/assets/img/farm1.png", {
-    // weight on wheels
+    // farms
     farm1: [0, 0],
     farm2: [0, 0],
     farm3: [0, 1],
     farm4: [0, 1]
 });
 
+Crafty.sprite(336, 104, game.path + "/assets/img/shadow1.png", {
+    // shadow to farms
+    shdw1: [0, 0],
+    shdw2: [0, 0],
+    shdw3: [0, 1],
+    shdw4: [0, 1]
+});
+
 Crafty.sprite(74, 306, game.path + "/assets/img/farm2.png", {
-    // weight on wheels
+    // farms
     farm5: [0, 0],
     farm6: [1, 0]
+});
+
+Crafty.sprite(104, 336, game.path + "/assets/img/shadow2.png", {
+    // shadow to farms
+    shdw5: [0, 0],
+    shdw6: [1, 0]
 });
 
 Crafty.sprite(32, game.path + "/assets/img/bases.png", {
