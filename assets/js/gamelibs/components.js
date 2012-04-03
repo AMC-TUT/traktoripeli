@@ -216,19 +216,28 @@ Crafty.c("Base", {
 
 Crafty.c("WeightOnGround", {
     weightValue: 0, // weight value: 100,200,300,400
+    onTeam: false,
     init: function() {
         this.weightValue = 0,
+        this.onTeam = false,
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Tractor",
         function(ent) {
-            // tractor
-            var obj = ent[0].obj;
-            // create ent
-            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
-            // add weight value to WeightOnWheels
-            e.weightValue = this.weightValue;
-            // destroy self
-            this.destroy();
+
+            // find way to disable hit for a while
+            if(!this.onTeam) {
+                // tractor
+                var obj = ent[0].obj;
+                // create ent
+                var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+                // add weight value to WeightOnWheels
+                e.weightValue = this.weightValue;
+                // destroy self
+                this.destroy();
+            }
+
+        }, function(ent) {
+            // Callback method executed once as soon as collision stops
         })
     }
 });
@@ -240,8 +249,16 @@ Crafty.c("WeightOnWheels", {
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Team",
             function(ent) {
-                log('WeightOnWheels osui Teamiin!');
-                this.destroy();
+                // team
+                var obj = ent[0].obj;
+                // create ent
+                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
+            // add weight value to WeightOnGround
+            e.weightValue = this.weightValue;
+            // mark that WeightOnGround is on Team entity
+            e.onTeam = true,
+            // destroy self
+            this.destroy();
         })
         .onHit("Tractor", function(ent) {
             this.x = ent[0].obj._x + 16;
