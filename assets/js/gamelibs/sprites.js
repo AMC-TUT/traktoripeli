@@ -95,6 +95,24 @@ Crafty.sprite(32, game.path + "/assets/img/bases.png", {
     team44: [3, 11]
 });
 
+Crafty.sprite(219, 50, game.path + "/assets/img/nametag1.png", {
+    nameplate11: [0, 0],
+    nameplate21: [0, 0],
+    nameplate31: [0, 0],
+    nameplate41: [0, 0],
+    nameplate51: [0, 0],
+    nameplate61: [0, 0]
+});
+
+Crafty.sprite(219, 50, game.path + "/assets/img/nametag2.png", {
+    nameplate12: [0, 0],
+    nameplate22: [0, 0],
+    nameplate32: [0, 0],
+    nameplate42: [0, 0],
+    nameplate52: [0, 0],
+    nameplate62: [0, 0]
+});
+
 // players
 Crafty.sprite(64, game.path + "/assets/img/traktor_c1.png", {
     // teams and their vechiles

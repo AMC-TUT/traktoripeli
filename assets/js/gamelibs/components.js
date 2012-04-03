@@ -515,6 +515,114 @@ Crafty.c("Farm6", {
     }
 });
 
+Crafty.c("Shdw1", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw1");
+    }
+});
+
+Crafty.c("Shdw2", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw2");
+    }
+});
+
+Crafty.c("Shdw3", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw3");
+    }
+});
+
+Crafty.c("Shdw4", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw4");
+    }
+});
+
+Crafty.c("Shdw5", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw5");
+    }
+});
+
+Crafty.c("Shdw6", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shdw6");
+    }
+});
+
+Crafty.c("Nameplate11", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate11");
+    }
+});
+
+Crafty.c("Nameplate12", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate12");
+    }
+});
+
+Crafty.c("Nameplate21", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate21");
+    }
+});
+
+Crafty.c("Nameplate22", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate22");
+    }
+});
+
+Crafty.c("Nameplate31", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate31");
+    }
+});
+
+Crafty.c("Nameplate32", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate32");
+    }
+});
+
+Crafty.c("Nameplate41", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate41");
+    }
+});
+
+Crafty.c("Nameplate42", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate42");
+    }
+});
+
+Crafty.c("Nameplate51", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate51");
+    }
+});
+
+Crafty.c("Nameplate52", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate52");
+    }
+});
+
+Crafty.c("Nameplate61", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate61");
+    }
+});
+
+Crafty.c("Nameplate62", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "nameplate62");
+    }
+});
+
 
 /*
 function timer() {
