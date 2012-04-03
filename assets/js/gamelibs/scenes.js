@@ -61,8 +61,9 @@ function() {
 	Crafty.e('Shadow').attr({ x: 746, y: 50, z: 2 });
 	Crafty.e('Shadow').attr({ x: 564, y: 780, z: 2, rotation: 180 });
 	Crafty.e('Shadow').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
-	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270, });
+	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270 });
 	Crafty.e('Shadow').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
+
 	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
 	Crafty.e('Farm').attr({ x: 746, y: 50, z: 3 });
 	Crafty.e('Farm').attr({ x: 534, y: 750, z: 3, rotation: 180 });
