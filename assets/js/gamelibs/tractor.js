@@ -10,13 +10,21 @@ var Game = {
     teams: [
         {
             "id" : Crafty.math.randomInt(1, 12),
+            "farm" : 1,
             "tractors" : [
-                { 
+                {   
+                    "id": Crafty.math.randomInt(1000, 2000),
                     "c": "team2vechile2",
-                    "members": [
+                    "tyres": [
                         {
-                            "name" : "matti",
-                            "memberId" :  Crafty.math.randomInt(1000, 2000)
+                            "left": {
+                                "name" : "matti",
+                                "id" :  Crafty.math.randomInt(1000, 2000)
+                            },
+                            "right": {
+                                "name" : "maija",
+                                "id" :  Crafty.math.randomInt(1000, 2000)
+                            }                            
                         }
                     ] 
                 }
@@ -72,19 +80,18 @@ var Game = {
         { "c": "base12", "_x": 554, "_y": 384 },
         { "c": "base13", "_x": 694, "_y": 384 },
         { "c": "base14", "_x": 834, "_y": 384 },
-
         { "c": "base15", "_x": 974, "_y": 384 },
         { "c": "base16", "_x": 344, "_y": 484 },
         { "c": "base17", "_x": 484, "_y": 484 },
         { "c": "base18", "_x": 624, "_y": 484 },
         { "c": "base19", "_x": 764, "_y": 484 },
-
         { "c": "base20", "_x": 904, "_y": 484 },
         { "c": "base21", "_x": 414, "_y": 584 },
         { "c": "base22", "_x": 554, "_y": 584 },
         { "c": "base23", "_x": 694, "_y": 584 },
         { "c": "base24", "_x": 834, "_y": 584 },
     ],
+/*
     // homebase locations
     homebases:[
         { "c": "team11", "_x": 254, "_y": 76 },
@@ -112,6 +119,65 @@ var Game = {
         { "c": "team63", "_x": 1172, "_y": 421 },
         { "c": "team64", "_x": 1172, "_y": 495 },
     ],
+*/
+    // farm locations
+    farm:[
+        { 
+            "id" : 1,
+            "homebases" : [
+                { "c": "team11", "_x": 254, "_y": 76 },
+                { "c": "team12", "_x": 328, "_y": 76 },
+                { "c": "team13", "_x": 402, "_y": 76 },
+                { "c": "team14", "_x": 476, "_y": 76 }
+            ]
+        },
+        { 
+            "id" : 3,
+            "homebases" : [
+                { "c": "team21", "_x": 772, "_y": 76 },
+                { "c": "team22", "_x": 846, "_y": 76 },
+                { "c": "team23", "_x": 920, "_y": 76 },
+                { "c": "team24", "_x": 994, "_y": 76 },
+            ]
+        },
+        { 
+            "id" : 3,
+            "homebases" : [
+                { "c": "team31", "_x": 254, "_y": 692 },
+                { "c": "team32", "_x": 328, "_y": 692 },
+                { "c": "team33", "_x": 402, "_y": 692 },
+                { "c": "team34", "_x": 476, "_y": 692 },
+            ]
+        },
+        { 
+            "id" : 4,
+            "homebases" : [
+                { "c": "team41", "_x": 772, "_y": 692 },
+                { "c": "team42", "_x": 846, "_y": 692 },
+                { "c": "team43", "_x": 920, "_y": 692 },
+                { "c": "team44", "_x": 994, "_y": 692 },
+            ]
+        },
+        { 
+            "id" : 5,
+            "homebases" : [
+                { "c": "team51", "_x": 76, "_y": 273 },
+                { "c": "team52", "_x": 76, "_y": 347 },
+                { "c": "team53", "_x": 76, "_y": 421 },
+                { "c": "team54", "_x": 76, "_y": 495 },
+            ]
+        },
+        { 
+            "id" : 6,
+            "homebases" : [
+                { "c": "team61", "_x": 1172, "_y": 273 },
+                { "c": "team62", "_x": 1172, "_y": 347 },
+                { "c": "team63", "_x": 1172, "_y": 421 },
+                { "c": "team64", "_x": 1172, "_y": 495 },
+            ]
+        }
+        
+    ],
     // add bases to scene
     generateBases: function() {
         _.each(this.bases, function(base){
@@ -120,10 +186,12 @@ var Game = {
         });
     },
     generateHomebases: function() {
+        /*
         _.each(this.homebases, function(team){
             var ent = Crafty.e('Team').attr({ x: team._x, y: team._y, z: 1 });
             ent.addComponent(team.c);
         });
+*/
     },
     generateWeights: function() {
         var lastRndInt = -1, rndInt = -1;
@@ -139,13 +207,13 @@ var Game = {
 
             // get weight object based on rndInt
             var weights = Game.weights[rndInt];
-            log(weights);
+            //log(weights);
 
             _.each(weights, function(weight){
                 // search rnd place for each weight from the free bases. 
                 // when base is used it is dynamically marked with var used = true;
                 // get random base which is unused
-                var base = {};
+                var base = null;
                 do {
                     // rnd int
                     var rnd = Crafty.math.randomInt(0, Game.bases.length-1);
@@ -155,8 +223,11 @@ var Game = {
                         base = Game.bases[rnd];
                         // mark as used
                         base.used = true;
+                    } else {
+                        base = null;
                     }
-                } while (base.length == 0);
+                   
+                } while (_.isNull(base));
 
                 var ent = Crafty.e('WeightOnGround').attr({ x: base._x - 16, y: base._y - 16, z: 2 });
                 // add sprite component
