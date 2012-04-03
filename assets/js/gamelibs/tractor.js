@@ -91,37 +91,8 @@ var Game = {
         { "c": "base23", "_x": 694, "_y": 584 },
         { "c": "base24", "_x": 834, "_y": 584 },
     ],
-/*
-    // homebase locations
-    homebases:[
-        { "c": "team11", "_x": 254, "_y": 76 },
-        { "c": "team12", "_x": 328, "_y": 76 },
-        { "c": "team13", "_x": 402, "_y": 76 },
-        { "c": "team14", "_x": 476, "_y": 76 },
-        { "c": "team21", "_x": 772, "_y": 76 },
-        { "c": "team22", "_x": 846, "_y": 76 },
-        { "c": "team23", "_x": 920, "_y": 76 },
-        { "c": "team24", "_x": 994, "_y": 76 },
-        { "c": "team31", "_x": 254, "_y": 692 },
-        { "c": "team32", "_x": 328, "_y": 692 },
-        { "c": "team33", "_x": 402, "_y": 692 },
-        { "c": "team34", "_x": 476, "_y": 692 },
-        { "c": "team41", "_x": 772, "_y": 692 },
-        { "c": "team42", "_x": 846, "_y": 692 },
-        { "c": "team43", "_x": 920, "_y": 692 },
-        { "c": "team44", "_x": 994, "_y": 692 },
-        { "c": "team51", "_x": 76, "_y": 273 },
-        { "c": "team52", "_x": 76, "_y": 347 },
-        { "c": "team53", "_x": 76, "_y": 421 },
-        { "c": "team54", "_x": 76, "_y": 495 },
-        { "c": "team61", "_x": 1172, "_y": 273 },
-        { "c": "team62", "_x": 1172, "_y": 347 },
-        { "c": "team63", "_x": 1172, "_y": 421 },
-        { "c": "team64", "_x": 1172, "_y": 495 },
-    ],
-*/
     // farm locations
-    farm:[
+    farms:[
         { 
             "id" : 1,
             "homebases" : [
@@ -132,7 +103,7 @@ var Game = {
             ]
         },
         { 
-            "id" : 3,
+            "id" : 2,
             "homebases" : [
                 { "c": "team21", "_x": 772, "_y": 76 },
                 { "c": "team22", "_x": 846, "_y": 76 },
@@ -178,6 +149,14 @@ var Game = {
         }
         
     ],
+    generateFarms: function() {
+        _.each(this.farms, function(farm){
+            _.each(farm.homebases, function(homebase){
+                var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
+                ent.addComponent(homebase.c);
+            });
+        });
+    },
     // add bases to scene
     generateBases: function() {
         _.each(this.bases, function(base){
@@ -185,18 +164,10 @@ var Game = {
             ent.addComponent(base.c);
         });
     },
-    generateHomebases: function() {
-        /*
-        _.each(this.homebases, function(team){
-            var ent = Crafty.e('Team').attr({ x: team._x, y: team._y, z: 1 });
-            ent.addComponent(team.c);
-        });
-*/
-    },
-    generateWeights: function() {
+    generateWeightsOnGround: function() {
         var lastRndInt = -1, rndInt = -1;
         // generate weights for each team in game
-        _.each(Game.teams, function(team){
+        _.each(this.teams, function(team){
             // get random value which is differs from the one before
             do {
                 // rnd 
@@ -233,7 +204,7 @@ var Game = {
                 // add sprite component
                 ent.addComponent(weight.c);
                 // add value to entity
-                ent.value = weight.value;
+                ent.weightValue = weight.value;
             });
         });
     }

@@ -111,6 +111,32 @@ Crafty.c("Tractor", {
             // stop * animations
             this.stop();
         })
+        .onHit("Base",
+            function(ent) {
+                //log('Tractor osui Baseen!');
+                // add WeightOnGround and run self destruction
+/*
+                // get value
+                var value = 400; //this.value;
+
+                var weight;
+                _.each(Game.weights[0], function(obj){
+                    if(obj.value == value) {
+                        weight = obj;
+                    }
+                });
+
+                // create WeightOnGround
+                var e = Crafty.e('WeightOnGround').attr({ x: ent[0].obj._x - 16, y: ent[0].obj._y - 16, z: 2 });
+                // add sprite component
+                e.addComponent(weight.c);
+                // add value to entity
+                e.value = weight.value;
+*/
+                //
+                //this.destroy();
+            }
+        )
         .bind('Rotate', function(rotate) {
 /*
             // set new direction for movement
@@ -122,7 +148,7 @@ Crafty.c("Tractor", {
 
 
 */
-            log(rotate)
+          //  log(rotate)
 
 
       //      this.movement.rotate.sin = rotate.sin;
@@ -182,22 +208,73 @@ Crafty.c("Base", {
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Tractor",
             function(ent) {
-                log('Traktori osui baseen!');
+                //
             }
         )
     }
 });
 
 Crafty.c("WeightOnGround", {
-    //value: 0, // weight value: 100,200,300,400
+    weightValue: 0, // weight value: 100,200,300,400
     init: function() {
-        //this.value = 0,
+        this.weightValue = 0,
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Tractor",
+        function(ent) {
+            // tractor
+            var obj = ent[0].obj;
+            // create ent
+            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+            // add weight value to WeightOnWheels
+            e.weightValue = this.weightValue;
+            // destroy self
+            this.destroy();
+        })
+    }
+});
+
+Crafty.c("WeightOnWheels", {
+    value: 0,
+    init: function() {
+        this.value = 0,
+        this.addComponent("2D", "Canvas", "Collision")
+        .onHit("Team",
             function(ent) {
-                log('Traktori osui WeightOnGroundiin!');
+                log('WeightOnWheels osui Teamiin!');
+                this.destroy();
+        })
+        .onHit("Tractor", function(ent) {
+            this.x = ent[0].obj._x + 16;
+            this.y = ent[0].obj._y + 16;
+        })
+        /*
+        .onHit("Base",
+            function(ent) {
+                log('WeightOnWheels osui Baseen!');
+                // add WeightOnGround and run self destruction
+
+                // get value
+                var value = this.value;
+                var weight;
+
+                _.each(Game.weights, function(obj){
+                    if(obj.value == value) {
+                        weight = obj;
+                    }
+                });
+                // create WeightOnGround
+                var e = Crafty.e('WeightOnGround').attr({ x: ent[0].obj._x - 16, y: ent[0].obj._y - 16, z: 2 });
+                // add sprite component
+                e.addComponent(weight.c);
+                // add value to entity
+                e.value = weight.value;
+
+                //
+                this.destroy();
             }
         )
+        */
+      
     }
 });
 
