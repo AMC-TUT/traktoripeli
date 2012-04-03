@@ -135,6 +135,8 @@ var Game = {
                 rndInt = Crafty.math.randomInt(0, Game.weights.length-1);
             } while (lastRndInt == rndInt);
 
+            lastRndInt = rndInt;
+
             // get weight object based on rndInt
             var weights = Game.weights[rndInt];
             log(weights);
