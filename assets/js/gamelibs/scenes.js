@@ -57,41 +57,11 @@ function() {
     //Crafty.background("#aaa");
 	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
 
-	Crafty.e('Team11').attr({ x: 254, y: 76, z: 2 });
-	Crafty.e('Team12').attr({ x: 328, y: 76, z: 2 });
-	Crafty.e('Team13').attr({ x: 402, y: 76, z: 2 });
-	Crafty.e('Team14').attr({ x: 476, y: 76, z: 2 });
-
-	Crafty.e('Team21').attr({ x: 772, y: 76, z: 2 });
-	Crafty.e('Team22').attr({ x: 846, y: 76, z: 2 });
-	Crafty.e('Team23').attr({ x: 920, y: 76, z: 2 });
-	Crafty.e('Team24').attr({ x: 994, y: 76, z: 2 });
-
-	Crafty.e('Team31').attr({ x: 254, y: 692, z: 2 });
-	Crafty.e('Team32').attr({ x: 328, y: 692, z: 2 });
-	Crafty.e('Team33').attr({ x: 402, y: 692, z: 2 });
-	Crafty.e('Team34').attr({ x: 476, y: 692, z: 2 });
-
-	Crafty.e('Team41').attr({ x: 772, y: 692, z: 2 });
-	Crafty.e('Team42').attr({ x: 846, y: 692, z: 2 });
-	Crafty.e('Team43').attr({ x: 920, y: 692, z: 2 });
-	Crafty.e('Team44').attr({ x: 994, y: 692, z: 2 });
-
-	Crafty.e('Team51').attr({ x: 76, y: 273, z: 2 });
-	Crafty.e('Team52').attr({ x: 76, y: 347, z: 2 });
-	Crafty.e('Team53').attr({ x: 76, y: 421, z: 2 });
-	Crafty.e('Team54').attr({ x: 76, y: 495, z: 2 });
-
-	Crafty.e('Team61').attr({ x: 1172, y: 273, z: 2 });
-	Crafty.e('Team62').attr({ x: 1172, y: 347, z: 2 });
-	Crafty.e('Team63').attr({ x: 1172, y: 421, z: 2 });
-	Crafty.e('Team64').attr({ x: 1172, y: 495, z: 2 });
-
 	Crafty.e('Shadow').attr({ x: 228, y: 50, z: 2 });
 	Crafty.e('Shadow').attr({ x: 746, y: 50, z: 2 });
 	Crafty.e('Shadow').attr({ x: 564, y: 780, z: 2, rotation: 180 });
 	Crafty.e('Shadow').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
-	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270 });
+	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270, });
 	Crafty.e('Shadow').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
 	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
 	Crafty.e('Farm').attr({ x: 746, y: 50, z: 3 });
@@ -114,6 +84,7 @@ function() {
 	Crafty.e('Nameplate62').attr({ x: 1061, y: 553, z: 2 });
 
 	Game.generateBases();
+	Game.generateHomebases();
 
 	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
 

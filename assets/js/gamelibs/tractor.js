@@ -142,6 +142,39 @@ var Game = {
             var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
             ent.addComponent(base.c);
         });
+    },
+    // homebase locations
+    homebases:[
+        { "c": "team11", "_x": 254, "_y": 76 },
+        { "c": "team12", "_x": 328, "_y": 76 },
+        { "c": "team13", "_x": 402, "_y": 76 },
+        { "c": "team14", "_x": 476, "_y": 76 },
+        { "c": "team21", "_x": 772, "_y": 76 },
+        { "c": "team22", "_x": 846, "_y": 76 },
+        { "c": "team23", "_x": 920, "_y": 76 },
+        { "c": "team24", "_x": 994, "_y": 76 },
+        { "c": "team31", "_x": 254, "_y": 692 },
+        { "c": "team32", "_x": 328, "_y": 692 },
+        { "c": "team33", "_x": 402, "_y": 692 },
+        { "c": "team34", "_x": 476, "_y": 692 },
+        { "c": "team41", "_x": 772, "_y": 692 },
+        { "c": "team42", "_x": 846, "_y": 692 },
+        { "c": "team43", "_x": 920, "_y": 692 },
+        { "c": "team44", "_x": 994, "_y": 692 },
+        { "c": "team51", "_x": 76, "_y": 273 },
+        { "c": "team52", "_x": 76, "_y": 347 },
+        { "c": "team53", "_x": 76, "_y": 421 },
+        { "c": "team54", "_x": 76, "_y": 495 },
+        { "c": "team61", "_x": 1172, "_y": 273 },
+        { "c": "team62", "_x": 1172, "_y": 347 },
+        { "c": "team63", "_x": 1172, "_y": 421 },
+        { "c": "team64'", "_x": 1172, "_y": 495 },
+    ],
+    generateHomebases: function() {
+        _.each(this.homebases, function(team){
+            var ent = Crafty.e('Team').attr({ x: team._x, y: team._y, z: 1 });
+            ent.addComponent(team.c);
+        });
     }
     
 }

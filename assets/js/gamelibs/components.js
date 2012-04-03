@@ -188,147 +188,9 @@ Crafty.c("Base", {
     }
 });
 
-Crafty.c("Team11", {
+Crafty.c("Team", {
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team11");
-    }
-});
-
-Crafty.c("Team12", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team12");
-    }
-});
-
-Crafty.c("Team13", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team13");
-    }
-});
-
-Crafty.c("Team14", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team14");
-    }
-});
-
-Crafty.c("Team21", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team21");
-    }
-});
-
-Crafty.c("Team22", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team22");
-    }
-});
-
-Crafty.c("Team23", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team23");
-    }
-});
-
-Crafty.c("Team24", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team24");
-    }
-});
-
-Crafty.c("Team31", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team31");
-    }
-});
-
-Crafty.c("Team32", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team32");
-    }
-});
-
-Crafty.c("Team33", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team33");
-    }
-});
-
-Crafty.c("Team34", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team34");
-    }
-});
-
-Crafty.c("Team41", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team41");
-    }
-});
-
-Crafty.c("Team42", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team42");
-    }
-});
-
-Crafty.c("Team43", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team43");
-    }
-});
-
-Crafty.c("Team44", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team44");
-    }
-});
-
-Crafty.c("Team51", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team51");
-    }
-});
-
-Crafty.c("Team52", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team52");
-    }
-});
-
-Crafty.c("Team53", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team53");
-    }
-});
-
-Crafty.c("Team54", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team54");
-    }
-});
-
-Crafty.c("Team61", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team61");
-    }
-});
-
-Crafty.c("Team62", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team62");
-    }
-});
-
-Crafty.c("Team63", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team63");
-    }
-});
-
-Crafty.c("Team64", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "team64");
+        this.addComponent("2D", "Canvas", "Collision");
     }
 });
 
@@ -343,6 +205,9 @@ Crafty.c("Shadow", {
         this.addComponent("2D", "Canvas", "Collision", "shadow");
     }
 });
+
+
+
 
 Crafty.c("Nameplate11", {
     init: function() {
