@@ -17,14 +17,6 @@ var Game = {
     },
     masunFunktio: function() {
 
-        // global array of playernames should be elsewere
-        var players = ["arttu", "teemu", "", "",
-                       "marko", "kristian", "", "",
-                       "", "", "", "",
-                       "", "", "", "",
-                       "", "", "", "",
-                       "", "", "", ""];
-
         // http://documentcloud.github.com/underscore/
         // esim _.each([1, 2, 3], function(num){ alert(num); });
         for (i = 0;i<players.length;i+2) {
@@ -111,43 +103,29 @@ var Game = {
         { "c": "Base01", "_x": 414, "_y": 184 },
         { "c": "Base02", "_x": 554, "_y": 184 },
         { "c": "Base03", "_x": 694, "_y": 184 },
+        { "c": "Base04", "_x": 834, "_y": 184 },
+        { "c": "Base05", "_x": 344, "_y": 284 },
+        { "c": "Base06", "_x": 484, "_y": 284 },
+        { "c": "Base07", "_x": 624, "_y": 284 },
+        { "c": "Base08", "_x": 764, "_y": 284 },
+        { "c": "Base09", "_x": 904, "_y": 284 },
+        { "c": "Base10", "_x": 274, "_y": 384 },
+        { "c": "Base11", "_x": 414, "_y": 384 },
+        { "c": "Base12", "_x": 554, "_y": 384 },
+        { "c": "Base13", "_x": 694, "_y": 384 },
+        { "c": "Base14", "_x": 834, "_y": 384 },
 
+        { "c": "Base15", "_x": 974, "_y": 384 },
+        { "c": "Base16", "_x": 344, "_y": 484 },
+        { "c": "Base17", "_x": 484, "_y": 484 },
+        { "c": "Base18", "_x": 624, "_y": 484 },
+        { "c": "Base19", "_x": 764, "_y": 484 },
 
-/*
-    Crafty.e('Base04').attr({ x: 834, y: 184, z: 2 });
-    Crafty.e('Base05').attr({ x: 344, y: 284, z: 2 });
-    Crafty.e('Base06').attr({ x: 484, y: 284, z: 2 });
-    Crafty.e('Base07').attr({ x: 624, y: 284, z: 2 });
-    Crafty.e('Base08').attr({ x: 764, y: 284, z: 2 });
-    Crafty.e('Base09').attr({ x: 904, y: 284, z: 2 });
-    Crafty.e('Base10').attr({ x: 274, y: 384, z: 2 });
-    Crafty.e('Base11').attr({ x: 414, y: 384, z: 2 });
-    Crafty.e('Base12').attr({ x: 554, y: 384, z: 2 });
-    Crafty.e('Base13').attr({ x: 694, y: 384, z: 2 });
-    Crafty.e('Base14').attr({ x: 834, y: 384, z: 2 });
-    Crafty.e('Base15').attr({ x: 974, y: 384, z: 2 });
-    Crafty.e('Base16').attr({ x: 344, y: 484, z: 2 });
-    Crafty.e('Base17').attr({ x: 484, y: 484, z: 2 });
-    Crafty.e('Base18').attr({ x: 624, y: 484, z: 2 });
-    Crafty.e('Base19').attr({ x: 764, y: 484, z: 2 });
-    Crafty.e('Base20').attr({ x: 904, y: 484, z: 2 });
-    Crafty.e('Base21').attr({ x: 414, y: 584, z: 2 });
-    Crafty.e('Base22').attr({ x: 554, y: 584, z: 2 });
-    Crafty.e('Base23').attr({ x: 694, y: 584, z: 2 });
-    Crafty.e('Base24').attr({ x: 834, y: 584, z: 2 });
-    */
+        { "c": "Base20", "_x": 904, "_y": 484 },
+        { "c": "Base21", "_x": 414, "_y": 584 },
+        { "c": "Base22", "_x": 554, "_y": 584 },
+        { "c": "Base23", "_x": 694, "_y": 584 },
+        { "c": "Base24", "_x": 834, "_y": 584 },
     ] 
     
-
-
-
-
-
-
-
-
-
-
-
-
 }
