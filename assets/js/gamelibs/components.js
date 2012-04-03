@@ -232,6 +232,8 @@ Crafty.c("WeightOnGround", {
                 var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
                 // add weight value to WeightOnWheels
                 e.weightValue = this.weightValue;
+                // play some nice sound
+                Crafty.audio.play("weight-up");
                 // destroy self
                 this.destroy();
             }
@@ -248,17 +250,27 @@ Crafty.c("WeightOnWheels", {
         this.value = 0,
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Team",
-            function(ent) {
-                // team
-                var obj = ent[0].obj;
-                // create ent
-                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
+        function(ent) {
+            // team
+            var obj = ent[0].obj;
+            // create ent
+            var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
             // add weight value to WeightOnGround
             e.weightValue = this.weightValue;
+            // add weight value to Team
+            obj.weightValue = this.weightValue;
             // mark that WeightOnGround is on Team entity
-            e.onTeam = true,
+            e.onTeam = true;
+            // play some nice sound
+            Crafty.audio.play("drop-on-farm");
             // destroy self
             this.destroy();
+            // trigger Farm to check its current weightValue sum
+            var farm = obj.hit('Farm')[0].obj;
+            log(farm)
+            // pull the trigger
+            farm.trigger("CountWeights");
+
         })
         .onHit("Tractor", function(ent) {
             this.x = ent[0].obj._x + 16;
@@ -295,15 +307,51 @@ Crafty.c("WeightOnWheels", {
     }
 });
 
-Crafty.c("Team", {
+Crafty.c("Farm", {
+    _weightValue: 0,
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision");
+        this._weightValue = 0,
+        this.addComponent("2D", "Canvas", "Collision", "farm")
+        .bind('CountWeights', function() {
+            // trigger to count weight values on Farm
+            // clear old value
+            var weightValue = 0;
+            // get farms weights
+            var weights = this.hit("WeightOnGround");
+            // loop weights and get the weightValues
+            _.each(weights, function(weight){
+                weightValue += weight.obj.weightValue;
+            });
+            // set as ent var
+            this._weightValue = weightValue;
+            // debug
+            log('Kerattynä: ' + this._weightValue + ' \\o/ ');
+
+            if(this._weightValue == 400) { // DEVAUSTA VARTEN 1000) {
+                // do something crazy here when player win the game
+
+                // stop tractors
+                // STOP
+
+                // play some inspirational music and cheer for winner
+                // cheer first
+                Crafty.audio.play("cheer");
+                // march then
+                setTimeout("Crafty.audio.play('march')", 4000);
+
+                // show Roll of Honour 
+                // TODO
+
+                // and then load DashBoard Scene with 
+                //Crafty.scene("Loading");
+            }
+        })
     }
 });
 
-Crafty.c("Farm", {
+Crafty.c("Team", {   
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm");
+        this.addComponent("2D", "Canvas", "Collision")
     }
 });
 
