@@ -168,7 +168,7 @@ var Game = {
             // get random value which is differs from the one before
             do {
                 // rnd 
-                rndInt = Crafty.math.randomInt(0, --Game.weights.length);
+                rndInt = Crafty.math.randomInt(0, Game.weights.length-1);
             } while (lastRndInt == rndInt);
 
             // get weight object based on rndInt
@@ -182,7 +182,7 @@ var Game = {
                 var base = {};
                 do {
                     // rnd int
-                    var rnd = Crafty.math.randomInt(0, --Game.bases.length);
+                    var rnd = Crafty.math.randomInt(0, Game.bases.length-1);
                     // get base obj if not used. if used return empty obj and continue iteration
                     base = _.isUndefined(Game.bases[rnd].used) ? Game.bases[rnd] : {};
                 } while (base.length == 0);
