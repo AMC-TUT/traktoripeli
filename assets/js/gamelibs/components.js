@@ -178,16 +178,17 @@ Crafty.c("Tractor", {
 });
 
 Crafty.c("Base", {
-    slot: 0,
+    //slot: 0,
     init: function() {
-        this.slot = 0,
-        this.addComponent("2D", "Canvas", "Collision", "base01")
+        //this.slot = 0,
+        this.addComponent("2D", "Canvas", "Collision")
         .onHit("Tractor",
             function(ent) {
+                log('Tractor osuma');
                 //log('before:' + this.slot)
-                tmp = ent.slot;
-                ent.slot = this.slot;
-                this.slot = tmp;
+                //tmp = ent.slot;
+                //ent.slot = this.slot;
+                //this.slot = tmp;
                 //log('before:' + this.slot)
             }
         )

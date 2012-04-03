@@ -56,7 +56,7 @@ function() {
 
     //Crafty.background("#aaa");
 	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
-	
+	/*
 	Crafty.e('Base01').attr({ x: 414, y: 184, z: 2 });
 	Crafty.e('Base02').attr({ x: 554, y: 184, z: 2 });
 	Crafty.e('Base03').attr({ x: 694, y: 184, z: 2 });
@@ -81,7 +81,7 @@ function() {
 	Crafty.e('Base22').attr({ x: 554, y: 584, z: 2 });
 	Crafty.e('Base23').attr({ x: 694, y: 584, z: 2 });
 	Crafty.e('Base24').attr({ x: 834, y: 584, z: 2 });
-
+	*/
 	Crafty.e('Team11').attr({ x: 254, y: 76, z: 2 });
 	Crafty.e('Team12').attr({ x: 328, y: 76, z: 2 });
 	Crafty.e('Team13').attr({ x: 402, y: 76, z: 2 });
@@ -137,6 +137,8 @@ function() {
 	Crafty.e('Nameplate52').attr({ x: 0, y: 553, z: 2 });
 	Crafty.e('Nameplate61').attr({ x: 1061, y: 197, z: 2 });
 	Crafty.e('Nameplate62').attr({ x: 1061, y: 553, z: 2 });
+
+	Game.generateBases();
 
 	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
 	// var tractor = Crafty.map.search({_x: 240, _y: 240, _w: 64, _h: 64 })[0];

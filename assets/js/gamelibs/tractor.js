@@ -127,8 +127,11 @@ var Game = {
         { "c": "Base23", "_x": 694, "_y": 584 },
         { "c": "Base24", "_x": 834, "_y": 584 },
     ],
-    generateBases() {
-        
+    generateBases: function() {
+        _.each(this.bases, function(base){
+            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
+            ent.addComponent( base.c.toLowerCase() );
+        });
     }
     
 }
