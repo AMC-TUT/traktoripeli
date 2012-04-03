@@ -187,7 +187,7 @@ var Game = {
                     base = _.isUndefined(Game.bases[rnd].used) ? Game.bases[rnd] : {};
                 } while (base.length == 0);
 
-                var ent = Crafty.e('WeightOnGround').attr({ x: base._x, y: base._y, z: 2 });
+                var ent = Crafty.e('WeightOnGround').attr({ x: base._x - 16, y: base._y - 16, z: 2 });
                 // add sprite component
                 ent.addComponent(weight.c);
                 // add value to entity
