@@ -332,75 +332,15 @@ Crafty.c("Team64", {
     }
 });
 
-Crafty.c("Farm1", {
+Crafty.c("Farm", {
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm1");
+        this.addComponent("2D", "Canvas", "Collision", "farm");
     }
 });
 
-Crafty.c("Farm2", {
+Crafty.c("Shadow", {
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm2");
-    }
-});
-
-Crafty.c("Farm3", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm3");
-    }
-});
-
-Crafty.c("Farm4", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm4");
-    }
-});
-
-Crafty.c("Farm5", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm5");
-    }
-});
-
-Crafty.c("Farm6", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "farm6");
-    }
-});
-
-Crafty.c("Shdw1", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw1");
-    }
-});
-
-Crafty.c("Shdw2", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw2");
-    }
-});
-
-Crafty.c("Shdw3", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw3");
-    }
-});
-
-Crafty.c("Shdw4", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw4");
-    }
-});
-
-Crafty.c("Shdw5", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw5");
-    }
-});
-
-Crafty.c("Shdw6", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shdw6");
+        this.addComponent("2D", "Canvas", "Collision", "shadow");
     }
 });
 

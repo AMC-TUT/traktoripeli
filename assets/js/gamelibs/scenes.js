@@ -87,18 +87,18 @@ function() {
 	Crafty.e('Team63').attr({ x: 1172, y: 421, z: 2 });
 	Crafty.e('Team64').attr({ x: 1172, y: 495, z: 2 });
 
-	Crafty.e('Shdw1').attr({ x: 228, y: 50, z: 1 });
-	Crafty.e('Shdw2').attr({ x: 746, y: 50, z: 1 });
-	Crafty.e('Shdw3').attr({ x: 228, y: 676, z: 1 });
-	Crafty.e('Shdw4').attr({ x: 746, y: 676, z: 1 });
-	Crafty.e('Shdw5').attr({ x: 50, y: 247, z: 1 });
-	Crafty.e('Shdw6').attr({ x: 1156, y: 247, z: 1 });
-	Crafty.e('Farm1').attr({ x: 228, y: 50, z: 2 });
-	Crafty.e('Farm2').attr({ x: 746, y: 50, z: 2 });
-	Crafty.e('Farm3').attr({ x: 228, y: 676, z: 2 });
-	Crafty.e('Farm4').attr({ x: 746, y: 676, z: 2 });
-	Crafty.e('Farm5').attr({ x: 50, y: 247, z: 2 });
-	Crafty.e('Farm6').attr({ x: 1156, y: 247, z: 2 });
+	Crafty.e('Shadow').attr({ x: 228, y: 50, z: 2 });
+	Crafty.e('Shadow').attr({ x: 746, y: 50, z: 2 });
+	Crafty.e('Shadow').attr({ x: 564, y: 780, z: 2, rotation: 180 });
+	Crafty.e('Shadow').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
+	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270 });
+	Crafty.e('Shadow').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
+	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
+	Crafty.e('Farm').attr({ x: 746, y: 50, z: 3 });
+	Crafty.e('Farm').attr({ x: 534, y: 750, z: 3, rotation: 180 });
+	Crafty.e('Farm').attr({ x: 1052, y: 750, z: 3, rotation: 180 });
+	Crafty.e('Farm').attr({ x: 50, y: 553, z: 3, rotation: 270 });
+	Crafty.e('Farm').attr({ x: 1230, y: 247, z: 3, rotation: 90 });
 
 	Crafty.e('Nameplate11').attr({ x: 162, y: 0, z: 2 });
 	Crafty.e('Nameplate12').attr({ x: 381, y: 0, z: 2 });
