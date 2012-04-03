@@ -180,7 +180,6 @@ var Game = {
                     ent.farmId = farmId;
                 });
             }
-
         });
     },
     generateFarms: function() {
