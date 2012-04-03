@@ -5,16 +5,21 @@ Crafty.c("Tractor", {
     number: 0,
     slot: 0,
     init: function() {
-        //this.id = Crafty.math.randomInt(1000, 140000); // Math.floor(Math.rand()*10000); // use roomID later when sockets
+        this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
         this.slot = 0,
         this.team = 1,
         this.number = 1,
         this.movement = {
             speed: 2,
-            difference: 1
+            difference: 1,
+            rotate: {
+                sin: 0,
+                cos: 0,
+            }
         },
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway")
         .addComponent('team2vechile2')
+        .origin("bottom")
         // define tractor animations
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
@@ -30,11 +35,11 @@ Crafty.c("Tractor", {
         ])
         .multiway( this.movement.speed, {
             UP_ARROW: -90, 
-            DOWN_ARROW: 90         
+            DOWN_ARROW: 90
         })
         //.bind("NewDirection", function(direction) { })
         .bind("Moved", function(from) {
-            log('from: ' + from.x + ' x ' + from.y + ' to: ' + this._x + ' x ' + this._y);
+            //log('from: ' + from.x + ' x ' + from.y + ' to: ' + this._x + ' x ' + this._y);
             /* Dont allow to move the player out of Screen */
             if(this.x + this.w > Crafty.viewport.width ||
                 this.x + this.w - 20 < this.w || 
@@ -46,8 +51,30 @@ Crafty.c("Tractor", {
                 });
             }          
         })
-        .origin("bottom")
         .bind("EnterFrame", function(frame) {
+
+            if(this.isDown('RIGHT_ARROW')) {
+                this.rotation = ( (this._rotation + this.movement.difference) % 360);
+                //log('this._rotation: ' + this._rotation);
+                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+            } else if(this.isDown('LEFT_ARROW')) {
+                this.rotation = ( (this._rotation - this.movement.difference) % 360);
+                //log(this._rotation);
+                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+            } else if(this.isDown(Crafty.keys.UP_ARROW)) {
+                log(this.movement.rotate.sin + ' ' + this.movement.speed + ' ' + this.movement.rotate.cos)
+                this.x += this.movement.rotate.sin * this.movement.speed;
+                this.y += this.movement.rotate.cos * this.movement.speed;
+            } else if(this.isDown(Crafty.keys.S) || this.isDown(Crafty.keys.DOWN_ARROW)) {
+                this.x += -this.movement.rotate.sin * this.movement.speed;
+                this.y += -this.movement.rotate.cos * this.movement.speed;
+            }
+
+            
+        })
+        .bind('KeyDown', function(e) {
 
             if(this.isDown('RIGHT_ARROW')) {
                 if (!this.isPlaying("FrwdBrwd")) {
@@ -55,24 +82,18 @@ Crafty.c("Tractor", {
                 }
                 // 
                 this.rotation = ( (this._rotation + this.movement.difference) % 360);
-                log('this._rotation: ' + this._rotation);
-                log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+                //log('this._rotation: ' + this._rotation);
+                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
             } else if(this.isDown('LEFT_ARROW')) {
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
                 }
                 // 
                 this.rotation = ( (this._rotation - this.movement.difference) % 360);
-                log(this._rotation);
-                log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
-
-                this.multiway({
-                    UP_ARROW: (this._rotation - 90) % 360,
-                    DOWN_ARROW: (this._rotation + 90) % 360
-                });
-
+                //log(this._rotation);
+                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
+                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
 
             } else if(this.isDown('DOWN_ARROW')) {
                 if (!this.isPlaying("FrwdFrwd")) {
@@ -84,17 +105,61 @@ Crafty.c("Tractor", {
                     this.stop().animate("BrwdBrwd", 10, -1)
                 } 
             }
+
         })
         .bind('KeyUp', function(e) {
-            // stop animations
+            // stop * animations
             this.stop();
         })
         .bind('Rotate', function(rotate) {
+/*
+            // set new direction for movement
+            this.multiway(1, {
+                UP_ARROW: -90,
+                DOWN_ARROW: 90
+            });
 
-           // this.stop();
 
+
+*/
+            log(rotate)
+
+
+      //      this.movement.rotate.sin = rotate.sin;
+      //      this.movement.rotate.cos = rotate.cos;
+/*
+            var angle = this._rotation * (Math.PI / 180),
+                vx = Math.sin(angle),
+                vy = -Math.cos(angle);
+
+            log(angle + ' ' + vx + ' ' + vy);
+            */
+            /*
+            if(this.isDown(Crafty.keys.W) || this.isDown(Crafty.keys.UP_ARROW)) {
+                this.x += vx * 1.5;
+                this.y += vy * 1.5;
+            } else if(this.isDown(Crafty.keys.S) || this.isDown(Crafty.keys.DOWN_ARROW)) {
+                this.x += -vx * 1.5;
+                this.y += -vy * 1.5;
+            }
+            */
+
+            /*
+            this.multiway( this.movement.speed, {
+                UP_ARROW: -90, 
+                DOWN_ARROW: 90         
+            });
+            */
+            /*
+            this.multiway({
+                UP_ARROW: (this._rotation - 90) % 360,
+                DOWN_ARROW: (this._rotation + 90) % 360
+            });
+
+            /*
             var tractor = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 })[0];
             log(tractor)
+            */
             /*
             this.removeComponent('Multiway');
             this.addComponent('Multiway').multiway( this.movement.speed, {
