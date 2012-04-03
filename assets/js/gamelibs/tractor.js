@@ -1,19 +1,11 @@
 var Game = {
     jokinmuuttuja: null,
-    jokinFunc: function(timer) {
-        return 'tein jotain';
-    },
     zeroPad: function(num, count) {
         var numZeropad = num + '';
         while (numZeropad.length < count) {
             numZeropad = "0" + numZeropad;
         }
         return numZeropad;
-    },
-    previousPos: function(current, direction) {
-
-        return 'jokin arvo'
-
     },
     masunFunktio: function() {
 
@@ -67,46 +59,39 @@ var Game = {
             ]
         }
     ],
+    // weights
     weights: [
-        {
-            "weight1": 100,
-            "weight2": 200,
-            "weight3": 300,
-            "weight4": 400
-        },
-        {
-            "weight1": 100,
-            "weight2": 300,
-            "weight3": 300,
-            "weight4": 300
-        },
-        {
-            "weight1": 200,
-            "weight2": 200,
-            "weight3": 200,
-            "weight4": 400
-        },
-        {
-            "weight1": 200,
-            "weight2": 200,
-            "weight3": 300,
-            "weight4": 300
-        },
-        {
-            "weight1": 100,
-            "weight2": 100,
-            "weight3": 400,
-            "weight4": 400
-        }
+        [
+            { "c": "wb100g", "value": 100 },
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb300g", "value": 300 },
+            { "c": "wb400g", "value": 400 }
+        ],
+        [
+            { "c": "wb100g", "value": 100 },
+            { "c": "wb300g", "value": 300 },
+            { "c": "wb300g", "value": 300 },
+            { "c": "wb300g", "value": 300 }
+        ],
+        [
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb400g", "value": 400 }
+        ],
+        [
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb200g", "value": 200 },
+            { "c": "wb300g", "value": 300 },
+            { "c": "wb300g", "value": 300 }
+        ],
+        [
+            { "c": "wb100g", "value": 100 },
+            { "c": "wb100g", "value": 100 },
+            { "c": "wb400g", "value": 400 },
+            { "c": "wb400g", "value": 400 }
+        ]
     ],
-    // add weight to scene
-    generateWeights: function() {
-        _.each(Game.teams, function(team){
-            
-            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
-            ent.addComponent(base.c);
-        });
-    },
     // base locations
     bases: [
         { "c": "base01", "_x": 414, "_y": 184 },
@@ -136,13 +121,6 @@ var Game = {
         { "c": "base23", "_x": 694, "_y": 584 },
         { "c": "base24", "_x": 834, "_y": 584 },
     ],
-    // add bases to scene
-    generateBases: function() {
-        _.each(this.bases, function(base){
-            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
-            ent.addComponent(base.c);
-        });
-    },
     // homebase locations
     homebases:[
         { "c": "team11", "_x": 254, "_y": 76 },
@@ -168,12 +146,53 @@ var Game = {
         { "c": "team61", "_x": 1172, "_y": 273 },
         { "c": "team62", "_x": 1172, "_y": 347 },
         { "c": "team63", "_x": 1172, "_y": 421 },
-        { "c": "team64'", "_x": 1172, "_y": 495 },
+        { "c": "team64", "_x": 1172, "_y": 495 },
     ],
+    // add bases to scene
+    generateBases: function() {
+        _.each(this.bases, function(base){
+            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
+            ent.addComponent(base.c);
+        });
+    },
     generateHomebases: function() {
         _.each(this.homebases, function(team){
             var ent = Crafty.e('Team').attr({ x: team._x, y: team._y, z: 1 });
             ent.addComponent(team.c);
+        });
+    },
+    generateWeights: function() {
+        var lastRndInt = -1, rndInt = -1;
+        // generate weights for each team in game
+        _.each(Game.teams, function(team){
+            // get random value which is differs from the one before
+            do {
+                // rnd 
+                rndInt = Crafty.math.randomInt(0, --Game.weights.length);
+            } while (lastRndInt == rndInt);
+
+            // get weight object based on rndInt
+            var weights = Game.weights[rndInt];
+            log(weights);
+
+            _.each(weights, function(weight){
+                // search rnd place for each weight from the free bases. 
+                // when base is used it is dynamically marked with var used = true;
+                // get random base which is unused
+                var base = {};
+                do {
+                    // rnd int
+                    var rnd = Crafty.math.randomInt(0, --Game.bases.length);
+                    // get base obj if not used. if used return empty obj and continue iteration
+                    base = _.isUndefined(Game.bases[rnd].used) ? Game.bases[rnd] : {};
+                } while (base.length == 0);
+
+                var ent = Crafty.e('WeightOnGround').attr({ x: base._x, y: base._y, z: 2 });
+                // add sprite component
+                ent.addComponent(weight.c);
+                // add value to entity
+                ent.value = weight.value;
+            });
         });
     }
     

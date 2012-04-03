@@ -188,6 +188,19 @@ Crafty.c("Base", {
     }
 });
 
+Crafty.c("WeightOnGround", {
+    //value: 0, // weight value: 100,200,300,400
+    init: function() {
+        //this.value = 0,
+        this.addComponent("2D", "Canvas", "Collision")
+        .onHit("Tractor",
+            function(ent) {
+                log('Traktori osui WeightOnGroundiin!');
+            }
+        )
+    }
+});
+
 Crafty.c("Team", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision");
@@ -205,9 +218,6 @@ Crafty.c("Shadow", {
         this.addComponent("2D", "Canvas", "Collision", "shadow");
     }
 });
-
-
-
 
 Crafty.c("Nameplate11", {
     init: function() {
@@ -283,57 +293,6 @@ Crafty.c("Nameplate62", {
 
 
 /*
-function timer() {
-
-    var timeleft = 150;
-
-    setInterval(function() {
-
-        timeleft -= 1;
-
-        if (timeleft == 0) {
-            Crafty.e("Player").die();
-        }
-
-        var s = timeleft.toString();
-        var a = s.split("");
-
-        if (timeleft < 10) {
-            a.unshift("0", "0");
-        } else if (timeleft < 100) {
-            a.unshift("0");
-        }
-
-        Crafty.e("Timer1").destroy();
-        Crafty.e("Timer1").addComponent("wchar" + a[0]).attr({
-            x: 25 * 32,
-            y: 9,
-            z: 2
-        });
-
-        Crafty.e("Timer2").destroy();
-        Crafty.e("Timer2").addComponent("wchar" + a[1]).attr({
-            x: 26 * 32,
-            y: 9,
-            z: 2
-        });
-
-        Crafty.e("Timer3").destroy();
-        Crafty.e("Timer3").addComponent("wchar" + a[2]).attr({
-            x: 27 * 32,
-            y: 9,
-            z: 2
-        });
-
-        if (timeleft == 11) {
-            Crafty.audio.play("runningoutoftime");
-        }
-
-
-    },
-    1000);
-
-}
 
 Crafty.c("Player", {
 
@@ -533,71 +492,7 @@ Crafty.c("Stone", {
     }
 });
 
-Crafty.c("Diamond", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "Gravity", "SpriteAnimation", "diamond1", "Solid", "Platform")
-        .stop()
-        .animate("DiamondAnimation", 0, 10, 7)
-        .animate("DiamondAnimation", 8, -1)
-        .gravity("Platform")
-        .gravityConst(1)
-        .onHit("Player",
-        function(ent) {
-            ent[0].obj.die();
-        })
-        .bind('Move',
-        function(from) {
-            Crafty.audio.play("diamond1");
-        })
-    }
-});
-
-Crafty.c("Door", {
-    init: function() {
-        this.start = 1,
-        this.addComponent("2D", "Canvas", "SpriteAnimation", "door")
-        .stop()
-        .animate("DoorAnimation", 1, 6, 0)
-        .animate("DoorAnimation", 16, 6)
-        .bind('EnterFrame',
-        function(frame) {
-            if (!this.isPlaying('DoorAnimation') && this.start) {
-                this.start = 0;
-                //Create the player
-                Crafty.e("Player").attr({
-                    x: 3 * 32,
-                    y: 3 * 32,
-                    z: 3
-                });
-
-                timer();
-            }
-        })
-    }
-});
-
-Crafty.c("Explosion", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "SpriteAnimation", "explosion1")
-        .stop()
-        .animate("ExplosionAnimation", 2, 7, 7)
-        .animate("ExplosionAnimation", 16, -1)
-    }
-});
-
-Crafty.c("Brick", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "brick", "Solid", "Platform");
-    }
-});
-
-Crafty.c("Steel", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "steel", "Solid", "Platform");
-    }
-});
-
-Crafty.c('Colon', {
+Crafty.c('Timer', {
     init: function() {
         this.addComponent("2D", "Canvas");
     },
@@ -606,50 +501,6 @@ Crafty.c('Colon', {
     }
 });
 
-Crafty.c('Counter', {
-    init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
-    }
-});
-
-Crafty.c('Score', {
-    init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
-    }
-});
-
-Crafty.c('Timer1', {
-    init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
-    }
-});
-
-Crafty.c('Timer2', {
-    init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
-    }
-});
-
-Crafty.c('Timer3', {
-    init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
-    }
-});
 
 Crafty.c("Finish", {
     init: function() {
@@ -756,16 +607,6 @@ Crafty.c("Finish", {
                 this.start = 0;
             }
         })
-    }
-});
-
-
-Crafty.c("FinishLine", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "door", "Solid", "Platform")
-        .stop()
-        .animate("FinishAnimation", 1, 6, 2)
-        .animate("FinishAnimation", 32, -1)
     }
 });
 */

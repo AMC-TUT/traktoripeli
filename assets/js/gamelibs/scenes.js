@@ -84,8 +84,12 @@ function() {
 	Crafty.e('Nameplate61').attr({ x: 1061, y: 197, z: 2 });
 	Crafty.e('Nameplate62').attr({ x: 1061, y: 553, z: 2 });
 
-	Game.generateBases();
 	Game.generateHomebases();
+
+	Game.generateBases();
+
+	Game.generateWeights();
+
 
 	Crafty.e('Tractor').attr({ x: 240, y: 240, z: 2 });
 
