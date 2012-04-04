@@ -18,12 +18,9 @@ function() {
     	game.path + "/assets/img/1kg.png", 
     	game.path + "/assets/img/1000gram.png", 
     	game.path + "/assets/img/bases.png", 
-    	game.path + "/assets/img/farm1.png", 
-    	game.path + "/assets/img/farm2.png", 
-    	game.path + "/assets/img/shadow1.png", 
-    	game.path + "/assets/img/shadow2.png", 
-    	game.path + "/assets/img/nametag1.png", 
-    	game.path + "/assets/img/nametag2.png", 
+    	game.path + "/assets/img/farms.png", 
+    	game.path + "/assets/img/shadows.png", 
+    	game.path + "/assets/img/nameplates.png", 
     	game.path + "/assets/img/traktor_bg.png",
     	game.path + "/assets/img/traktor_c1.png", 
     	game.path + "/assets/img/traktor_c2.png", 
@@ -65,12 +62,12 @@ function() {
     // then picture when loaded
 	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
 
-	Crafty.e('Shadow').attr({ x: 228, y: 50, z: 2 });
-	Crafty.e('Shadow').attr({ x: 746, y: 50, z: 2 });
-	Crafty.e('Shadow').attr({ x: 564, y: 780, z: 2, rotation: 180 });
-	Crafty.e('Shadow').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
-	Crafty.e('Shadow').attr({ x: 50, y: 583, z: 2, rotation: 270 });
-	Crafty.e('Shadow').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
+	Crafty.e('Shadow1').attr({ x: 228, y: 50, z: 2 });
+	Crafty.e('Shadow1').attr({ x: 746, y: 50, z: 2 });
+	Crafty.e('Shadow1').attr({ x: 564, y: 780, z: 2, rotation: 180 });
+	Crafty.e('Shadow1').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
+	Crafty.e('Shadow2').attr({ x: 50, y: 583, z: 2, rotation: 270 });
+	Crafty.e('Shadow2').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
 /* eka tehty muut lisättävä samalla tavalla
 	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
     ///

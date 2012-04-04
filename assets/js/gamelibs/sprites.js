@@ -15,14 +15,15 @@ Crafty.sprite(24, 35, game.path + "/assets/img/1000gram.png", {
     ww400g: [3, 0]
 });
 
-Crafty.sprite(306, 74, game.path + "/assets/img/farm1.png", {
+Crafty.sprite(306, 74, game.path + "/assets/img/farms.png", {
     // farms
     farm: [0, 0]
 });
 
-Crafty.sprite(336, 104, game.path + "/assets/img/shadow1.png", {
+Crafty.sprite(336, 104, game.path + "/assets/img/shadows.png", {
     // shadow to farms
-    shadow: [0, 0]
+    shadow1: [0, 0]
+    shadow2: [0, 1]
 });
 
 Crafty.sprite(32, game.path + "/assets/img/bases.png", {
@@ -77,22 +78,19 @@ Crafty.sprite(32, game.path + "/assets/img/bases.png", {
     team44: [3, 11]
 });
 
-Crafty.sprite(219, 50, game.path + "/assets/img/nametag1.png", {
+Crafty.sprite(214, 40, game.path + "/assets/img/nameplates.png", {
     nameplate11: [0, 0],
     nameplate21: [0, 0],
     nameplate31: [0, 0],
     nameplate41: [0, 0],
     nameplate51: [0, 0],
     nameplate61: [0, 0]
-});
-
-Crafty.sprite(219, 50, game.path + "/assets/img/nametag2.png", {
-    nameplate12: [0, 0],
-    nameplate22: [0, 0],
-    nameplate32: [0, 0],
-    nameplate42: [0, 0],
-    nameplate52: [0, 0],
-    nameplate62: [0, 0]
+    nameplate12: [0, 1],
+    nameplate22: [0, 1],
+    nameplate32: [0, 1],
+    nameplate42: [0, 1],
+    nameplate52: [0, 1],
+    nameplate62: [0, 1]
 });
 
 // players
