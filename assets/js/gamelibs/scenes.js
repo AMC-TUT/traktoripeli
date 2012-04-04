@@ -31,6 +31,16 @@ function() {
     	game.path + "/assets/img/traktor_c4.png", 
     	game.path + "/assets/img/traktor_c5.png", 
     	game.path + "/assets/img/traktor_c6.png"
+<<<<<<< HEAD
+=======
+    	// audio
+/*
+    	game.path + "/assets/audio/mp3/jack-tar-march.mp3",
+    	game.path + "/assets/audio/mp3/weight-up.mp3",
+    	game.path + "/assets/audio/mp3/drop-on-farm.mp3",
+    	game.path + "/assets/audio/mp3/cheer.mp3"
+*/
+>>>>>>> varjoja
     	],
     function() {
         //when loaded
@@ -60,22 +70,21 @@ function() {
     Crafty.background("#FFF");
     // then picture when loaded
 	Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
-
+/*
 	Crafty.e('Shadow1').attr({ x: 228, y: 50, z: 2 });
 	Crafty.e('Shadow1').attr({ x: 746, y: 50, z: 2 });
 	Crafty.e('Shadow1').attr({ x: 564, y: 780, z: 2, rotation: 180 });
 	Crafty.e('Shadow1').attr({ x: 1082, y: 780, z: 2, rotation: 180 });
 	Crafty.e('Shadow2').attr({ x: 50, y: 583, z: 2, rotation: 270 });
 	Crafty.e('Shadow2').attr({ x: 1260, y: 247, z: 2, rotation: 90 });
-/* eka tehty muut lisättävä samalla tavalla
+
 	Crafty.e('Farm').attr({ x: 228, y: 50, z: 3 });
-    ///
 	Crafty.e('Farm').attr({ x: 746, y: 50, z: 3 });
 	Crafty.e('Farm').attr({ x: 534, y: 750, z: 3, rotation: 180 });
 	Crafty.e('Farm').attr({ x: 1052, y: 750, z: 3, rotation: 180 });
 	Crafty.e('Farm').attr({ x: 50, y: 553, z: 3, rotation: 270 });
 	Crafty.e('Farm').attr({ x: 1230, y: 247, z: 3, rotation: 90 });
-*/
+
 	Crafty.e('Nameplate11').attr({ x: 162, y: 5, z: 2 });
 	Crafty.e('Nameplate12').attr({ x: 381, y: 5, z: 2 });
 	Crafty.e('Nameplate21').attr({ x: 680, y: 5, z: 2 });
@@ -84,11 +93,11 @@ function() {
 	Crafty.e('Nameplate32').attr({ x: 381, y: 755, z: 2 });
 	Crafty.e('Nameplate41').attr({ x: 680, y: 755, z: 2 });
 	Crafty.e('Nameplate42').attr({ x: 899, y: 755, z: 2 });
-	Crafty.e('Nameplate51').attr({ x: 0, y: 193, z: 2 });
+	Crafty.e('Nameplate51').attr({ x: 0, y: 203, z: 2 });
 	Crafty.e('Nameplate52').attr({ x: 0, y: 557, z: 2 });
-	Crafty.e('Nameplate61').attr({ x: 1061, y: 193, z: 2 });
+	Crafty.e('Nameplate61').attr({ x: 1061, y: 203, z: 2 });
 	Crafty.e('Nameplate62').attr({ x: 1061, y: 557, z: 2 });
-
+*/
 
     Game.generateGame();
 

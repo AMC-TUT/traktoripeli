@@ -99,6 +99,7 @@ var Game = {
         { 
             "id" : 1,
             "attr": { _x: 228, _y: 50, _z: 3, _rotate: 0 },
+            "shdw": { "c": "shadow1", _x: 228, _y: 50, _z: 2, _rotate: 0 },
             "homebases" : [
                 { "c": "team11", "_x": 254, "_y": 76 },
                 { "c": "team12", "_x": 328, "_y": 76 },
@@ -108,6 +109,8 @@ var Game = {
         },
         { 
             "id" : 2,
+            "attr": { _x: 746, _y: 50, _z: 3, _rotate: 0 },
+            "shdw": { "c": "shadow1", _x: 746, _y: 50, _z: 2, _rotate: 0 },
             "homebases" : [
                 { "c": "team21", "_x": 772, "_y": 76 },
                 { "c": "team22", "_x": 846, "_y": 76 },
@@ -117,6 +120,8 @@ var Game = {
         },
         { 
             "id" : 3,
+            "attr": { _x: 534, _y: 750, _z: 3, _rotate: 180 },
+            "shdw": { "c": "shadow1", _x: 564, _y: 780, _z: 2, _rotate: 180 },
             "homebases" : [
                 { "c": "team31", "_x": 254, "_y": 692 },
                 { "c": "team32", "_x": 328, "_y": 692 },
@@ -126,6 +131,8 @@ var Game = {
         },
         { 
             "id" : 4,
+            "attr": { _x: 1052, _y: 750, _z: 3, _rotate: 180 },
+            "shdw": { "c": "shadow1", _x: 1082, _y: 780, _z: 2, _rotate: 180 },
             "homebases" : [
                 { "c": "team41", "_x": 772, "_y": 692 },
                 { "c": "team42", "_x": 846, "_y": 692 },
@@ -135,6 +142,8 @@ var Game = {
         },
         { 
             "id" : 5,
+            "attr": { _x: 50, _y: 553, _z: 3, _rotate: 270 },
+            "shdw": { "c": "shadow2", _x: 50, _y: 583, _z: 2, _rotate: 270 },
             "homebases" : [
                 { "c": "team51", "_x": 76, "_y": 273 },
                 { "c": "team52", "_x": 76, "_y": 347 },
@@ -144,6 +153,8 @@ var Game = {
         },
         { 
             "id" : 6,
+            "attr": { _x: 1230, _y: 247, _z: 3, _rotate: 90 },
+            "shdw": { "c": "shadow2", _x: 1260, _y: 247, _z: 2, _rotate: 90 },
             "homebases" : [
                 { "c": "team61", "_x": 1172, "_y": 273 },
                 { "c": "team62", "_x": 1172, "_y": 347 },
@@ -158,8 +169,10 @@ var Game = {
             // if right farm
             if(farm.id == farmId) {
                 // create farm
-                Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotate: farm.attr._rotate });
-                
+                Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotation: farm.attr._rotate });
+                // create shadows
+                var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: farm.shdw._z, rotation: farm.shdw._rotate});
+                ent.addComponent(farm.shdw.c);
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
                     var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });

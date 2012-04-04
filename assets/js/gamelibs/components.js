@@ -354,6 +354,12 @@ Crafty.c("Team", {
     }
 });
 
+Crafty.c("Shadow", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision");
+    }
+});
+/*
 Crafty.c("Shadow1", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision", "shadow1");
@@ -365,7 +371,7 @@ Crafty.c("Shadow2", {
         this.addComponent("2D", "Canvas", "Collision", "shadow2");
     }
 });
-
+*/
 Crafty.c("Nameplate11", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision", "nameplate11");
