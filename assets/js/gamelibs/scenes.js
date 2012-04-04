@@ -31,16 +31,6 @@ function() {
     	game.path + "/assets/img/traktor_c4.png", 
     	game.path + "/assets/img/traktor_c5.png", 
     	game.path + "/assets/img/traktor_c6.png"
-<<<<<<< HEAD
-=======
-    	// audio
-/*
-    	game.path + "/assets/audio/mp3/jack-tar-march.mp3",
-    	game.path + "/assets/audio/mp3/weight-up.mp3",
-    	game.path + "/assets/audio/mp3/drop-on-farm.mp3",
-    	game.path + "/assets/audio/mp3/cheer.mp3"
-*/
->>>>>>> varjoja
     	],
     function() {
         //when loaded
