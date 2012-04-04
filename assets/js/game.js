@@ -1,16 +1,12 @@
-/* Author: AMC
-
-*/
 
 window.onload = function() {
 
-    var WIDTH = 1280,
-    HEIGHT = 800;
+    var WIDTH = 1280, HEIGHT = 800;
+    
     // Initialize Crafty
     Crafty.init(WIDTH, HEIGHT);
-    
-    Crafty.background("#FFF");
 
+    // Load first scene
     Crafty.scene("Loading");
 
 };

@@ -1,11 +1,4 @@
 
-canvas {
-  -webkit-transform: translateZ(0);
-  -moz-transform:  translate(tx[0, 0);
-  transform:  translate(0, 0);
-  /*width: 940px;*/
-}
-
 html.loading-html {
   background: #FFF url("../img/bg.png") no-repeat center center fixed;
   -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
@@ -15,9 +8,6 @@ body {
   overflow: hidden;
   background-color: transparent;
 }
-
-.container {
-  width: auto; }
 
 .container-loading {
   background: rgba(255, 255, 255, .3);
@@ -49,6 +39,12 @@ body {
   float: none; margin: 0 auto; }
 #cr-stage.loading-scene > div {
   position: relative !important; }
+
+canvas {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translate(tx[0, 0);
+  transform: translate(0, 0);
+}
 
 /*
 nav div { 
