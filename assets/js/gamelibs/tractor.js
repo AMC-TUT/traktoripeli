@@ -7,17 +7,10 @@ var Game = {
     teams: [
         {
             "id" : Crafty.math.randomInt(1, 12),
-            "farmId" : 1,
+            "farmId" : 4,
             "tractors" : [
                 {   
                     "id": Crafty.math.randomInt(1000, 2000),
-                    "attr" : {
-                        _x: 310,
-                        _y: 150,
-                        _z: 3,
-                        _rotation: 140
-                    },
-                    "c": "team3vechile2",
                     "tyres": [
                         {
                             "left": {
@@ -107,8 +100,12 @@ var Game = {
                 { "c": "team14", "_x": 476, "_y": 76 }
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 162, "_y": 5, "_z":2 },
-                { "c": "nameplate2", "_x": 381, "_y": 5, "_z":2 },
+                { "c": "nameplate1", "_x": 162, "_y": 5, "_z":3 },
+                { "c": "nameplate2", "_x": 381, "_y": 5, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team1vechile1", "_x": 312, "_y": 60, "_z":2, "_rotate": 180 },
+                { "c": "team1vechile2", "_x": 386, "_y": 60, "_z":2, "_rotate": 180 }
             ]
         },
         { 
@@ -122,8 +119,12 @@ var Game = {
                 { "c": "team24", "_x": 994, "_y": 76 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 680, "_y": 5, "_z":2 },
-                { "c": "nameplate2", "_x": 899, "_y": 5, "_z":2 },
+                { "c": "nameplate1", "_x": 680, "_y": 5, "_z":3 },
+                { "c": "nameplate2", "_x": 899, "_y": 5, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team2vechile1", "_x": 830, "_y": 60, "_z":2, "_rotate": 180 },
+                { "c": "team2vechile2", "_x": 904, "_y": 60, "_z":2, "_rotate": 180 }
             ]
         },
         { 
@@ -137,8 +138,12 @@ var Game = {
                 { "c": "team34", "_x": 476, "_y": 692 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 162, "_y": 755, "_z":2 },
-                { "c": "nameplate2", "_x": 381, "_y": 755, "_z":2 },
+                { "c": "nameplate1", "_x": 162, "_y": 755, "_z":3 },
+                { "c": "nameplate2", "_x": 381, "_y": 755, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team3vechile1", "_x": 312, "_y": 676, "_z":2, "_rotate": 0 },
+                { "c": "team3vechile2", "_x": 386, "_y": 676, "_z":2, "_rotate": 0 }
             ]
         },
         { 
@@ -152,8 +157,12 @@ var Game = {
                 { "c": "team44", "_x": 994, "_y": 692 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 680, "_y": 755, "_z":2 },
-                { "c": "nameplate2", "_x": 899, "_y": 755, "_z":2 },
+                { "c": "nameplate1", "_x": 680, "_y": 755, "_z":3 },
+                { "c": "nameplate2", "_x": 899, "_y": 755, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team4vechile1", "_x": 830, "_y": 676, "_z":2, "_rotate": 0 },
+                { "c": "team4vechile2", "_x": 904, "_y": 676, "_z":2, "_rotate": 0 }
             ]
         },
         { 
@@ -167,8 +176,12 @@ var Game = {
                 { "c": "team54", "_x": 76, "_y": 495 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 0, "_y": 203, "_z":2 },
-                { "c": "nameplate2", "_x": 0, "_y": 557, "_z":2 },
+                { "c": "nameplate1", "_x": 0, "_y": 203, "_z":3 },
+                { "c": "nameplate2", "_x": 0, "_y": 557, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team5vechile1", "_x": 60, "_y": 331, "_z":2, "_rotate": 90 },
+                { "c": "team5vechile2", "_x": 60, "_y": 405, "_z":2, "_rotate": 90 }
             ]
         },
         { 
@@ -182,8 +195,12 @@ var Game = {
                 { "c": "team64", "_x": 1172, "_y": 495 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 1061, "_y": 203, "_z":2 },
-                { "c": "nameplate2", "_x": 1061, "_y": 557, "_z":2 },
+                { "c": "nameplate1", "_x": 1061, "_y": 203, "_z":3 },
+                { "c": "nameplate2", "_x": 1061, "_y": 557, "_z":3 }
+            ],
+            "tractors" : [
+                { "c": "team6vechile1", "_x": 1156, "_y": 331, "_z":2, "_rotate": 270 },
+                { "c": "team6vechile2", "_x": 1156, "_y": 405, "_z":2, "_rotate": 270 }
             ]
         }
         
@@ -208,12 +225,20 @@ var Game = {
                 // create nameplates
                 var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[0]._x, y: farm.nameplates[0]._y, z: farm.nameplates[0]._z});
                 ent.addComponent(farm.nameplates[0].c);
+                Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[0]._x+45, y: farm.nameplates[0]._y+16, z: 4 }).text(team.tractors[0].tyres[1].name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
+                Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[0]._x+45, y: farm.nameplates[0]._y+36, z: 4 }).text(team.tractors[0].tyres[0].name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
                 if (team.tractors.length > 1) {
                     var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[1]._x, y: farm.nameplates[1]._y, z: farm.nameplates[1]._z});
                     ent.addComponent(farm.nameplates[1].c);
                 }
-
                 // create tractors for farm
+                var ent = Crafty.e('Tractor').attr({x: farm.tractors[0]._x, y: farm.tractors[0]._y, z: farm.tractors[0]._z, rotation: farm.tractors[0]._rotate});
+                ent.addComponent(farm.tractors[0].c);
+                if (team.tractors.length > 1) {
+                    var ent = Crafty.e('Tractor').attr({x: farm.tractors[1]._x, y: farm.tractors[1]._y, z: farm.tractors[1]._z});
+                    ent.addComponent(farm.tractors[1].c);
+                }
+/*
                 _.each(team.tractors, function(tractor){
                     var ent = Crafty.e('Tractor').attr({ x: tractor.attr._x, y: tractor.attr._y, z: tractor.attr._z, rotation: tractor.attr._rotation });
                     // add image
@@ -221,6 +246,7 @@ var Game = {
                     // add farmId to know which farm the tracktor is from
                     ent.farmId = farmId;
                 });
+*/
             }
         });
     },
