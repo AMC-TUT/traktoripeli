@@ -17,7 +17,7 @@ Crafty.c("Tractor", {
                 cos: 0,
             }
         },
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway")
+        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "team1vechile1")
         .origin("bottom")
         // define tractor animations
         .animate("FrwdFrwd", [

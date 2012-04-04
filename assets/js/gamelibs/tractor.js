@@ -184,7 +184,9 @@ var Game = {
 
                 // create tractors for farm
                 _.each(team.tractors, function(tractor){
+                    log(tractor)
                     var ent = Crafty.e('Tractor').attr({ x: tractor.attr._x, y: tractor.attr._y, z: tractor.attr._z, rotation: tractor.attr._rotation });
+                    log(ent)
                     // add image
                     ent.addComponent(tractor.c);
                     // add farmId to know which farm the tracktor is from
