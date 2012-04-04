@@ -3,7 +3,10 @@
 Crafty.scene("Loading",
 function() {
 
-    Crafty.background("#000");
+    // first white
+    Crafty.background("#FFF");
+    // then picture when loaded
+    Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
     
     Crafty.e("2D", "DOM", "Text").css({
         "color": "#EEE",
@@ -27,12 +30,7 @@ function() {
     	game.path + "/assets/img/traktor_c3.png", 
     	game.path + "/assets/img/traktor_c4.png", 
     	game.path + "/assets/img/traktor_c5.png", 
-    	game.path + "/assets/img/traktor_c6.png",
-    	// audio
-    	game.path + "/assets/audio/mp3/jack-tar-march.mp3",
-    	game.path + "/assets/audio/mp3/weight-up.mp3",
-    	game.path + "/assets/audio/mp3/drop-on-farm.mp3",
-    	game.path + "/assets/audio/mp3/cheer.mp3"
+    	game.path + "/assets/img/traktor_c6.png"
     	],
     function() {
         //when loaded
@@ -56,7 +54,8 @@ function() {
 Crafty.scene("Game",
 function() {
 
-	Crafty.audio.play("march");
+	//Crafty.audio.play("march");
+
 	// first white
     Crafty.background("#FFF");
     // then picture when loaded
