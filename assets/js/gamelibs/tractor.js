@@ -9,7 +9,7 @@ var Game = {
             "id" : Crafty.math.randomInt(1, 12),
             "farmId" : 6,
             "tractors" : [
-                {   
+                {
                     "id": Crafty.math.randomInt(1000, 2000),
                     "tyres": [
                         {
@@ -22,7 +22,7 @@ var Game = {
                                 "id" :  Crafty.math.randomInt(1000, 2000)
                             }                            
                         }
-                    ] 
+                    ]
                 }
             ]
         }

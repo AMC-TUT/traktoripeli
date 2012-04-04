@@ -5,7 +5,7 @@ function() {
 
     Crafty.e("HTML")
     .attr({x:20, y:20, w:460, h:50})
-    .append('<div class="progress progress-warning progress-striped active"><div class="bar"></div></div>');
+    .append('<div class="progress progress-warning active"><div class="bar"></div></div>');
     
     // to be return later
     var crstage_attr = $("#cr-stage").attr("style");
