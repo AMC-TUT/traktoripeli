@@ -18,7 +18,7 @@ function() {
     	[
     	game.path + "/assets/img/1kg.png", 
     	game.path + "/assets/img/1000gram.png", 
-    	game.path + "/assets/img/bases.png", 
+    //	game.path + "/assets/img/bases.png", 
     	game.path + "/assets/img/farms.png", 
     	game.path + "/assets/img/shadows.png", 
         game.path + "/assets/img/bg.png",

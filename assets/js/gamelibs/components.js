@@ -233,7 +233,7 @@ Crafty.c("WeightOnGround", {
                 // play some nice sound
                 Crafty.audio.play("weight-up");
                 // destroy self
-                //this.destroy(); // TÄMÄ POISTAA TEKSTIT
+                this.destroy(); // TÄMÄ POISTAA TEKSTIT
             }
 
         }, function(ent) {

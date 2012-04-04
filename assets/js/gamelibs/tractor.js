@@ -7,7 +7,7 @@ var Game = {
     teams: [
         {
             "id" : Crafty.math.randomInt(1, 12),
-            "farmId" : 6,
+            "farmId" : 1,
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
@@ -60,7 +60,7 @@ var Game = {
             { "c": "wb400g", "value": 400 }
         ]
     ],
-    // base locations
+    /* base locations
     bases: [
         { "c": "base01", "_x": 414, "_y": 184 },
         { "c": "base02", "_x": 554, "_y": 184 },
@@ -86,6 +86,34 @@ var Game = {
         { "c": "base22", "_x": 554, "_y": 584 },
         { "c": "base23", "_x": 694, "_y": 584 },
         { "c": "base24", "_x": 834, "_y": 584 },
+    ],
+    */
+    // base locations
+    bases: [
+        { "_x": 414, "_y": 184 },
+        { "_x": 554, "_y": 184 },
+        { "_x": 694, "_y": 184 },
+        { "_x": 834, "_y": 184 },
+        { "_x": 344, "_y": 284 },
+        { "_x": 484, "_y": 284 },
+        { "_x": 624, "_y": 284 },
+        { "_x": 764, "_y": 284 },
+        { "_x": 904, "_y": 284 },
+        { "_x": 274, "_y": 384 },
+        { "_x": 414, "_y": 384 },
+        { "_x": 554, "_y": 384 },
+        { "_x": 694, "_y": 384 },
+        { "_x": 834, "_y": 384 },
+        { "_x": 974, "_y": 384 },
+        { "_x": 344, "_y": 484 },
+        { "_x": 484, "_y": 484 },
+        { "_x": 624, "_y": 484 },
+        { "_x": 764, "_y": 484 },
+        { "_x": 904, "_y": 484 },
+        { "_x": 414, "_y": 584 },
+        { "_x": 554, "_y": 584 },
+        { "_x": 694, "_y": 584 },
+        { "_x": 834, "_y": 584 },
     ],
     // farm locations
     farms:[
@@ -231,34 +259,6 @@ var Game = {
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.addComponent(farm.tractors[i].c);
                 }
-/*
-                var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[0]._x, y: farm.nameplates[0]._y, z: 2});
-                ent.addComponent(farm.nameplates[0].c);
-                Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[0]._x+45, y: farm.nameplates[0]._y+16, z: 3 }).text(team.tractors[0].tyres[0].right.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[0]._x+45, y: farm.nameplates[0]._y+36, z: 3 }).text(team.tractors[0].tyres[0].left.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                if (team.tractors.length > 1) {
-                    var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[1]._x, y: farm.nameplates[1]._y, z: 2});
-                    ent.addComponent(farm.nameplates[1].c);
-                    Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[1]._x+45, y: farm.nameplates[1]._y+16, z: 3 }).text(team.tractors[1].tyres[0].right.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                    Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[1]._x+45, y: farm.nameplates[1]._y+36, z: 3 }).text(team.tractors[1].tyres[0].left.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                }
-                // create tractors for farm
-                var ent = Crafty.e('Tractor').attr({x: farm.tractors[0]._x, y: farm.tractors[0]._y, z: 3, rotation: farm.tractors[0]._rotate});
-                ent.addComponent(farm.tractors[0].c);
-                if (team.tractors.length > 1) {
-                    var ent = Crafty.e('Tractor').attr({x: farm.tractors[1]._x, y: farm.tractors[1]._y, z: 3, rotation: farm.tractors[1]._rotate});
-                    ent.addComponent(farm.tractors[1].c);
-                }
-*/
-/*
-                _.each(team.tractors, function(tractor){
-                    var ent = Crafty.e('Tractor').attr({ x: tractor.attr._x, y: tractor.attr._y, z: tractor.attr._z, rotation: tractor.attr._rotation });
-                    // add image
-                    ent.toggleComponent("team1vechile1", tractor.c);
-                    // add farmId to know which farm the tracktor is from
-                    ent.farmId = farmId;
-                });
-*/
             }
         });
     },
@@ -277,7 +277,7 @@ var Game = {
     generateBases: function() {
         _.each(this.bases, function(base){
             var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
-            ent.addComponent(base.c);
+            //ent.addComponent(base.c);
         });
     },
     generateWeightsOnGround: function() {
@@ -325,7 +325,8 @@ var Game = {
         });
     },
     generateGame: function() {
-        //
+        // ?? Tarviiko baseissa olla jotain kuva vai riittääkö että niissä on vain kuvattomat "hotspotit"
+        // Disabloin kuvan lisäyksen. Voi auttaa suorituskykyä aavistuksen kun on läjä spritejä vähemmän.
         Game.generateBases();
         //
         _.each(this.teams, function(team){
