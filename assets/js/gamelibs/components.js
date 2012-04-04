@@ -358,19 +358,12 @@ Crafty.c("Shadow", {
         this.addComponent("2D", "Canvas", "Collision");
     }
 });
+Crafty.c("Nameplate", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision");
+    }
+});
 /*
-Crafty.c("Shadow1", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shadow1");
-    }
-});
-
-Crafty.c("Shadow2", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shadow2");
-    }
-});
-*/
 Crafty.c("Nameplate11", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision", "nameplate11");
@@ -442,7 +435,7 @@ Crafty.c("Nameplate62", {
         this.addComponent("2D", "Canvas", "Collision", "nameplate62");
     }
 });
-
+*/
 
 /*
 

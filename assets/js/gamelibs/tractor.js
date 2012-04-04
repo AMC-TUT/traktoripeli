@@ -105,6 +105,10 @@ var Game = {
                 { "c": "team12", "_x": 328, "_y": 76 },
                 { "c": "team13", "_x": 402, "_y": 76 },
                 { "c": "team14", "_x": 476, "_y": 76 }
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 162, "_y": 5, "_z":2 },
+                { "c": "nameplate2", "_x": 381, "_y": 5, "_z":2 },
             ]
         },
         { 
@@ -116,6 +120,10 @@ var Game = {
                 { "c": "team22", "_x": 846, "_y": 76 },
                 { "c": "team23", "_x": 920, "_y": 76 },
                 { "c": "team24", "_x": 994, "_y": 76 },
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 680, "_y": 5, "_z":2 },
+                { "c": "nameplate2", "_x": 899, "_y": 5, "_z":2 },
             ]
         },
         { 
@@ -127,6 +135,10 @@ var Game = {
                 { "c": "team32", "_x": 328, "_y": 692 },
                 { "c": "team33", "_x": 402, "_y": 692 },
                 { "c": "team34", "_x": 476, "_y": 692 },
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 162, "_y": 755, "_z":2 },
+                { "c": "nameplate2", "_x": 381, "_y": 755, "_z":2 },
             ]
         },
         { 
@@ -138,6 +150,10 @@ var Game = {
                 { "c": "team42", "_x": 846, "_y": 692 },
                 { "c": "team43", "_x": 920, "_y": 692 },
                 { "c": "team44", "_x": 994, "_y": 692 },
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 680, "_y": 755, "_z":2 },
+                { "c": "nameplate2", "_x": 899, "_y": 755, "_z":2 },
             ]
         },
         { 
@@ -149,6 +165,10 @@ var Game = {
                 { "c": "team52", "_x": 76, "_y": 347 },
                 { "c": "team53", "_x": 76, "_y": 421 },
                 { "c": "team54", "_x": 76, "_y": 495 },
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 0, "_y": 203, "_z":2 },
+                { "c": "nameplate2", "_x": 0, "_y": 557, "_z":2 },
             ]
         },
         { 
@@ -160,6 +180,10 @@ var Game = {
                 { "c": "team62", "_x": 1172, "_y": 347 },
                 { "c": "team63", "_x": 1172, "_y": 421 },
                 { "c": "team64", "_x": 1172, "_y": 495 },
+            ],
+            "nameplates" : [
+                { "c": "nameplate1", "_x": 1061, "_y": 203, "_z":2 },
+                { "c": "nameplate2", "_x": 1061, "_y": 557, "_z":2 },
             ]
         }
         
@@ -181,6 +205,13 @@ var Game = {
                 });
                 // find the team based on farmId
                 var team = _.find(Game.teams, function(obj){ return obj.farmId == farmId; });
+                // create nameplates
+                var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[0]._x, y: farm.nameplates[0]._y, z: farm.nameplates[0]._z});
+                ent.addComponent(farm.nameplates[0].c);
+                if (team.tractors.length > 1) {
+                    var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[1]._x, y: farm.nameplates[1]._y, z: farm.nameplates[1]._z});
+                    ent.addComponent(farm.nameplates[1].c);
+                }
 
                 // create tractors for farm
                 _.each(team.tractors, function(tractor){
