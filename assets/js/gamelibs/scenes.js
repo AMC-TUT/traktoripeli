@@ -7,7 +7,7 @@ function() {
     //Crafty.background("#FFF");
     // then picture when loaded
     //Crafty.background("url(" + game.path + "/assets/img/traktor_bg.png)");
-    
+    /*
     Crafty.e("2D", "DOM", "Text").css({
         "color": "#EEE",
         "font-size": "2em",
@@ -15,6 +15,7 @@ function() {
         "white-space": "nowrap",
         "text-align": "center"
     }).text("Ladataan...");
+    */
 
     Crafty.load(
     	[
@@ -36,7 +37,7 @@ function() {
         //when loaded
         // Crafty.audio.play("uncover");
         // go to Game scene
-        //Crafty.scene("Game");
+        Crafty.scene("Game");
     },
     function(e) {
         //progress

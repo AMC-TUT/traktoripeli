@@ -23,21 +23,32 @@ body {
 
 nav { }
 
+.row { margin-left: 0; }
+
 #cr-stage.loading-scene {
   background-color: transparent !important;
+  width: 1280px; height: 800px; overflow-x: hidden; overflow-y: hidden; position: relative; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; 
 }
 
 .hero-unit {
   background: transparent;
   text-align: center;
+  padding: 100px 60px 30px;
 }
 
 .hero-unit .hero-title {
-
+  margin-bottom: 2em;
+  -ms-transform: rotate(5deg);
+  -webkit-transform: rotate(-5deg);
+  -o-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  transform: rotate(5deg);
+  float: none;
 }
 
 .hero-unit .hero-logo {
-
+  width: 340px;
+  margin-left: 100px;
 }
 
 /*
