@@ -22,7 +22,7 @@ Crafty.sprite(306, 74, game.path + "/assets/img/farms.png", {
 
 Crafty.sprite(336, 104, game.path + "/assets/img/shadows.png", {
     // shadow to farms
-    shadow1: [0, 0]
+    shadow1: [0, 0],
     shadow2: [0, 1]
 });
 
@@ -84,7 +84,7 @@ Crafty.sprite(214, 40, game.path + "/assets/img/nameplates.png", {
     nameplate31: [0, 0],
     nameplate41: [0, 0],
     nameplate51: [0, 0],
-    nameplate61: [0, 0]
+    nameplate61: [0, 0],
     nameplate12: [0, 1],
     nameplate22: [0, 1],
     nameplate32: [0, 1],

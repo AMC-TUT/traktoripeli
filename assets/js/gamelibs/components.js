@@ -354,9 +354,15 @@ Crafty.c("Team", {
     }
 });
 
-Crafty.c("Shadow", {
+Crafty.c("Shadow1", {
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "shadow");
+        this.addComponent("2D", "Canvas", "Collision", "shadow1");
+    }
+});
+
+Crafty.c("Shadow2", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision", "shadow2");
     }
 });
 

@@ -77,18 +77,18 @@ function() {
 	Crafty.e('Farm').attr({ x: 50, y: 553, z: 3, rotation: 270 });
 	Crafty.e('Farm').attr({ x: 1230, y: 247, z: 3, rotation: 90 });
 */
-	Crafty.e('Nameplate11').attr({ x: 162, y: 0, z: 2 });
-	Crafty.e('Nameplate12').attr({ x: 381, y: 0, z: 2 });
-	Crafty.e('Nameplate21').attr({ x: 680, y: 0, z: 2 });
-	Crafty.e('Nameplate22').attr({ x: 899, y: 0, z: 2 });
-	Crafty.e('Nameplate31').attr({ x: 162, y: 750, z: 2 });
-	Crafty.e('Nameplate32').attr({ x: 381, y: 750, z: 2 });
-	Crafty.e('Nameplate41').attr({ x: 680, y: 750, z: 2 });
-	Crafty.e('Nameplate42').attr({ x: 899, y: 750, z: 2 });
-	Crafty.e('Nameplate51').attr({ x: 0, y: 197, z: 2 });
-	Crafty.e('Nameplate52').attr({ x: 0, y: 553, z: 2 });
-	Crafty.e('Nameplate61').attr({ x: 1061, y: 197, z: 2 });
-	Crafty.e('Nameplate62').attr({ x: 1061, y: 553, z: 2 });
+	Crafty.e('Nameplate11').attr({ x: 162, y: 5, z: 2 });
+	Crafty.e('Nameplate12').attr({ x: 381, y: 5, z: 2 });
+	Crafty.e('Nameplate21').attr({ x: 680, y: 5, z: 2 });
+	Crafty.e('Nameplate22').attr({ x: 899, y: 5, z: 2 });
+	Crafty.e('Nameplate31').attr({ x: 162, y: 755, z: 2 });
+	Crafty.e('Nameplate32').attr({ x: 381, y: 755, z: 2 });
+	Crafty.e('Nameplate41').attr({ x: 680, y: 755, z: 2 });
+	Crafty.e('Nameplate42').attr({ x: 899, y: 755, z: 2 });
+	Crafty.e('Nameplate51').attr({ x: 0, y: 193, z: 2 });
+	Crafty.e('Nameplate52').attr({ x: 0, y: 557, z: 2 });
+	Crafty.e('Nameplate61').attr({ x: 1061, y: 193, z: 2 });
+	Crafty.e('Nameplate62').attr({ x: 1061, y: 557, z: 2 });
 
 
     Game.generateGame();
