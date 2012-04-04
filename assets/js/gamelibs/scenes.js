@@ -33,7 +33,7 @@ function() {
     function() {
         // show full progress bar
         $(".progress .bar").css("width", "100%");
-        
+     
         // show loading scene properly before moving along
         setTimeout(function() {
             // remove loading stuff from DOM

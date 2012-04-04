@@ -335,6 +335,8 @@ var Game = {
         //
         Game.generateWeightsOnGround();
 
+        $('#results').modal('show');
+
     }
     
 }

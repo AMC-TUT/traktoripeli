@@ -9,6 +9,10 @@ body {
   background-color: transparent;
 }
 
+.container {
+  width: auto;
+}
+
 .container-loading {
   background: rgba(255, 255, 255, .3);
   margin-top: 4em;
@@ -16,6 +20,8 @@ body {
   -webkit-border-radius: 1em; -moz-border-radius: 1em; -ms-border-radius: 1em; -o-border-radius: 1em; border-radius: 1em;
   width: 940px; }
 
+.table {
+  font-weight: bold; }
 .row { 
   margin-left: 0; }
 .progress { 
@@ -46,6 +52,7 @@ canvas {
   transform: translate(0, 0);
 }
 
+.modal { display: none; }
 /*
 nav div { 
   display: inline-block; }
