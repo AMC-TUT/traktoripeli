@@ -6,50 +6,49 @@ canvas {
   /*width: 940px;*/
 }
 
-html {
-  background: #FFF url("../img/traktor_bg.png") no-repeat center center fixed;
+html.loading-html {
+  background: #FFF url("../img/bg.png") no-repeat center center fixed;
   -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
 }
 
 body {
-    /*font-family: 'Commodore64PixelizedRegular';
-    color: #4036CD;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;*/
-    overflow: hidden;
-    background-color: transparent;
+  overflow: hidden;
+  background-color: transparent;
 }
 
-nav { }
+.container {
+  width: auto; }
 
-.row { margin-left: 0; }
+.container-loading {
+  background: rgba(255, 255, 255, .3);
+  margin-top: 4em;
+  margin-bottom: 4em;
+  border-radius: 1em;
+  width: 940px; }
 
-#cr-stage.loading-scene {
-  background-color: transparent !important;
-  width: 1280px; height: 800px; overflow-x: hidden; overflow-y: hidden; position: relative; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; 
-}
+.row { 
+  margin-left: 0; }
+.progress { 
+  height: 25px; background-color: rgba(247, 247, 247, .5); background-image: none; }
+.progress .bar {
+  height: 25px; }
 
-.hero-unit {
-  background: transparent;
-  text-align: center;
-  padding: 100px 60px 30px;
-}
+.hero-unit { 
+  background: transparent; text-align: center; padding: 100px 60px 30px; }
 
 .hero-unit .hero-title {
-  margin-bottom: 2em;
-  -ms-transform: rotate(5deg);
-  -webkit-transform: rotate(-5deg);
-  -o-transform: rotate(5deg);
-  -moz-transform: rotate(5deg);
-  transform: rotate(5deg);
-  float: none;
-}
+  margin-bottom: 2em; float: none;
+  -ms-transform: rotate(5deg); -webkit-transform: rotate(-5deg); -o-transform: rotate(5deg); -moz-transform: rotate(5deg); transform: rotate(5deg); }
 
-.hero-unit .hero-logo {
-  width: 340px;
-  margin-left: 100px;
-}
+.hero-unit .hero-logo { width: 340px; margin-left: 100px; }
+
+#cr-stage.loading-scene {
+  background: transparent !important;
+  width: 940px !important; height: 200px !important; }
+#cr-stage.loading-scene .span6 {
+  float: none; margin: 0 auto; }
+#cr-stage.loading-scene > div {
+  position: relative !important; }
 
 /*
 nav div { 
