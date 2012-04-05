@@ -1,1 +1,106 @@
 TODO
+
+- Äänet!
+- Skaalaus näytön kokoo
+- Sockettien tuominen
+
+Loading
+
+- pikkutraktoreita
+
+DashBoard
+
+Farmien generointi - opacity?
+QR koodien haku (farmit, aloitus, sulkeminen)
+QR koodien paikat
+Pelaajan liittyessä farmiin : 
+	nimi listaan, 
+	ekasta traktori 50% opacity
+	tokasta traktori näkyviin kunnolla
+
+Pelaajien liittyessä Game.teams taulukkoon tiedot! userid+
+
+Aloitus QR-koodista 
+	Game scene auki, 
+	trööt-soundi  
+
+Game
+
+
+tractorin multi-instanssi monipelintuki
+taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
+
+
+aikabonus oikeaan yläkulmaan - demossa 2 min
+
+suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan
+60s > 2.0 ; 30s > 1.5
+
+!!! ohjain :
+	2 syötettä +		
+	reverse false|true , 
+	kerroin pakille? : 0.5
+
+farmi
+	vain omaan saa viedä
+	vain omasta saa poistaa
+
+	kun onHit > hit bitti päälle ja kun offHit niin bitti pois
+	 > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. pitää hakea pois tyhjänä ja pudottaa vain tyhjään
+
+	 reunukset? Collision
+
+	 rename Team > Homebase
+	
+	 kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
+
+	 homebase kuvat turhia kuten basessa. samat toimet, homebase polygon
+
+base
+
+	sama onhit kuin farmissa
+
+	ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
+
+	circle toimimaan
+
+onground punnukset
+
+	BUG punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
+	
+onwheels punnukset
+
+	punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten traktorin kulma vaikuttaa punnuksen sijoittamiseen.
+
+punnukset
+
+	harkintaan: kuvakulma?
+
+traktori
+
+	käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
+
+	jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
+
+nimitaulut
+
+	sijoittelujen tarkistaminen lyhennysten jälkeen
+	z-index tarkista että traktori kulkee alta
+
+Scorelist (Dialog)
+
+tuloslistan kerääminen farmeista taulukkoon
+taulukon generointi dialogiin
+siirtyminen dashboardiin
+dialogin aukeaminen ja sulk (slide effect ei toimi)
+ulkoasu farmin näköiseksi
+fontit isommaksi
+
+Muuta?
+
+ruostetraktori
+
+Random events
+Pyörän jäljet
+
+MUUT PELIKENTÄT
