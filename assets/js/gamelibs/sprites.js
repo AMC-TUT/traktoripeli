@@ -78,7 +78,7 @@ Crafty.sprite(32, game.path + "/assets/img/bases.png", {
     team44: [3, 11]
 });
 
-Crafty.sprite(214, 40, game.path + "/assets/img/nameplates.png", {
+Crafty.sprite(150, 40, game.path + "/assets/img/nameplates.png", {
     nameplate1: [0, 0],
     nameplate2: [0, 1],
 });

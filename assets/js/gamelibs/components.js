@@ -204,9 +204,13 @@ Crafty.c("Tractor", {
 Crafty.c("Base", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision")
+        .collision(new Crafty.circle(16, 16, 16))
         .onHit("Tractor",
             function(ent) {
                 //
+                log('osu');
+            }, function() {
+                log('lopui');
             }
         )
     }
