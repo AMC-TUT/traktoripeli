@@ -53,6 +53,9 @@ canvas {
 }
 
 .modal { display: none; }
+
+.orange {
+  color: #de8a3c; }
 /*
 nav div { 
   display: inline-block; }

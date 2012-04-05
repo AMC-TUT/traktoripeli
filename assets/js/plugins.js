@@ -20,10 +20,13 @@ $('#results').on('shown', function () {
   	log("interval")
   	//
   	var s = parseInt($seconds.text()) - 1 ;
-  	
+  	if(s == 3) {
+  		$seconds.addClass("orange");
+  	}
   	if(s < 0) {
   		clearInterval(intervalID);
   		$('#results').modal('hide');
+  		$seconds.removeClass("orange");
   		
   	} else {
   		$seconds.text(s);
