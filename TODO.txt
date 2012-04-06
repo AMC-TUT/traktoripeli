@@ -6,15 +6,16 @@ TODO
 
 Loading
 
-DONE - pikkutraktoreita
-
-DONE - cache manifest file nopeampaan lataamiseen
+	DONE - pikkutraktoreita
+	DONE - cache manifest file nopeampaan lataamiseen
 
 DashBoard
 
-Farmien generointi - opacity?
+	DONE QR koodien paikat
+	DONE Farmien generointi - opacity?
+
 QR koodien haku (farmit, aloitus, sulkeminen)
-QR koodien paikat
+
 Pelaajan liittyessä farmiin : 
 	nimi listaan, 
 	ekasta traktori 50% opacity
@@ -31,7 +32,6 @@ Game
 
 tractorin multi-instanssi monipelintuki
 taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
-
 
 aikabonus oikeaan yläkulmaan - demossa 2 min
 
@@ -86,8 +86,8 @@ traktori
 
 nimitaulut
 
-	sijoittelujen tarkistaminen lyhennysten jälkeen
-	z-index tarkista että traktori kulkee alta
+	DONE sijoittelujen tarkistaminen lyhennysten jälkeen
+	DONE z-index tarkista että traktori kulkee alta
 
 Scorelist (Dialog)
 

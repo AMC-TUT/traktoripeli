@@ -364,7 +364,7 @@ Crafty.c("Shadow", {
 });
 Crafty.c("Nameplate", {
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision");
+        this.addComponent("2D", "DOM");
     }
 });
 /*

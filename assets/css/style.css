@@ -101,3 +101,31 @@ canvas {
   -moz-transform: rotate(-15deg) scale(.8,.8); 
   transform: rotate(-15deg) scale(.8,.8);
 }
+
+.QRCode {
+  width: 120px !important;
+  height: 120px !important;
+  box-shadow: 0 0 20px #111;
+  -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+
+.GameRules {
+  background: rgba(255,255,255,.9);
+  line-height: 1.4em;
+  color: #222;
+  font-size: 20px;
+  border: 5px solid #D6883E;
+  box-sizing: border-box;
+  padding: .3em .5em;
+  box-shadow: 0 0 25px #222;
+  -webkit-border-radius: .5em; -moz-border-radius: .5em; -ms-border-radius: .5em; -o-border-radius: .5em; border-radius: .5em;
+}
+
+.GameRules strong {
+  color: #D6883E; }
+
+.NameplateText {
+  color: #FFFFFF;
+  font-family: Arial;
+  font-size: 16px; 
+  font-weight: bold;
+}

@@ -30,205 +30,177 @@ var Game = {
     // weights
     weights: [
         [
-            { "c": "wb100g", "value": 100 },
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb300g", "value": 300 },
-            { "c": "wb400g", "value": 400 }
+            { c: "wb100g", "value": 100 },
+            { c: "wb200g", "value": 200 },
+            { c: "wb300g", "value": 300 },
+            { c: "wb400g", "value": 400 }
         ],
         [
-            { "c": "wb100g", "value": 100 },
-            { "c": "wb300g", "value": 300 },
-            { "c": "wb300g", "value": 300 },
-            { "c": "wb300g", "value": 300 }
+            { c: "wb100g", "value": 100 },
+            { c: "wb300g", "value": 300 },
+            { c: "wb300g", "value": 300 },
+            { c: "wb300g", "value": 300 }
         ],
         [
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb400g", "value": 400 }
+            { c: "wb200g", "value": 200 },
+            { c: "wb200g", "value": 200 },
+            { c: "wb200g", "value": 200 },
+            { c: "wb400g", "value": 400 }
         ],
         [
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb200g", "value": 200 },
-            { "c": "wb300g", "value": 300 },
-            { "c": "wb300g", "value": 300 }
+            { c: "wb200g", "value": 200 },
+            { c: "wb200g", "value": 200 },
+            { c: "wb300g", "value": 300 },
+            { c: "wb300g", "value": 300 }
         ],
         [
-            { "c": "wb100g", "value": 100 },
-            { "c": "wb100g", "value": 100 },
-            { "c": "wb400g", "value": 400 },
-            { "c": "wb400g", "value": 400 }
+            { c: "wb100g", "value": 100 },
+            { c: "wb100g", "value": 100 },
+            { c: "wb400g", "value": 400 },
+            { c: "wb400g", "value": 400 }
         ]
     ],
-    /* base locations
-    bases: [
-        { "c": "base01", "_x": 414, "_y": 184 },
-        { "c": "base02", "_x": 554, "_y": 184 },
-        { "c": "base03", "_x": 694, "_y": 184 },
-        { "c": "base04", "_x": 834, "_y": 184 },
-        { "c": "base05", "_x": 344, "_y": 284 },
-        { "c": "base06", "_x": 484, "_y": 284 },
-        { "c": "base07", "_x": 624, "_y": 284 },
-        { "c": "base08", "_x": 764, "_y": 284 },
-        { "c": "base09", "_x": 904, "_y": 284 },
-        { "c": "base10", "_x": 274, "_y": 384 },
-        { "c": "base11", "_x": 414, "_y": 384 },
-        { "c": "base12", "_x": 554, "_y": 384 },
-        { "c": "base13", "_x": 694, "_y": 384 },
-        { "c": "base14", "_x": 834, "_y": 384 },
-        { "c": "base15", "_x": 974, "_y": 384 },
-        { "c": "base16", "_x": 344, "_y": 484 },
-        { "c": "base17", "_x": 484, "_y": 484 },
-        { "c": "base18", "_x": 624, "_y": 484 },
-        { "c": "base19", "_x": 764, "_y": 484 },
-        { "c": "base20", "_x": 904, "_y": 484 },
-        { "c": "base21", "_x": 414, "_y": 584 },
-        { "c": "base22", "_x": 554, "_y": 584 },
-        { "c": "base23", "_x": 694, "_y": 584 },
-        { "c": "base24", "_x": 834, "_y": 584 },
-    ],
-    */
     // base locations
     bases: [
-        { "_x": 414, "_y": 184 },
-        { "_x": 554, "_y": 184 },
-        { "_x": 694, "_y": 184 },
-        { "_x": 834, "_y": 184 },
-        { "_x": 344, "_y": 284 },
-        { "_x": 484, "_y": 284 },
-        { "_x": 624, "_y": 284 },
-        { "_x": 764, "_y": 284 },
-        { "_x": 904, "_y": 284 },
-        { "_x": 274, "_y": 384 },
-        { "_x": 414, "_y": 384 },
-        { "_x": 554, "_y": 384 },
-        { "_x": 694, "_y": 384 },
-        { "_x": 834, "_y": 384 },
-        { "_x": 974, "_y": 384 },
-        { "_x": 344, "_y": 484 },
-        { "_x": 484, "_y": 484 },
-        { "_x": 624, "_y": 484 },
-        { "_x": 764, "_y": 484 },
-        { "_x": 904, "_y": 484 },
-        { "_x": 414, "_y": 584 },
-        { "_x": 554, "_y": 584 },
-        { "_x": 694, "_y": 584 },
-        { "_x": 834, "_y": 584 },
+        { _x: 414, _y: 184 },
+        { _x: 554, _y: 184 },
+        { _x: 694, _y: 184 },
+        { _x: 834, _y: 184 },
+        { _x: 344, _y: 284 },
+        { _x: 484, _y: 284 },
+        { _x: 624, _y: 284 },
+        { _x: 764, _y: 284 },
+        { _x: 904, _y: 284 },
+        { _x: 274, _y: 384 },
+        { _x: 414, _y: 384 },
+        { _x: 554, _y: 384 },
+        { _x: 694, _y: 384 },
+        { _x: 834, _y: 384 },
+        { _x: 974, _y: 384 },
+        { _x: 344, _y: 484 },
+        { _x: 484, _y: 484 },
+        { _x: 624, _y: 484 },
+        { _x: 764, _y: 484 },
+        { _x: 904, _y: 484 },
+        { _x: 414, _y: 584 },
+        { _x: 554, _y: 584 },
+        { _x: 694, _y: 584 },
+        { _x: 834, _y: 584 },
     ],
     // farm locations
     farms:[
         { 
             "id" : 1,
             "attr": { _x: 228, _y: 50, _rotate: 0 },
-            "shdw": { "c": "shadow1", _x: 228, _y: 50, _rotate: 0 },
+            "shdw": { c: "shadow1", _x: 228, _y: 50, _rotate: 0 },
             "homebases" : [
-                { "c": "team11", "_x": 254, "_y": 76 },
-                { "c": "team12", "_x": 328, "_y": 76 },
-                { "c": "team13", "_x": 402, "_y": 76 },
-                { "c": "team14", "_x": 476, "_y": 76 }
+                { _x: 254, _y: 76 },
+                { _x: 328, _y: 76 },
+                { _x: 402, _y: 76 },
+                { _x: 476, _y: 76 }
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 162, "_y": 5 },
-                { "c": "nameplate2", "_x": 381, "_y": 5 }
+                { _x: 228, _y: 5 },
+                { _x: 381, _y: 5 }
             ],
             "tractors" : [
-                { "c": "team1vechile1", "_x": 312, "_y": 60, "_rotate": 180 },
-                { "c": "team1vechile2", "_x": 386, "_y": 60, "_rotate": 180 }
+                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180 },
+                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180 }
             ]
         },
         { 
             "id" : 2,
             "attr": { _x: 746, _y: 50, _rotate: 0 },
-            "shdw": { "c": "shadow1", _x: 746, _y: 50, _rotate: 0 },
+            "shdw": { c: "shadow1", _x: 746, _y: 50, _rotate: 0 },
             "homebases" : [
-                { "c": "team21", "_x": 772, "_y": 76 },
-                { "c": "team22", "_x": 846, "_y": 76 },
-                { "c": "team23", "_x": 920, "_y": 76 },
-                { "c": "team24", "_x": 994, "_y": 76 },
+                { _x: 772, _y: 76 },
+                { _x: 846, _y: 76 },
+                { _x: 920, _y: 76 },
+                { _x: 994, _y: 76 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 680, "_y": 5 },
-                { "c": "nameplate2", "_x": 899, "_y": 5 }
+                { _x: 746, _y: 5 },
+                { _x: 899, _y: 5 }
             ],
             "tractors" : [
-                { "c": "team2vechile1", "_x": 830, "_y": 60, "_rotate": 180 },
-                { "c": "team2vechile2", "_x": 904, "_y": 60, "_rotate": 180 }
+                { c: "team2vechile1", _x: 830, _y: 60, "_rotate": 180 },
+                { c: "team2vechile2", _x: 904, _y: 60, "_rotate": 180 }
             ]
         },
         { 
             "id" : 3,
             "attr": { _x: 534, _y: 750, _rotate: 180 },
-            "shdw": { "c": "shadow1", _x: 564, _y: 780, _rotate: 180 },
+            "shdw": { c: "shadow1", _x: 564, _y: 780, _rotate: 180 },
             "homebases" : [
-                { "c": "team31", "_x": 254, "_y": 692 },
-                { "c": "team32", "_x": 328, "_y": 692 },
-                { "c": "team33", "_x": 402, "_y": 692 },
-                { "c": "team34", "_x": 476, "_y": 692 },
+                { _x: 254, _y: 692 },
+                { _x: 328, _y: 692 },
+                { _x: 402, _y: 692 },
+                { _x: 476, _y: 692 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 162, "_y": 755 },
-                { "c": "nameplate2", "_x": 381, "_y": 755 }
+                { _x: 228, _y: 755 },
+                { _x: 381, _y: 755 }
             ],
             "tractors" : [
-                { "c": "team3vechile1", "_x": 312, "_y": 676, "_rotate": 0 },
-                { "c": "team3vechile2", "_x": 386, "_y": 676, "_rotate": 0 }
+                { c: "team3vechile1", _x: 312, _y: 676, "_rotate": 0 },
+                { c: "team3vechile2", _x: 386, _y: 676, "_rotate": 0 }
             ]
         },
         { 
             "id" : 4,
             "attr": { _x: 1052, _y: 750, _rotate: 180 },
-            "shdw": { "c": "shadow1", _x: 1082, _y: 780, _rotate: 180 },
+            "shdw": { c: "shadow1", _x: 1082, _y: 780, _rotate: 180 },
             "homebases" : [
-                { "c": "team41", "_x": 772, "_y": 692 },
-                { "c": "team42", "_x": 846, "_y": 692 },
-                { "c": "team43", "_x": 920, "_y": 692 },
-                { "c": "team44", "_x": 994, "_y": 692 },
+                { _x: 772, _y: 692 },
+                { _x: 846, _y: 692 },
+                { _x: 920, _y: 692 },
+                { _x: 994, _y: 692 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 680, "_y": 755 },
-                { "c": "nameplate2", "_x": 899, "_y": 755 }
+                { _x: 745, _y: 755 },
+                { _x: 899, _y: 755 }
             ],
             "tractors" : [
-                { "c": "team4vechile1", "_x": 830, "_y": 676, "_rotate": 0 },
-                { "c": "team4vechile2", "_x": 904, "_y": 676, "_rotate": 0 }
+                { c: "team4vechile1", _x: 830, _y: 676, "_rotate": 0 },
+                { c: "team4vechile2", _x: 904, _y: 676, "_rotate": 0 }
             ]
         },
         { 
             "id" : 5,
             "attr": { _x: 50, _y: 553, _rotate: 270 },
-            "shdw": { "c": "shadow2", _x: 50, _y: 583, _rotate: 270 },
+            "shdw": { c: "shadow2", _x: 50, _y: 583, _rotate: 270 },
             "homebases" : [
-                { "c": "team51", "_x": 76, "_y": 273 },
-                { "c": "team52", "_x": 76, "_y": 347 },
-                { "c": "team53", "_x": 76, "_y": 421 },
-                { "c": "team54", "_x": 76, "_y": 495 },
+                { _x: 76, _y: 273 },
+                { _x: 76, _y: 347 },
+                { _x: 76, _y: 421 },
+                { _x: 76, _y: 495 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 0, "_y": 203 },
-                { "c": "nameplate2", "_x": 0, "_y": 557 }
+                { _x: 0, _y: 203 },
+                { _x: 0, _y: 557 }
             ],
             "tractors" : [
-                { "c": "team5vechile1", "_x": 60, "_y": 331, "_rotate": 90 },
-                { "c": "team5vechile2", "_x": 60, "_y": 405, "_rotate": 90 }
+                { c: "team5vechile1", _x: 60, _y: 331, "_rotate": 90 },
+                { c: "team5vechile2", _x: 60, _y: 405, "_rotate": 90 }
             ]
         },
         { 
             "id" : 6,
             "attr": { _x: 1230, _y: 247, _rotate: 90 },
-            "shdw": { "c": "shadow2", _x: 1260, _y: 247, _rotate: 90 },
+            "shdw": { c: "shadow2", _x: 1260, _y: 247, _rotate: 90 },
             "homebases" : [
-                { "c": "team61", "_x": 1172, "_y": 273 },
-                { "c": "team62", "_x": 1172, "_y": 347 },
-                { "c": "team63", "_x": 1172, "_y": 421 },
-                { "c": "team64", "_x": 1172, "_y": 495 },
+                { _x: 1172, _y: 273 },
+                { _x: 1172, _y: 347 },
+                { _x: 1172, _y: 421 },
+                { _x: 1172, _y: 495 },
             ],
             "nameplates" : [
-                { "c": "nameplate1", "_x": 1061, "_y": 203 },
-                { "c": "nameplate2", "_x": 1061, "_y": 557 }
+                { _x: 1128, _y: 203 },
+                { _x: 1128, _y: 557 }
             ],
             "tractors" : [
-                { "c": "team6vechile1", "_x": 1156, "_y": 331, "_rotate": 270 },
-                { "c": "team6vechile2", "_x": 1156, "_y": 405, "_rotate": 270 }
+                { c: "team6vechile1", _x: 1156, _y: 331, "_rotate": 270 },
+                { c: "team6vechile2", _x: 1156, _y: 405, "_rotate": 270 }
             ]
         }
         
@@ -242,20 +214,35 @@ var Game = {
                 // create shadows
                 var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
                 ent.addComponent(farm.shdw.c);
+
+                //var i = 0;
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
-                    var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
+                    //var ent = 
+                    Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
+                    //
+                    //j = i + 1;
                     // add image
-                    ent.addComponent(homebase.c);
+                    //ent.addComponent('nameplate' + j);
+
+                    // odd | even switcher
+                    //i = i ? 0 : 1;
                 });
+
+
+                // add nameplates
+                Game.generateFarmPlates(farm);
+                
+
                 // find the team based on farmId
                 var team = _.find(Game.teams, function(obj){ return obj.farmId == farmId; });
                 // create nameplates, names and tractors
                 for (var i = 0; i < team.tractors.length; i++) {
-                    var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[i]._x, y: farm.nameplates[i]._y, z: 2});
-                    ent.addComponent(farm.nameplates[i].c);
-                    Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+16, z: 3 }).text(team.tractors[i].tyres[0].right.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                    Crafty.e("2D, Canvas, Text").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+36, z: 3 }).text(team.tractors[i].tyres[0].left.name).textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
+                    //var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[i]._x, y: farm.nameplates[i]._y, z: 2});
+                    //ent.addComponent(farm.nameplates[i].c);
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres[0].right.name); //.textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres[0].left.name); //.textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
+                    
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.addComponent(farm.tractors[i].c);
                 }
@@ -265,12 +252,34 @@ var Game = {
     generateFarms: function() {
         _.each(this.farms, function(farm){
             // create farm
-            Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotate: farm.attr._rotate });
-            // create farm parts
-             _.each(farm.homebases, function(homebase){
-                var ent = Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
-                ent.addComponent(homebase.c);
-            });
+            var ent = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotation: farm.attr._rotate });
+            // dashboard add opacity value (strength)
+            //ent.addComponent("Tint").tint("#FFFFFF", 0.3);
+
+            // add nameplates
+            Game.generateFarmPlates(farm);
+        });
+    },
+    generateFarmPlates: function(farm) {
+        // if undefined
+        var farm = farm || {};
+        // odd | even counter
+        var i = 0;
+
+        // each plate
+        _.each(farm.nameplates, function(nameplate) {
+            // add entity
+            var ent = Crafty.e('Nameplate').attr({ x: farm.nameplates[i]._x, y: farm.nameplates[i]._y, z: 2 });
+            // add farmId
+            ent.farmId = farm.id;
+            // tractor and nameplate
+            var j = i + 1;
+            // add tractorId
+            ent.tractorId = j;
+            // add image
+            ent.addComponent('nameplate' + j );
+            // odd | even switcher
+            i = i ? 0 : 1;
         });
     },
     // add bases to scene
