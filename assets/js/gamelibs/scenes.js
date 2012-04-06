@@ -118,7 +118,7 @@ function() {
     
 
     // go to Game scene
-    Crafty.scene("Game");
+    //Crafty.scene("Game");
 });
 
 //Game Scene

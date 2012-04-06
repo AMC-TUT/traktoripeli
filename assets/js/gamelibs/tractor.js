@@ -219,7 +219,7 @@ var Game = {
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
                     //var ent = 
-                    Crafty.e('Team').attr({ x: homebase._x, y: homebase._y, z: 1 });
+                    Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 1 });
                     //
                     //j = i + 1;
                     // add image

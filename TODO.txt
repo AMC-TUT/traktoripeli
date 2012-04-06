@@ -11,8 +11,8 @@ Loading
 
 DashBoard
 
-	DONE QR koodien paikat
-	DONE Farmien generointi - opacity?
+	DONE - QR koodien paikat
+	DONE - Farmien generointi - opacity?
 
 QR koodien haku (farmit, aloitus, sulkeminen)
 
@@ -52,7 +52,7 @@ farmi
 
 	 reunukset? Collision
 
-	 rename Team > Homebase
+	DONE - rename Team > Homebase
 	
 	 kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
 
