@@ -6,7 +6,9 @@ TODO
 
 Loading
 
-- pikkutraktoreita
+DONE - pikkutraktoreita
+
+DONE - cache manifest file nopeampaan lataamiseen
 
 DashBoard
 

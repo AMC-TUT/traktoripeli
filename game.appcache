@@ -1,0 +1,23 @@
+CACHE MANIFEST
+
+# Build 2012-04-06:v1
+
+CACHE:
+assets/img/bg.png
+#assets/img/1kg.png
+#assets/img/1000gram.png
+#assets/img/bg.png
+#assets/img/farms.png
+#assets/img/nameplates.png
+#assets/img/shadows.png
+#assets/img/splash.png
+#assets/img/title.png
+assets/img/traktor_c1.png
+assets/img/traktor_c2.png
+assets/img/traktor_c3.png
+#assets/img/traktor_c4.png
+#assets/img/traktor_c5.png
+#assets/img/traktor_c6.png
+
+NETWORK:
+*

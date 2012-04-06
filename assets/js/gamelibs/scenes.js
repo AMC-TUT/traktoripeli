@@ -18,7 +18,6 @@ function() {
     	[
     	game.path + "/assets/img/1kg.png", 
     	game.path + "/assets/img/1000gram.png", 
-    //	game.path + "/assets/img/bases.png", 
     	game.path + "/assets/img/farms.png", 
     	game.path + "/assets/img/shadows.png", 
         game.path + "/assets/img/bg.png",
@@ -36,6 +35,7 @@ function() {
      
         // show loading scene properly before moving along
         setTimeout(function() {
+
             // remove loading stuff from DOM
             $(".loading").remove();
             $(".container").removeClass("container-loading");

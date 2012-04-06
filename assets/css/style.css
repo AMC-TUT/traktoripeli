@@ -14,6 +14,7 @@ body {
 }
 
 .container-loading {
+  position: relative;
   background: rgba(255, 255, 255, .3);
   margin-top: 4em;
   margin-bottom: 4em;
@@ -52,26 +53,51 @@ canvas {
   transform: translate(0, 0);
 }
 
-.modal { display: none; }
+.modal { 
+  display: none; }
 
 .orange {
   color: #de8a3c; }
-/*
-nav div { 
-  display: inline-block; }
-nav div span { display: inline-block; }
-.game-start {
-  cursor: pointer; }
-.game-start, .game-time { 
-  color: #4036CD; }
-.game-diamond-info, .game-score {
-  width: 100px; }
-.game-collected {
-  width: 15px; }
-.game-time {
-  width: 200px; }
-.game-diamond-objective, .game-collected {
-  color: goldenrod; }
-.game-diamond-info, .game-time, .game-score, .game-collected {
-  margin-left: 1em; }
-*/
+
+.tractor {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+}
+
+.tractor1 {
+  background-image: url('../img/traktor_c1.png');
+  background-position: 0 0;
+  top: 300px;
+  left: 210px;
+  -ms-transform: rotate(45deg)scale(.8,.8); 
+  -webkit-transform: rotate(45deg) scale(.8,.8); 
+  -o-transform: rotate(45deg) scale(.8,.8); 
+  -moz-transform: rotate(45deg) scale(.8,.8); 
+  transform: rotate(45deg) scale(.8,.8);
+}
+
+.tractor2 {
+  background-image: url('../img/traktor_c2.png');
+  background-position: 0 0;
+  top: 470px;
+  left: 230px;
+  -ms-transform: rotate(25deg)scale(.8,.8); 
+  -webkit-transform: rotate(25deg) scale(.8,.8); 
+  -o-transform: rotate(25deg) scale(.8,.8); 
+  -moz-transform: rotate(25deg) scale(.8,.8); 
+  transform: rotate(25deg) scale(.8,.8);
+}
+
+.tractor3 {
+  background-image: url('../img/traktor_c3.png');
+  background-position: 0 0;
+  top: 560px;
+  left: 400px;
+  -ms-transform: rotate(-15deg)scale(.8,.8); 
+  -webkit-transform: rotate(-15deg) scale(.8,.8); 
+  -o-transform: rotate(-15deg) scale(.8,.8); 
+  -moz-transform: rotate(-15deg) scale(.8,.8); 
+  transform: rotate(-15deg) scale(.8,.8);
+}
