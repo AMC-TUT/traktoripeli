@@ -202,15 +202,24 @@ Crafty.c("Tractor", {
 });
 
 Crafty.c("Base", {
+    firstHit: 1,
     init: function() {
+        this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.circle(16, 16, 16))
         .onHit("Tractor",
             function(ent) {
-                //
-                log('osu');
+
+                if(this.firstHit) {
+                    //
+                    log('osu');
+
+                    //
+                    this.firstHit = 0;
+                }
+
             }, function() {
-                log('lopui');
+                this.firstHit = 1;
             }
         )
     }
@@ -218,16 +227,16 @@ Crafty.c("Base", {
 
 Crafty.c("WeightOnGround", {
     weightValue: 0, // weight value: 100,200,300,400
-    onTeam: false,
+    onHomebase: false,
     init: function() {
         this.weightValue = 0,
-        this.onTeam = false,
+        this.onHomebase = false,
         this.addComponent("2D", "Canvas", "Collision")
         .onHit("Tractor",
         function(ent) {
 
             // find way to disable hit for a while
-            if(!this.onTeam) {
+            if(!this.onHomebase) {
                 // tractor
                 var obj = ent[0].obj;
                 // create ent
@@ -248,31 +257,42 @@ Crafty.c("WeightOnGround", {
 
 Crafty.c("WeightOnWheels", {
     value: 0,
+    firstHit: 1, // continuous hit detection, run hit action only first frame when hit is continuous
     init: function() {
         this.value = 0,
+        this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
-        .onHit("Team",
+        .onHit("Homebase",
         function(ent) {
-            // team
-            var obj = ent[0].obj;
-            // create ent
-            var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
-            // add weight value to WeightOnGround
-            e.weightValue = this.weightValue;
-            // add weight value to Team
-            obj.weightValue = this.weightValue;
-            // mark that WeightOnGround is on Team entity
-            e.onTeam = true;
-            // play some nice sound
-            Crafty.audio.play("drop-on-farm");
-            // destroy self
-            this.destroy();
-            // trigger Farm to check its current weightValue sum
-            var farm = obj.hit('Farm')[0].obj;
-            log(farm)
-            // pull the trigger
-            farm.trigger("CountWeights");
+            log('osui Wheels 2 Homebase');
 
+            if(this.firstHit) {
+                // team
+                var obj = ent[0].obj;
+                // create ent
+                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
+                // add weight value to WeightOnGround
+                e.weightValue = this.weightValue;
+                // add weight value to Homebase
+                obj.weightValue = this.weightValue;
+                // mark that WeightOnGround is on Homebase entity
+                e.onHomebase = true;
+                // play some nice sound
+                Crafty.audio.play("drop-on-farm");
+                // destroy self
+                this.destroy();
+                // trigger Farm to check its current weightValue sum
+                var farm = obj.hit('Farm')[0].obj;
+                log(farm)
+                // pull the trigger
+                farm.trigger("CountWeights");
+
+                // set continuous hit true
+                this.firstHit = 0;
+            }
+
+        }, function() { 
+            this.firstHit = 1;
         })
         .onHit("Tractor", function(ent) {
             this.x = ent[0].obj._x + 16;
@@ -351,9 +371,10 @@ Crafty.c("Farm", {
     }
 });
 
-Crafty.c("Team", {   
+Crafty.c("Homebase", {   
     init: function() {
-        this.addComponent("2D", "Canvas", "Collision")
+        this.addComponent("2D", "Collision")
+        .collision(new Crafty.polygon([0,0],[64,0], [64,64], [0,64]));
     }
 });
 

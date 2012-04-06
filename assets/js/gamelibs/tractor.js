@@ -215,23 +215,14 @@ var Game = {
                 var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
                 ent.addComponent(farm.shdw.c);
 
-                //var i = 0;
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
-                    //var ent = 
-                    Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 1 });
-                    //
-                    //j = i + 1;
-                    // add image
-                    //ent.addComponent('nameplate' + j);
-
-                    // odd | even switcher
-                    //i = i ? 0 : 1;
+                    var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2 });
+                    log(ent)
                 });
 
-
                 // add nameplates
-                Game.generateFarmPlates(farm);
+                Game.generateFarmNameplates(farm);
                 
 
                 // find the team based on farmId
@@ -253,14 +244,11 @@ var Game = {
         _.each(this.farms, function(farm){
             // create farm
             var ent = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotation: farm.attr._rotate });
-            // dashboard add opacity value (strength)
-            //ent.addComponent("Tint").tint("#FFFFFF", 0.3);
-
             // add nameplates
-            Game.generateFarmPlates(farm);
+            Game.generateFarmNameplates(farm);
         });
     },
-    generateFarmPlates: function(farm) {
+    generateFarmNameplates: function(farm) {
         // if undefined
         var farm = farm || {};
         // odd | even counter

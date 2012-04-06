@@ -54,9 +54,11 @@ farmi
 
 	DONE - rename Team > Homebase
 	
-	 kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
+	kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
 
-	 homebase kuvat turhia kuten basessa. samat toimet, homebase polygon
+	homebase kuvat turhia:
+	DONE - poista kuvat 
+	  > homebase polygon
 
 base
 
@@ -68,7 +70,7 @@ base
 
 onground punnukset
 
-	BUG punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
+	DONE - (Poistui samalla kun vaihtoi tyypistä Canvas > DOM - BUG punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
 	
 onwheels punnukset
 
