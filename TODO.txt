@@ -58,7 +58,7 @@ farmi
 
 	homebase kuvat turhia:
 	DONE - poista kuvat 
-	  > homebase polygon
+	DONE - homebase polygon
 
 base
 
