@@ -314,7 +314,7 @@ var Game = {
                 } while (_.isNull(base));
 
                 var ent = Crafty.e('WeightOnGround').attr({ x: base._x - 16, y: base._y - 16, z: 2 });
-                // add sprite component
+                // add sprite component 
                 ent.addComponent(weight.c);
                 // add value to entity
                 ent.weightValue = weight.value;
@@ -335,5 +335,4 @@ var Game = {
         $('#results').modal('show');
 
     }
-    
 }

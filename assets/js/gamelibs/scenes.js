@@ -1,4 +1,5 @@
 
+
 //Loading Scene
 Crafty.scene("Loading",
 function() {
@@ -63,6 +64,8 @@ function() {
 //Game Scene
 Crafty.scene("DashBoard",
 function() {
+    // play audio in DashBoard (working but disabled for dev)
+    // Game.audio = Crafty.audio.play("march");
 
     // background
     Crafty.background("url(" + game.path + "/assets/img/bg.png)");
@@ -107,24 +110,25 @@ function() {
         .attr({ w: 640, h: 130 })
         .text("<strong>Tavoite: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel purus arcu, et auctor nisl. Donec hendrerit, nibh ut molestie iaculis, quam odio vehicula urna, at varius eros ipsum et risus.");
 
-
-
+    //error = fubar
     
-    // 
-    //Crafty.audio.play("march");
+    // for debug
+    /*
+    setTimeout(
+        function() { 
+            // stop playing audio 
+            Game.audio.mute();
 
-    //error = fasel
-
-    
-
-    // go to Game scene
+            // go to Game scene
+            Crafty.scene("Game");
+        }, 2000);
+    */
     Crafty.scene("Game");
 });
 
 //Game Scene
 Crafty.scene("Game",
 function() {
-
     // when loaded play sound and...
     // Crafty.audio.play("troot");
 

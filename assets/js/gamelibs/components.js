@@ -246,7 +246,7 @@ Crafty.c("WeightOnGround", {
                 // play some nice sound
                 Crafty.audio.play("weight-up");
                 // destroy self
-                this.destroy(); // TÄMÄ POISTAA TEKSTIT
+                this.destroy();
             }
 
         }, function(ent) {
@@ -362,10 +362,7 @@ Crafty.c("Farm", {
                 setTimeout("Crafty.audio.play('march')", 4000);
 
                 // show Roll of Honour 
-                // TODO
-
-                // and then load DashBoard Scene with 
-                //Crafty.scene("Loading");
+                $('#scoreboard').modal('show');
             }
         })
     }
@@ -374,7 +371,7 @@ Crafty.c("Farm", {
 Crafty.c("Homebase", {   
     init: function() {
         this.addComponent("2D", "Collision")
-        .collision(new Crafty.polygon([0,0],[64,0], [64,64], [0,64]));
+        .collision(new Crafty.polygon([64,0], [64,64], [0,64]));
     }
 });
 
@@ -388,79 +385,6 @@ Crafty.c("Nameplate", {
         this.addComponent("2D", "DOM");
     }
 });
-/*
-Crafty.c("Nameplate11", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate11");
-    }
-});
-
-Crafty.c("Nameplate12", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate12");
-    }
-});
-
-Crafty.c("Nameplate21", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate21");
-    }
-});
-
-Crafty.c("Nameplate22", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate22");
-    }
-});
-
-Crafty.c("Nameplate31", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate31");
-    }
-});
-
-Crafty.c("Nameplate32", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate32");
-    }
-});
-
-Crafty.c("Nameplate41", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate41");
-    }
-});
-
-Crafty.c("Nameplate42", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate42");
-    }
-});
-
-Crafty.c("Nameplate51", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate51");
-    }
-});
-
-Crafty.c("Nameplate52", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate52");
-    }
-});
-
-Crafty.c("Nameplate61", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate61");
-    }
-});
-
-Crafty.c("Nameplate62", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "nameplate62");
-    }
-});
-*/
 
 /*
 
@@ -572,94 +496,7 @@ Crafty.c("Player", {
             }
 
         })
-        .onHit('FinishLine',
-        function(ent) {
-            Crafty.audio.play("bonuspoints");
-            //Crafty.pause();
-        })
-        .bind("EnterFrame",
-        function(frame) {})
-        .bind("Move", function(old) {
-            
-            log('move nyt' + this._x + ' ' + this._y + ' vanha' + old._x + ' ' + old._y );
-        })
-        .bind("Change", function(old) {
-            
-          //  log(' cahnge nyt' + this.x + ' ' + this.y  );
-          //  if(!!old.x || !!old.y) log(' vanha' + old.x + ' ' + old.y );
-        })
 
-
-        return this;
-    },
-    die: function() {
-      
-        // explosion effect voice
-        Crafty.audio.play("explosion");
-        
-        // explosion effect to surrounding cells
-        for (var i=this.x-32; i <= this.x+32; i+=32) {
-          log('i' + i)
-          for (var j=this.x-32; j <= this.x+32; j+=32) {
-            log('j' + j)
-            Crafty.e("Explosion").attr({
-                x: i,
-                y: j,
-                z: 3
-            });
-          };
-        };
-
-        // background music for result view
-        Crafty.audio.play("music", -1);
-
-        var $stage = $('#cr-stage');
-        var h = $stage.css('height');
-        var w = $stage.css('width');
-
-        $('body').append('<div style="position: absolute; left: 0; top: 0; width: ' + w + '; height : ' + h + '; font-family: Lucida Grande; text-align: center; box-sizing: border-box; padding: 200px; background: rgba(0,0,0,.7); font-size: 4em; color: yellow; z-index: 888;">Sait ' + this.score + ' pistettä</div>');
-
-        // destroy player
-        this.destroy();
-        
-        // 
-        Crafty.pause();
-
-    }
-
-});
-
-Crafty.c("Dirt", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "dirt", "Platform")
-        .onHit("Player",
-        function(ent) {
-            this.destroy();
-        });
-    }
-});
-
-Crafty.c("Stone", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision", "stone", "Gravity", "Solid", "Platform")
-        .gravity("Platform")
-        .gravityConst(1)
-        .bind('Move',
-        function(from) {
-            Crafty.audio.play("boulder");
-        })
-        .onHit("Player",
-        function(ent) {
-            log(ent[0].obj);
-
-         //   ent[0].obj.die();
-        })
-        .bind("EnterFrame", function(frame) {
-            if(this.hit("Player")) log('player' + this.hit("Player"));
-            if(this.hit("Diamond")) log('diamond' + this.hit("Diamond"));
-        });
-
-    }
 });
 
 Crafty.c('Timer', {
@@ -671,112 +508,4 @@ Crafty.c('Timer', {
     }
 });
 
-
-Crafty.c("Finish", {
-    init: function() {
-        this.start = 1,
-        this.addComponent("2D", "Canvas", "Collision", "steel", "Solid", "Platform")
-        .bind('EnterFrame',
-        function(frame) {
-            if (this.start) {
-                // ugly skit with numbers
-                Crafty.e("Colon").addComponent("ychar1").attr({
-                    x: 2 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("ychar2").attr({
-                    x: 3 * 32,
-                    y: 9,
-                    z: 2
-                });
-                Crafty.e("Colon").addComponent("wnote").attr({
-                    x: 4 * 32,
-                    y: 9,
-                    z: 2
-                });
-                Crafty.e("Colon").addComponent("wchar1").attr({
-                    x: 5 * 32,
-                    y: 9,
-                    z: 2
-                });
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 6 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("ychar0").attr({
-                    x: 14 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Counter").addComponent("ychar0").attr({
-                    x: 15 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Timer1").addComponent("wchar1").attr({
-                    x: 25 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Timer2").addComponent("wchar5").attr({
-                    x: 26 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Timer3").addComponent("wchar0").attr({
-                    x: 27 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 32 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 33 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 34 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 35 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Score").addComponent("wchar0").attr({
-                    x: 36 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-                Crafty.e("Colon").addComponent("wchar0").attr({
-                    x: 37 * 32,
-                    y: 9,
-                    z: 2
-                });
-
-
-                this.start = 0;
-            }
-        })
-    }
-});
 */

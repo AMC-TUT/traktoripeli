@@ -56,7 +56,7 @@ farmi
 	
 	kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
 
-	homebase kuvat turhia:
+		   homebase kuvat turhia:
 	DONE - poista kuvat 
 	DONE - homebase polygon
 
@@ -95,10 +95,11 @@ Scorelist (Dialog)
 
 tuloslistan kerääminen farmeista taulukkoon
 taulukon generointi dialogiin
-siirtyminen dashboardiin
-dialogin aukeaminen ja sulk (slide effect ei toimi)
-ulkoasu farmin näköiseksi
-fontit isommaksi
+
+	DONE - siirtyminen dashboardiin
+	DONE - dialogin aukeaminen ja sulk (slide effect ei toimi)
+	DONE - ulkoasu farmin näköiseksi
+	DONE - fontit isommaksi
 
 Muuta?
 
