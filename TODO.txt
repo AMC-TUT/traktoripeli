@@ -31,7 +31,7 @@ Game
 tractorin multi-instanssi monipelintuki
 taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
 
-aikabonus oikeaan yläkulmaan - demossa 2 min
+	DONE - aikabonus oikeaan yläkulmaan - demossa 5 min
 
 suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan
 60s > 2.0 ; 30s > 1.5

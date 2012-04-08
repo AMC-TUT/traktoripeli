@@ -15,7 +15,7 @@ window.onload = function() {
 
     window.addEventListener("resize", resizeGameArea, false);
 
-    // TODO refactor this to be general and working in all width/height rations
+    // TODO refactor this function to be general and working in all width/height rations
 	function resizeGameArea() {
 		var gameWidth = window.innerWidth;
 		var gameHeight = window.innerHeight;

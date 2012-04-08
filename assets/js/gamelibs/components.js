@@ -361,7 +361,11 @@ Crafty.c("Farm", {
                 // march then
                 setTimeout("Crafty.audio.play('march')", 4000);
 
-                // show Roll of Honour 
+                // collect scores from farms to Game.teams array
+
+                // set team and score info to scoreboard table
+
+                // show scoreboard
                 $('#scoreboard').modal('show');
             }
         })
@@ -371,7 +375,7 @@ Crafty.c("Farm", {
 Crafty.c("Homebase", {   
     init: function() {
         this.addComponent("2D", "Collision")
-        .collision(new Crafty.polygon([64,0], [64,64], [0,64]));
+        .collision(new Crafty.polygon([0,0], [64,0], [64,64], [0,64]));
     }
 });
 
@@ -386,126 +390,26 @@ Crafty.c("Nameplate", {
     }
 });
 
-/*
-
-Crafty.c("Player", {
-
-    movementSpeed: 8,
-    lives: 1,
-    score: 0,
-    limit: 1,
-    collected: 0,
-
-    init: function() {
-        this.score = 0,
-        this.collected = 0,
-        this.limit = 1,
-//        this.infos = {
-//            lives :$('.lives'),
-//            score: $('.score'),
-//            hp:this.bars.hp.find('.text'),
-//            heat:this.bars.heat.find('.text'),
-//            shield:this.bars.shield.find('.text'),
-//            alert:$('.alert')
-//        }
-        this
-        .addComponent("2D", "Canvas", "Dash", "Keyboard", "Fourway", "Collision", "SpriteAnimation", "Solid")
-        //Add needed Components
-        .animate("StandingAnimation", [
-        [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1],
-        [7, 1], [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2],
-        [6, 2], [7, 2], [0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3]
-        ])
-        .animate('RightWalking', 0, 5, 7)
-        .animate('LeftWalking', 0, 4, 7)
-        .stop()
-        .animate("StandingAnimation", 10, -1)
-        .fourway(8)
-        //change direction when a direction change event is received
-        .bind("NewDirection",
-        function(direction) {
-            if (direction.x < 0) {
-                if (!this.isPlaying("LeftWalking"))
-                this.stop().animate("LeftWalking", 10, -1)
-            }
-            if (direction.x > 0) {
-                if (!this.isPlaying("RightWalking"))
-                this.stop().animate("RightWalking", 10, -1)
-            }
-            if (direction.y < 0) {
-                if (!this.isPlaying("LeftWalking"))
-                this.stop().animate("LeftWalking", 10, -1)
-            }
-            if (direction.y > 0) {
-                if (!this.isPlaying("RightWalking"))
-                this.stop().animate("RightWalking", 10, -1)
-            }
-            if (!direction.x && !direction.y) {
-                this.stop().animate("StandingAnimation", 10, -1);
-            }
-        })
-        .bind('KeyUp',
-        function(e) {
-            this.stop().animate("StandingAnimation", 10, -1);
-        })
-        .bind('Moved',
-        function(from) {
-            if (this.hit('Solid') && !this.hit('Diamond')) {
-                this.attr({
-                    x: from.x,
-                    y: from.y
-                });
-            } else {
-                Crafty.audio.play("movedirt");
-            }
-        })
-        .onHit('Diamond',
-        function(ent) {
-            Crafty.audio.play("pickupdiamond");
-            ent[0].obj.destroy();
-
-            this.collected += 1;
-
-            Crafty.e('Counter').destroy();
-            Crafty.e('Counter').addComponent("ychar" + this.collected).attr({
-                x: 15 * 32,
-                y: 9,
-                z: 2
-            });
-            Crafty.e('Score').destroy();
-            Crafty.e('Score').addComponent("wchar1").attr({
-                x: 36 * 32,
-                y: 9,
-                z: 2
-            });
-
-            if (this.collected == this.limit) {
-                Crafty.audio.play("crack");
-                Crafty.e("Finish").destroy();
-                Crafty.e("FinishLine").attr({
-                    x: 1216,
-                    y: 544,
-                    z: 3
-                });
-            }
-
-            if (this.collected > this.limit) {
-                this.score += 15;
-            } else {
-                this.score += 10;
-            }
-
-        })
-
-});
-
 Crafty.c('Timer', {
+    interval: null,
+    timeLimit: 0,
+    timeLeft: 0,
     init: function() {
-        this.addComponent("2D", "Canvas");
-    },
-    set: function(char) {
-        this.addComponent(char);
+        log("Timer init")
+        this.timeLimit = 5 * 60000, // set in settings 1 minute = 60000 millisecond
+        this.timeLeft = this.timeLimit,
+        this.addComponent("2D", "DOM", "Text")
+        this.interval = setInterval('Crafty.trigger("Tick")', 1000);
+
+        this.bind("StopTimer", function() {
+            clearInterval(this.interval);
+        })
+        .bind("Tick", function() {
+            // update time
+            this.timeLeft -= 1;
+            // set new time to timer
+            this.text("Aika: " + this.timeLeft); // TODO convert to minutes and seconds
+            // this.text("Aika: " + Math.floor(this.timeLeft/60000) );
+        });
     }
 });
-
-*/

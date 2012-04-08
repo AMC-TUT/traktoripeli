@@ -236,24 +236,30 @@ var Game = {
                     log(ent)
                 });
 
-                // add nameplates
+                // add nameplates to farm
                 Game.generateFarmNameplates(farm);
                 
-
                 // find the team based on farmId
                 var team = _.find(Game.teams, function(obj){ return obj.farmId == farmId; });
                 // create nameplates, names and tractors
                 for (var i = 0; i < team.tractors.length; i++) {
                     //var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[i]._x, y: farm.nameplates[i]._y, z: 2});
                     //ent.addComponent(farm.nameplates[i].c);
-                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres[0].right.name); //.textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
-                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres[0].left.name); //.textColor('#FFFFFF', 1).textFont({ family: 'Arial', size: '16px', weight: 'bold' });
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres[0].right.name);
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres[0].left.name);
                     
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.addComponent(farm.tractors[i].c);
                 }
             }
         });
+
+        // add game timer to top right corner
+        Game.addTimer();
+
+    },
+    addTimer: function() {
+        Crafty.e('Timer').attr({ x: 1100, y: 5, z: 4 });
     },
     generateFarms: function() {
         _.each(this.farms, function(farm){

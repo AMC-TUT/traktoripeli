@@ -134,6 +134,16 @@ canvas {
   font-weight: bold;
 }
 
+.Timer {
+  display: block;
+  font-size: 26px;
+  font-weight: bold;
+  color: #EEE;
+  margin-top: .5em;
+  white-space: nowrap;
+  text-shadow: #111 0px 0px 9px;
+}
+
 /* http://ie.microsoft.com/testdrive/Graphics/CSSGradientBackgroundMaker/Default.html */
 .modal {
   border: 5px solid #754224;
