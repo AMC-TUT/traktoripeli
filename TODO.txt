@@ -1,7 +1,7 @@
 TODO
 
 - Äänet!
-- Skaalaus näytön kokoo
+	DONE - Skaalaus näytön kokoo
 - Sockettien tuominen
 
 Loading
@@ -13,8 +13,7 @@ DashBoard
 
 	DONE - QR koodien paikat
 	DONE - Farmien generointi - opacity?
-
-QR koodien haku (farmit, aloitus, sulkeminen)
+	DONE - QR koodien haku (farmit, aloitus, sulkeminen)
 
 Pelaajan liittyessä farmiin : 
 	nimi listaan, 
@@ -28,7 +27,6 @@ Aloitus QR-koodista
 	trööt-soundi  
 
 Game
-
 
 tractorin multi-instanssi monipelintuki
 taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista

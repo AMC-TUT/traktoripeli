@@ -3,6 +3,21 @@
 // tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
 
 var Game = {
+    // add this description to level obj
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel purus arcu, et auctor nisl. Donec hendrerit, nibh ut molestie iaculis, quam odio vehicula urna, at varius eros ipsum et risus.",
+    qrcodes: {
+        generated: 0,
+        images: [
+        { _x: 95, _y: 5, action: 'join', id: 1 }, // 1
+        { _x: 610, _y: 5, action: 'join', id: 2 }, // 2
+        { _x: 1067, _y: 674, action: 'join', id: 3 }, // 3
+        { _x: 550, _y: 674, action: 'join', id: 4 }, // 4
+        { _x: 5, _y: 608, action: 'join', id: 5 }, // 5
+        { _x: 1155, _y: 70, action: 'join', id: 6 }, // 6
+        { _x: 440, _y: 280, action: 'start' }, // start
+        { _x: 720, _y: 280, action: 'close' } // close
+        ] 
+    },
     // teams
     teams: [
         {

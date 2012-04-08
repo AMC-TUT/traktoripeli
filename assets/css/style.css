@@ -118,11 +118,15 @@ canvas {
   padding: .3em .5em;
   box-shadow: 0 0 25px #222;
   -webkit-border-radius: .5em; -moz-border-radius: .5em; -ms-border-radius: .5em; -o-border-radius: .5em; border-radius: .5em;
+  /* brown */
+  border: 5px solid #754224;
+  background: #7D4627;
+  color: orange;
 }
-
+/*
 .GameRules strong {
   color: #D6883E; }
-
+*/
 .NameplateText {
   color: #FFFFFF;
   font-family: Arial;

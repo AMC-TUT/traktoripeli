@@ -73,42 +73,37 @@ function() {
     // generate farms
     Game.generateFarms();
 
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 95, y: 5, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
+    // generate images only once
+    if(!Game.qrcodes.generated) {
+        _.each(Game.qrcodes.images, function(qrcode) {
+            var ent = Crafty.e("2D, DOM, Image, QRCode")
+            .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 610, y: 5, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
+            var json = { "action": qrcode.action, "id": qrcode.id };
 
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 1155, y: 70, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
+            $.ajax({
+                type: "GET",
+                url: 'http://sportti.dreamschool.fi/galaxy/api/qrcode/JSON',
+                data: json,
+                cache: false,
+                success: function(data) {
+                   var qr = $(data)[2];
+                   //log(qr)
+                   ent.image( $(qr).attr('src') ); //game.path + "/assets/img/qrcode.png");
+                }
+            });
 
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 1067, y: 674, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
+            Game.qrcodes.generated = 1;
 
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 550, y: 674, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
+            // for speedy dev
+            // ent.image(game.path + "/assets/img/qrcode.png");
+        });
+    }
 
-   Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 5, y: 608, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
-
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 440, y: 280, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
-
-    Crafty.e("2D, DOM, Image, QRCode")
-        .attr({ x: 720, y: 280, z: 4 })
-        .image(game.path + "/assets/img/qrcode.png");
-
+    // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
-        .attr({ x: 320, y: 475, z: 4 })
-        .attr({ w: 640, h: 130 })
-        .text("<strong>Tavoite: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel purus arcu, et auctor nisl. Donec hendrerit, nibh ut molestie iaculis, quam odio vehicula urna, at varius eros ipsum et risus.");
+        .attr({ x: 320, y: 475, z: 4, w: 640, h: 130 })
+        .text("<strong>Tavoite: </strong>" + Game.description);
 
     //error = fubar
     
