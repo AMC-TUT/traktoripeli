@@ -54,7 +54,7 @@ farmi
 	
 	kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
 
-		   homebase kuvat turhia:
+	DONE - homebase kuvat turhia:
 	DONE - poista kuvat 
 	DONE - homebase polygon
 
@@ -64,7 +64,7 @@ base
 
 	ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
 
-	circle toimimaan
+	DONE - circle toimimaan
 
 onground punnukset
 

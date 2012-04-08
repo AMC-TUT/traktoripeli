@@ -232,8 +232,7 @@ var Game = {
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
-                    var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2 });
-                    log(ent)
+                    var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2, w: 64, h: 64 });
                 });
 
                 // add nameplates to farm
@@ -294,8 +293,7 @@ var Game = {
     // add bases to scene
     generateBases: function() {
         _.each(this.bases, function(base){
-            var ent = Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2 });
-            //ent.addComponent(base.c);
+            Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2, w: 32, h: 32 });
         });
     },
     generateWeightsOnGround: function() {

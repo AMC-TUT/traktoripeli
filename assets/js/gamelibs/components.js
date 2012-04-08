@@ -262,6 +262,7 @@ Crafty.c("WeightOnWheels", {
         this.value = 0,
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
+        .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
         .onHit("Homebase",
         function(ent) {
             log('osui Wheels 2 Homebase');
@@ -330,9 +331,10 @@ Crafty.c("WeightOnWheels", {
 });
 
 Crafty.c("Farm", {
-    _weightValue: 0,
+    weightValue: 0,
+    id: 0,
     init: function() {
-        this._weightValue = 0,
+        this.weightValue = 0,
         this.addComponent("2D", "Canvas", "Collision", "farm")
         .bind('CountWeights', function() {
             // trigger to count weight values on Farm
@@ -345,11 +347,11 @@ Crafty.c("Farm", {
                 weightValue += weight.obj.weightValue;
             });
             // set as ent var
-            this._weightValue = weightValue;
+            this.weightValue = weightValue;
             // debug
-            log('Kerattynä: ' + this._weightValue + ' \\o/ ');
+            log('Kerattynä: ' + this.weightValue + ' \\o/ ');
 
-            if(this._weightValue == 400) { // DEVAUSTA VARTEN 1000) {
+            if(this.weightValue == 400) { // DEVAUSTA VARTEN 1000) {
                 // do something crazy here when player win the game
 
                 // stop tractors
@@ -361,7 +363,31 @@ Crafty.c("Farm", {
                 // march then
                 setTimeout("Crafty.audio.play('march')", 4000);
 
-                // collect scores from farms to Game.teams array
+                // collect scores from each team's farms to Game.teams array
+                _.each(Game.teams, function(team) {
+                    //var teamId = team.id;
+
+
+                    // find team and set value
+                    //var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
+                    //log(team);
+                    
+                    //var teamFarmId = team.fa
+
+                    // find farm
+                    //var farm = _.find(Game.farms, function(farm){ return team.farmId == farm.id; });
+
+                    // fetch farm entity
+                    //var entities = Crafty.map.search({ _x: farm.attr._x, _y: farm.attr._y, _w: 64, _h: 64 });
+
+                    // get farm entity
+                    //var farmEnt = _.find(entities, function(ent) { return ent.__c.Farm == "Farm" });
+
+                    //log(farmId)
+
+
+
+                });
 
                 // set team and score info to scoreboard table
 
@@ -395,7 +421,6 @@ Crafty.c('Timer', {
     timeLimit: 0,
     timeLeft: 0,
     init: function() {
-        log("Timer init")
         this.timeLimit = 5 * 60000, // set in settings 1 minute = 60000 millisecond
         this.timeLeft = this.timeLimit,
         this.addComponent("2D", "DOM", "Text")
