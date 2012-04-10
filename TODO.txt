@@ -64,6 +64,10 @@ Pelaajan liittyessä farmiin :
 		- Game scene auki, 
 		- trööt-soundi  
 
+DASHBOARD
+
+	- qr koodeihin tekstit
+
 GAME
 
 	- tractorin multi-instanssi monipelintuki
