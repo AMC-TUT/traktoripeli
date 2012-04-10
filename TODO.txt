@@ -69,7 +69,7 @@ base
 onground punnukset
 
 	DONE - (Poistui samalla kun vaihtoi tyypistä Canvas > DOM - BUG punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
-	
+
 onwheels punnukset
 
 	punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten traktorin kulma vaikuttaa punnuksen sijoittamiseen.
