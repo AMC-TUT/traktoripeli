@@ -144,6 +144,10 @@ canvas {
   text-shadow: #111 0px 0px 9px;
 }
 
+.QRCode.START, .QRCode.CLOSE {
+  cursor: pointer;
+}
+
 /* http://ie.microsoft.com/testdrive/Graphics/CSSGradientBackgroundMaker/Default.html */
 .modal {
   border: 5px solid #754224;
@@ -167,3 +171,4 @@ canvas {
 .table th, .table td {
   border-top: 1px solid orange;
 }
+

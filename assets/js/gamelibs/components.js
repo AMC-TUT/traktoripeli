@@ -370,6 +370,15 @@ Crafty.c("Farm", {
                 _.each(Game.teams, function(team) {
                     //var teamId = team.id;
 
+                    // get right farm
+                    var farm = _.find(Game.farms, function(farm){ return team.farmId == farm.id; });
+                    log(farm);
+
+                    // get farm entity
+                    var farmEnt = Crafty.map.search({ _x: farm.attr._x, _y: farm.attr._y, _w: 4, _h: 4 })[0];
+
+                    // get farm entity
+                    //var farmEnt = _.find(entities, function(ent) { return ent.__c.Farm == "Farm" });
 
                     // find team and set value
                     //var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
@@ -380,11 +389,7 @@ Crafty.c("Farm", {
                     // find farm
                     //var farm = _.find(Game.farms, function(farm){ return team.farmId == farm.id; });
 
-                    // fetch farm entity
-                    //var entities = Crafty.map.search({ _x: farm.attr._x, _y: farm.attr._y, _w: 64, _h: 64 });
-
-                    // get farm entity
-                    //var farmEnt = _.find(entities, function(ent) { return ent.__c.Farm == "Farm" });
+                    
 
                     //log(farmId)
 

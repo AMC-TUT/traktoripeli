@@ -90,6 +90,10 @@ function() {
                    var qr = $(data)[2];
                    //log(qr)
                    ent.image( $(qr).attr('src') ); //game.path + "/assets/img/qrcode.png");
+                   //
+                   if(typeof qrcode.action !== "undefined") {
+                      ent.addComponent(qrcode.action.toUpperCase());
+                   } 
                 }
             });
 

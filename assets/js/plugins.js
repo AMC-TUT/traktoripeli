@@ -74,3 +74,11 @@ $('#scoreboard').on('hidden', function () {
   Crafty.scene("DashBoard");
 });
 
+$('.QRCode.START').live('click tap', function(event) {
+	Crafty.scene('Game');
+});
+
+$('.QRCode.CLOSE').live('click tap', function(event) {
+	window.location = game.path;
+});
+
