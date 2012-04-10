@@ -50,8 +50,8 @@ SCORELIST
 
 TODOT
 
-	- Äänet!
-	- Sockettien tuominen
+MASU	- Äänet!
+TEME	- Sockettien tuominen
 
 Pelaajan liittyessä farmiin : 
 	- nimi listaan, 
@@ -66,68 +66,69 @@ Pelaajan liittyessä farmiin :
 
 DASHBOARD
 
-	- qr koodeihin tekstit
+MASU	- qr koodeihin tekstit
 
 GAME
 
-	- tractorin multi-instanssi monipelintuki
-	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
+TEME	- tractorin multi-instanssi monipelintuki
+TEME	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
 
-	- suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan 60s > 2.0 ; 30s > 1.5
+MASU	- suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan 60s > 2.0 ; 30s > 1.5
 
 OHJAIN
-	- 2 syötettä +		
-	- reverse false|true , 
-	- kerroin pakille? : 0.5
+
+TEME	- 2 syötettä +		
+TEME	- reverse false|true , 
+TEME	- kerroin pakille? : 0.5
 
 FARMI
-	- vain omaan saa viedä
-	- vain omasta saa poistaa
 
-	- kun onHit > hit bitti päälle ja kun offHit niin bitti pois
+MASU	- vain omaan saa viedä
+MASU	- vain omasta saa poistaa
+
+MASU	- kun onHit > hit bitti päälle ja kun offHit niin bitti pois
 	  > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, 
 	  pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. 
 	  pitää hakea pois tyhjänä ja pudottaa vain tyhjään
 
-	- reunukset? Collision
+MASU	- reunukset? Collision
 	
-	- kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
+TEME	- kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
 
 BASE
 
-	- sama onhit kuin farmissa
-	- ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
+MASU	- sama onhit kuin farmissa
+MASU	- ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
 
 ONWHEELS
 
-	- punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
-	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
+TEME	- punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
+	  	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
 
 PUNNUKSET
 
-	- harkintaan: kuvakulma?
+MASU	- harkintaan: kuvakulma?
 
 TRAKTORI
 
-	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 
-	  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
+TEME	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
+		  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
 
-	- jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
-	  ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
+MASU	- jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
+		  ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
 
 SCORELIST (Dialog)
 
-	- tuloslistan kerääminen farmeista taulukkoon
-	- taulukon generointi dialogiin
+TEME	- tuloslistan kerääminen farmeista taulukkoon
+TEME	- taulukon generointi dialogiin
 
 MUUTA?
 
 	- ruostetraktori
-
 	- Random events
 	- Pyörän jäljet
 
 MUUT PELIKENTÄT
 
-	- lajittelu, kemia ???
+MASU	- lajittelu, kemia ???
 

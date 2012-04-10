@@ -118,7 +118,7 @@ function() {
             Crafty.scene("Game");
         }, 2000);
     */
-    Crafty.scene("Game");
+    //Crafty.scene("Game");
 });
 
 //Game Scene
