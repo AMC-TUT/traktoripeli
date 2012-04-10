@@ -4,8 +4,10 @@ Crafty.c("Tractor", {
     team: 0,
     number: 0,
     slot: 0,
+    weightValue: 0,
     init: function() {
         this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
+        this.weightValue = 0,
         this.slot = 0,
         this.team = 1,
         this.number = 1,
@@ -19,6 +21,7 @@ Crafty.c("Tractor", {
         },
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "team1vechile1")
         .origin("bottom")
+        .collision(new Crafty.polygon([16,0], [48,0], [36,64], [28,64]))
         // define tractor animations
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
@@ -202,28 +205,56 @@ Crafty.c("Tractor", {
 });
 
 Crafty.c("Base", {
+    weightValue: 0, // weight value: 100,200,300,400
     firstHit: 1,
     init: function() {
+        this.weightValue = 100,
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.circle(16, 16, 16))
-        /*
-        .onHit("WeightOnWheels",
+        .onHit("Tractor",
             function(ent) {
-
                 if(this.firstHit) {
-                    //
-                    log('osu');
+                    var obj = ent[0].obj;
+                    if (obj.weightValue > 0) {
+                        // destroy weight
+                        var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 64 });
+                        var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                        if (!_.isUndefined(weight)) {
+                            weight.destroy();
+                        }
+                    }
+                    if (this.weightValue > 0) {
+                        // destroy weight
+                        var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
+                        var weight = _.find(entities, function(entity){ return entity.__c.WeightOnGround == true; });
+                        if (!_.isUndefined(weight)) {
+                            weight.destroy();
+                        }
+                    }
+                    var tmp = obj.weightValue;
+                    obj.weightValue = this.weightValue;
+                    this.weightValue = tmp;
 
-                    //
+                    if (obj.weightValue > 0) {
+                        // add weight
+                        var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+                    }
+                    if (this.weightValue > 0) {
+                        // add weight
+                        var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
+                    }
+
                     this.firstHit = 0;
                 }
 
             }, function() {
+                //
+                log('ohion');
+                //
                 this.firstHit = 1;
             }
         )
-        */
     }
 });
 
@@ -235,6 +266,7 @@ Crafty.c("WeightOnGround", {
         this.weightValue = 0,
         this.onHomebase = false,
         this.addComponent("2D", "Canvas", "Collision")
+/*
         .onHit("Tractor",
         function(ent) {
 
@@ -255,17 +287,19 @@ Crafty.c("WeightOnGround", {
         }, function(ent) {
             // Callback method executed once as soon as collision stops
         })
+*/
     }
 });
 
 Crafty.c("WeightOnWheels", {
-    value: 0,
+    weightValue: 0, // weight value: 100,200,300,400
     firstHit: 1, // continuous hit detection, run hit action only first frame when hit is continuous
     init: function() {
-        this.value = 0,
+        this.weightValue = 0,
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
+/*
         .onHit("Homebase",
         function(ent) {
             log('osui Wheels 2 Homebase');
@@ -298,6 +332,7 @@ Crafty.c("WeightOnWheels", {
         }, function() { 
             this.firstHit = 1;
         })
+*/
         .onHit("Tractor", function(ent) {
             this.x = ent[0].obj._x + 16;
             this.y = ent[0].obj._y + 16;
