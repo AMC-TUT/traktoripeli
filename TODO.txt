@@ -51,7 +51,7 @@ SCORELIST
 TODOT
 
 MASU	- Äänet!
-TEME	- Sockettien tuominen
+TEME	DONE - Sockettien tuominen
 
 Pelaajan liittyessä farmiin : 
 	- nimi listaan, 
@@ -93,7 +93,10 @@ MASU	- kun onHit > hit bitti päälle ja kun offHit niin bitti pois
 
 MASU	- reunukset? Collision
 	
-TEME	- kun 1000 täyteen niin ohjaimet disableControl > musat > pudotus scorelist 
+TEME	- kun 1000 täyteen niin 
+			- ohjaimet disableControl 
+			DONE - musat
+			DONE - pudotus scorelist 
 
 BASE
 
