@@ -73,13 +73,18 @@ function() {
     // generate farms
     Game.generateFarms();
 
-    // generate images only once
-    if(!Game.qrcodes.generated) {
+    Game.sockets.dashboard = true;
+
+    this.bind('SocketsReadyEvent', function() {
+        
+        log('SocketsReadyEvent');
+
         _.each(Game.qrcodes.images, function(qrcode) {
+            
             var ent = Crafty.e("2D, DOM, Image, QRCode")
             .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
-            var json = { "action": qrcode.action, "id": qrcode.id };
+            var json = { "action": qrcode.action, "id": Game.sockets.roomID };
 
             $.ajax({
                 type: "GET",
@@ -91,18 +96,22 @@ function() {
                    //log(qr)
                    ent.image( $(qr).attr('src') ); //game.path + "/assets/img/qrcode.png");
                    //
-                   if(typeof qrcode.action !== "undefined") {
+                   if(!_.isUndefined(qrcode.action)) {
                       ent.addComponent(qrcode.action.toUpperCase());
                    } 
                 }
             });
 
-            Game.qrcodes.generated = 1;
+       //     Game.qrcodes.generated = 1;
 
             // for speedy dev
             // ent.image(game.path + "/assets/img/qrcode.png");
         });
-    }
+    });
+
+    // generate images only once
+    //if(!Game.qrcodes.generated) {
+    //}
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
@@ -122,7 +131,7 @@ function() {
             Crafty.scene("Game");
         }, 2000);
     */
-    Crafty.scene("Game");
+    //Crafty.scene("Game");
 });
 
 //Game Scene

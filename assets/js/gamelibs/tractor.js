@@ -4,6 +4,7 @@
 
 var Game = {
     // add this description to level obj
+    sockets: { ready: false, roomID: 0, dashboard: false },
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel purus arcu, et auctor nisl. Donec hendrerit, nibh ut molestie iaculis, quam odio vehicula urna, at varius eros ipsum et risus.",
     qrcodes: {
         generated: 0,

@@ -401,7 +401,7 @@ log(team)
             // debug
             log('Kerattynä: ' + team.score + ' \\o/ ');
 
-            if(team.score == 400) { // DEVAUSTA VARTEN 1000) {
+            if(team.score == 100) { // DEVAUSTA VARTEN 1000) {
                 // do something crazy here when player win the game
 
                 // stop tractors
