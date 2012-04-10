@@ -27,3 +27,10 @@ Crafty.audio.add({
     //game.path + "/assets/audio/wav/Amoeba.wav"
     ]
 });
+Crafty.audio.add({
+    "turn": [
+    game.path + "/assets/audio/ogg/tractor_turn.ogg",
+    game.path + "/assets/audio/mp3/tractor_turn.mp3",
+    game.path + "/assets/audio/wav/tractor_turn.wav"
+    ]
+});
