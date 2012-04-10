@@ -23,6 +23,7 @@ var Game = {
         {
             "id" : Crafty.math.randomInt(1, 12),
             "farmId" : 1,
+            "score" : 0,
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
@@ -123,7 +124,7 @@ var Game = {
                 { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180 }
             ]
         },
-        { 
+        {
             "id" : 2,
             "attr": { _x: 746, _y: 50, _rotate: 0 },
             "shdw": { c: "shadow1", _x: 746, _y: 50, _rotate: 0 },
@@ -220,7 +221,7 @@ var Game = {
         }
         
     ],
-    generateFarm: function(farmId) {
+    generateFarm: function(farmId) { //, teamId) {
         _.each(this.farms, function(farm){
             // if right farm
             if(farm.id == farmId) {
@@ -229,6 +230,8 @@ var Game = {
                 // create shadows
                 var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
                 ent.addComponent(farm.shdw.c);
+                //
+                ent.attr({ "id": farmId });
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
@@ -346,7 +349,7 @@ var Game = {
         Game.generateBases();
         //
         _.each(this.teams, function(team){
-            Game.generateFarm( team.farmId );
+            Game.generateFarm( team.farmId ); //, team.id );
         });
         //
         Game.generateWeightsOnGround();

@@ -373,6 +373,7 @@ Crafty.c("Farm", {
     id: 0,
     init: function() {
         this.weightValue = 0,
+        this.id = 0,
         this.addComponent("2D", "Canvas", "Collision", "farm")
         .bind('CountWeights', function() {
             // trigger to count weight values on Farm
@@ -385,11 +386,22 @@ Crafty.c("Farm", {
                 weightValue += weight.obj.weightValue;
             });
             // set as ent var
-            this.weightValue = weightValue;
-            // debug
-            log('Kerattynä: ' + this.weightValue + ' \\o/ ');
+            this.weightValue = 400; //weightValue;
 
-            if(this.weightValue == 400) { // DEVAUSTA VARTEN 1000) {
+            //
+            log(this)
+            var farmId = 1; //this.id;
+            log('farmId')
+            log(farmId)
+            var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
+            log('team')
+            
+            team.score += this.weightValue;
+log(team)
+            // debug
+            log('Kerattynä: ' + team.score + ' \\o/ ');
+
+            if(team.score == 400) { // DEVAUSTA VARTEN 1000) {
                 // do something crazy here when player win the game
 
                 // stop tractors
@@ -401,41 +413,57 @@ Crafty.c("Farm", {
                 // march then
                 setTimeout("Crafty.audio.play('march')", 4000);
 
+                var dom = "";
+
+                // asc order
+                Crafty.teams = _.sortBy(Crafty.teams, function(team){ return team.score; });
+
+                // käännä toisin päin
+
                 // collect scores from each team's farms to Game.teams array
                 _.each(Game.teams, function(team) {
-                    //var teamId = team.id;
 
-                    // get right farm
-                    var farm = _.find(Game.farms, function(farm){ return team.farmId == farm.id; });
-                    log(farm);
+                    log("weightValue " + weightValue);
+                    var counter = 1
+                    var players = "Matti, Maija";
+                    dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + "laske" + "</td><td>" + "laske" +"</td><td>" + players + "</td></tr>";
 
-                    // get farm entity
-                    var farmEnt = Crafty.map.search({ _x: farm.attr._x, _y: farm.attr._y, _w: 4, _h: 4 })[0];
-
-                    // get farm entity
-                    //var farmEnt = _.find(entities, function(ent) { return ent.__c.Farm == "Farm" });
-
-                    // find team and set value
-                    //var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
-                    //log(team);
-                    
-                    //var teamFarmId = team.fa
-
-                    // find farm
-                    //var farm = _.find(Game.farms, function(farm){ return team.farmId == farm.id; });
-
-                    
-
-                    //log(farmId)
-
+                    counter += 1;
 
 
                 });
 
+                $("#scoreboard tbody").empty().append(dom);
+
                 // set team and score info to scoreboard table
+
+                $('#scoreboard').on('shown', function () {
+                  var $seconds = $(".seconds");
+
+                  var intervalID = window.setInterval(function() {
+                    //
+                    var s = parseInt($seconds.text()) - 1 ;
+
+                    if(s < 0) {
+                        clearInterval(intervalID);
+                        $('#scoreboard').modal('hide');
+                    } else {
+                        $seconds.text(s);
+                    }
+
+                  }, 1000);
+                });
+
+                $('#scoreboard').on('hidden', function () {
+                  $('#scoreboard').remove();
+                  // open DashBoard
+                  Crafty.scene("DashBoard");
+                });
 
                 // show scoreboard
                 $('#scoreboard').modal('show');
+
+
             }
         })
     }

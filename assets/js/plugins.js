@@ -50,30 +50,6 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
 
 $('#scoreboard').modal({ backdrop: false, show: false, keyboard: false });
 
-$('#scoreboard').on('shown', function () {
-  var $seconds = $(".seconds");
-
-  var intervalID = window.setInterval(function() {
-    //
-    var s = parseInt($seconds.text()) - 1 ;
-
-    if(s < 0) {
-        clearInterval(intervalID);
-        $('#scoreboard').modal('hide');
-    } else {
-        $seconds.text(s);
-    }
-
-  }, 1000);
-
-});
-
-$('#scoreboard').on('hidden', function () {
-  $('#scoreboard').remove();
-  // open DashBoard
-  Crafty.scene("DashBoard");
-});
-
 $('.QRCode.START').live('click tap', function(event) {
 	Crafty.scene('Game');
 });
