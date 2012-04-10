@@ -30,7 +30,8 @@ BASE
 
 ONGROUND
 
-	DONE - (Poistui samalla kun vaihtoi tyypistä Canvas > DOM - BUG punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
+	DONE - (Poistui samalla kun vaihtoi tyypistä Canvas > DOM - BUG 
+	       punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
 
 NAMEPLATES
 
@@ -80,7 +81,9 @@ FARMI
 	- vain omasta saa poistaa
 
 	- kun onHit > hit bitti päälle ja kun offHit niin bitti pois
-	 > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. pitää hakea pois tyhjänä ja pudottaa vain tyhjään
+	  > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, 
+	  pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. 
+	  pitää hakea pois tyhjänä ja pudottaa vain tyhjään
 
 	- reunukset? Collision
 	
@@ -93,7 +96,8 @@ BASE
 
 ONWHEELS
 
-	- punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten traktorin kulma vaikuttaa punnuksen sijoittamiseen.
+	- punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
+	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
 
 PUNNUKSET
 
@@ -101,9 +105,11 @@ PUNNUKSET
 
 TRAKTORI
 
-	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
+	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 
+	  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
 
-	- jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
+	- jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
+	  ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
 
 SCORELIST (Dialog)
 
