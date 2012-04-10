@@ -207,7 +207,8 @@ Crafty.c("Base", {
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.circle(16, 16, 16))
-        .onHit("Tractor",
+        /*
+        .onHit("WeightOnWheels",
             function(ent) {
 
                 if(this.firstHit) {
@@ -222,12 +223,14 @@ Crafty.c("Base", {
                 this.firstHit = 1;
             }
         )
+        */
     }
 });
 
 Crafty.c("WeightOnGround", {
     weightValue: 0, // weight value: 100,200,300,400
     onHomebase: false,
+    firstHit: 1,
     init: function() {
         this.weightValue = 0,
         this.onHomebase = false,

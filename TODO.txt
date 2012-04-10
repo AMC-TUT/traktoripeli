@@ -48,7 +48,7 @@ farmi
 	kun onHit > hit bitti päälle ja kun offHit niin bitti pois
 	 > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. pitää hakea pois tyhjänä ja pudottaa vain tyhjään
 
-	 reunukset? Collision
+	reunukset? Collision
 
 	DONE - rename Team > Homebase
 	
