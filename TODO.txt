@@ -23,6 +23,13 @@ FARMI
 	DONE - homebase kuvat turhia:
 	DONE - poista kuvat 
 	DONE - homebase polygon
+	DONE - vain omaan saa viedä
+	DONE - vain omasta saa poistaa
+	DONE - kun onHit > hit bitti päälle ja kun offHit niin bitti pois
+	  > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, 
+	  pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. 
+	  pitää hakea pois tyhjänä ja pudottaa vain tyhjään
+	DONE - reunukset? Collision
 
 BASE
 
@@ -84,16 +91,6 @@ TEME	- reverse false|true ,
 TEME	- kerroin pakille? : 0.5
 
 FARMI
-
-MASU	- vain omaan saa viedä
-MASU	- vain omasta saa poistaa
-
-MASU	- kun onHit > hit bitti päälle ja kun offHit niin bitti pois
-	  > vain kun bitti pois tapahtuu vaihto : punnuksen nostaminen, 
-	  pudotus, ei switchiä eli ei voi lennosta vaihtaa toiseen punnusta toiseen. 
-	  pitää hakea pois tyhjänä ja pudottaa vain tyhjään
-
-MASU	- reunukset? Collision
 	
 TEME	- kun 1000 täyteen niin 
 			- ohjaimet disableControl 
