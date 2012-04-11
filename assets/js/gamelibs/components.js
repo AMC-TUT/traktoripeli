@@ -208,7 +208,7 @@ Crafty.c("Base", {
     weightValue: 0, // weight value: 100,200,300,400
     firstHit: 1,
     init: function() {
-        this.weightValue = 100,
+        this.weightValue = 0,
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.circle(16, 16, 16))
@@ -216,6 +216,7 @@ Crafty.c("Base", {
             function(ent) {
                 if(this.firstHit) {
                     var obj = ent[0].obj;
+                    var hitType = 0;
                     if (obj.weightValue > 0) {
                         // destroy weight
                         var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 64 });
@@ -223,6 +224,7 @@ Crafty.c("Base", {
                         if (!_.isUndefined(weight)) {
                             weight.destroy();
                         }
+                        hitType += 1;
                     }
                     if (this.weightValue > 0) {
                         // destroy weight
@@ -231,6 +233,7 @@ Crafty.c("Base", {
                         if (!_.isUndefined(weight)) {
                             weight.destroy();
                         }
+                        hitType += 2;
                     }
                     var tmp = obj.weightValue;
                     obj.weightValue = this.weightValue;
@@ -244,7 +247,19 @@ Crafty.c("Base", {
                         // add weight
                         var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                     }
-
+                    switch (hitType) {
+                        case 0: // nothing
+                            break;
+                        case 1: // tractor drops weight
+                            // Crafty.audio.play("weight-down");
+                            break;
+                        case 2: // tractor picks up weight
+                            // Crafty.audio.play("weight-up");
+                            break;
+                        case 3: // tractor switches weights
+                            // Crafty.audio.play("weight-switch");
+                            break;
+                    }
                     this.firstHit = 0;
                 }
 
@@ -257,6 +272,73 @@ Crafty.c("Base", {
         )
     }
 });
+
+Crafty.c("Homebase", {   
+    weightValue: 0, // weight value: 100,200,300,400
+    firstHit: 1,
+    init: function() {
+        this.weightValue = 0,
+        this.firstHit = 1,
+        this.addComponent("2D", "Collision")
+        .collision(new Crafty.polygon([0,0], [64,0], [64,64], [0,64]))
+        .onHit("Tractor",
+            function(ent) {
+                if(this.firstHit) {
+                    var obj = ent[0].obj;
+                    // TODO: erottaa omat traktorit vieraista
+                    var hitType = 0;
+                    if (obj.weightValue > 0) {
+                        hitType += 1;
+                    }
+                    if (this.weightValue > 0) {
+                        hitType += 2;
+                    }
+                    switch (hitType) {
+                        case 0: // nothing
+                            break;
+                        case 1: // tractor drops weight
+                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 64 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            this.weightValue = obj.weightValue;
+                            obj.weightValue = 0;
+                            var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x, y: this._y, z: 3 });
+                            // Crafty.audio.play("weight-down");
+                            break;
+                        case 2: // tractor picks up weight
+                            var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnGround == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            obj.weightValue = this.weightValue;
+                            this.weightValue = 0;
+                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+                            // Crafty.audio.play("weight-up");
+                            break;
+                        case 3: // nothing
+                            break;
+                    }
+                    // trigger Farm to check its current weightValue sum
+                    var farm = obj.hit('Farm')[0].obj;
+                    log(farm)
+                    // pull the trigger
+                    farm.trigger("CountBases");
+                    this.firstHit = 0;
+                }
+
+            }, function() {
+                //
+                log('ohion');
+                //
+                this.firstHit = 1;
+            }
+        )
+    }
+});
+
 
 Crafty.c("WeightOnGround", {
     weightValue: 0, // weight value: 100,200,300,400
@@ -375,12 +457,12 @@ Crafty.c("Farm", {
         this.weightValue = 0,
         this.id = 0,
         this.addComponent("2D", "Canvas", "Collision", "farm")
-        .bind('CountWeights', function() {
+        .bind('CountBases', function() {
             // trigger to count weight values on Farm
             // clear old value
             var weightValue = 0;
             // get farms weights
-            var weights = this.hit("WeightOnGround");
+            var weights = this.hit("Homebase");
             // loop weights and get the weightValues
             _.each(weights, function(weight){
                 weightValue += weight.obj.weightValue;
@@ -466,13 +548,6 @@ log(team)
 
             }
         })
-    }
-});
-
-Crafty.c("Homebase", {   
-    init: function() {
-        this.addComponent("2D", "Collision")
-        .collision(new Crafty.polygon([0,0], [64,0], [64,64], [0,64]));
     }
 });
 
