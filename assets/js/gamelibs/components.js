@@ -567,21 +567,20 @@ Crafty.c("Farm", {
                 var dom = "";
 
                 // asc order
-                Crafty.teams = _.sortBy(Crafty.teams, function(team){ return team.score; });
+                Crafty.teams = _.sortBy(Crafty.teams, function(team){ return Math.abs(team.score-10); });
 
                 // käännä toisin päin
 
                 // collect scores from each team's farms to Game.teams array
+                var counter = 1
+                //
                 _.each(Game.teams, function(team) {
-
-                    log("weightValue " + weightValue);
-                    var counter = 1
+                    //
                     var players = "Matti, Maija";
+                    //
                     dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + total +"</td><td>" + players + "</td></tr>";
-
+                    //
                     counter += 1;
-
-
                 });
 
                 $("#scoreboard tbody").empty().append(dom);
