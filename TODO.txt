@@ -50,6 +50,8 @@ SCORELIST
 
 TODOT
 
+	- Pelin skaalamisen fiksaaminen paremmaksi
+	
 MASU	- Äänet!
 TEME	DONE - Sockettien tuominen
 
