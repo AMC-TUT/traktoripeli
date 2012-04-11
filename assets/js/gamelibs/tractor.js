@@ -253,6 +253,7 @@ var Game = {
                     Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres[0].left.name);
                     
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
+                    ent.farmId = farmId;
                     ent.addComponent(farm.tractors[i].c);
                 }
             }
