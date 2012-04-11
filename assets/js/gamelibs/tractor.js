@@ -341,8 +341,10 @@ var Game = {
                 var ent = Crafty.e('WeightOnGround').attr({ x: base._x - 16, y: base._y - 16, z: 2 });
                 // add sprite component 
                 ent.addComponent(weight.c);
+                var basement = ent.hit('Base')[0].obj;
+                basement.weightValue = weight.value;
                 // add value to entity
-                ent.weightValue = weight.value;
+                // ent.weightValue = weight.value;
             });
         });
     },

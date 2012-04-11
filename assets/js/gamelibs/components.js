@@ -306,7 +306,7 @@ Crafty.c("Homebase", {
                                 }
                                 this.weightValue = obj.weightValue;
                                 obj.weightValue = 0;
-                                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x, y: this._y, z: 3 });
+                                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                                 // Crafty.audio.play("weight-down");
                                 break;
                             case 2: // tractor picks up weight
@@ -341,7 +341,13 @@ Crafty.c("Homebase", {
     }
 });
 
+Crafty.c("WeightOnGround", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision")
+    }
+});
 
+/*
 Crafty.c("WeightOnGround", {
     weightValue: 0, // weight value: 100,200,300,400
     onHomebase: false,
@@ -350,7 +356,6 @@ Crafty.c("WeightOnGround", {
         this.weightValue = 0,
         this.onHomebase = false,
         this.addComponent("2D", "Canvas", "Collision")
-/*
         .onHit("Tractor",
         function(ent) {
 
@@ -371,9 +376,10 @@ Crafty.c("WeightOnGround", {
         }, function(ent) {
             // Callback method executed once as soon as collision stops
         })
-*/
     }
 });
+*/
+
 
 Crafty.c("WeightOnWheels", {
     weightValue: 0, // weight value: 100,200,300,400
@@ -383,7 +389,23 @@ Crafty.c("WeightOnWheels", {
         this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
+        .onHit("Tractor", function(ent) {
+            this.x = ent[0].obj._x + 16;
+            this.y = ent[0].obj._y + 16;
+        })
+    }
+});
+
 /*
+
+Crafty.c("WeightOnWheels", {
+    weightValue: 0, // weight value: 100,200,300,400
+    firstHit: 1, // continuous hit detection, run hit action only first frame when hit is continuous
+    init: function() {
+        this.weightValue = 0,
+        this.firstHit = 1,
+        this.addComponent("2D", "Canvas", "Collision")
+        .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
         .onHit("Homebase",
         function(ent) {
             log('osui Wheels 2 Homebase');
@@ -416,12 +438,10 @@ Crafty.c("WeightOnWheels", {
         }, function() { 
             this.firstHit = 1;
         })
-*/
         .onHit("Tractor", function(ent) {
             this.x = ent[0].obj._x + 16;
             this.y = ent[0].obj._y + 16;
         })
-        /*
         .onHit("Base",
             function(ent) {
                 log('WeightOnWheels osui Baseen!');
@@ -446,11 +466,10 @@ Crafty.c("WeightOnWheels", {
                 //
                 this.destroy();
             }
-        )
-        */
-      
+        )      
     }
 });
+*/
 
 Crafty.c("Farm", {
     weightValue: 0,
