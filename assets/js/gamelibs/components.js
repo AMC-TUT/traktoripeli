@@ -114,6 +114,16 @@ Crafty.c("Tractor", {
             // stop * animations
             this.stop();
         })
+        .bind("Moved",
+            function(from) {
+                if (this.hit('Wall')) {
+                    this.attr({
+                        x: from.x,
+                        y: from.y
+                    });
+                }
+            }
+        )
         .onHit("Base",
             function(ent) {
                 //log('Tractor osui Baseen!');
@@ -279,7 +289,7 @@ Crafty.c("Homebase", {
         this.weightValue = 0,
         this.firstHit = 1,
         this.addComponent("2D", "Collision")
-        .collision(new Crafty.polygon([0,0], [64,0], [64,64], [0,64]))
+        .collision(new Crafty.polygon([0,0], [32,0], [32,32], [0,32]))
         .onHit("Tractor",
             function(ent) {
                 if(this.firstHit) {
@@ -592,9 +602,17 @@ Crafty.c("Shadow", {
         this.addComponent("2D", "Canvas", "Collision");
     }
 });
+
 Crafty.c("Nameplate", {
     init: function() {
         this.addComponent("2D", "DOM");
+    }
+});
+
+Crafty.c("Wall", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision")
+        .collision(new Crafty.polygon([0,0], [64,0], [64,10], [0,10]))
     }
 });
 

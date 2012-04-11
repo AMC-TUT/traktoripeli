@@ -116,6 +116,17 @@ var Game = {
                 { _x: 402, _y: 76 },
                 { _x: 476, _y: 76 }
             ],
+            "walls" : [
+                { _x: 228, _y: 50, _rotate: 0 },
+                { _x: 302, _y: 50, _rotate: 0 },
+                { _x: 396, _y: 50, _rotate: 0 },
+                { _x: 470, _y: 50, _rotate: 0 },
+                { _x: 238, _y: 60, _rotate: 90 },
+                { _x: 312, _y: 60, _rotate: 90 },
+                { _x: 386, _y: 60, _rotate: 90 },
+                { _x: 460, _y: 60, _rotate: 90 },
+                { _x: 534, _y: 60, _rotate: 90 },
+            ],
             "nameplates" : [
                 { _x: 228, _y: 5 },
                 { _x: 381, _y: 5 }
@@ -134,6 +145,17 @@ var Game = {
                 { _x: 846, _y: 76 },
                 { _x: 920, _y: 76 },
                 { _x: 994, _y: 76 },
+            ],
+            "walls" : [
+                { _x: 746, _y: 50, _rotate: 0 },
+                { _x: 820, _y: 50, _rotate: 0 },
+                { _x: 914, _y: 50, _rotate: 0 },
+                { _x: 988, _y: 50, _rotate: 0 },
+                { _x: 756, _y: 60, _rotate: 90 },
+                { _x: 830, _y: 60, _rotate: 90 },
+                { _x: 904, _y: 60, _rotate: 90 },
+                { _x: 978, _y: 60, _rotate: 90 },
+                { _x: 1052, _y: 60, _rotate: 90 },
             ],
             "nameplates" : [
                 { _x: 746, _y: 5 },
@@ -154,6 +176,17 @@ var Game = {
                 { _x: 402, _y: 692 },
                 { _x: 476, _y: 692 },
             ],
+            "walls" : [
+                { _x: 228, _y: 740, _rotate: 0 },
+                { _x: 302, _y: 740, _rotate: 0 },
+                { _x: 396, _y: 740, _rotate: 0 },
+                { _x: 470, _y: 740, _rotate: 0 },
+                { _x: 238, _y: 676, _rotate: 90 },
+                { _x: 312, _y: 676, _rotate: 90 },
+                { _x: 386, _y: 676, _rotate: 90 },
+                { _x: 460, _y: 676, _rotate: 90 },
+                { _x: 534, _y: 676, _rotate: 90 },
+            ],
             "nameplates" : [
                 { _x: 228, _y: 755 },
                 { _x: 381, _y: 755 }
@@ -172,6 +205,17 @@ var Game = {
                 { _x: 846, _y: 692 },
                 { _x: 920, _y: 692 },
                 { _x: 994, _y: 692 },
+            ],
+            "walls" : [
+                { _x: 746, _y: 740, _rotate: 0 },
+                { _x: 820, _y: 740, _rotate: 0 },
+                { _x: 914, _y: 740, _rotate: 0 },
+                { _x: 988, _y: 740, _rotate: 0 },
+                { _x: 756, _y: 676, _rotate: 90 },
+                { _x: 830, _y: 676, _rotate: 90 },
+                { _x: 904, _y: 676, _rotate: 90 },
+                { _x: 978, _y: 676, _rotate: 90 },
+                { _x: 1052, _y: 676, _rotate: 90 },
             ],
             "nameplates" : [
                 { _x: 745, _y: 755 },
@@ -192,6 +236,17 @@ var Game = {
                 { _x: 76, _y: 421 },
                 { _x: 76, _y: 495 },
             ],
+            "walls" : [
+                { _x: 60, _y: 247, _rotate: 90 },
+                { _x: 60, _y: 321, _rotate: 90 },
+                { _x: 60, _y: 415, _rotate: 90 },
+                { _x: 60, _y: 489, _rotate: 90 },
+                { _x: 60, _y: 247, _rotate: 0 },
+                { _x: 60, _y: 321, _rotate: 0 },
+                { _x: 60, _y: 395, _rotate: 0 },
+                { _x: 60, _y: 469, _rotate: 0 },
+                { _x: 60, _y: 543, _rotate: 0 },
+            ],
             "nameplates" : [
                 { _x: 0, _y: 203 },
                 { _x: 0, _y: 557 }
@@ -210,6 +265,17 @@ var Game = {
                 { _x: 1172, _y: 347 },
                 { _x: 1172, _y: 421 },
                 { _x: 1172, _y: 495 },
+            ],
+            "walls" : [
+                { _x: 1230, _y: 247, _rotate: 90 },
+                { _x: 1230, _y: 321, _rotate: 90 },
+                { _x: 1230, _y: 415, _rotate: 90 },
+                { _x: 1230, _y: 489, _rotate: 90 },
+                { _x: 1156, _y: 247, _rotate: 0 },
+                { _x: 1156, _y: 321, _rotate: 0 },
+                { _x: 1156, _y: 395, _rotate: 0 },
+                { _x: 1156, _y: 469, _rotate: 0 },
+                { _x: 1156, _y: 543, _rotate: 0 },
             ],
             "nameplates" : [
                 { _x: 1128, _y: 203 },
@@ -238,6 +304,11 @@ var Game = {
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
                     var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2, w: 64, h: 64 });
+                });
+
+                // create farm walls
+                _.each(farm.walls, function(wall){
+                    var ent = Crafty.e('Wall').attr({ x: wall._x, y: wall._y, z: 2, rotation: wall._rotate, w: 64, h: 64 });
                 });
 
                 // add nameplates to farm
