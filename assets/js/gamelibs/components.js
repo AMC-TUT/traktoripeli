@@ -332,6 +332,9 @@ Crafty.c("Homebase", {
                 }
 
             }, function() {
+
+                log('ohi on');
+
                 this.firstHit = 1;
             }
         )
@@ -485,11 +488,23 @@ Crafty.c("Farm", {
             // debug
             log('Kerattynä: ' + team.score + ' \\o/ ');
 
-            if(team.score == 100) { // DEVAUSTA VARTEN 1000) {
-                // do something crazy here when player win the game
+            if(team.score == 1000) {
 
                 // stop tractors
                 // STOP
+
+                // timer stop and get the value for bonus points
+                Crafty.trigger("StopTimer");
+                // get full text
+                var timerText = $(".Timer").text();
+                // time part of the text
+                var timeText = timerText.replace("Aika: ", "");
+                log(timeText);
+
+
+                // TODO laske tama arvo jotenkin timeText merkkijonosta
+                var multiplier = 3.39;
+
 
                 // play some inspirational music and cheer for winner
                 // cheer first
