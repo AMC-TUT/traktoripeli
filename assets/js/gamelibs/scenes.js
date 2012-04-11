@@ -36,7 +36,7 @@ function() {
      
         // show loading scene properly before moving along
         setTimeout(function() {
-//sdmmd=djd
+
             // remove loading stuff from DOM
             $(".loading").remove();
             $(".container").removeClass("container-loading");
@@ -65,7 +65,7 @@ function() {
 Crafty.scene("DashBoard",
 function() {
     // play audio in DashBoard (working but disabled for dev)
-    // Game.audio = Crafty.audio.play("march");
+    Game.audio = Crafty.audio.play("march");
 
     // background
     Crafty.background("url(" + game.path + "/assets/img/bg.png)");
@@ -101,36 +101,14 @@ function() {
                    } 
                 }
             });
-
-       //     Game.qrcodes.generated = 1;
-
-            // for speedy dev
-            // ent.image(game.path + "/assets/img/qrcode.png");
         });
     });
-
-    // generate images only once
-    //if(!Game.qrcodes.generated) {
-    //}
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
         .attr({ x: 320, y: 475, z: 4, w: 640, h: 130 })
         .text("<strong>Tavoite: </strong>" + Game.description);
 
-    //error = fubar
-    
-    // for debug
-    /*
-    setTimeout(
-        function() { 
-            // stop playing audio 
-            Game.audio.mute();
-
-            // go to Game scene
-            Crafty.scene("Game");
-        }, 2000);
-    */
     //Crafty.scene("Game");
 });
 
@@ -140,12 +118,7 @@ function() {
     // when loaded play sound and...
     // Crafty.audio.play("troot");
 
-	//Crafty.audio.play("march");
-
-	// first white
-    // Crafty.background("#FFF");
     // then picture when loaded
-
 	Crafty.background("url(" + game.path + "/assets/img/bg.png)");
 
     Game.generateGame();

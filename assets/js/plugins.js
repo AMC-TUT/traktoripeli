@@ -51,7 +51,11 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
 $('#scoreboard').modal({ backdrop: false, show: false, keyboard: false });
 
 $('.QRCode.START').live('click tap', function(event) {
-	Crafty.scene('Game');
+    // stop playing audio 
+    Game.audio.mute();
+
+    // go to Game scene
+    Crafty.scene("Game");
 });
 
 $('.QRCode.CLOSE').live('click tap', function(event) {
