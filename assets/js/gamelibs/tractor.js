@@ -227,12 +227,13 @@ var Game = {
             // if right farm
             if(farm.id == farmId) {
                 // create farm
-                Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 3, rotation: farm.attr._rotate });
+                farmEnt = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 3, rotation: farm.attr._rotate });
+                //
+                farmEnt.id = farmId;
+
                 // create shadows
                 var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
                 ent.addComponent(farm.shdw.c);
-                //
-                ent.attr({ "id": farmId });
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){

@@ -18,8 +18,8 @@
         orbiter = new net.user1.orbiter.Orbiter();
 
         // Enable logging to the browser's JavaScript console
-        orbiter.getLog().setLevel("debug");
-        orbiter.enableConsole();
+        // orbiter.getLog().setLevel("debug");
+        // orbiter.enableConsole();
 
         // If required JavaScript capabilities are missing, abort
         if (!orbiter.getSystem().isJavaScriptCompatible()) {

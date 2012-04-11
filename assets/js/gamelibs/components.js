@@ -466,20 +466,23 @@ Crafty.c("Farm", {
             // loop weights and get the weightValues
             _.each(weights, function(weight){
                 weightValue += weight.obj.weightValue;
+                log(weight.obj.weightValue)
             });
             // set as ent var
-            this.weightValue = 400; //weightValue;
+            this.weightValue = weightValue;
 
             //
             log(this)
-            var farmId = 1; //this.id;
+            var farmId = this.id;
             log('farmId')
             log(farmId)
             var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
-            log('team')
-            
+
             team.score += this.weightValue;
-log(team)
+
+            log('team')    
+            log(team)
+
             // debug
             log('Kerattynä: ' + team.score + ' \\o/ ');
 
