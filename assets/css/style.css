@@ -1,5 +1,6 @@
 html.loading-html{background:#FFF url("../img/bg.png") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 body{overflow:hidden;background-color:transparent;}
+.QRCode{width:120px !important;height:120px !important;box-shadow:0 0 20px #111;-webkit-background-size:cover;-o-background-size:cover;background-size:cover !important;}
 .container{width:auto;}
 .container-loading{position:relative;background:rgba(255,255,255,.3);margin-top:4em;margin-bottom:4em;-webkit-border-radius:1em;-moz-border-radius:1em;-ms-border-radius:1em;-o-border-radius:1em;border-radius:1em;width:940px;}
 .table{font-weight:bold;}
@@ -13,7 +14,6 @@ body{overflow:hidden;background-color:transparent;}
 #cr-stage.loading-scene .span6{float:none;margin:0 auto;}
 #cr-stage.loading-scene > div{position:relative !important;}
 .GameRules{background:rgba(255,255,255,.9);line-height:1.4em;color:#222;font-size:20px;border:5px solid #D6883E;box-sizing:border-box;padding:.3em .5em;box-shadow:0 0 25px #222;-webkit-border-radius:.5em;-moz-border-radius:.5em;-ms-border-radius:.5em;-o-border-radius:.5em;border-radius:.5em;border:5px solid #754224;background:#7D4627;color:orange;}
-.QRCode{width:120px !important;height:120px !important;box-shadow:0 0 20px #111;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .modal{display:none;}
 .orange{color:#de8a3c;}
 .tractor{position:absolute;width:64px;height:64px;background-repeat:no-repeat;}
