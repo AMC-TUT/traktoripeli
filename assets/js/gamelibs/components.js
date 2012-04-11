@@ -497,27 +497,17 @@ Crafty.c("Farm", {
             // loop weights and get the weightValues
             _.each(weights, function(weight){
                 weightValue += weight.obj.weightValue;
-                log(weight.obj.weightValue)
             });
             // set as ent var
             this.weightValue = weightValue;
-
             //
-            log(this)
             var farmId = this.id;
-            log('farmId')
-            log(farmId)
+            //
             var team = _.find(Game.teams, function(team){ return team.farmId == farmId; });
-
-            team.score += this.weightValue;
-
-            log('team')    
-            log(team)
-
-            // debug
-            log('Kerattynä: ' + team.score + ' \\o/ ');
-
-            if(team.score > 100) {
+            //
+            team.score = this.weightValue;
+            //
+            if(team.score > 10) {
 
                 // stop tractors
                 // STOP
@@ -530,16 +520,24 @@ Crafty.c("Farm", {
                 var timeText = timerText.replace("Aika: ", "");
                 log(timeText);
 
-
                 // TODO laske tama arvo jotenkin timeText merkkijonosta
                 var multiplier = 3.39;
-
+                // total points
+                var total = multiplier * team.score;
+                // time points
+                var timebonus = total - team.score;
 
                 // play some inspirational music and cheer for winner
                 // cheer first
                 Crafty.audio.play("cheer");
                 // march then
-                setTimeout("Crafty.audio.play('march')", 4000);
+                /*
+                setTimeout(function() {
+                    if(Game.audio._muted) {
+                        Game.audio.play("march", -1);
+                    }
+                }, 4000);
+                */
 
                 var dom = "";
 
@@ -554,7 +552,7 @@ Crafty.c("Farm", {
                     log("weightValue " + weightValue);
                     var counter = 1
                     var players = "Matti, Maija";
-                    dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + "laske" + "</td><td>" + "laske" +"</td><td>" + players + "</td></tr>";
+                    dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + total +"</td><td>" + players + "</td></tr>";
 
                     counter += 1;
 
@@ -565,15 +563,16 @@ Crafty.c("Farm", {
 
                 // set team and score info to scoreboard table
 
-                $('#scoreboard').on('shown', function () {
+                $('#scoreboard').on('show', function () {
                   var $seconds = $(".seconds");
 
-                  var intervalID = window.setInterval(function() {
+                  var intervalID = window.setInterval( function() {
                     //
                     var s = parseInt($seconds.text()) - 1 ;
 
                     if(s < 0) {
                         clearInterval(intervalID);
+
                         $('#scoreboard').modal('hide');
                     } else {
                         $seconds.text(s);
@@ -583,6 +582,9 @@ Crafty.c("Farm", {
                 });
 
                 $('#scoreboard').on('hidden', function () {
+                  // stop playing audio 
+                  // Game.audio.mute();
+                  //
                   $('#scoreboard').remove();
                   // open DashBoard
                   Crafty.scene("DashBoard");

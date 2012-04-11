@@ -65,7 +65,16 @@ function() {
 Crafty.scene("DashBoard",
 function() {
     // play audio in DashBoard (working but disabled for dev)
-    Game.audio = Crafty.audio.play("march");
+    /* TODO miten poistetaan audio instanssi paska kokonaan. Mutetukset eivat toimi kunnolla
+    if(!_.isObject(Game.audio)) {
+        Game.audio = Crafty.audio.play("march");
+        Game.audio.MAX_CHANNELS = 1;
+    } else {
+        if(Game.audio._muted) {
+            Game.audio.play("march", -1);
+        }
+    }
+    */
 
     // background
     Crafty.background("url(" + game.path + "/assets/img/bg.png)");

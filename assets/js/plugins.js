@@ -52,7 +52,7 @@ $('#scoreboard').modal({ backdrop: false, show: false, keyboard: false });
 
 $('.QRCode.START').live('click tap', function(event) {
     // stop playing audio 
-    Game.audio.mute();
+    //Game.audio.mute();
 
     // go to Game scene
     Crafty.scene("Game");
