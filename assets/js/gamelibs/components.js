@@ -517,7 +517,7 @@ Crafty.c("Farm", {
             // debug
             log('Kerattynä: ' + team.score + ' \\o/ ');
 
-            if(team.score == 1000) {
+            if(team.score > 100) {
 
                 // stop tractors
                 // STOP
