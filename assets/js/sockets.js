@@ -18,8 +18,8 @@
         orbiter = new net.user1.orbiter.Orbiter();
 
         // Enable logging to the browser's JavaScript console
-        // orbiter.getLog().setLevel("debug");
-        // orbiter.enableConsole();
+        orbiter.getLog().setLevel("debug");
+        orbiter.enableConsole();
 
         // If required JavaScript capabilities are missing, abort
         if (!orbiter.getSystem().isJavaScriptCompatible()) {
@@ -72,24 +72,23 @@
     //==============================================================================
     // Triggered when a JOINED_ROOM message is received
     
-    var intervalID;
-
-    function triggerEventForDashboard() {
-        if(Game.sockets.dashboard) {
-            log('SocketsReadyEvent FIRED');
-            Crafty.trigger("SocketsReadyEvent");
-            clearInterval(intervalID);
-        }
-    }
-
     function joinedRoomListener() {
         displayChatMessage("Lobby ready!");
 
         Game.sockets.ready = true;
         Game.sockets.roomID = roomID;
 
-        var intervalID = setInterval(triggerEventForDashboard(), 500);
-
+        if(Game.sockets.dashboard) {
+            triggerEventForDashboard();
+        } else {
+            var intervalID = setInterval( function() {
+                if(Game.sockets.dashboard) {
+                    log('SocketsReadyEvent FIRED');
+                    Crafty.trigger("SocketsReadyEvent");
+                    clearInterval(intervalID);
+                }
+            }, 500);
+    }
 
         // generate QR Codes
         /*

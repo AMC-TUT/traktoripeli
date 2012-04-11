@@ -74,6 +74,7 @@ function() {
     Game.generateFarms();
 
     Game.sockets.dashboard = true;
+    log("Game.sockets.dashboard = true");
 
     this.bind('SocketsReadyEvent', function() {
         
