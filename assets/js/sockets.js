@@ -79,7 +79,8 @@
         Game.sockets.roomID = roomID;
 
         if(Game.sockets.dashboard) {
-            triggerEventForDashboard();
+            log('SocketsReadyEvent FIRED');
+            Crafty.trigger("SocketsReadyEvent");
         } else {
             var intervalID = setInterval( function() {
                 if(Game.sockets.dashboard) {
