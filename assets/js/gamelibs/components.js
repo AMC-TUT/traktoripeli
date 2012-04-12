@@ -24,7 +24,7 @@ Crafty.c("Tractor", {
         },
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "team1vechile1")
         .origin("bottom")
-        .collision(new Crafty.polygon([16,0], [48,0], [36,64], [28,64]))
+        .collision(new Crafty.polygon([16,0], [48,0], [48,64], [16,64]))
         // define tractor animations
         .animate("FrwdFrwd", [
         [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
@@ -65,32 +65,6 @@ Crafty.c("Tractor", {
                     y: from.y
                 });
             }
-/*
-            // loaded tractor hits base with weight
-            var base = this.hit('Base');
-            log('traktori törmäs')
-            log(base)
-            if (base) {
-                log('if sisällä base törmäys')
-                if (base[0].obj.weightValue > 0 && this.weightValue > 0) {
-                    log('base[0] sisällä')
-                    this.attr({
-                        x: from.x,
-                        y: from.y
-                    });
-                }
-            }
-            // loaded tractor hits homebase with weight
-            var homebase = this.hit('Homebase');
-            if (homebase) {
-                if (homebase[0].obj.weightValue > 0 && this.weightValue > 0) {
-                    this.attr({
-                        x: from.x,
-                        y: from.y
-                    });
-                }
-            }
-*/
         })
         .bind("EnterFrame", function(frame) {
 
@@ -253,15 +227,15 @@ Crafty.c("Base", {
         .collision(new Crafty.circle(16, 16, 16))
         .onHit("Tractor",
             function(ent) {
+                var obj = ent[0].obj;
+                var hitType = 0;
+                if (obj.weightValue > 0) {
+                    hitType += 1;
+                }
+                if (this.weightValue > 0) {
+                    hitType += 2;
+                }
                 if(this.firstHit) {
-                    var obj = ent[0].obj;
-                    var hitType = 0;
-                    if (obj.weightValue > 0) {
-                        hitType += 1;
-                    }
-                    if (this.weightValue > 0) {
-                        hitType += 2;
-                    }
                     switch (hitType) {
                         case 0: // nothing
                             break;
@@ -289,13 +263,19 @@ Crafty.c("Base", {
                             break;
                         case 3: // no access
                             obj.attr({
-                                x: obj._from.x, 
+                                x: obj._from.x,
                                 y: obj._from.y
                             });
-                            log("AAAAAAAAAAAAAAAA"+obj._from.x+" "+obj._from.y);
                             break;
                     }
                     this.firstHit = 0;
+                } else {
+                    if (hitType == 3) {
+                        obj.attr({
+                            x: obj._from.x,
+                            y: obj._from.y
+                        });
+                    }
                 }
 
             }, function() {
@@ -315,17 +295,17 @@ Crafty.c("Homebase", {
         .collision(new Crafty.polygon([0,0], [32,0], [32,32], [0,32]))
         .onHit("Tractor",
             function(ent) {
+                var obj = ent[0].obj;
+                var hitType = 0;
+                if (obj.weightValue > 0) {
+                    hitType += 1;
+                }
+                if (this.weightValue > 0) {
+                    hitType += 2;
+                }
                 if(this.firstHit) {
                     var farm = this.hit('Farm')[0].obj;
-                    var obj = ent[0].obj;
-                    var hitType = 0;
                     if (farm.id == obj.farmId) {
-                        if (obj.weightValue > 0) {
-                            hitType += 1;
-                        }
-                        if (this.weightValue > 0) {
-                            hitType += 2;
-                        }
                         switch (hitType) {
                             case 0: // nothing
                                 break;
@@ -364,6 +344,13 @@ Crafty.c("Homebase", {
                         log("kaverin farmi");
                     }
                     this.firstHit = 0;
+                } else {
+                    if (hitType == 3) {
+                        obj.attr({
+                            x: obj._from.x,
+                            y: obj._from.y
+                        });
+                    }
                 }
 
             }, function() {
@@ -382,46 +369,8 @@ Crafty.c("WeightOnGround", {
     }
 });
 
-/*
-Crafty.c("WeightOnGround", {
-    weightValue: 0, // weight value: 100,200,300,400
-    onHomebase: false,
-    firstHit: 1,
-    init: function() {
-        this.weightValue = 0,
-        this.onHomebase = false,
-        this.addComponent("2D", "Canvas", "Collision")
-        .onHit("Tractor",
-        function(ent) {
-
-            // find way to disable hit for a while
-            if(!this.onHomebase) {
-                // tractor
-                var obj = ent[0].obj;
-                // create ent
-                var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
-                // add weight value to WeightOnWheels
-                e.weightValue = this.weightValue;
-                // play some nice sound
-                Crafty.audio.play("weight-up");
-                // destroy self
-                this.destroy();
-            }
-
-        }, function(ent) {
-            // Callback method executed once as soon as collision stops
-        })
-    }
-});
-*/
-
-
 Crafty.c("WeightOnWheels", {
-    weightValue: 0, // weight value: 100,200,300,400
-    firstHit: 1, // continuous hit detection, run hit action only first frame when hit is continuous
     init: function() {
-        this.weightValue = 0,
-        this.firstHit = 1,
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
         .onHit("Tractor", function(ent) {
@@ -431,80 +380,6 @@ Crafty.c("WeightOnWheels", {
     }
 });
 
-/*
-
-Crafty.c("WeightOnWheels", {
-    weightValue: 0, // weight value: 100,200,300,400
-    firstHit: 1, // continuous hit detection, run hit action only first frame when hit is continuous
-    init: function() {
-        this.weightValue = 0,
-        this.firstHit = 1,
-        this.addComponent("2D", "Canvas", "Collision")
-        .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
-        .onHit("Homebase",
-        function(ent) {
-            log('osui Wheels 2 Homebase');
-
-            if(this.firstHit) {
-                // team
-                var obj = ent[0].obj;
-                // create ent
-                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: obj._x - 16, y: obj._y - 16, z: 3 });
-                // add weight value to WeightOnGround
-                e.weightValue = this.weightValue;
-                // add weight value to Homebase
-                obj.weightValue = this.weightValue;
-                // mark that WeightOnGround is on Homebase entity
-                e.onHomebase = true;
-                // play some nice sound
-                Crafty.audio.play("drop-on-farm");
-                // destroy self
-                this.destroy();
-                // trigger Farm to check its current weightValue sum
-                var farm = obj.hit('Farm')[0].obj;
-                log(farm)
-                // pull the trigger
-                farm.trigger("CountWeights");
-
-                // set continuous hit true
-                this.firstHit = 0;
-            }
-
-        }, function() { 
-            this.firstHit = 1;
-        })
-        .onHit("Tractor", function(ent) {
-            this.x = ent[0].obj._x + 16;
-            this.y = ent[0].obj._y + 16;
-        })
-        .onHit("Base",
-            function(ent) {
-                log('WeightOnWheels osui Baseen!');
-                // add WeightOnGround and run self destruction
-
-                // get value
-                var value = this.value;
-                var weight;
-
-                _.each(Game.weights, function(obj){
-                    if(obj.value == value) {
-                        weight = obj;
-                    }
-                });
-                // create WeightOnGround
-                var e = Crafty.e('WeightOnGround').attr({ x: ent[0].obj._x - 16, y: ent[0].obj._y - 16, z: 2 });
-                // add sprite component
-                e.addComponent(weight.c);
-                // add value to entity
-                e.value = weight.value;
-
-                //
-                this.destroy();
-            }
-        )      
-    }
-});
-*/
 
 Crafty.c("Farm", {
     weightValue: 0,
@@ -543,7 +418,7 @@ Crafty.c("Farm", {
                 var timerText = $(".Timer").text();
                 // time part of the text
                 var timeText = timerText.replace("Aika: ", "");
-                log(timeText);
+                log("timeText:" + timeText);
 
                 // TODO laske tama arvo jotenkin timeText merkkijonosta
                 var multiplier = 3.39;
@@ -552,7 +427,7 @@ Crafty.c("Farm", {
                 // time points
                 var timebonus = total - team.score;
 
-                // play some inspirational music and cheer for winner
+                // play some unspirational music and cheer for winner
                 // cheer first
                 Crafty.audio.play("cheer");
                 // march then
@@ -623,12 +498,6 @@ Crafty.c("Farm", {
     }
 });
 
-Crafty.c("Shadow", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision");
-    }
-});
-
 Crafty.c("Nameplate", {
     init: function() {
         this.addComponent("2D", "DOM");
@@ -647,7 +516,7 @@ Crafty.c('Timer', {
     timeLimit: 0,
     timeLeft: 0,
     init: function() {
-        this.timeLimit = 5 * 60000, // set in settings 1 minute = 60000 millisecond
+        this.timeLimit = 5 * 60, // set in settings 1 minute = 60000 millisecond
         this.timeLeft = this.timeLimit,
         this.addComponent("2D", "DOM", "Text")
         this.interval = setInterval('Crafty.trigger("Tick")', 1000);
@@ -657,10 +526,12 @@ Crafty.c('Timer', {
         })
         .bind("Tick", function() {
             // update time
-            this.timeLeft -= 1;
+            if (this.timeLeft > 0) {
+                this.timeLeft -= 1;
+            }
             // set new time to timer
-            this.text("Aika: " + this.timeLeft); // TODO convert to minutes and seconds
-            // this.text("Aika: " + Math.floor(this.timeLeft/60000) );
+            //this.text("Aika: " + this.timeLeft); // TODO convert to minutes and seconds
+            this.text("Aika: " + Math.floor(this.timeLeft/60) + " min " + this.timeLeft%60);
         });
     }
 });

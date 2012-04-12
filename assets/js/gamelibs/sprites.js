@@ -15,15 +15,12 @@ Crafty.sprite(24, 35, game.path + "/assets/img/1000gram.png", {
     ww400g: [3, 0]
 });
 
-Crafty.sprite(306, 74, game.path + "/assets/img/farms.png", {
+Crafty.sprite(336, 104, game.path + "/assets/img/farms.png", {
     // farms
-    farm: [0, 0]
-});
-
-Crafty.sprite(336, 104, game.path + "/assets/img/shadows.png", {
-    // shadow to farms
-    shadow1: [0, 0],
-    shadow2: [0, 1]
+    farm1: [0, 0], // farms 1 and 2
+    farm2: [0, 1], // farms 3 and 4
+    farm3: [0, 2], // farm 6
+    farm4: [0, 3] // farm 5
 });
 
 Crafty.sprite(150, 40, game.path + "/assets/img/nameplates.png", {

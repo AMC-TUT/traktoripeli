@@ -130,8 +130,7 @@ var Game = {
     farms:[
         { 
             "id" : 1,
-            "attr": { _x: 228, _y: 50, _rotate: 0 },
-            "shdw": { c: "shadow1", _x: 228, _y: 50, _rotate: 0 },
+            "attr": { c: "farm1", _x: 228, _y: 50, _rotate: 0 },
             "homebases" : [
                 { _x: 254, _y: 76 },
                 { _x: 328, _y: 76 },
@@ -160,8 +159,7 @@ var Game = {
         },
         {
             "id" : 2,
-            "attr": { _x: 746, _y: 50, _rotate: 0 },
-            "shdw": { c: "shadow1", _x: 746, _y: 50, _rotate: 0 },
+            "attr": { c: "farm1", _x: 746, _y: 50, _rotate: 0 },
             "homebases" : [
                 { _x: 772, _y: 76 },
                 { _x: 846, _y: 76 },
@@ -190,8 +188,7 @@ var Game = {
         },
         { 
             "id" : 3,
-            "attr": { _x: 534, _y: 750, _rotate: 180 },
-            "shdw": { c: "shadow1", _x: 564, _y: 780, _rotate: 180 },
+            "attr": { c: "farm2", _x: 228, _y: 676, _rotate: 0 },
             "homebases" : [
                 { _x: 254, _y: 692 },
                 { _x: 328, _y: 692 },
@@ -220,8 +217,7 @@ var Game = {
         },
         { 
             "id" : 4,
-            "attr": { _x: 1052, _y: 750, _rotate: 180 },
-            "shdw": { c: "shadow1", _x: 1082, _y: 780, _rotate: 180 },
+            "attr": { c: "farm2", _x: 746, _y: 676, _rotate: 0 },
             "homebases" : [
                 { _x: 772, _y: 692 },
                 { _x: 846, _y: 692 },
@@ -250,8 +246,7 @@ var Game = {
         },
         { 
             "id" : 5,
-            "attr": { _x: 50, _y: 553, _rotate: 270 },
-            "shdw": { c: "shadow2", _x: 50, _y: 583, _rotate: 270 },
+            "attr": { c: "farm4", _x: 154, _y: 247, _rotate: 90 },
             "homebases" : [
                 { _x: 76, _y: 273 },
                 { _x: 76, _y: 347 },
@@ -280,8 +275,7 @@ var Game = {
         },
         { 
             "id" : 6,
-            "attr": { _x: 1230, _y: 247, _rotate: 90 },
-            "shdw": { c: "shadow2", _x: 1260, _y: 247, _rotate: 90 },
+            "attr": { c: "farm3", _x: 1256, _y: 247, _rotate: 90 },
             "homebases" : [
                 { _x: 1172, _y: 273 },
                 { _x: 1172, _y: 347 },
@@ -316,12 +310,8 @@ var Game = {
             if(farm.id == farmId) {
                 // create farm
                 farmEnt = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 3, rotation: farm.attr._rotate });
-                //
                 farmEnt.id = farmId;
-
-                // create shadows
-                var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
-                ent.addComponent(farm.shdw.c);
+                farmEnt.addComponent(farm.attr.c);
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
@@ -363,6 +353,7 @@ var Game = {
         _.each(this.farms, function(farm){
             // create farm
             var ent = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: farm.attr._z, rotation: farm.attr._rotate });
+            ent.addComponent(farm.attr.c);
             // add nameplates
             Game.generateFarmNameplates(farm);
         });

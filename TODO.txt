@@ -34,6 +34,8 @@ FARMI
 BASE
 
 	DONE - circle toimimaan
+	DONE - sama onhit kuin farmissa
+	DONE - ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
 
 ONGROUND
 
@@ -99,8 +101,6 @@ TEME	- kun 1000 täyteen niin
 
 BASE
 
-MASU	- sama onhit kuin farmissa
-MASU	- ei switchiä, jos kuorma päällä törmätessä punnukseen ei pääse etenemään
 
 ONWHEELS
 
