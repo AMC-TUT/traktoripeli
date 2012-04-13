@@ -16,6 +16,7 @@ DASHBOARD
 GAME
 
 	DONE - aikabonus oikeaan yläkulmaan - demossa 5 min
+	DONE - suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan 60s > 2.0 ; 30s > 1.5
 
 FARMI
 
@@ -60,6 +61,7 @@ SCORELIST
 TODOT
 
 	- Pelin skaalamisen fiksaaminen paremmaksi
+	- Jokainen traktori omaksi kuvatiedostoksi - nyt animaatio-komento ottaa freimit aina ykköstraktorista
 	
 MASU	- Äänet!
 TEME	DONE - Sockettien tuominen
@@ -83,8 +85,6 @@ GAME
 
 TEME	- tractorin multi-instanssi monipelintuki
 TEME	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
-
-MASU	- suoritusajan mukaan määäräytyy kerroin jolla pisteet kerrotaan 60s > 2.0 ; 30s > 1.5
 
 OHJAIN
 
@@ -116,7 +116,7 @@ TRAKTORI
 TEME	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
 		  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
 
-MASU	- jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
+MASU	DONE? - jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
 		  ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
 
 SCORELIST (Dialog)

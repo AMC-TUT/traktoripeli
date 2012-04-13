@@ -25,6 +25,7 @@ var Game = {
             "id" : Crafty.math.randomInt(1, 12),
             "farmId" : 1,
             "score" : 0,
+            "total" : 0,
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
@@ -40,6 +41,21 @@ var Game = {
                             }                            
                         }
                     ]
+                },
+                {
+                    "id": Crafty.math.randomInt(1000, 2000),
+                    "tyres": [
+                        {
+                            "left": {
+                                "name" : "Jarmo",
+                                "id" :  Crafty.math.randomInt(1000, 2000)
+                            },
+                            "right": {
+                                "name" : "Leena",
+                                "id" :  Crafty.math.randomInt(1000, 2000)
+                            }                            
+                        }
+                    ]
                 }
             ]
         },
@@ -47,6 +63,7 @@ var Game = {
             "id" : Crafty.math.randomInt(1, 12),
             "farmId" : 2,
             "score" : 0,
+            "total" : 0,
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),

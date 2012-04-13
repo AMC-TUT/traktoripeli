@@ -125,6 +125,67 @@ Crafty.c("Tractor", {
             // stop * animations
             this.stop();
         })
+        .onHit("Tractor",
+            function(ent) {
+                var obj = ent[0].obj;
+                var hitType = 0;
+                if (obj.weightValue > 0) {
+                    hitType += 1;
+                }
+                if (this.weightValue > 0) {
+                    hitType += 2;
+                }
+                if(this.firstHit) {
+                    switch (hitType) {
+                        case 0: // nothing
+                            break;
+                        case 1: // tractor drops weight
+                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 32 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            this.weightValue = obj.weightValue;
+                            obj.weightValue = 0;
+                            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                            break;
+                        case 2: // tractor picks up weight
+                            var entities = Crafty.map.search({_x: this._x + 16, _y: this._y, _w: 32, _h: 32 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            obj.weightValue = this.weightValue;
+                            this.weightValue = 0;
+                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+                            break;
+                        case 3: // no access
+                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 32 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            var entities = Crafty.map.search({_x: this._x + 16, _y: this._y, _w: 32, _h: 32 });
+                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                            if (!_.isUndefined(weight)) {
+                                weight.destroy();
+                            }
+                            var tmp = this.weightValue;
+                            this.weightValue = obj.weightValue;
+                            obj.weightValue = tmp;
+                            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
+
+                            break;
+                    }
+                    // Crafty.audio.play("weight-switch");
+                    this.firstHit = 0;
+                }
+
+            }, function() {
+                this.firstHit = 1;
+            }
+        )
         .onHit("Base",
             function(ent) {
                 //log('Tractor osui Baseen!');
@@ -418,15 +479,18 @@ Crafty.c("Farm", {
                 var timerText = $(".Timer").text();
                 // time part of the text
                 var timeText = timerText.replace("Aika: ", "");
-                log("timeText:" + timeText);
+                //log("timeText:" + timeText);
 
-                // TODO laske tama arvo jotenkin timeText merkkijonosta
-                var multiplier = 3.39;
-                // total points
-                var total = multiplier * team.score;
-                // time points
-                var timebonus = total - team.score;
-
+                var bonusTime = parseInt(timeText);
+                // multiplier to give time bonus
+                var multiplier = 1;
+                if (bonusTime > 0) {
+                    multiplier = 1 + bonusTime/60;
+                }
+                // calculate total score for each team
+                _.each(Game.teams, function(team) {
+                    team.total = Math.floor(multiplier * team.score);
+                });
                 // play some unspirational music and cheer for winner
                 // cheer first
                 Crafty.audio.play("cheer");
@@ -438,22 +502,31 @@ Crafty.c("Farm", {
                     }
                 }, 4000);
                 */
-
                 var dom = "";
 
                 // asc order
-                Crafty.teams = _.sortBy(Crafty.teams, function(team){ return Math.abs(team.score-10); });
+                //Crafty.teams = _.sortBy(Crafty.teams, function(team){ return Math.abs(team.total-10); });
 
-                // käännä toisin päin
+                // sort teams
+                Game.teams = Game.teams.sort( function(a, b) { return b.total - a.total});
 
                 // collect scores from each team's farms to Game.teams array
                 var counter = 1
                 //
                 _.each(Game.teams, function(team) {
                     //
-                    var players = "Matti, Maija";
+                    var players = "";
+                    _.each(team.tractors, function(tractor) {
+                        if (players.length > 0) {
+                            players += ", ";
+                        }
+                        players += tractor.tyres[0].left.name + ", " + tractor.tyres[0].right.name;
+
+                    })
+                    // time points
+                    var timebonus = team.total - team.score;
                     //
-                    dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + total +"</td><td>" + players + "</td></tr>";
+                    dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + team.total +"</td><td>" + players + "</td></tr>";
                     //
                     counter += 1;
                 });
