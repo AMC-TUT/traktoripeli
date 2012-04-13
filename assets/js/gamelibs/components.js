@@ -513,25 +513,29 @@ Crafty.c("Wall", {
 
 Crafty.c('Timer', {
     interval: null,
-    timeLimit: 0,
+    timeWas: 0,
+    timeNow: 0,
     timeLeft: 0,
     init: function() {
-        this.timeLimit = 5 * 60, // set in settings 1 minute = 60000 millisecond
-        this.timeLeft = this.timeLimit,
+        this.timeWas = 0,
+        this.timeNow = 0,
+        this.timeLeft = 300,
         this.addComponent("2D", "DOM", "Text")
         this.interval = setInterval('Crafty.trigger("Tick")', 1000);
-
+        this.text("Aika: " + this.timeLeft);
         this.bind("StopTimer", function() {
             clearInterval(this.interval);
         })
         .bind("Tick", function() {
-            // update time
-            if (this.timeLeft > 0) {
-                this.timeLeft -= 1;
+            var kello = new Date();
+            this.timeNow = Math.floor(kello.getTime()/1000);
+            if (this.timeNow > this.timeWas) {
+                if (this.timeLeft > 0) {
+                    this.timeLeft -= 1;
+                }
+                this.text("Aika: " + this.timeLeft);
             }
-            // set new time to timer
-            //this.text("Aika: " + this.timeLeft); // TODO convert to minutes and seconds
-            this.text("Aika: " + Math.floor(this.timeLeft/60) + " min " + this.timeLeft%60);
+            this.timeWas = this.timeNow;
         });
     }
 });
