@@ -2,11 +2,11 @@
 Crafty.c("Tractor", {
     id: 0,
     farmId: 0,
-    team: 0,
-    number: 0,
-    slot: 0,
-    weightValue: 0,
-    _from: null,
+    team: 0, // TURHA?
+    number: 0, // TURHA?
+    slot: 0, // TURHA?
+    weightValue: 0, // value of the loaded weight
+    _from: null, // tractor's previous x and y values
     init: function() {
         this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
         this.farmId = 0,
