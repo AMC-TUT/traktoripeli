@@ -22,7 +22,7 @@ Crafty.c("Tractor", {
                 cos: 0,
             }
         },
-        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "Multiway", "team1vechile1")
+        this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "team1vechile1")
         .origin("bottom")
         .collision(new Crafty.polygon([16,0], [48,0], [48,64], [16,64]))
         // define tractor animations
@@ -38,55 +38,50 @@ Crafty.c("Tractor", {
         .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
-        .multiway( this.movement.speed, {
-            UP_ARROW: -90, 
-            DOWN_ARROW: 90
-        })
-        //.bind("NewDirection", function(direction) { })
         .bind("Moved", function(from) {
 
             this._from = from;
 
-            //log('from: ' + from.x + ' x ' + from.y + ' to: ' + this._x + ' x ' + this._y);
-            /* Dont allow to move the player out of Screen */
+            /* Dont allow to move the tractor out of the Screen */
             if(this.x + this.w > Crafty.viewport.width ||
                 this.x + this.w - 20 < this.w || 
                 this.y + this.h < this.h || 
                 this.y + this.h > Crafty.viewport.height || this.preparing){
-                this.attr({
-                    x:from.x, 
-                    y:from.y
-                });
+                this.attr({ x:from.x, y:from.y });
             }
+
             // tractor hits the wall
-            if (this.hit('Wall')) {
-                this.attr({
-                    x: from.x,
-                    y: from.y
-                });
+            if (this.hit('Wall')) { 
+                this.attr({ x: from.x, y: from.y }); 
             }
         })
         .bind("EnterFrame", function(frame) {
 
-            if(this.isDown('RIGHT_ARROW')) {
-                this.rotation = ( (this._rotation + this.movement.difference) % 360);
-                //log('this._rotation: ' + this._rotation);
-                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
-            } else if(this.isDown('LEFT_ARROW')) {
-                this.rotation = ( (this._rotation - this.movement.difference) % 360);
-                //log(this._rotation);
-                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
-            } else if(this.isDown(Crafty.keys.UP_ARROW)) {
-                //log(this.movement.rotate.sin + ' ' + this.movement.speed + ' ' + this.movement.rotate.cos)
-                this.x += this.movement.rotate.sin * this.movement.speed;
-                this.y += this.movement.rotate.cos * this.movement.speed;
-            } else if(this.isDown(Crafty.keys.S) || this.isDown(Crafty.keys.DOWN_ARROW)) {
-                this.x += -this.movement.rotate.sin * this.movement.speed;
-                this.y += -this.movement.rotate.cos * this.movement.speed;
-            }
+            var angle = this._rotation * (Math.PI / 180),
+                vx = Math.sin(angle),
+                vy = -Math.cos(angle);
 
+            if(this.isDown(Crafty.keys.UP_ARROW)) {
+                this.x += vx * 1.5;
+                this.y += vy * 1.5;
+            } else if(this.isDown(Crafty.keys.DOWN_ARROW)) {
+                this.x += -vx * 0.5;
+                this.y += -vy * 0.5;
+            }
+            
+            //check for collision with houses
+            /*
+            var collision = this.hit("WeightOnGround"), 
+              item;
+
+            if(collision) {
+                item = collision[0];
+
+                this.x += Math.ceil(item._x * -item.overlap);
+                this.y += Math.ceil(item._y * -item.overlap);
+            }
+            */
+            
         })
         .bind('KeyDown', function(e) {
 
@@ -94,32 +89,21 @@ Crafty.c("Tractor", {
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
                 }
-                // 
-                this.rotation = ( (this._rotation + this.movement.difference) % 360);
-                //log('this._rotation: ' + this._rotation);
-                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
+            /*
             } else if(this.isDown('LEFT_ARROW')) {
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
                 }
-                // 
-                this.rotation = ( (this._rotation - this.movement.difference) % 360);
-                //log(this._rotation);
-                //log('UP_ARROW: ' + (this._rotation - 90) % 360);
-                //log('DOWN_ARROW: ' + (this._rotation + 90) % 360);
-
             } else if(this.isDown('DOWN_ARROW')) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
-                
+            */
             } else if(this.isDown('UP_ARROW')) {
                 if (!this.isPlaying("BrwdBrwd")) {
                     this.stop().animate("BrwdBrwd", 10, -1)
                 } 
             }
-
         })
         .bind('KeyUp', function(e) {
             // stop * animations
@@ -186,11 +170,13 @@ Crafty.c("Tractor", {
                 this.firstHit = 1;
             }
         )
+
+        /*
         .onHit("Base",
             function(ent) {
                 //log('Tractor osui Baseen!');
                 // add WeightOnGround and run self destruction
-/*
+
                 // get value
                 var value = 400; //this.value;
 
@@ -207,79 +193,16 @@ Crafty.c("Tractor", {
                 e.addComponent(weight.c);
                 // add value to entity
                 e.value = weight.value;
-*/
-                //
+
                 //this.destroy();
             }
         )
-        .bind('Rotate', function(rotate) {
-/*
-            // set new direction for movement
-            this.multiway(1, {
-                UP_ARROW: -90,
-                DOWN_ARROW: 90
-            });
-
-
-
-*/
-          //  log(rotate)
-
-
-      //      this.movement.rotate.sin = rotate.sin;
-      //      this.movement.rotate.cos = rotate.cos;
-/*
-            var angle = this._rotation * (Math.PI / 180),
-                vx = Math.sin(angle),
-                vy = -Math.cos(angle);
-
-            log(angle + ' ' + vx + ' ' + vy);
-            */
-            /*
-            if(this.isDown(Crafty.keys.W) || this.isDown(Crafty.keys.UP_ARROW)) {
-                this.x += vx * 1.5;
-                this.y += vy * 1.5;
-            } else if(this.isDown(Crafty.keys.S) || this.isDown(Crafty.keys.DOWN_ARROW)) {
-                this.x += -vx * 1.5;
-                this.y += -vy * 1.5;
-            }
-            */
-
-            /*
-            this.multiway( this.movement.speed, {
-                UP_ARROW: -90, 
-                DOWN_ARROW: 90         
-            });
-            */
-            /*
-            this.multiway({
-                UP_ARROW: (this._rotation - 90) % 360,
-                DOWN_ARROW: (this._rotation + 90) % 360
-            });
-
-            /*
-            var tractor = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 })[0];
-            log(tractor)
-            */
-            /*
-            this.removeComponent('Multiway');
-            this.addComponent('Multiway').multiway( this.movement.speed, {
-                UP_ARROW: -90, 
-                DOWN_ARROW: 90         
-            })
-            */
-            /*
-            this.multiway( this.movement.speed, {
-                UP_ARROW: (this._rotation - 90) % 360, 
-                DOWN_ARROW: (this._rotation + 90) % 360
-            });
-            */
-        })
+        */
     }
 });
 
 Crafty.c("Base", {
-    weightValue: 0, // weight value: 100,200,300,400
+    weightValue: 0, // weight value: 100, 200, 300, 400
     firstHit: 1,
     init: function() {
         this.weightValue = 0,
@@ -322,7 +245,7 @@ Crafty.c("Base", {
                             var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
                             // Crafty.audio.play("weight-up");
                             break;
-                        case 3: // no access
+                        case 3: // no access  // BUGI
                             obj.attr({
                                 x: obj._from.x,
                                 y: obj._from.y
@@ -479,6 +402,7 @@ Crafty.c("Farm", {
                 var timerText = $(".Timer").text();
                 // time part of the text
                 var timeText = timerText.replace("Aika: ", "");
+
                 //log("timeText:" + timeText);
 
                 var bonusTime = parseInt(timeText);
@@ -510,11 +434,28 @@ Crafty.c("Farm", {
                 // sort teams
                 Game.teams = Game.teams.sort( function(a, b) { return b.total - a.total});
 
+                // TODO laske tama arvo jotenkin timeText merkkijonosta
+                //var multiplier = 3.39;
+                
+                // play some inspirational music and cheer for winner
+                // cheer first
+                //Crafty.audio.play("cheer");
+
+                // asc order
+                //Crafty.teams = _.sortBy(Crafty.teams, function(obj){ return obj.score; }).reverse();
+
                 // collect scores from each team's farms to Game.teams array
-                var counter = 1
+                var counter = 1;
+                //
+                var dom = '<div class="scoreboard modal fade in"> <div class="modal-header"> <a class="close" data-dismiss="modal">×</a> <h3>Tulokset</h3> </div> <div class="modal-body"> <table class="table"> <thead> <tr> <th>#</th> <th>Pisteet</th> <th>Aikabonus</th> <th>Kokonaispisteet</th> <th>Pelaajat</th> </tr> </thead> <tbody>'; 
                 //
                 _.each(Game.teams, function(team) {
+                    // total points
+                    var total = multiplier * team.score;
+                    // time points
+                    var timebonus = total - team.score;
                     //
+
                     var players = "";
                     _.each(team.tractors, function(tractor) {
                         if (players.length > 0) {
@@ -525,17 +466,23 @@ Crafty.c("Farm", {
                     })
                     // time points
                     var timebonus = team.total - team.score;
+
+                    //var playersT1 = _.isUndefined(team.tractors[0]) ? "" : team.tractors[0].tyres.left.name + ', ' + team.tractors[0].tyres.right.name; 
+                    //var playersT2 = _.isUndefined(team.tractors[1]) ? "" : team.tractors[1].tyres.left.name + ', ' + team.tractors[1].tyres.right.name;
+                    //var players = playersT2.length ? playersT1 + ', ' + playersT2 : playersT1;
+
                     //
                     dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + team.total +"</td><td>" + players + "</td></tr>";
                     //
                     counter += 1;
                 });
 
-                $("#scoreboard tbody").empty().append(dom);
+                dom += '</tbody> </table> </div> <div class="modal-footer"> <strong>Ikkuna sulkeutuu <span class="seconds">10</span> sekunnin kuluttua</strong> </div> </div>';
+
+                $("#scoreboard").append(dom);
 
                 // set team and score info to scoreboard table
-
-                $('#scoreboard').on('show', function () {
+                $('.scoreboard').on('show', function () {
                   var $seconds = $(".seconds");
 
                   var intervalID = window.setInterval( function() {
@@ -545,25 +492,42 @@ Crafty.c("Farm", {
                     if(s < 0) {
                         clearInterval(intervalID);
 
-                        $('#scoreboard').modal('hide');
+                        $('.scoreboard').remove();
+
+                        // open DashBoard
+                        Crafty.scene("DashBoard");
                     } else {
                         $seconds.text(s);
                     }
 
                   }, 1000);
                 });
-
-                $('#scoreboard').on('hidden', function () {
+                /*
+                $('.scoreboard').on('hidden', function () {
+                  log(" .scoreboard' .on 'hidden'");
                   // stop playing audio 
                   // Game.audio.mute();
                   //
-                  $('#scoreboard').remove();
+                  $('#scoreboard').empty();
                   // open DashBoard
                   Crafty.scene("DashBoard");
                 });
+                */
+                $('.scoreboard').modal({ backdrop: false, show: true, keyboard: false });
 
                 // show scoreboard
-                $('#scoreboard').modal('show');
+                $('.scoreboard').modal('show');
+
+                // Reset game
+                _.each(Game.teams, function(team) {
+
+                    team.score = 0;
+
+                    _.each(team.tractors, function(tractor) {
+                        tractor.ent = null;
+                    });
+
+                });
 
 
             }
@@ -571,6 +535,13 @@ Crafty.c("Farm", {
     }
 });
 
+/*
+Crafty.c("Shadow", {
+    init: function() {
+        this.addComponent("2D", "Canvas", "Collision");
+    }
+});
+*/
 Crafty.c("Nameplate", {
     init: function() {
         this.addComponent("2D", "DOM");

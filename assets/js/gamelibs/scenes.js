@@ -89,7 +89,7 @@ function() {
 
     Game.sockets.dashboard = true;
 
-    this.bind('SocketsReadyEvent', function() {
+    this.bind('SocketsReadyEvent', _.once(function() { // _.once = singleton pattern impl. 
         
         log('SocketsReadyEvent');
 
@@ -104,7 +104,7 @@ function() {
                 type: "GET",
                 url: 'http://sportti.dreamschool.fi/galaxy/api/qrcode/JSON',
                 data: json,
-                cache: false,
+                cache: true,
                 success: function(data) {
                    var qr = $(data)[2];
                    //log(qr)
@@ -116,12 +116,19 @@ function() {
                 }
             });
         });
-    });
+    }));
+
+    if(Game.dashboard.generated) {
+        Crafty.trigger("SocketsReadyEvent");
+    }
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
         .attr({ x: 320, y: 455, z: 4, w: 640, h: 150 })
         .text("<strong>Tavoite: </strong>" + Game.description);
+
+    Game.dashboard.generated = true;
+
 
     //Crafty.scene("Game");
 });

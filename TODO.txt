@@ -89,7 +89,7 @@ OHJAIN
 
 TEME	- 2 syötettä +		
 TEME	- reverse false|true , 
-TEME	- kerroin pakille? : 0.5
+TEME	DONE - kerroin pakille? : 0.5
 
 FARMI
 	

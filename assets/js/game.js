@@ -27,13 +27,13 @@ window.onload = function() {
 		var currentScreenRatio = WIDTH / HEIGHT;
 		var optimalRatio = Math.min(scaleToFitX, scaleToFitY);
 
-		$('#cr-stage').css("position", "absolute !important"); 
+		//$('#cr-stage').css("position", "absolute !important"); 
 		
-		$('#cr-stage').css("-webkit-transform", "scale("+optimalRatio+")");
+		//$('#cr-stage').css("-webkit-transform", "scale("+optimalRatio+")");
 
-		var diffH = HEIGHT-(HEIGHT*optimalRatio);
+		//var diffH = HEIGHT-(HEIGHT*optimalRatio);
     	//log("HEIGHT: " + HEIGHT + " diffY: " + diffH+ ' :: ' + HEIGHT*optimalRatio)
-    	$('#cr-stage').css("top", -diffH/2);
+    	//$('#cr-stage').css("top", -diffH/2);
 
     	//var diffW = WIDTH-(WIDTH*optimalRatio);
 	    //log("WIDTH: " + WIDTH + " diffW: " + diffW + ' :: ' + WIDTH*optimalRatio)

@@ -5,7 +5,9 @@
 var Game = {
     // add this description to level obj
     sockets: { ready: false, roomID: 0, dashboard: false },
+    // TODO tama kuuluu kentan yhteyteen
     description: "Kerää kentältä kotitilasi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein kotitila voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
+    dashboard: { generated: false },
     qrcodes: {
         generated: 0,
         images: [
@@ -29,22 +31,21 @@ var Game = {
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
-                    "tyres": [
+                    "tyres": 
                         {
                             "left": {
                                 "name" : "Matti",
-                                "id" :  Crafty.math.randomInt(1000, 2000)
+                                "id" : Crafty.math.randomInt(1000, 2000)
                             },
                             "right": {
                                 "name" : "Maija",
-                                "id" :  Crafty.math.randomInt(1000, 2000)
+                                "id" : Crafty.math.randomInt(1000, 2000)
                             }                            
                         }
-                    ]
                 },
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
-                    "tyres": [
+                    "tyres":
                         {
                             "left": {
                                 "name" : "Jarmo",
@@ -55,7 +56,6 @@ var Game = {
                                 "id" :  Crafty.math.randomInt(1000, 2000)
                             }                            
                         }
-                    ]
                 }
             ]
         },
@@ -67,18 +67,18 @@ var Game = {
             "tractors" : [
                 {
                     "id": Crafty.math.randomInt(1000, 2000),
-                    "tyres": [
+                    "tyres": 
                         {
                             "left": {
                                 "name" : "Risto",
-                                "id" :  Crafty.math.randomInt(1000, 2000)
+                                "id" : Crafty.math.randomInt(1000, 2000)
                             },
                             "right": {
                                 "name" : "Reijo",
-                                "id" :  Crafty.math.randomInt(1000, 2000)
+                                "id" : Crafty.math.randomInt(1000, 2000)
                             }                            
                         }
-                    ]
+                    
                 }
             ]
         }
@@ -321,7 +321,7 @@ var Game = {
         }
         
     ],
-    generateFarm: function(farmId) { //, teamId) {
+    generateFarm: function(farmId) {
         _.each(this.farms, function(farm){
             // if right farm
             if(farm.id == farmId) {
@@ -329,6 +329,10 @@ var Game = {
                 farmEnt = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 3, rotation: farm.attr._rotate });
                 farmEnt.id = farmId;
                 farmEnt.addComponent(farm.attr.c);
+
+                // create shadows DISABLED - JOIN TO FARM ???
+                // var ent = Crafty.e('Shadow').attr({x: farm.shdw._x, y: farm.shdw._y, z: 2, rotation: farm.shdw._rotate});
+                // ent.addComponent(farm.shdw.c);
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
@@ -349,12 +353,22 @@ var Game = {
                 for (var i = 0; i < team.tractors.length; i++) {
                     //var ent = Crafty.e('Nameplate').attr({x: farm.nameplates[i]._x, y: farm.nameplates[i]._y, z: 2});
                     //ent.addComponent(farm.nameplates[i].c);
-                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres[0].right.name);
-                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres[0].left.name);
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres.right.name);
+                    Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres.left.name);
                     
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.farmId = farmId;
                     ent.addComponent(farm.tractors[i].c);
+
+                    // ent to game obj
+                    team.tractors[i].ent = ent;
+
+                    Game.testTractor = ent;
+                    Crafty.addEvent(this, "mousemove", function(e) {
+                        var pos = Crafty.DOM.translate(e.clientX, e.clientY);
+                        Game.testTractor.rotation = ~~(Math.atan2(pos.y - Game.testTractor._y, pos.x - Game.testTractor._x) * (180 / Math.PI)) + 90;
+                    });
+
                 }
             }
         });
