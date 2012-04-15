@@ -29,38 +29,44 @@ Crafty.sprite(150, 40, game.path + "/assets/img/nameplates.png", {
 });
 
 // players
-Crafty.sprite(64, game.path + "/assets/img/traktor_c1.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor11.png", {
     team1vechile1: [0, 0],
-    team1vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor12.png", {
+    team1vechile2: [0, 0]
 });
 
-Crafty.sprite(64, game.path + "/assets/img/traktor_c2.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor21.png", {
     team2vechile1: [0, 0],
-    team2vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor22.png", {
+    team2vechile2: [0, 0]
 });
 
-Crafty.sprite(64, game.path + "/assets/img/traktor_c3.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor31.png", {
     team3vechile1: [0, 0],
-    team3vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor32.png", {
+    team3vechile2: [0, 0]
 });
 
-Crafty.sprite(64, game.path + "/assets/img/traktor_c4.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor41.png", {
     team4vechile1: [0, 0],
-    team4vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor42.png", {
+    team4vechile2: [0, 0]
 });
 
-Crafty.sprite(64, game.path + "/assets/img/traktor_c5.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor51.png", {
     team5vechile1: [0, 0],
-    team5vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor52.png", {
+    team5vechile2: [0, 0]
 });
 
-Crafty.sprite(64, game.path + "/assets/img/traktor_c6.png", {
-    // teams and their vechiles
+Crafty.sprite(64, game.path + "/assets/img/tractor61.png", {
     team6vechile1: [0, 0],
-    team6vechile2: [0, 2]
+});
+Crafty.sprite(64, game.path + "/assets/img/tractor62.png", {
+    team6vechile2: [0, 0]
 });

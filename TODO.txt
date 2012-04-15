@@ -61,7 +61,6 @@ SCORELIST
 TODOT
 
 	- Pelin skaalamisen fiksaaminen paremmaksi
-	- Jokainen traktori omaksi kuvatiedostoksi - nyt animaatio-komento ottaa freimit aina ykköstraktorista
 	
 MASU	- Äänet!
 TEME	DONE - Sockettien tuominen

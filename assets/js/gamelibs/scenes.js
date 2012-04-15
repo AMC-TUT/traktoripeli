@@ -20,15 +20,20 @@ function() {
     	game.path + "/assets/img/1kg.png", 
     	game.path + "/assets/img/1000gram.png", 
     	game.path + "/assets/img/farms.png", 
-    	game.path + "/assets/img/shadows.png", 
         game.path + "/assets/img/bg.png",
     	game.path + "/assets/img/nameplates.png", 
-    	game.path + "/assets/img/traktor_c1.png", 
-    	game.path + "/assets/img/traktor_c2.png", 
-    	game.path + "/assets/img/traktor_c3.png", 
-    	game.path + "/assets/img/traktor_c4.png", 
-    	game.path + "/assets/img/traktor_c5.png", 
-    	game.path + "/assets/img/traktor_c6.png"
+        game.path + "/assets/img/tractor11.png", 
+        game.path + "/assets/img/tractor12.png", 
+        game.path + "/assets/img/tractor21.png", 
+        game.path + "/assets/img/tractor22.png", 
+        game.path + "/assets/img/tractor31.png", 
+        game.path + "/assets/img/tractor32.png",
+        game.path + "/assets/img/tractor41.png", 
+        game.path + "/assets/img/tractor42.png", 
+        game.path + "/assets/img/tractor51.png", 
+        game.path + "/assets/img/tractor52.png", 
+        game.path + "/assets/img/tractor61.png", 
+        game.path + "/assets/img/tractor62.png"
     	],
     function() {
         // show full progress bar
@@ -106,8 +111,8 @@ function() {
                    ent.image( $(qr).attr('src') ); //game.path + "/assets/img/qrcode.png");
                    //
                    if(!_.isUndefined(qrcode.action)) {
-                      ent.addComponent(qrcode.action.toUpperCase());
-                   } 
+                        ent.addComponent(qrcode.action.toUpperCase());
+                   }
                 }
             });
         });
@@ -115,7 +120,7 @@ function() {
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
-        .attr({ x: 320, y: 475, z: 4, w: 640, h: 130 })
+        .attr({ x: 320, y: 455, z: 4, w: 640, h: 150 })
         .text("<strong>Tavoite: </strong>" + Game.description);
 
     //Crafty.scene("Game");

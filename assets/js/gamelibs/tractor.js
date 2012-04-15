@@ -5,7 +5,7 @@
 var Game = {
     // add this description to level obj
     sockets: { ready: false, roomID: 0, dashboard: false },
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel purus arcu, et auctor nisl. Donec hendrerit, nibh ut molestie iaculis, quam odio vehicula urna, at varius eros ipsum et risus.",
+    description: "Kerää kentältä kotitilasi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein kotitila voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
     qrcodes: {
         generated: 0,
         images: [
@@ -450,8 +450,6 @@ var Game = {
         });
     },
     generateGame: function() {
-        // ?? Tarviiko baseissa olla jotain kuva vai riittääkö että niissä on vain kuvattomat "hotspotit"
-        // Disabloin kuvan lisäyksen. Voi auttaa suorituskykyä aavistuksen kun on läjä spritejä vähemmän.
         Game.generateBases();
         //
         _.each(this.teams, function(team){
