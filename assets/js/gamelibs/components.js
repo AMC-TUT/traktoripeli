@@ -84,21 +84,22 @@ Crafty.c("Tractor", {
             
         })
         .bind('KeyDown', function(e) {
-
+            /*
             if(this.isDown('RIGHT_ARROW')) {
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
                 }
-            /*
             } else if(this.isDown('LEFT_ARROW')) {
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
                 }
-            } else if(this.isDown('DOWN_ARROW')) {
+            } else 
+            */
+            if(this.isDown('DOWN_ARROW')) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
-            */
+            
             } else if(this.isDown('UP_ARROW')) {
                 if (!this.isPlaying("BrwdBrwd")) {
                     this.stop().animate("BrwdBrwd", 10, -1)
