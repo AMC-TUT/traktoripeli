@@ -8,7 +8,7 @@
     var orbiter;
     var msgManager;
     var UPC = net.user1.orbiter.UPC;
-    var roomID = "g-" + Math.floor(Math.random() * 100000);
+    var roomID; // = "g-" + Math.floor(Math.random() * 100000);
 
     //==============================================================================
     // INITIALIZATION
@@ -56,6 +56,8 @@
         displayChatMessage("Connected.");
         displayChatMessage("Joining room...");
 
+        // set roomID same as init client own ID
+        roomID = orbiter.clientID
         // Create the chat room
         msgManager.sendUPC(UPC.CREATE_ROOM, roomID);
         // Join the chat room
@@ -89,37 +91,8 @@
                     clearInterval(intervalID);
                 }
             }, 500);
-    }
+        }
 
-        // generate QR Codes
-        /*
-        var id,
-        json;
-
-        id = 'bug-qr';
-        json = {
-            "roomId": roomID,
-            "action": "open",
-            "gameId": id
-        };
-        qr(id, json);
-
-        id = 'brain-qr';
-        json = {
-            "roomId": roomID,
-            "action": "open",
-            "gameId": id
-        };
-        qr(id, json);
-
-        id = 'courier-qr';
-        json = {
-            "roomId": roomID,
-            "action": "open",
-            "gameId": id
-        };
-        qr(id, json);
-        */
     }
 
     // Triggered when another client joins the chat room
@@ -153,7 +126,5 @@
 
     // init the room
     init();
-
-
 
 })(window.jQuery);
