@@ -124,7 +124,7 @@ function() {
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
-        .attr({ x: 320, y: 455, z: 4, w: 640, h: 150 })
+        .attr({ x: 320, y: 455, z: 4, w: 640, h: 166 })
         .text("<strong>Tavoite: </strong>" + Game.description);
 
     Game.dashboard.generated = true;
