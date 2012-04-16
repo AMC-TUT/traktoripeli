@@ -1,6 +1,7 @@
 DONET
 
 	DONE - Skaalaus näytön kokoon
+	DONE - Sockettien tuominen
 
 LOADING
 
@@ -54,7 +55,20 @@ SCORELIST
 	DONE - dialogin aukeaminen ja sulk (slide effect ei toimi)
 	DONE - ulkoasu farmin näköiseksi
 	DONE - fontit isommaksi
+	DONE - tuloslistan kerääminen farmeista taulukkoon
+	DONE - taulukon generointi dialogiin
+	DONE - musat
+	DONE - pudotus scorelist 
 
+TRAKTORI
+
+	DONE? - jos traktorilla törmää toiseen traktoriin ja toisella 
+			traktorilla niin saa ryöstettyä toisen punnuksen. 
+			Jos molemmat tyhjät tai täynnä pelkkä törmäys.
+
+OHJAIN
+
+	DONE - kerroin pakille? : 0.5
 
 ------------------
 
@@ -63,7 +77,6 @@ TODOT
 	- Pelin skaalamisen fiksaaminen paremmaksi
 	
 MASU	- Äänet!
-TEME	DONE - Sockettien tuominen
 
 Pelaajan liittyessä farmiin : 
 	- nimi listaan, 
@@ -88,18 +101,9 @@ TEME	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneist
 OHJAIN
 
 TEME	- 2 syötettä +		
-TEME	- reverse false|true , 
-TEME	DONE - kerroin pakille? : 0.5
-
-FARMI
+TEME	- reverse false|true
 	
-TEME	- kun 1000 täyteen niin 
-			- ohjaimet disableControl 
-			DONE - musat
-			DONE - pudotus scorelist 
-
-BASE
-
+TEME	- kun 1000 täyteen niin ohjaimet disableControl 
 
 ONWHEELS
 
@@ -114,14 +118,6 @@ TRAKTORI
 
 TEME	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
 		  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
-
-MASU	DONE? - jos traktorilla törmää toiseen traktoriin ja toisella traktorilla niin saa 
-		  ryöstettyä toisen punnuksen. Jos molemmat tyhjät tai täynnä pelkkä törmäys.
-
-SCORELIST (Dialog)
-
-TEME	- tuloslistan kerääminen farmeista taulukkoon
-TEME	- taulukon generointi dialogiin
 
 MUUTA?
 
