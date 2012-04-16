@@ -6,11 +6,12 @@ Crafty.c("Tractor", {
     number: 0, // TURHA?
     slot: 0, // TURHA?
     weightValue: 0, // value of the loaded weight
-    _from: null, // tractor's previous x and y values
+    firstHit: 1,
     init: function() {
         this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
         this.farmId = 0,
         this.weightValue = 0,
+        this.firstHit = 0,
         this.slot = 0,
         this.team = 1,
         this.number = 1,
@@ -64,21 +65,72 @@ Crafty.c("Tractor", {
                 this.x += -vx * 0.5;
                 this.y += -vy * 0.5;
             }
-            
-            //check for collision with houses
 
-            var collision = this.hit("Wall"), 
+            //check for collision with farms
+            var hitWall = this.hit("Wall"), 
               item, normal = {x: 0, y: 0};
 
-            if(collision) {
-                item = collision[0];
+            if(hitWall) {
+                item = hitWall[0];
                 this.x += Math.ceil(item.normal.x * -item.overlap);
                 this.y += Math.ceil(item.normal.y * -item.overlap);
-                log(item.normal.x);
-                log(item.overlap);
-
             }
-            
+
+            //check for collision with base
+            var hitBase = this.hit("Base"), 
+              item, normal = {x: 0, y: 0};
+
+            if(hitBase) {
+                item = hitBase[0];
+                if (this.weightValue > 0 && item.obj.weightValue > 0) {
+                    this.x += Math.ceil(item.normal.x * -item.overlap);
+                    this.y += Math.ceil(item.normal.y * -item.overlap);
+                }
+                var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
+                var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                if (!_.isUndefined(weights)) {
+                    for (var i = 0; i < weights.length; i++) {
+                        weights[i].destroy();
+                    }
+                }
+                if (this.weightValue > 0) {
+                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                }
+            }
+
+            //check for collision with homebase
+            var hitHomebase = this.hit("Homebase"), 
+              item, normal = {x: 0, y: 0};
+
+            if(hitHomebase) {
+                item = hitHomebase[0];
+                if (this.weightValue > 0 && item.obj.weightValue > 0) {
+                    this.x += Math.ceil(item.normal.x * -item.overlap);
+                    this.y += Math.ceil(item.normal.y * -item.overlap);
+                }
+                var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
+                var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                if (!_.isUndefined(weights)) {
+                    for (var i = 0; i < weights.length; i++) {
+                        weights[i].destroy();
+                    }
+                }
+                if (this.weightValue > 0) {
+                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                }
+            }
+
+            //check for collision with other tractors
+            var hitTractor = this.hit("Tractor"), 
+              item, normal = {x: 0, y: 0};
+
+            if(hitTractor) {
+                item = hitTractor[0];
+                this.x += Math.ceil(item.normal.x * -item.overlap);
+                this.y += Math.ceil(item.normal.y * -item.overlap);
+            }
+
+
         })
         .bind('KeyDown', function(e) {
             /*
@@ -107,6 +159,7 @@ Crafty.c("Tractor", {
             // stop * animations
             this.stop();
         })
+/*
         .onHit("Tractor",
             function(ent) {
                 var obj = ent[0].obj;
@@ -119,56 +172,38 @@ Crafty.c("Tractor", {
                 }
                 if(this.firstHit) {
                     switch (hitType) {
-                        case 0: // nothing
-                            break;
                         case 1: // tractor drops weight
-                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 32 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
                             this.weightValue = obj.weightValue;
                             obj.weightValue = 0;
-                            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
                             break;
                         case 2: // tractor picks up weight
-                            var entities = Crafty.map.search({_x: this._x + 16, _y: this._y, _w: 32, _h: 32 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
                             obj.weightValue = this.weightValue;
                             this.weightValue = 0;
-                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
                             break;
                         case 3: // no access
-                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 32 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
-                            var entities = Crafty.map.search({_x: this._x + 16, _y: this._y, _w: 32, _h: 32 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
                             var tmp = this.weightValue;
                             this.weightValue = obj.weightValue;
                             obj.weightValue = tmp;
-                            var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
-                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
-
                             break;
                     }
                     // Crafty.audio.play("weight-switch");
                     this.firstHit = 0;
+                    var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
+                    var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
+                    if (!_.isUndefined(weights)) {
+                        for (var i = 0; i < weights.length; i++) {
+                            weights[i].destroy();
+                        }
+                    }
+                    if (this.weightValue > 0) {
+                        var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                    }
                 }
-
             }, function() {
                 this.firstHit = 1;
             }
         )
-
+*/
         /*
 
 
@@ -222,48 +257,27 @@ Crafty.c("Base", {
                 }
                 if(this.firstHit) {
                     switch (hitType) {
-                        case 0: // nothing
-                            break;
                         case 1: // tractor drops weight
-                            var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 64 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
                             this.weightValue = obj.weightValue;
                             obj.weightValue = 0;
-                            var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                             // Crafty.audio.play("weight-down");
                             break;
                         case 2: // tractor picks up weight
-                            var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
-                            var weight = _.find(entities, function(entity){ return entity.__c.WeightOnGround == true; });
-                            if (!_.isUndefined(weight)) {
-                                weight.destroy();
-                            }
                             obj.weightValue = this.weightValue;
                             this.weightValue = 0;
-                            var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
                             // Crafty.audio.play("weight-up");
-                            break;
-                        case 3: // no access  // BUGI
-/*
-                            obj.attr({
-                                x: obj._from.x,
-                                y: obj._from.y
-                            });
-*/
                             break;
                     }
                     this.firstHit = 0;
-                } else {
-                    if (hitType == 3) {
-/*
-                        obj.attr({
-                            x: obj._from.x,
-                            y: obj._from.y
-                        });
-*/
+                    var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
+                    var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnGround == true; });
+                    if (!_.isUndefined(weights)) {
+                        for (var i = 0; i < weights.length; i++) {
+                            weights[i].destroy();
+                        }
+                    }
+                    if (this.weightValue > 0) {
+                        var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                     }
                 }
 
@@ -296,56 +310,34 @@ Crafty.c("Homebase", {
                     var farm = this.hit('Farm')[0].obj;
                     if (farm.id == obj.farmId) {
                         switch (hitType) {
-                            case 0: // nothing
-                                break;
                             case 1: // tractor drops weight
-                                var entities = Crafty.map.search({_x: obj._x + 16, _y: obj._y, _w: 32, _h: 64 });
-                                var weight = _.find(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                                if (!_.isUndefined(weight)) {
-                                    weight.destroy();
-                                }
                                 this.weightValue = obj.weightValue;
                                 obj.weightValue = 0;
-                                var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                                 // Crafty.audio.play("weight-down");
                                 break;
                             case 2: // tractor picks up weight
-                                var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
-                                var weight = _.find(entities, function(entity){ return entity.__c.WeightOnGround == true; });
-                                if (!_.isUndefined(weight)) {
-                                    weight.destroy();
-                                }
                                 obj.weightValue = this.weightValue;
                                 this.weightValue = 0;
-                                var e = Crafty.e("WeightOnWheels", "ww"+obj.weightValue+"g").attr({ x: obj._x + 20, y: obj._y + 20, z: 3 });
                                 // Crafty.audio.play("weight-up");
-                                break;
-                            case 3: // no access
-                                obj.attr({
-                                    x: obj._from.x, 
-                                    y: obj._from.y
-                                });
                                 break;
                         }
                         // trigger Farm to check its current weightValue sum
                         farm.trigger("CountBases");                        
-                    } else {
-                        log("kaverin farmi");
                     }
                     this.firstHit = 0;
-                } else {
-                    if (hitType == 3) {
-                        obj.attr({
-                            x: obj._from.x,
-                            y: obj._from.y
-                        });
+                    var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 32, _h: 32 });
+                    var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnGround == true; });
+                    if (!_.isUndefined(weights)) {
+                        for (var i = 0; i < weights.length; i++) {
+                            weights[i].destroy();
+                        }
+                    }
+                    if (this.weightValue > 0) {
+                        var e = Crafty.e("WeightOnGround", "wb"+this.weightValue+"g").attr({ x: this._x - 16, y: this._y - 16, z: 3 });
                     }
                 }
 
             }, function() {
-
-                log('ohi on');
-
                 this.firstHit = 1;
             }
         )
@@ -387,7 +379,9 @@ Crafty.c("Farm", {
             // loop weights and get the weightValues
             _.each(weights, function(weight){
                 weightValue += weight.obj.weightValue;
-                weightCount += 1;
+                if (weight.obj.weightValue > 0) {
+                    weightCount += 1;
+                }
             });
             // set as ent var
             this.weightValue = weightValue;
@@ -533,6 +527,8 @@ Crafty.c("Farm", {
                 });
 
 
+            } else {
+                log("score: "+team.score+" count"+weightCount);
             }
         })
     }
