@@ -79,7 +79,7 @@ TODOT
 MASU	- Äänet!
 
 Pelaajan liittyessä farmiin : 
-	- nimi listaan, 
+	- nimi listaan,
 	- ekasta traktori 50% opacity (voinee olla hankala)
 	- tokasta traktori näkyviin kunnolla
 
