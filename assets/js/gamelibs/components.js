@@ -461,7 +461,7 @@ Crafty.c("Farm", {
                         if (players.length > 0) {
                             players += ", ";
                         }
-                        players += tractor.tyres[0].left.name + ", " + tractor.tyres[0].right.name;
+                        players += tractor.tyres.left.name + ", " + tractor.tyres.right.name;
 
                     })
                     // time points
