@@ -112,6 +112,9 @@ function() {
                    //
                    if(!_.isUndefined(qrcode.action)) {
                         ent.addComponent(qrcode.action.toUpperCase());
+                        Crafty.e("2D, DOM, Label, Text")
+                            .attr({ x: qrcode._x, y: qrcode._ly, z: 4, w: 150, h: 20 })
+                            .text("<strong>" + qrcode.label + "</strong>");
                    }
                 }
             });
