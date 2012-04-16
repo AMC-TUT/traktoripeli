@@ -393,7 +393,7 @@ Crafty.c("Farm", {
             //
             team.score = this.weightValue;
             //
-            if(team.score > 10 && weightCount == 4) {
+            if(team.score > 1000 && weightCount == 4) {
 
                 // stop tractors
                 // STOP
