@@ -4,10 +4,14 @@
 
 var Game = {
     // add this description to level obj
-    sockets: { ready: false, roomID: 0, dashboard: false },
+    sockets: { 
+        ready: false, 
+        roomID: 0, 
+        dashboard: false },
+    dashboard: { 
+        generated: false },
     // TODO tama kuuluu kentan yhteyteen
     description: "Kerää kentältä kotitilasi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein kotitila voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
-    dashboard: { generated: false },
     qrcodes: {
         generated: 0,
         images: [

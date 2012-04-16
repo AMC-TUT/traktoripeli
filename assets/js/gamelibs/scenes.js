@@ -98,7 +98,7 @@ function() {
             var ent = Crafty.e("2D, DOM, Image, QRCode")
             .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
-            var json = { "action": qrcode.action, "id": Game.sockets.roomID };
+            var json = { "action": qrcode.action, "id": Game.sockets.roomID, "fid": qrcode.id };
 
             $.ajax({
                 type: "GET",
@@ -107,8 +107,8 @@ function() {
                 cache: true,
                 success: function(data) {
                    var qr = $(data)[2];
-                   //log(qr)
-                   ent.image( $(qr).attr('src') ); //game.path + "/assets/img/qrcode.png");
+
+                   ent.image( $(qr).attr('src') );
                    //
                    if(!_.isUndefined(qrcode.action)) {
                         ent.addComponent(qrcode.action.toUpperCase());

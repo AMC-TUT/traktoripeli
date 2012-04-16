@@ -8,7 +8,7 @@
     var orbiter;
     var msgManager;
     var UPC = net.user1.orbiter.UPC;
-    var roomID = "game-" + Math.floor(Math.random() * 100000);
+    var roomID = "g-" + Math.floor(Math.random() * 100000);
 
     //==============================================================================
     // INITIALIZATION

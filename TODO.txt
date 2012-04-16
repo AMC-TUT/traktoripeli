@@ -7,6 +7,7 @@ LOADING
 
 	DONE - pikkutraktoreita
 	DONE - cache manifest file nopeampaan lataamiseen
+	DONE - ruostetraktori
 
 DASHBOARD
 
@@ -121,7 +122,6 @@ TEME	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 
 
 MUUTA?
 
-	- ruostetraktori
 	- Random events
 	- Pyörän jäljet
 
