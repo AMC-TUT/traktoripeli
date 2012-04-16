@@ -11,16 +11,16 @@ var Game = {
     dashboard: { 
         generated: false },
     // TODO tama kuuluu kentan yhteyteen
-    description: "Kerää kentältä kotitilasi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein kotitila voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
+    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
     qrcodes: {
         generated: 0,
         images: [
-        { _x: 95, _y: 5, action: 'join', id: 1, _ly: 135, label: 'Liity kotitilaan' }, // 1
-        { _x: 610, _y: 5, action: 'join', id: 2, _ly: 135, label: 'Liity kotitilaan' }, // 2
-        { _x: 1067, _y: 674, action: 'join', id: 3, _ly: 644, label: 'Liity kotitilaan' }, // 3
-        { _x: 550, _y: 674, action: 'join', id: 4, _ly: 644, label: 'Liity kotitilaan' }, // 4
-        { _x: 20, _y: 608, action: 'join', id: 5, _ly: 738, label: 'Liity kotitilaan' }, // 5
-        { _x: 1140, _y: 70, action: 'join', id: 6, _ly: 40, label: 'Liity kotitilaan' }, // 6
+        { _x: 95, _y: 5, action: 'join', id: 1, _ly: 135, label: 'Liity farmiin' }, // 1
+        { _x: 610, _y: 5, action: 'join', id: 2, _ly: 135, label: 'Liity farmiin' }, // 2
+        { _x: 1067, _y: 674, action: 'join', id: 3, _ly: 644, label: 'Liity farmiin' }, // 3
+        { _x: 550, _y: 674, action: 'join', id: 4, _ly: 644, label: 'Liity farmiin' }, // 4
+        { _x: 20, _y: 608, action: 'join', id: 5, _ly: 738, label: 'Liity farmiin' }, // 5
+        { _x: 1140, _y: 70, action: 'join', id: 6, _ly: 40, label: 'Liity farmiin' }, // 6
         { _x: 440, _y: 280, action: 'start', _ly: 410, label: 'Aloita peli' }, // start
         { _x: 720, _y: 280, action: 'close', _ly: 410, label: 'Sulje peli' } // close
         ]

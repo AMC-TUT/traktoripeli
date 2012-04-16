@@ -50,10 +50,6 @@ Crafty.c("Tractor", {
                 this.attr({ x:from.x, y:from.y });
             }
 
-            // tractor hits the wall
-            if (this.hit('Wall')) { 
-                this.attr({ x: from.x, y: from.y }); 
-            }
         })
         .bind("EnterFrame", function(frame) {
 
@@ -70,17 +66,18 @@ Crafty.c("Tractor", {
             }
             
             //check for collision with houses
-            /*
-            var collision = this.hit("WeightOnGround"), 
-              item;
+
+            var collision = this.hit("Wall"), 
+              item, normal = {x: 0, y: 0};
 
             if(collision) {
                 item = collision[0];
+                this.x += Math.ceil(item.normal.x * -item.overlap);
+                this.y += Math.ceil(item.normal.y * -item.overlap);
+                log(item.normal.x);
+                log(item.overlap);
 
-                this.x += Math.ceil(item._x * -item.overlap);
-                this.y += Math.ceil(item._y * -item.overlap);
             }
-            */
             
         })
         .bind('KeyDown', function(e) {
@@ -173,6 +170,9 @@ Crafty.c("Tractor", {
         )
 
         /*
+
+
+
         .onHit("Base",
             function(ent) {
                 //log('Tractor osui Baseen!');
@@ -247,19 +247,23 @@ Crafty.c("Base", {
                             // Crafty.audio.play("weight-up");
                             break;
                         case 3: // no access  // BUGI
+/*
                             obj.attr({
                                 x: obj._from.x,
                                 y: obj._from.y
                             });
+*/
                             break;
                     }
                     this.firstHit = 0;
                 } else {
                     if (hitType == 3) {
+/*
                         obj.attr({
                             x: obj._from.x,
                             y: obj._from.y
                         });
+*/
                     }
                 }
 
