@@ -2,9 +2,9 @@
 Crafty.c("Tractor", {
     id: 0,
     farmId: 0,
-    team: 0, // TURHA?
-    number: 0, // TURHA?
-    slot: 0, // TURHA?
+    t_eam: 0, // TURHA?
+    n_umber: 0, // TURHA?
+    s_lot: 0, // TURHA?
     weightValue: 0, // value of the loaded weight
     firstHit: 1,
     init: function() {
@@ -129,7 +129,6 @@ Crafty.c("Tractor", {
                 this.x += Math.ceil(item.normal.x * -item.overlap);
                 this.y += Math.ceil(item.normal.y * -item.overlap);
             }
-
 
         })
         .bind('KeyDown', function(e) {
@@ -361,7 +360,6 @@ Crafty.c("WeightOnWheels", {
     }
 });
 
-
 Crafty.c("Farm", {
     weightValue: 0,
     id: 0,
@@ -534,13 +532,6 @@ Crafty.c("Farm", {
     }
 });
 
-/*
-Crafty.c("Shadow", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision");
-    }
-});
-*/
 Crafty.c("Nameplate", {
     init: function() {
         this.addComponent("2D", "DOM");

@@ -41,7 +41,6 @@ function() {
      
         // show loading scene properly before moving along
         setTimeout(function() {
-
             // remove loading stuff from DOM
             $(".loading").remove();
             $(".container").removeClass("container-loading");
@@ -98,7 +97,8 @@ function() {
             var ent = Crafty.e("2D, DOM, Image, QRCode")
             .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
-            var json = { "action": qrcode.action, "id": Game.sockets.roomID, "fid": qrcode.id };
+            // tid = teamID
+            var json = { "action": qrcode.action, "roomId": Game.sockets.roomID, "tid": qrcode.id };
 
             $.ajax({
                 type: "GET",
@@ -111,8 +111,11 @@ function() {
                    ent.image( $(qr).attr('src') );
                    //
                    if(!_.isUndefined(qrcode.action)) {
+
                         ent.addComponent(qrcode.action.toUpperCase());
-                        Crafty.e("2D, DOM, Label, Text")
+                        ent.addComponent("QRCode-"+qrcode.id);
+
+                        Crafty.e("2D, DOM, Label, Text, QRCode-"+qrcode.id)
                             .attr({ x: qrcode._x, y: qrcode._ly, z: 4, w: 150, h: 20 })
                             .text("<strong>" + qrcode.label + "</strong>");
                    }

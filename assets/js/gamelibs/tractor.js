@@ -1,6 +1,3 @@
-// traktorin kääntäminen toimii tällä consolista
-// var tractor = Crafty.map.search({_x: 312, _y: 60, _w: 64, _h: 64 })[6];
-// tractor.multiway( 2, { UP_ARROW: (tractor._rotation - 90) % 360, DOWN_ARROW: (tractor._rotation + 90) % 360 });
 
 var Game = {
     // add this description to level obj
@@ -25,16 +22,17 @@ var Game = {
         { _x: 720, _y: 280, action: 'close', _ly: 410, label: 'Sulje peli' } // close
         ]
     },
+    teams: [], // add teams when players join to union
     // teams
     teams: [
         {
-            "id" : Crafty.math.randomInt(1, 12),
+            "id" : 1, // sama kuin farm id, tarvitaanko siis lainkaan?
             "farmId" : 1,
             "score" : 0,
             "total" : 0,
             "tractors" : [
                 {
-                    "id": Crafty.math.randomInt(1000, 2000),
+                    "id": 1,
                     "tyres": 
                         {
                             "left": {
@@ -48,7 +46,7 @@ var Game = {
                         }
                 },
                 {
-                    "id": Crafty.math.randomInt(1000, 2000),
+                    "id": 2,
                     "tyres":
                         {
                             "left": {
@@ -87,6 +85,7 @@ var Game = {
             ]
         }
     ],
+    
     // weights
     weights: [
         [
@@ -325,6 +324,145 @@ var Game = {
         }
         
     ],
+    createTeam: function(id) {
+        var team =
+        {
+            "id": id, // sama kuin farm id, toinen siis turha?
+            "farmId": id,
+            "score": 0,
+            "total": 0,
+            "tractors": [],
+            "playersCount": 0 // keep track how many players has joined to the team
+        };
+
+        // add team to game teams array as a new team
+        var teams = Game.teams;
+        teams.push(team);
+
+        return true;
+    },
+    joinTeam: function(teamId, playerId, playerName) {
+        // get the right team from array
+        var team = _.find(Game.teams, function(obj) { return obj.id == teamId; });
+
+        _.each(Game.teams, function(obj) {
+            _.each(obj.tractors, function(tractor) {
+                if(tractor.tyres.left.id == playerId) {
+                    tractor.tyres.left = 0; 
+                    obj.playersCount = obj.playersCount-1;
+                }
+                if(tractor.tyres.right.id == playerId) {
+                    tractor.tyres.right = 0;
+                    obj.playersCount = obj.playersCount-1;
+                } 
+            });
+        });
+        //log(team)
+        // check that teamId was right 
+        // and team was found
+        // and that team is not full already (max 4 players)
+        if(_.isUndefined(team)) { return null; }
+
+        if(team.playersCount > 3 ) { return false; }
+
+        // jos ei ole vielä traktoreita niin luo 1. ja liity vasemmaksi renkaaksi
+        var tractorCount = team.tractors.length;
+
+        var playerAdded = false;
+
+        // == 0
+        if(tractorCount == 0) {
+            var tractor = {
+                "id": 1,
+                "tyres": {
+                    "left": 0,
+                    "right": 0
+                },
+            }
+
+            var left = {
+                "id": parseInt(playerId),
+                "name": playerName
+            }
+
+            tractor.tyres.left = left;
+
+            team.tractors.push(tractor);
+
+            playerAdded = true;
+
+        }
+        // == 1
+        else if(tractorCount == 1) {
+            //log("else if(tractorCount == 1)")
+            //log(team.tractors[0]);
+
+            // jos on traktoreita hae ensimmäinen vapaa paikka eli 
+            // tarkista 1. traktorin rengaspaikat ja rekisteröidy siihen jos vapaana
+            //if(!_.isUndefined(team.tractors[0])) {
+            if(team.tractors[0].tyres.left == 0) {
+                //log("team.tractors[0].left == 0")
+                team.tractors[0].tyres.left = { "id": playerId, "name": playerName };
+                playerAdded = true;
+
+            } else if(team.tractors[0].tyres.right == 0) {
+                //log("team.tractors[0].right == 0")
+                team.tractors[0].tyres.right = { "id": playerId, "name": playerName };
+                playerAdded = true;
+            }
+
+            // 1. traktori täynnä tarkista onko toista traktoria olemassa
+            // luo toinen traktori jos ei ole olemassa ja rekisteröidy sen vasemmaksi renkaaksi
+
+            // if there is no free tyres left in 1. tractor - create a new one
+            if(!playerAdded) {
+                // taa on sama kuin == 0 kohdassa joten refactoroitava myohemmin!!
+                var tractor = {
+                    "id": 2,
+                    "tyres": {
+                        "left": 0,
+                        "right": 0
+                    },
+                }
+
+                var left = {
+                    "id": parseInt(playerId),
+                    "name": playerName
+                }
+
+                tractor.tyres.left = left;
+
+                team.tractors.push(tractor);
+
+                playerAdded = true;
+            }
+
+            //}
+        }
+        // jos 2. traktori on olemassa niin tarkista 2. traktorin vapaat paikatniin luo toinen traktori
+
+        // > 1 and player has not yeat added
+        else if(tractorCount == 2 && !playerAdded) {
+            if(team.tractors[1].tyres.left == 0) {
+                team.tractors[1].tyres.left = { "id": playerId, "name": playerName };
+                playerAdded = true;
+            } else if(team.tractors[1].tyres.right == 0) {
+                team.tractors[1].tyres.right = { "id": playerId, "name": playerName };
+                playerAdded = true;
+            }
+        }
+
+        // if adding player has failed
+        if(!playerAdded) {
+            return false;
+        }
+
+        team.playersCount += 1;
+
+        // default
+        return true;
+
+    },
     generateFarm: function(farmId) {
         _.each(this.farms, function(farm){
             // if right farm
@@ -414,6 +552,56 @@ var Game = {
             // odd | even switcher
             i = i ? 0 : 1;
         });
+    },
+    updateDashBoardTextsAndTractors: function() {
+        // find the team based on farmId
+        _.each(Game.teams, function(team) {
+
+            var farm = _.find(Game.farms, function(obj){ return obj.id == team.id; });
+
+//            $(".NameplateText").remove();
+/*
+            _.each(Game.farms, function(obj) {
+                log("OBJ")
+                log(obj)
+                _.each(obj.nameplates, function(nameplate) { // _.filter
+                    log(nameplate)
+                    var entities = Crafty.map.search({_x: nameplate._x, y: nameplate._y, _w: 400, _h: 200 });
+                    log("removeplates entities")
+                    log(entities)
+                    _.each(entities, function(ent) {
+                        log(ent)
+                        log(ent.__c.NameplateText)
+                        if(ent.__c.NameplateText) ent.destroy();
+                    });
+                });
+            });
+*/
+            // create nameplatetexts
+            for (var i = 0; i < team.tractors.length; i++) {
+                Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres.right.name);
+                Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres.left.name);
+            }
+
+            // tractors
+            var i = 0;
+            _.each(team.tractors, function(tractor) {
+                var entities = Crafty.map.search({_x: tractor._x + 16, _y: tractor._y, _w: 64, _h: 64 });
+                log("remove tractors")
+                log(entities)
+                _.each(entities, function(ent) {
+                    if(ent.__c.Tractor) ent.destroy();
+                });
+
+                if(tractor.tyres.left != 0 && tractor.tyres.right != 0) {
+                    var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
+                    ent.addComponent(farm.tractors[i].c);
+                }
+                i++;
+            });
+        });
+
+        return false;
     },
     // add bases to scene
     generateBases: function() {
