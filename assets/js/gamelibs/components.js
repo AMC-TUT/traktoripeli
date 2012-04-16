@@ -15,14 +15,10 @@ Crafty.c("Tractor", {
         this.slot = 0,
         this.team = 1,
         this.number = 1,
-        this.movement = {
-            speed: 2,
-            difference: 1,
-            rotate: {
-                sin: 0,
-                cos: 0,
-            }
-        },
+
+        this._keyForward = Crafty.keys.UP_ARROW, //"UP_ARROW",
+        this._keyReverse = Crafty.keys.DOWN_ARROW, //"DOWN_ARROW",
+
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "team1vechile1")
         .origin("bottom")
         .collision(new Crafty.polygon([16,0], [48,0], [48,64], [16,64]))
@@ -58,13 +54,19 @@ Crafty.c("Tractor", {
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
 
-            if(this.isDown(Crafty.keys.UP_ARROW)) {
+            if(this.isDown(this._keyForward)) {
                 this.x += vx * 1.5;
                 this.y += vy * 1.5;
-            } else if(this.isDown(Crafty.keys.DOWN_ARROW)) {
+            } else if(this.isDown(this._keyReverse)) {
                 this.x += -vx * 0.5;
                 this.y += -vy * 0.5;
             }
+
+            if(this.isDown(Crafty.keys.LEFT_ARROW)) {
+                this.rotation -= 1;
+            } else if(this.isDown(Crafty.keys.RIGHT_ARROW)) {
+                this.rotation += 1;
+            } 
 
             //check for collision with farms
             var hitWall = this.hit("Wall"), 

@@ -173,8 +173,8 @@ var Game = {
                 { _x: 381, _y: 5 }
             ],
             "tractors" : [
-                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180 },
-                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180 }
+                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: Crafty.keys.Q, _keyReverse: Crafty.keys.A },
+                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: Crafty.keys.W, _keyReverse: Crafty.keys.S }
             ]
         },
         {
@@ -502,14 +502,18 @@ var Game = {
                     ent.farmId = farmId;
                     ent.addComponent(farm.tractors[i].c);
 
+                    ent._keyForward = farm.tractors[i]._keyForward;
+                    ent._keyReverse = farm.tractors[i]._keyReverse;
+
                     // ent to game obj
                     team.tractors[i].ent = ent;
 
-                    Game.testTractor = ent;
-                    Crafty.addEvent(this, "mousemove", function(e) {
-                        var pos = Crafty.DOM.translate(e.clientX, e.clientY);
-                        Game.testTractor.rotation = ~~(Math.atan2(pos.y - Game.testTractor._y, pos.x - Game.testTractor._x) * (180 / Math.PI)) + 90;
-                    });
+                    //Game.testTractor = ent;
+                    //Crafty.addEvent(this, "mousemove", function(e) {
+                        //var pos = Crafty.DOM.translate(e.clientX, e.clientY);
+                        //log(pos)
+                        //Game.testTractor.rotation = ~~(Math.atan2(pos.y - Game.testTractor._y, pos.x - Game.testTractor._x) * (180 / Math.PI)) + 90;
+                    //});
 
                 }
             }
