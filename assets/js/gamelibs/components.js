@@ -376,11 +376,13 @@ Crafty.c("Farm", {
             // trigger to count weight values on Farm
             // clear old value
             var weightValue = 0;
+            var weightCount = 0;
             // get farms weights
             var weights = this.hit("Homebase");
             // loop weights and get the weightValues
             _.each(weights, function(weight){
                 weightValue += weight.obj.weightValue;
+                weightCount += 1;
             });
             // set as ent var
             this.weightValue = weightValue;
@@ -391,7 +393,7 @@ Crafty.c("Farm", {
             //
             team.score = this.weightValue;
             //
-            if(team.score > 10) {
+            if(team.score > 10 && weightCount == 4) {
 
                 // stop tractors
                 // STOP
@@ -466,10 +468,6 @@ Crafty.c("Farm", {
                     })
                     // time points
                     var timebonus = team.total - team.score;
-
-                    //var playersT1 = _.isUndefined(team.tractors[0]) ? "" : team.tractors[0].tyres.left.name + ', ' + team.tractors[0].tyres.right.name; 
-                    //var playersT2 = _.isUndefined(team.tractors[1]) ? "" : team.tractors[1].tyres.left.name + ', ' + team.tractors[1].tyres.right.name;
-                    //var players = playersT2.length ? playersT1 + ', ' + playersT2 : playersT1;
 
                     //
                     dom += "<tr><td>" + counter + "</td><td>" + team.score + "</td><td>" + timebonus + "</td><td>" + team.total +"</td><td>" + players + "</td></tr>";
