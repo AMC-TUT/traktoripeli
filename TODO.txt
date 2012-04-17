@@ -83,6 +83,11 @@ DASHBOARD
 
 	DONE - qr koodeihin tekstit
 
+GAME
+
+TEME	DONE - tractorin multi-instanssi monipelintuki
+TEME	DONE - taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
+
 ------------------
 
 TODOT
@@ -90,27 +95,24 @@ TODOT
 	- Pelin skaalamisen fiksaaminen paremmaksi
 
 Pelaajan liittyessä farmiin : 
-	- nimi listaan,
+	DONE - nimi listaan,
 	- ekasta traktori 50% opacity (voinee olla hankala)
-	- tokasta traktori näkyviin kunnolla
+	DONE - tokasta traktori näkyviin kunnolla
 
-	- Pelaajien liittyessä Game.teams taulukkoon tiedot! userid+
+	DONE - Pelaajien liittyessä Game.teams taulukkoon tiedot! userid+
 
 	- Aloitus QR-koodista 
-		- Game scene auki, 
+		DONE - Game scene auki, 
 		- trööt-soundi  
 
-GAME
 
-TEME	- tractorin multi-instanssi monipelintuki
-TEME	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
 
 OHJAIN
 
-TEME	- 2 syötettä +		
-TEME	- DONE reverse false|true
+TEME	DONE - 2 syötettä +		
+TEME	DONE - DONE reverse false|true
 
-TEME	- kun 1000 täyteen niin ohjaimet disableControl 
+TEME	DONE - kun 1000 täyteen niin ohjaimet disableControl 
 
 PUNNUKSET
 
@@ -118,7 +120,7 @@ MASU	- harkintaan: kuvakulma?
 
 TRAKTORI
 
-TEME	- käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
+MASU	DONE - käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
 		  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
 
 MUUTA?

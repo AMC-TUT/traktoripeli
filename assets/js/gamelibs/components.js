@@ -420,7 +420,10 @@ Crafty.c("Farm", {
             if(team.score == 1000 && weightCount == 4) {
 
                 // stop tractors
-                // STOP
+                _.each(GameController, function(controller) {
+                    controller.ent.disableControl();
+                    controller.ent = null;
+                })
 
                 // timer stop and get the value for bonus points
                 Crafty.trigger("StopTimer");
