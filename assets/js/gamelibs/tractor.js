@@ -173,8 +173,8 @@ var Game = {
                 { _x: 381, _y: 5 }
             ],
             "tractors" : [
-                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: Crafty.keys.Q, _keyReverse: Crafty.keys.A },
-                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: Crafty.keys.W, _keyReverse: Crafty.keys.S }
+                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: "Q", _keyReverse: "A" },
+                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: "W", _keyReverse: "S" }
             ]
         },
         {

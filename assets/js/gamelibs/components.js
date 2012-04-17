@@ -18,6 +18,7 @@ Crafty.c("Tractor", {
 
         this._keyForward = Crafty.keys.UP_ARROW, //"UP_ARROW",
         this._keyReverse = Crafty.keys.DOWN_ARROW, //"DOWN_ARROW",
+        this._reverse = 0,
 
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "team1vechile1")
         .origin("bottom")
@@ -145,16 +146,20 @@ Crafty.c("Tractor", {
                 }
             } else 
             */
-            if(this.isDown('DOWN_ARROW')) {
+            
+            if(this.isDown(this._keyForward)) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
             
-            } else if(this.isDown('UP_ARROW')) {
+            }
+            
+            if(this.isDown(this._keyReverse)) {
                 if (!this.isPlaying("BrwdBrwd")) {
                     this.stop().animate("BrwdBrwd", 10, -1)
                 } 
             }
+            
         })
         .bind('KeyUp', function(e) {
             // stop * animations
