@@ -381,7 +381,7 @@ var Game = {
                 } 
             });
         });
-        //log(team)
+
         // check that teamId was right 
         // and team was found
         // and that team is not full already (max 4 players)
@@ -534,6 +534,10 @@ var Game = {
 
                     // ent to game obj
                     team.tractors[i].ent = ent;
+
+                    var controller = _.find(GameController, function(obj) { return obj.tractorId == team.tractorId; });
+
+                    controller["ent"] = ent;
 
                     //Game.testTractor = ent;
                     //Crafty.addEvent(this, "mousemove", function(e) {

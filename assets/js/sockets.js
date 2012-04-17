@@ -185,16 +185,16 @@
 
             if(addOk) {
                 //
-                GameController['"'+clientID+'"'] = {};
-                GameController['"'+clientID+'"']["tractorId"] = teamId;
+                GameController[clientID] = {};
+                GameController[clientID]["tractorId"] = parseInt(teamId);
                 //GameController['"'+clientID+'"']["tractorTyre"] = tractorTyre;
                 //
                 _.each(Game.teams, function(team) {
                     _.each(team.tractors, function(tractor) {
                         if(tractor.tyres.left.id == clientID) {
-                            GameController['"'+clientID+'"']["tractorTyre"] = "left";
+                            GameController[clientID]["tractorTyre"] = "left";
                         } else if(tractor.tyres.right.id == clientID) {
-                            GameController['"'+clientID+'"']["tractorTyre"] = "right";
+                            GameController[clientID]["tractorTyre"] = "right";
                         }
                     });
                 });
