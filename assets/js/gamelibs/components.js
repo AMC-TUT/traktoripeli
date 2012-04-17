@@ -111,8 +111,8 @@ Crafty.c("Tractor", {
             // drop acc values on each frame so that tractor tyre 
             // will stop pretty fast it it does not get new values 
             // through accelerometer
-            this._accLeft = this._accLeft < 0.95 ? 0 : this._accLeft-0.95;
-            this._accRight = this._accRight < 0.95 ? 0 : this._accRight-0.95;
+            this._accLeft = this._accLeft < 0.5 ? 0 : this._accLeft-0.5;
+            this._accRight = this._accRight < 0.5 ? 0 : this._accRight-0.5;
 
             //check for collision with farms
             var hitWall = this.hit("Wall"), 
