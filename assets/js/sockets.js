@@ -103,7 +103,7 @@
     // Triggered when another client joins the chat room
     function clientAddedListener(roomID, clientID) {
         displayChatMessage("User" + clientID + " joined the lobby.");
-    }
+    } 
 
     // Triggered when another client leaves the chat room
     function clientRemovedListener(roomID, clientID) {
