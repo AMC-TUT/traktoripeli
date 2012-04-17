@@ -2,6 +2,7 @@ DONET
 
 	DONE - Skaalaus näytön kokoon
 	DONE - Sockettien tuominen
+	DONE - Äänet!
 
 LOADING
 
@@ -72,13 +73,15 @@ OHJAIN
 
 	DONE - kerroin pakille? : 0.5
 
+DASHBOARD
+
+	DONE - qr koodeihin tekstit
+
 ------------------
 
 TODOT
 
 	- Pelin skaalamisen fiksaaminen paremmaksi
-	
-MASU	- Äänet!
 
 Pelaajan liittyessä farmiin : 
 	- nimi listaan,
@@ -91,7 +94,6 @@ Pelaajan liittyessä farmiin :
 		- Game scene auki, 
 		- trööt-soundi  
 
-
 GAME
 
 TEME	- tractorin multi-instanssi monipelintuki
@@ -100,8 +102,8 @@ TEME	- taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneist
 OHJAIN
 
 TEME	- 2 syötettä +		
-TEME	- reverse false|true
-	
+TEME	- DONE reverse false|true
+
 TEME	- kun 1000 täyteen niin ohjaimet disableControl 
 
 ONWHEELS

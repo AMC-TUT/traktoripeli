@@ -1,4 +1,28 @@
 
+
+var GameControllers = {
+
+        929: { // mobiles socket clientID for direct & fast access
+            ent: null, // viittaus entiteettiin, jonka ohjaukseen osallistuu
+            tyre: null, // left or right tyre
+        }
+
+/*
+        3: { //  id
+            ent: null, // viittaus entiteettiin
+            tyres: {
+                left: 9, // left player id
+                right: 13 // right player id
+            },
+            acc: {
+                left: 5, // accelerometer value for left tyre set by socket
+                right: 6, // accelerometer value for left tyre set by socket
+            }
+        }
+*/
+};
+
+
 var Game = {
     // add this description to level obj
     sockets: { 
@@ -8,7 +32,7 @@ var Game = {
     dashboard: { 
         generated: false },
     // TODO tama kuuluu kentan yhteyteen
-    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaan pyörimissuuntaa.",
+    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaiden pyörimissuuntaa.",
     qrcodes: {
         generated: 0,
         images: [
@@ -173,8 +197,8 @@ var Game = {
                 { _x: 381, _y: 5 }
             ],
             "tractors" : [
-                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: "Q", _keyReverse: "A" },
-                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: "W", _keyReverse: "S" }
+                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: "Q", _keyReverse: "A", _keyLeft: "1", _keyRight: "Z" },
+                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: "W", _keyReverse: "S", _keyLeft: "2", _keyRight: "X" }
             ]
         },
         {
@@ -504,6 +528,9 @@ var Game = {
 
                     ent._keyForward = farm.tractors[i]._keyForward;
                     ent._keyReverse = farm.tractors[i]._keyReverse;
+
+                    ent._keyLeft = farm.tractors[i]._keyLeft;
+                    ent._keyRight = farm.tractors[i]._keyRight;
 
                     // ent to game obj
                     team.tractors[i].ent = ent;

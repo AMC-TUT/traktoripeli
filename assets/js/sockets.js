@@ -51,7 +51,8 @@
         msgManager.addMessageListener(UPC.JOINED_ROOM, joinedRoomListener, this);
         msgManager.addMessageListener(UPC.CLIENT_ADDED_TO_ROOM, clientAddedListener, this);
         msgManager.addMessageListener(UPC.CLIENT_REMOVED_FROM_ROOM, clientRemovedListener, this);
-        msgManager.addMessageListener("GAME_MESSAGE", chatMessageListener, this, [roomID]);
+        msgManager.addMessageListener("GAME_MESSAGE", gameMessageListener, this, [roomID]);
+        msgManager.addMessageListener("MOVE_MESSAGE", moveMessageListener, this, [roomID]);
         msgManager.addMessageListener(UPC.CLIENT_ATTR_UPDATE, clientAttributeUpdateListener, this);
 
         displayChatMessage("Connected.");
@@ -126,8 +127,23 @@
     //==============================================================================
     // Triggered when a game message is received
 
+    function moveMessageListener(fromClientID, message) {
+        log("MOVE MESSAGE FROM CLIENT: " + fromClientID)
+        log(message);
+
+        var attrs = message.split(";");
+        // attrs[0] = action
+        // attrs[1] = accelerometer value
+
+        if(attrs[0] = "jump") {
+            // change direction
+        }
+
+    }
+
+
     // Triggered when a game message is received
-    function chatMessageListener(fromClientID, message) {
+    function gameMessageListener(fromClientID, message) {
         log("MESSAGE FROM CLIENT: " + fromClientID)
         log(message);
         //var url = $("#" + gameId).closest('a').attr("href");

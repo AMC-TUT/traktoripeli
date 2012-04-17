@@ -2,11 +2,11 @@
 Crafty.c("Tractor", {
     id: 0,
     farmId: 0,
-    t_eam: 0, // TURHA?
-    n_umber: 0, // TURHA?
-    s_lot: 0, // TURHA?
     weightValue: 0, // value of the loaded weight
     firstHit: 1,
+    toggleDirection: function() {
+        this._reverse = this._reverse ? 0 : 1; // change direction between forward (0) and reverse (1)
+    },
     init: function() {
         this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
         this.farmId = 0,
@@ -15,10 +15,15 @@ Crafty.c("Tractor", {
         this.slot = 0,
         this.team = 1,
         this.number = 1,
-
-        this._keyForward = Crafty.keys.UP_ARROW, //"UP_ARROW",
-        this._keyReverse = Crafty.keys.DOWN_ARROW, //"DOWN_ARROW",
+        /* default values */
+        this._keyForward = "UP_ARROW",
+        this._keyReverse = "DOWN_ARROW",
+        this._keyLeft = "LEFT_ARROW",
+        this._keyRight = "RIGHT_ARROW",
+        /* --- */
         this._reverse = 0,
+        this._accLeft = 0,
+        this._accRight = 0,
 
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "team1vechile1")
         .origin("bottom")
@@ -53,6 +58,11 @@ Crafty.c("Tractor", {
 */
         .bind("EnterFrame", function(frame) {
 
+            this._accDiff = this._accLeft - this._accRight;
+            // accDiff < -4 turn left
+            // accDiff > 4 turn right
+            // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
+
             var angle = this._rotation * (Math.PI / 180),
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
@@ -64,12 +74,24 @@ Crafty.c("Tractor", {
                 this.x += -vx * 0.5;
                 this.y += -vy * 0.5;
             }
-
-            if(this.isDown(Crafty.keys.LEFT_ARROW)) {
+            //log(this._keyLeft)
+            /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
+            if( this.isDown(this._keyLeft)) { //|| this._accDiff < -4 ) {
                 this.rotation -= 1;
-            } else if(this.isDown(Crafty.keys.RIGHT_ARROW)) {
+                this.trigger("KeyDown", this._keyLeft);
+            }
+
+            /*this.isDown(Crafty.keys.RIGHT_ARROW) ||*/ 
+            if( this.isDown(this._keyRight) || this._accDiff > 4 ) {
+                this.trigger("KeyDown", this._keyRight);
                 this.rotation += 1;
             } 
+
+            // drop acc values on each frame so that tractor tyre 
+            // will stop pretty fast it it does not get new values 
+            // through accelerometer
+            this._accLeft = this._accLeft < 0.2 ? 0 : this._accLeft-0.2;
+            this._accRight = this._accRight < 0.2 ? 0 : this._accRight-0.2;
 
             //check for collision with farms
             var hitWall = this.hit("Wall"), 
@@ -137,29 +159,33 @@ Crafty.c("Tractor", {
 
         })
         .bind('KeyDown', function(e) {
-            /*
-            if(this.isDown('RIGHT_ARROW')) {
+            /*if( this.isDown('RIGHT_ARROW')) {
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
                 }
-            } else if(this.isDown('LEFT_ARROW')) {
+            } else if( this.isDown('LEFT_ARROW')) {
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
                 }
             } else 
             */
-            
+log(e)
             if(this.isDown(this._keyForward)) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
-            
-            }
-            
-            if(this.isDown(this._keyReverse)) {
+            } else if(this.isDown(this._keyReverse)) {
                 if (!this.isPlaying("BrwdBrwd")) {
                     this.stop().animate("BrwdBrwd", 10, -1)
                 } 
+            } else if( this.isDown(this._keyLeft) ) {
+                if (!this.isPlaying("FrwdBrwd")) {
+                    this.stop().animate("FrwdBrwd", 10, -1);
+                }
+            } else if( this.isDown(this._keyRight)) {
+                if (!this.isPlaying("BrwdFrwd")) {
+                    this.stop().animate("BrwdFrwd", 10, -1)
+                }
             }
             
         })
