@@ -99,7 +99,7 @@
         }
 
     }
-
+ 
     // Triggered when another client joins the chat room
     function clientAddedListener(roomID, clientID) {
         displayChatMessage("User" + clientID + " joined the lobby.");
