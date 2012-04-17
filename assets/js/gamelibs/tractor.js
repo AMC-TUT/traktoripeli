@@ -397,7 +397,7 @@ var Game = {
         // == 0
         if(tractorCount == 0) {
             var tractor = {
-                "id": 1,
+                "id": parseInt(playerId),
                 "tyres": {
                     "left": 0,
                     "right": 0
@@ -442,7 +442,7 @@ var Game = {
             if(!playerAdded) {
                 // taa on sama kuin == 0 kohdassa joten refactoroitava myohemmin!!
                 var tractor = {
-                    "id": 2,
+                    "id": parseInt(playerId),
                     "tyres": {
                         "left": 0,
                         "right": 0
@@ -532,19 +532,13 @@ var Game = {
                     ent._keyLeft = farm.tractors[i]._keyLeft;
                     ent._keyRight = farm.tractors[i]._keyRight;
 
-                    // ent to game obj
-                    team.tractors[i].ent = ent;
-
-                    var controller = _.find(GameController, function(obj) { return obj.tractorId == team.tractorId; });
-
-                    controller["ent"] = ent;
-
-                    //Game.testTractor = ent;
-                    //Crafty.addEvent(this, "mousemove", function(e) {
-                        //var pos = Crafty.DOM.translate(e.clientX, e.clientY);
-                        //log(pos)
-                        //Game.testTractor.rotation = ~~(Math.atan2(pos.y - Game.testTractor._y, pos.x - Game.testTractor._x) * (180 / Math.PI)) + 90;
-                    //});
+                    _.each(team.tractors, function(tractor) {
+                        _.each(GameController, function(obj) {
+                            if(obj.tractorId == tractor.id) {
+                                obj["ent"] = ent;
+                            }
+                        });
+                    });
 
                 }
             }
@@ -612,6 +606,8 @@ var Game = {
                 });
             });
 */
+            
+            //var tractorId;
             // create nameplatetexts
             for (var i = 0; i < team.tractors.length; i++) {
                 Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres.right.name);
@@ -630,10 +626,13 @@ var Game = {
                     if(ent.__c.Tractor) ent.destroy();
                 });
             */
+                
                 if(tractor.tyres.left != 0 && tractor.tyres.right != 0) {
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.addComponent(farm.tractors[i].c);
+                    //ent.tractorId = team.tractors[i].tyres.left.id;
                 }
+
                 i++;
             });
         });

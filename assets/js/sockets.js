@@ -18,8 +18,8 @@
         orbiter = new net.user1.orbiter.Orbiter();
 
         // Enable logging to the browser's JavaScript console
-         orbiter.getLog().setLevel("debug");
-         orbiter.enableConsole();
+        // orbiter.getLog().setLevel("debug");
+        // orbiter.enableConsole();
 
         // If required JavaScript capabilities are missing, abort
         if (!orbiter.getSystem().isJavaScriptCompatible()) {
@@ -86,12 +86,12 @@
         Game.sockets.roomID = roomID;
 
         if(Game.sockets.dashboard) {
-            log('SocketsReadyEvent FIRED');
+            //log('SocketsReadyEvent FIRED');
             Crafty.trigger("SocketsReadyEvent");
         } else {
             var intervalID = setInterval( function() {
                 if(Game.sockets.dashboard) {
-                    log('SocketsReadyEvent FIRED');
+                    //log('SocketsReadyEvent FIRED');
                     Crafty.trigger("SocketsReadyEvent");
                     clearInterval(intervalID);
                 }
@@ -127,26 +127,26 @@
     //==============================================================================
     // Triggered when a game message is received
 
-    function moveMessageListener(fromClientID, message) {
-        displayChatMessage("fromClientID: " + fromClientID + ", message: " + message);
+    function moveMessageListener(clientID, message) {
+        //displayChatMessage("clientID: " + clientID + ", message: " + message);
 
         var attrs = message.split(";");
         // attrs[0] = action
         // attrs[1] = accelerometer value
 
-        if(attrs[0] == "jump") {
-            // toggle moving direction forward||reverse
-
-            // find out right entity and
-
-            // call ent.toggleDirection();
-        }
-
         if(attrs[0] == "run") {
-            // running value (accelerometer)
-            var accValue = attrs[1];
-            //
-            log("run value: " + attrs[1]);
+            //log( GameController[clientID].ent )
+            // running value from accelerometer
+            if(GameController[clientID].tractorTyre == "left") {
+                GameController[clientID].ent._accLeft = attrs[1];
+            } else {
+                GameController[clientID].ent._accRight = attrs[1];
+            }
+
+        } else if(attrs[0] == "jump") {
+            // toggle moving direction forward||reverse
+            // call toggler
+            GameController[clientID].ent.toggleDirection();
         }
 
     }
@@ -170,7 +170,7 @@
 
     function clientAttributeUpdateListener (attrScope, clientID, userID, attrName, attrVal, attrOptions) {
         // debug
-        log('attrScope:' + attrScope + ', attrName:' + attrName + ', attrVal:' + attrVal + ', roomID:' + roomID + ', clientID:' + clientID);
+        //log('attrScope:' + attrScope + ', attrName:' + attrName + ', attrVal:' + attrVal + ', roomID:' + roomID + ', clientID:' + clientID);
         // when scope is gameRoom
         if (attrScope == roomID) {
 
@@ -179,23 +179,26 @@
                 var playerName = attrVal.split(";")[2];
                 var teamId = attrVal.split(";")[3];
                 var playerId = clientID;
-                //log(teamId, playerId, playerName)
+                // log(teamId, playerId, playerName)
                 addOk = addPlayerToTeam(teamId, playerId, playerName);
             }
 
             if(addOk) {
                 //
                 GameController[clientID] = {};
-                GameController[clientID]["tractorId"] = parseInt(teamId);
-                //GameController['"'+clientID+'"']["tractorTyre"] = tractorTyre;
-                //
+                GameController[clientID]['id'] = parseInt(clientID);
+
                 _.each(Game.teams, function(team) {
                     _.each(team.tractors, function(tractor) {
                         if(tractor.tyres.left.id == clientID) {
+                            //
                             GameController[clientID]["tractorTyre"] = "left";
                         } else if(tractor.tyres.right.id == clientID) {
+                            //
                             GameController[clientID]["tractorTyre"] = "right";
                         }
+
+                        GameController[clientID]["tractorId"] = tractor.id;
                     });
                 });
                 //
@@ -226,7 +229,7 @@
 
             // check if farm is full and remove qr code if it does
             var team = _.find(Game.teams, function(obj) { return obj.id == teamId; });
-            if(team.playersCount > 1) {
+            if(team.playersCount > 3) {
                 // remove related qrcode entities from DOM when full
                 $(".QRCode-"+teamId).hide();
             } else {
@@ -239,18 +242,6 @@
             
         return true;
     }
-
-        //var url = $("#" + gameId).closest('a').attr("href");
-
-        // potkitaan clientti pois huoneesta
-        //msgManager.sendUPC(UPC.KICK_CLIENT, fromClientID);
-        // suljetaan huone
-        //msgManager.sendUPC(UPC.REMOVE_ROOM, roomID);
-        // suljetaan oma yhteys
-        //orbiter.disconnect();
-        // siirrytaan peliin
-        //document.location = url;
-        //}
 
     // init the room
     init();

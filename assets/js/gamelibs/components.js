@@ -6,11 +6,13 @@ Crafty.c("Tractor", {
     firstHit: 1,
     cargo_x: 0,
     cargo_y: 0,
+    _reverse: 0,
     toggleDirection: function() {
+        log("--- toggleDirection: function()");
         this._reverse = this._reverse ? 0 : 1; // change direction between forward (0) and reverse (1)
     },
     init: function() {
-        this.id = Crafty.math.randomInt(1000, 140000); // use roomID later when sockets
+        this.id = 0, // use roomID later when sockets
         this.farmId = 0,
         this.weightValue = 0,
         this.firstHit = 0,
@@ -63,6 +65,7 @@ Crafty.c("Tractor", {
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
+            this._speed = ((this._accLeft+this._accRight) / 2);
             // accDiff < -4 turn left
             // accDiff > 4 turn right
             // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
@@ -74,16 +77,16 @@ Crafty.c("Tractor", {
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
-            if(this.isDown(this._keyForward)) {
+            if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
                 this.x += vx * 1.5;
                 this.y += vy * 1.5;
-            } else if(this.isDown(this._keyReverse)) {
+            } else if(this.isDown(this._keyReverse) || (this._speed > 0 && this._reverse)) {
                 this.x += -vx * 0.8;
                 this.y += -vy * 0.8;
             }
             //log(this._keyLeft)
             /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
-            if( this.isDown(this._keyLeft)) { //|| this._accDiff < -4 ) {
+            if( this.isDown(this._keyLeft) || this._accDiff < -4 ) {
                 if (this._reverse) {
                     this.rotation += 1;
                 } else {
