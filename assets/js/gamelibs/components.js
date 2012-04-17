@@ -184,7 +184,7 @@ Crafty.c("Tractor", {
                 }
             } else 
             */
-log(e)
+            //log(e)
             if(this.isDown(this._keyForward)) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)

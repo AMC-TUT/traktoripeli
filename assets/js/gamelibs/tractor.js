@@ -48,7 +48,7 @@ var Game = {
     },
     teams: [], // add teams when players join to union
     // teams
-    teams: [
+    /*teams: [
         {
             "id" : 1, // sama kuin farm id, tarvitaanko siis lainkaan?
             "farmId" : 1,
@@ -109,7 +109,7 @@ var Game = {
             ]
         }
     ],
-    
+    */
     // weights
     weights: [
         [
@@ -616,14 +616,16 @@ var Game = {
 
             // tractors
             var i = 0;
+            
             _.each(team.tractors, function(tractor) {
-                var entities = Crafty.map.search({_x: tractor._x + 16, _y: tractor._y, _w: 64, _h: 64 });
+            
+            /*    var entities = Crafty.map.search({_x: tractor._x + 16, _y: tractor._y, _w: 64, _h: 64 });
                 log("remove tractors")
                 log(entities)
                 _.each(entities, function(ent) {
                     if(ent.__c.Tractor) ent.destroy();
                 });
-
+            */
                 if(tractor.tyres.left != 0 && tractor.tyres.right != 0) {
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.addComponent(farm.tractors[i].c);

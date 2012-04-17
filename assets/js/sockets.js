@@ -18,8 +18,8 @@
         orbiter = new net.user1.orbiter.Orbiter();
 
         // Enable logging to the browser's JavaScript console
-        // orbiter.getLog().setLevel("debug");
-        // orbiter.enableConsole();
+         orbiter.getLog().setLevel("debug");
+         orbiter.enableConsole();
 
         // If required JavaScript capabilities are missing, abort
         if (!orbiter.getSystem().isJavaScriptCompatible()) {
@@ -38,7 +38,7 @@
     }
 
     function displayChatMessage(message) {
-        // console.log(message);
+        console.log(message);
     }
 
     //==============================================================================
@@ -59,7 +59,7 @@
         displayChatMessage("Joining room...");
 
         // set roomID same as init client own ID
-        roomID = orbiter.clientID
+        roomID = orbiter.clientID;
 
         displayChatMessage("Orbiter roomID: " + roomID);
 
@@ -108,7 +108,7 @@
     // Triggered when another client leaves the chat room
     function clientRemovedListener(roomID, clientID) {
         displayChatMessage("User" + clientID + " left the lobby.");
-        log(" clientRemovedListener !!!!!!!!!!!!!!!!");
+        log("function clientRemovedListener(roomID, clientID) ");
         // remove player from Game.teams[n].tyres
         _.each(Game.teams, function(team) {
             _.each(team.tractors, function(tractor) {
@@ -128,25 +128,24 @@
     // Triggered when a game message is received
 
     function moveMessageListener(fromClientID, message) {
-        log("MOVE MESSAGE FROM CLIENT: " + fromClientID)
-        log(message);
+        log("fromClientID: " + fromClientID + ", message: " + message);
 
         var attrs = message.split(";");
         // attrs[0] = action
         // attrs[1] = accelerometer value
 
         if(attrs[0] = "jump") {
-            // change direction
+            // toggle moving direction forward||reverse
+            
         }
 
     }
 
-
     // Triggered when a game message is received
     function gameMessageListener(fromClientID, message) {
-        log("MESSAGE FROM CLIENT: " + fromClientID)
-        log(message);
-        //var url = $("#" + gameId).closest('a').attr("href");
+        console.log("function gameMessageListener(fromClientID, message)")
+
+        log("fromClientID" + fromClientID + ", message" + message);
 
         if(message == "START") {
             // go to Game scene
@@ -156,21 +155,12 @@
         if(message == "CLOSE") {
             window.location = game.path;
         }
-
-        //  potkitaan clientti pois huoneesta
-        //msgManager.sendUPC(UPC.KICK_CLIENT, fromClientID);
-        // suljetaan huone
-        //msgManager.sendUPC(UPC.REMOVE_ROOM, roomID);
-        // suljetaan oma yhteys
-        //orbiter.disconnect();
-        // siirrytaan peliin
-        //document.location = url;
+        */
     }
 
     function clientAttributeUpdateListener (attrScope, clientID, userID, attrName, attrVal, attrOptions) {
         // debug
         log('attrScope:' + attrScope + ', attrName:' + attrName + ', attrVal:' + attrVal + ', roomID:' + roomID + ', clientID:' + clientID);
-        
         // when scope is gameRoom
         if (attrScope == roomID) {
             if(attrName == "USERINFO") {
@@ -180,6 +170,9 @@
                 //log(teamId, playerId, playerName)
                 addPlayerToTeam(teamId, playerId, playerName);
             }
+
+            //
+            msgManager.sendUPC(UPC.SEND_MESSAGE_TO_CLIENTS, "STATE_MESSAGE", clientID, null, "play");
         }
     }
 
@@ -211,7 +204,6 @@
             }
 
         }
-
 
         // update view
         Game.updateDashBoardTextsAndTractors();
