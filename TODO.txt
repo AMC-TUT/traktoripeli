@@ -47,6 +47,12 @@ ONGROUND
 	DONE - (Poistui samalla kun vaihtoi tyypistä Canvas > DOM - BUG 
 	       punnuksen poistaminen pesästä poistaa pelaajien nimet näkyvistä.
 
+ONWHEELS
+
+	DONE - punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
+	  	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
+
+
 NAMEPLATES
 
 	DONE - sijoittelujen tarkistaminen lyhennysten jälkeen
@@ -105,11 +111,6 @@ TEME	- 2 syötettä +
 TEME	- DONE reverse false|true
 
 TEME	- kun 1000 täyteen niin ohjaimet disableControl 
-
-ONWHEELS
-
-TEME	- punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
-	  	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
 
 PUNNUKSET
 

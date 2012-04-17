@@ -4,6 +4,8 @@ Crafty.c("Tractor", {
     farmId: 0,
     weightValue: 0, // value of the loaded weight
     firstHit: 1,
+    cargo_x: 0,
+    cargo_y: 0,
     toggleDirection: function() {
         this._reverse = this._reverse ? 0 : 1; // change direction between forward (0) and reverse (1)
     },
@@ -24,6 +26,8 @@ Crafty.c("Tractor", {
         this._reverse = 0,
         this._accLeft = 0,
         this._accRight = 0,
+        this.cargo_x = 0,
+        this.cargo_y = 0,
 
         this.addComponent("2D", "Canvas", "Collision", "SpriteAnimation", "Keyboard", "team1vechile1")
         .origin("bottom")
@@ -67,24 +71,35 @@ Crafty.c("Tractor", {
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
 
+            this.cargo_x = this.x + 20 - (vx*10);
+            this.cargo_y = this.y + 20 - (vy*10);
+
             if(this.isDown(this._keyForward)) {
                 this.x += vx * 1.5;
                 this.y += vy * 1.5;
             } else if(this.isDown(this._keyReverse)) {
-                this.x += -vx * 0.5;
-                this.y += -vy * 0.5;
+                this.x += -vx * 0.8;
+                this.y += -vy * 0.8;
             }
             //log(this._keyLeft)
             /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
             if( this.isDown(this._keyLeft)) { //|| this._accDiff < -4 ) {
-                this.rotation -= 1;
+                if (this._reverse) {
+                    this.rotation += 1;
+                } else {
+                    this.rotation -= 1;
+                }
                 this.trigger("KeyDown", this._keyLeft);
             }
 
             /*this.isDown(Crafty.keys.RIGHT_ARROW) ||*/ 
             if( this.isDown(this._keyRight) || this._accDiff > 4 ) {
+                if (this._reverse) {
+                    this.rotation -= 1;
+                } else {
+                    this.rotation += 1;
+                }
                 this.trigger("KeyDown", this._keyRight);
-                this.rotation += 1;
             } 
 
             // drop acc values on each frame so that tractor tyre 
@@ -113,7 +128,7 @@ Crafty.c("Tractor", {
                     this.x += Math.ceil(item.normal.x * -item.overlap);
                     this.y += Math.ceil(item.normal.y * -item.overlap);
                 }
-                var entities = Crafty.map.search({_x: this._x + 16, _y: this._y + 16, _w: 32, _h: 32 });
+                var entities = Crafty.map.search({_x: this.cargo_x -8, _y: this.cargo_y - 8, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
                     for (var i = 0; i < weights.length; i++) {
@@ -121,7 +136,7 @@ Crafty.c("Tractor", {
                     }
                 }
                 if (this.weightValue > 0) {
-                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this.cargo_x, y: this.cargo_y, z: 3 });
                 }
             }
 
@@ -135,7 +150,7 @@ Crafty.c("Tractor", {
                     this.x += Math.ceil(item.normal.x * -item.overlap);
                     this.y += Math.ceil(item.normal.y * -item.overlap);
                 }
-                var entities = Crafty.map.search({_x: this._x + 16, _y: this._y + 16, _w: 32, _h: 32 });
+                var entities = Crafty.map.search({_x: this.cargo_x -8, _y: this.cargo_y - 8, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
                     for (var i = 0; i < weights.length; i++) {
@@ -143,7 +158,7 @@ Crafty.c("Tractor", {
                     }
                 }
                 if (this.weightValue > 0) {
-                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
+                    var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this.cargo_x, y: this.cargo_y, z: 3 });
                 }
             }
 
@@ -359,11 +374,12 @@ Crafty.c("WeightOnWheels", {
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.polygon([0,0], [16,0], [16,16], [0,16]))
         .onHit("Tractor", function(ent) {
-            this.x = ent[0].obj._x + 16;
-            this.y = ent[0].obj._y + 16;
+            this.x = ent[0].obj.cargo_x;
+            this.y = ent[0].obj.cargo_y;
         })
     }
 });
+
 
 Crafty.c("Farm", {
     weightValue: 0,
