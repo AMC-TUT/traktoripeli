@@ -14,6 +14,7 @@ DASHBOARD
 	DONE - QR koodien paikat
 	DONE - Farmien generointi - opacity?
 	DONE - QR koodien haku (farmit, aloitus, sulkeminen)
+	DONE - qr koodeihin tekstit
 
 GAME
 
@@ -90,9 +91,6 @@ Pelaajan liittyessä farmiin :
 		- Game scene auki, 
 		- trööt-soundi  
 
-DASHBOARD
-
-MASU	- qr koodeihin tekstit
 
 GAME
 

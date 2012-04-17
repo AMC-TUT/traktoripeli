@@ -36,11 +36,12 @@ Crafty.c("Tractor", {
         .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
+/*
         .bind("Moved", function(from) {
 
             this._from = from;
 
-            /* Dont allow to move the tractor out of the Screen */
+            // Dont allow to move the tractor out of the Screen
             if(this.x + this.w > Crafty.viewport.width ||
                 this.x + this.w - 20 < this.w || 
                 this.y + this.h < this.h || 
@@ -49,6 +50,7 @@ Crafty.c("Tractor", {
             }
 
         })
+*/
         .bind("EnterFrame", function(frame) {
 
             var angle = this._rotation * (Math.PI / 180),
@@ -89,7 +91,7 @@ Crafty.c("Tractor", {
                     this.x += Math.ceil(item.normal.x * -item.overlap);
                     this.y += Math.ceil(item.normal.y * -item.overlap);
                 }
-                var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
+                var entities = Crafty.map.search({_x: this._x + 16, _y: this._y + 16, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
                     for (var i = 0; i < weights.length; i++) {
@@ -111,7 +113,7 @@ Crafty.c("Tractor", {
                     this.x += Math.ceil(item.normal.x * -item.overlap);
                     this.y += Math.ceil(item.normal.y * -item.overlap);
                 }
-                var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
+                var entities = Crafty.map.search({_x: this._x + 16, _y: this._y + 16, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
                     for (var i = 0; i < weights.length; i++) {
@@ -210,36 +212,6 @@ Crafty.c("Tractor", {
             }
         )
 */
-        /*
-
-
-
-        .onHit("Base",
-            function(ent) {
-                //log('Tractor osui Baseen!');
-                // add WeightOnGround and run self destruction
-
-                // get value
-                var value = 400; //this.value;
-
-                var weight;
-                _.each(Game.weights[0], function(obj){
-                    if(obj.value == value) {
-                        weight = obj;
-                    }
-                });
-
-                // create WeightOnGround
-                var e = Crafty.e('WeightOnGround').attr({ x: ent[0].obj._x - 16, y: ent[0].obj._y - 16, z: 2 });
-                // add sprite component
-                e.addComponent(weight.c);
-                // add value to entity
-                e.value = weight.value;
-
-                //this.destroy();
-            }
-        )
-        */
     }
 });
 
@@ -266,12 +238,12 @@ Crafty.c("Base", {
                         case 1: // tractor drops weight
                             this.weightValue = obj.weightValue;
                             obj.weightValue = 0;
-                            // Crafty.audio.play("weight-down");
+                            Crafty.audio.play("weight-down-base");
                             break;
                         case 2: // tractor picks up weight
                             obj.weightValue = this.weightValue;
                             this.weightValue = 0;
-                            // Crafty.audio.play("weight-up");
+                            Crafty.audio.play("weight-up");
                             break;
                     }
                     this.firstHit = 0;
@@ -319,12 +291,12 @@ Crafty.c("Homebase", {
                             case 1: // tractor drops weight
                                 this.weightValue = obj.weightValue;
                                 obj.weightValue = 0;
-                                // Crafty.audio.play("weight-down");
+                                Crafty.audio.play("weight-down-homebase");
                                 break;
                             case 2: // tractor picks up weight
                                 obj.weightValue = this.weightValue;
                                 this.weightValue = 0;
-                                // Crafty.audio.play("weight-up");
+                                Crafty.audio.play("weight-up");
                                 break;
                         }
                         // trigger Farm to check its current weightValue sum
@@ -530,10 +502,6 @@ Crafty.c("Farm", {
                     });
 
                 });
-
-
-            } else {
-                log("score: "+team.score+" count"+weightCount);
             }
         })
     }
