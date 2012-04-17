@@ -52,6 +52,11 @@ ONWHEELS
 	DONE - punnus pitää sijoittaa aina traktorin bottom center osaan. Selvitä miten 
 	  	  traktorin kulma vaikuttaa punnuksen sijoittamiseen.
 
+TRAKTORI
+
+	DONE - käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
+		   bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
+
 
 NAMEPLATES
 
@@ -77,6 +82,13 @@ TRAKTORI
 
 OHJAIN
 
+	DONE - 2 syötettä +		
+	DONE - DONE reverse false|true
+
+	DONE - kun 1000 täyteen niin ohjaimet disableControl 
+
+OHJAIN
+
 	DONE - kerroin pakille? : 0.5
 
 DASHBOARD
@@ -85,43 +97,29 @@ DASHBOARD
 
 GAME
 
-TEME	DONE - tractorin multi-instanssi monipelintuki
-TEME	DONE - taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
+	DONE - tractorin multi-instanssi monipelintuki
+	DONE - taulukossa pidettävä kirjaa traktoriinstansseista ja niihin liittyneistä käyttäjistä/ohjaimista
+
+Pelaajan liittyessä farmiin : 
+	DONE - nimi listaan,
+	DONE - tokasta traktori näkyviin kunnolla
+	DONE - Pelaajien liittyessä Game.teams taulukkoon tiedot! userid+
 
 ------------------
 
 TODOT
 
 	- Pelin skaalamisen fiksaaminen paremmaksi
-
+	
 Pelaajan liittyessä farmiin : 
-	DONE - nimi listaan,
 	- ekasta traktori 50% opacity (voinee olla hankala)
-	DONE - tokasta traktori näkyviin kunnolla
-
-	DONE - Pelaajien liittyessä Game.teams taulukkoon tiedot! userid+
-
 	- Aloitus QR-koodista 
 		DONE - Game scene auki, 
 		- trööt-soundi  
 
-
-
-OHJAIN
-
-TEME	DONE - 2 syötettä +		
-TEME	DONE - DONE reverse false|true
-
-TEME	DONE - kun 1000 täyteen niin ohjaimet disableControl 
-
 PUNNUKSET
 
 MASU	- harkintaan: kuvakulma?
-
-TRAKTORI
-
-MASU	DONE - käännöksessä origin arvo käännösen mukaan bottom center (1 eteen, 1 taakse), 	
-		  bottom right|left (1 liikkuu, toinen ei), center (2 samaan suuntaan liikettä).
 
 MUUTA?
 
