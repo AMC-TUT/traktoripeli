@@ -226,8 +226,8 @@ var Game = {
                 { _x: 899, _y: 5 }
             ],
             "tractors" : [
-                { c: "team2vechile1", _x: 830, _y: 60, "_rotate": 180 },
-                { c: "team2vechile2", _x: 904, _y: 60, "_rotate": 180 }
+                { c: "team2vechile1", _x: 830, _y: 60, "_rotate": 180, _keyForward: "E", _keyReverse: "D", _keyLeft: "3", _keyRight: "C" },
+                { c: "team2vechile2", _x: 904, _y: 60, "_rotate": 180, _keyForward: "R", _keyReverse: "F", _keyLeft: "4", _keyRight: "V" }
             ]
         },
         { 
@@ -255,8 +255,8 @@ var Game = {
                 { _x: 381, _y: 755 }
             ],
             "tractors" : [
-                { c: "team3vechile1", _x: 312, _y: 676, "_rotate": 0 },
-                { c: "team3vechile2", _x: 386, _y: 676, "_rotate": 0 }
+                { c: "team3vechile1", _x: 312, _y: 676, "_rotate": 0, _keyForward: "T", _keyReverse: "G", _keyLeft: "5", _keyRight: "B" },
+                { c: "team3vechile2", _x: 386, _y: 676, "_rotate": 0, _keyForward: "Y", _keyReverse: "H", _keyLeft: "6", _keyRight: "N" }
             ]
         },
         { 
@@ -284,8 +284,8 @@ var Game = {
                 { _x: 899, _y: 755 }
             ],
             "tractors" : [
-                { c: "team4vechile1", _x: 830, _y: 676, "_rotate": 0 },
-                { c: "team4vechile2", _x: 904, _y: 676, "_rotate": 0 }
+                { c: "team4vechile1", _x: 830, _y: 676, "_rotate": 0, _keyForward: "U", _keyReverse: "J", _keyLeft: "7", _keyRight: "M" },
+                { c: "team4vechile2", _x: 904, _y: 676, "_rotate": 0, _keyForward: "I", _keyReverse: "K", _keyLeft: "8", _keyRight: "DECIMAL" }
             ]
         },
         { 
@@ -313,8 +313,8 @@ var Game = {
                 { _x: 0, _y: 557 }
             ],
             "tractors" : [
-                { c: "team5vechile1", _x: 60, _y: 331, "_rotate": 90 },
-                { c: "team5vechile2", _x: 60, _y: 405, "_rotate": 90 }
+                { c: "team5vechile1", _x: 60, _y: 331, "_rotate": 90, _keyForward: "O", _keyReverse: "L", _keyLeft: "9", _keyRight: "COMMA" },
+                { c: "team5vechile2", _x: 60, _y: 405, "_rotate": 90, _keyForward: "NUMPAD_1", _keyReverse: "NUMPAD_2", _keyLeft: "NUMPAD_4", _keyRight: "NUMPAD_5" }
             ]
         },
         { 
@@ -342,8 +342,8 @@ var Game = {
                 { _x: 1128, _y: 557 }
             ],
             "tractors" : [
-                { c: "team6vechile1", _x: 1156, _y: 331, "_rotate": 270 },
-                { c: "team6vechile2", _x: 1156, _y: 405, "_rotate": 270 }
+                { c: "team6vechile1", _x: 1156, _y: 331, "_rotate": 270, _keyForward: "NUMPAD_6", _keyReverse: "NUMPAD_9", _keyLeft: "NUMPAD_3", _keyRight: "NUMPAD_0" },
+                { c: "team6vechile2", _x: 1156, _y: 405, "_rotate": 270, _keyForward: "UP_ARROW", _keyReverse: "DOWN_ARROW", _keyLeft: "LEFT_ARROW", _keyRight: "RIGHT_ARROW" }
             ]
         }
         
