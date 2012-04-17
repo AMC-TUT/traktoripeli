@@ -108,7 +108,7 @@
     // Triggered when another client leaves the chat room
     function clientRemovedListener(roomID, clientID) {
         displayChatMessage("User" + clientID + " left the lobby.");
-        log("function clientRemovedListener(roomID, clientID) ");
+        displayChatMessage("function clientRemovedListener(roomID, clientID) ");
         // remove player from Game.teams[n].tyres
         _.each(Game.teams, function(team) {
             _.each(team.tractors, function(tractor) {
@@ -128,24 +128,34 @@
     // Triggered when a game message is received
 
     function moveMessageListener(fromClientID, message) {
-        log("fromClientID: " + fromClientID + ", message: " + message);
+        displayChatMessage("fromClientID: " + fromClientID + ", message: " + message);
 
         var attrs = message.split(";");
         // attrs[0] = action
         // attrs[1] = accelerometer value
 
-        if(attrs[0] = "jump") {
+        if(attrs[0] == "jump") {
             // toggle moving direction forward||reverse
-            
+
+            // find out right entity and
+
+            // call ent.toggleDirection();
+        }
+
+        if(attrs[0] == "run") {
+            // running value (accelerometer)
+            var accValue = attrs[1];
+            //
+            log("run value: " + attrs[1]);
         }
 
     }
 
     // Triggered when a game message is received
     function gameMessageListener(fromClientID, message) {
-        console.log("function gameMessageListener(fromClientID, message)")
+        displayChatMessage("function gameMessageListener(fromClientID, message)")
 
-        log("fromClientID" + fromClientID + ", message" + message);
+        displayChatMessage("fromClientID" + fromClientID + ", message" + message);
 
         if(message == "START") {
             // go to Game scene
@@ -155,7 +165,7 @@
         if(message == "CLOSE") {
             window.location = game.path;
         }
-        */
+
     }
 
     function clientAttributeUpdateListener (attrScope, clientID, userID, attrName, attrVal, attrOptions) {
@@ -170,6 +180,8 @@
                 //log(teamId, playerId, playerName)
                 addPlayerToTeam(teamId, playerId, playerName);
             }
+
+            // find out tractor
 
             //
             msgManager.sendUPC(UPC.SEND_MESSAGE_TO_CLIENTS, "STATE_MESSAGE", clientID, null, "play");

@@ -1,12 +1,12 @@
 
 
 var GameControllers = {
-
+/*
         929: { // mobiles socket clientID for direct & fast access
             ent: null, // viittaus entiteettiin, jonka ohjaukseen osallistuu
             tyre: null, // left or right tyre
         }
-
+*/
 /*
         3: { //  id
             ent: null, // viittaus entiteettiin
