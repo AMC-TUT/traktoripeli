@@ -173,18 +173,34 @@
         log('attrScope:' + attrScope + ', attrName:' + attrName + ', attrVal:' + attrVal + ', roomID:' + roomID + ', clientID:' + clientID);
         // when scope is gameRoom
         if (attrScope == roomID) {
+
+            var addOk = false;
             if(attrName == "USERINFO") {
                 var playerName = attrVal.split(";")[2];
                 var teamId = attrVal.split(";")[3];
                 var playerId = clientID;
                 //log(teamId, playerId, playerName)
-                addPlayerToTeam(teamId, playerId, playerName);
+                addOk = addPlayerToTeam(teamId, playerId, playerName);
             }
 
-            // find out tractor
-
-            //
-            msgManager.sendUPC(UPC.SEND_MESSAGE_TO_CLIENTS, "STATE_MESSAGE", clientID, null, "play");
+            if(addOk) {
+                //
+                GameController['"'+clientID+'"'] = {};
+                GameController['"'+clientID+'"']["tractorId"] = teamId;
+                //GameController['"'+clientID+'"']["tractorTyre"] = tractorTyre;
+                //
+                _.each(Game.teams, function(team) {
+                    _.each(team.tractors, function(tractor) {
+                        if(tractor.tyres.left.id == clientID) {
+                            GameController['"'+clientID+'"']["tractorTyre"] = "left";
+                        } else if(tractor.tyres.right.id == clientID) {
+                            GameController['"'+clientID+'"']["tractorTyre"] = "right";
+                        }
+                    });
+                });
+                //
+                msgManager.sendUPC(UPC.SEND_MESSAGE_TO_CLIENTS, "STATE_MESSAGE", clientID, null, "play");
+            }
         }
     }
 
@@ -202,6 +218,8 @@
                 Game.joinTeam(teamId, playerId, playerName);
             }
         } else if(result === false) {
+            //
+            return false;
             // ei ole mitään tapaa tällä hetkellä 
             // lähettää puhelimeen virhettä ettei liittyminen joukkueeseen onnistunut!
         } else if(result === true) {
@@ -213,13 +231,13 @@
                 $(".QRCode-"+teamId).hide();
             } else {
                 $(".QRCode-"+teamId).show();
-            }
-
+            } 
         }
 
         // update view
         Game.updateDashBoardTextsAndTractors();
-
+            
+        return true;
     }
 
         //var url = $("#" + gameId).closest('a').attr("href");

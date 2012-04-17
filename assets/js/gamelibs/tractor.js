@@ -1,6 +1,6 @@
 
 
-var GameControllers = {
+var GameController = {
 /*
         929: { // mobiles socket clientID for direct & fast access
             ent: null, // viittaus entiteettiin, jonka ohjaukseen osallistuu
@@ -512,7 +512,7 @@ var Game = {
 
                 // add nameplates to farm
                 Game.generateFarmNameplates(farm);
-                
+
                 // find the team based on farmId
                 var team = _.find(Game.teams, function(obj){ return obj.farmId == farmId; });
                 // create nameplates, names and tractors
@@ -521,7 +521,7 @@ var Game = {
                     //ent.addComponent(farm.nameplates[i].c);
                     Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+2, z: 3 }).text(team.tractors[i].tyres.right.name);
                     Crafty.e("2D, DOM, Text, NameplateText").attr({ x: farm.nameplates[i]._x+45, y: farm.nameplates[i]._y+21, z: 3 }).text(team.tractors[i].tyres.left.name);
-                    
+
                     var ent = Crafty.e('Tractor').attr({x: farm.tractors[i]._x, y: farm.tractors[i]._y, z: 3, rotation: farm.tractors[i]._rotate});
                     ent.farmId = farmId;
                     ent.addComponent(farm.tractors[i].c);
