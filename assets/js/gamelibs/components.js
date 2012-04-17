@@ -8,7 +8,8 @@ Crafty.c("Tractor", {
     cargo_y: 0,
     _reverse: 0,
     toggleDirection: function() {
-        log("--- toggleDirection: function()");
+        //log("--- toggleDirection: function()");
+        log('menosuunta vaihtui')
         this._reverse = this._reverse ? 0 : 1; // change direction between forward (0) and reverse (1)
     },
     init: function() {
@@ -65,7 +66,7 @@ Crafty.c("Tractor", {
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
-            this._speed = ((this._accLeft+this._accRight) / 2);
+            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : (( this._accLeft + this._accRight ) / 2);
             // accDiff < -4 turn left
             // accDiff > 4 turn right
             // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
@@ -73,6 +74,8 @@ Crafty.c("Tractor", {
             var angle = this._rotation * (Math.PI / 180),
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
+            
+            log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
 
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
@@ -108,8 +111,8 @@ Crafty.c("Tractor", {
             // drop acc values on each frame so that tractor tyre 
             // will stop pretty fast it it does not get new values 
             // through accelerometer
-            this._accLeft = this._accLeft < 0.2 ? 0 : this._accLeft-0.2;
-            this._accRight = this._accRight < 0.2 ? 0 : this._accRight-0.2;
+            this._accLeft = this._accLeft < 0.95 ? 0 : this._accLeft-0.95;
+            this._accRight = this._accRight < 0.95 ? 0 : this._accRight-0.95;
 
             //check for collision with farms
             var hitWall = this.hit("Wall"), 

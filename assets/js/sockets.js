@@ -38,7 +38,7 @@
     }
 
     function displayChatMessage(message) {
-        console.log(message);
+        log(message);
     }
 
     //==============================================================================
@@ -108,7 +108,7 @@
     // Triggered when another client leaves the chat room
     function clientRemovedListener(roomID, clientID) {
         displayChatMessage("User" + clientID + " left the lobby.");
-        displayChatMessage("function clientRemovedListener(roomID, clientID) ");
+        //displayChatMessage("function clientRemovedListener(roomID, clientID) ");
         // remove player from Game.teams[n].tyres
         _.each(Game.teams, function(team) {
             _.each(team.tractors, function(tractor) {
