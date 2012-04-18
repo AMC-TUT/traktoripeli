@@ -6,27 +6,18 @@ Crafty.audio.add({
     //game.path + "/assets/audio/wav/Amoeba.wav"
     ]
 });
-/*
-Crafty.audio.add({
-    "weight-up": [
-    //game.path + "/assets/audio/ogg/Amoeba.ogg",
-    game.path + "/assets/audio/mp3/weight-up.mp3",
-    //game.path + "/assets/audio/wav/Amoeba.wav"
-    ]
-});
-Crafty.audio.add({
-    "drop-on-farm": [
-    //game.path + "/assets/audio/ogg/Amoeba.ogg",
-    game.path + "/assets/audio/mp3/drop-on-farm.mp3",
-    //game.path + "/assets/audio/wav/Amoeba.wav"
-    ]
-});
-*/
 Crafty.audio.add({
     "cheer": [
-    //game.path + "/assets/audio/ogg/Amoeba.ogg",
-    game.path + "/assets/audio/mp3/cheer.mp3",
-    //game.path + "/assets/audio/wav/Amoeba.wav"
+    game.path + "/assets/audio/ogg/game_over.ogg",
+    game.path + "/assets/audio/mp3/game_over.mp3",
+    game.path + "/assets/audio/wav/game_over.wav"
+    ]
+});
+Crafty.audio.add({
+    "hit": [
+    game.path + "/assets/audio/ogg/tractor_hit.ogg",
+    game.path + "/assets/audio/mp3/tractor_hit.mp3",
+    game.path + "/assets/audio/wav/tractor_hit.wav"
     ]
 });
 Crafty.audio.add({
