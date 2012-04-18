@@ -87,10 +87,7 @@ Crafty.c("Tractor", {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
 
-                if(this._speed == 0) {
-                    this._speed = 1.5;
-                }
-                // log('speed:' + this._speed);
+                if(this._speed == 0) { this._speed = 1.5; } // keyDown
                 
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
