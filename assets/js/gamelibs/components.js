@@ -12,7 +12,6 @@ Crafty.c("Tractor", {
     _accLeft: 0,
     toggleDirection: function() {
         //log("--- toggleDirection: function()");
-        log('menosuunta vaihtui')
         this._reverse = this._reverse ? 0 : 1; // change direction between forward (0) and reverse (1)
     },
     init: function() {
@@ -100,7 +99,7 @@ Crafty.c("Tractor", {
                     this.trigger("KeyDown", this._keyForward);
                     this._speed = 1.5;
                 }
-                log('speed:' + this._speed);
+                //log('speed:' + this._speed);
                 
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
