@@ -139,10 +139,13 @@
             //log( GameController[clientID].ent )
             // running value from accelerometer
             if(GameController[clientID].tractorTyre == "left") {
-
-                GameController[clientID].ent._accLeft = attrs[1];
+                if(typeof GameController[clientID].ent._accLeft !== "undefined") {
+                    GameController[clientID].ent._accLeft = attrs[1];
+                }
             } else {
-                GameController[clientID].ent._accRight = attrs[1];
+                if(typeof GameController[clientID].ent._accRight !== "undefined") {
+                    GameController[clientID].ent._accRight = attrs[1];
+                }
             }
 
         //} 

@@ -51,7 +51,7 @@ $('.QRCode.START').live('click tap', function(event) {
     // stop playing audio 
     //Game.audio.mute();
     
-    /* disabled for dev purposes 
+    /* disabled for dev purposess
     var tractorCount = 0;
 
     _.each(Game.teams, function(team) {
@@ -63,9 +63,10 @@ $('.QRCode.START').live('click tap', function(event) {
     });
 
     if(tractorCount > 1) {
+*/
     	Crafty.scene("Game");
-    }
-    */
+//    }
+    
     
 });
 

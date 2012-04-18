@@ -8,6 +8,8 @@ Crafty.c("Tractor", {
     cargo_y: 0,
     _reverse: 0,
     _speed: 0,
+    _accRight: 0,
+    _accLeft: 0,
     toggleDirection: function() {
         //log("--- toggleDirection: function()");
         log('menosuunta vaihtui')
@@ -68,11 +70,11 @@ Crafty.c("Tractor", {
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
-            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : this._speed; //(( this._accLeft + this._accRight ) / 2);
+            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : 1.5; //this._speed; //(( this._accLeft + this._accRight ) / 2);
             // accDiff < -4 turn left
             // accDiff > 4 turn right
             // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
-            
+
             if(this._speed > 0) {
                 if(this._accLeft > 20 && this._accRight > 20) {
                     this._speed = this._speed + 0.5
@@ -88,15 +90,18 @@ Crafty.c("Tractor", {
             var angle = this._rotation * (Math.PI / 180),
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
-            
-            //log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
 
+            //log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
             if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
-                this._speed = this._speed > 0 ? this._speed : 1.5;
-                log('speed:' + this._speed + ', angle:' + angle);
+                if(this._speed == 0) {
+                    this.trigger("KeyDown", this._keyForward);
+                    this._speed = 1.5;
+                }
+                log('speed:' + this._speed);
+                
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
             } else if(this.isDown(this._keyReverse) || (this._speed > 0 && this._reverse)) {
@@ -457,10 +462,8 @@ Crafty.c("Farm", {
 
                 // stop tractors
                 _.each(GameController, function(controller) {
-                    controller.ent.disableControl();
                     controller.ent = null;
                 })
-
                 // timer stop and get the value for bonus points
                 Crafty.trigger("StopTimer");
                 // get full text
