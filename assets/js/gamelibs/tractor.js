@@ -32,7 +32,7 @@ var Game = {
     dashboard: { 
         generated: false },
     // TODO tama kuuluu kentan yhteyteen
-    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta.",
+    description: "Kerää traktorilla kentältä farmisi ruutuihin neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta.",
     qrcodes: {
         generated: 0,
         images: [

@@ -82,6 +82,8 @@ Crafty.c("Tractor", {
                 if(Math.abs(this._accDiff) < 2) {
                     this._speed = this._speed + 0.5;
                 }
+            } else {
+                this.stop();
             }
 
             this._speed = this._speed < 3 ? this._speed : 3; // max speed = 3 
@@ -90,21 +92,24 @@ Crafty.c("Tractor", {
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
 
-            //log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
+            // log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
             if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
+                
+                if (!this.isPlaying("FrwdFrwd")) {
+                    this.stop().animate("FrwdFrwd", 10, -1)
+                }
+
                 if(this._speed == 0) {
                     this.trigger("KeyDown", this._keyForward);
                     this._speed = 1.5;
                 }
-                //log('speed:' + this._speed);
+                // log('speed:' + this._speed);
                 
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
-
-                this.stop().animate("FrwdFrwd", 10, 1);
 
             } else if(this.isDown(this._keyReverse) || (this._speed > 0 && this._reverse)) {
                 this.x += -vx * 0.8;
@@ -113,22 +118,30 @@ Crafty.c("Tractor", {
             //log(this._keyLeft)
             /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
             if( this.isDown(this._keyLeft) || this._accDiff < -10 ) {
+
+                if (!this.isPlaying("FrwdBrwd")) {
+                    this.stop().animate("FrwdBrwd", 10, -1);
+                }
+
                 if (this._reverse) {
                     this.rotation += 1;
                 } else {
                     this.rotation -= 1;
                 }
-                this.trigger("KeyDown", this._keyLeft);
             }
 
             /*this.isDown(Crafty.keys.RIGHT_ARROW) ||*/ 
             else if( this.isDown(this._keyRight) || this._accDiff > 10 ) {
+
+                if (!this.isPlaying("BrwdFrwd")) {
+                    this.stop().animate("BrwdFrwd", 10, -1)
+                }
+
                 if (this._reverse) {
                     this.rotation -= 1;
                 } else {
                     this.rotation += 1;
                 }
-                this.trigger("KeyDown", this._keyRight);
             } 
 
             // drop acc values on each frame so that tractor tyre 
@@ -137,18 +150,6 @@ Crafty.c("Tractor", {
             this._accLeft = this._accLeft < 0.5 ? 0 : this._accLeft-0.5;
             this._accRight = this._accRight < 0.5 ? 0 : this._accRight-0.5;
 
-
-/*
-            //check for collision with farms
-            var hitWall = this.hit("Wall"), 
-              item, normal = {x: 0, y: 0};
-
-            if(hitWall) {
-                item = hitWall[0];
-                this.x += Math.ceil(item.normal.x * -item.overlap);
-                this.y += Math.ceil(item.normal.y * -item.overlap);
-            }
-*/
             //check for collision with base
             var hitBase = this.hit("Base"), 
               item, normal = {x: 0, y: 0};
@@ -218,86 +219,11 @@ Crafty.c("Tractor", {
             }
 
         })
-        .bind('KeyDown', function(e) {
-            /*if( this.isDown('RIGHT_ARROW')) {
-                if (!this.isPlaying("FrwdBrwd")) {
-                    this.stop().animate("FrwdBrwd", 10, -1);
-                }
-            } else if( this.isDown('LEFT_ARROW')) {
-                if (!this.isPlaying("BrwdFrwd")) {
-                    this.stop().animate("BrwdFrwd", 10, -1)
-                }
-            } else 
-            */
-            //log(e)
-            if(this.isDown(this._keyForward)) {
-                if (!this.isPlaying("FrwdFrwd")) {
-                    this.stop().animate("FrwdFrwd", 10, -1)
-                }
-            } else if(this.isDown(this._keyReverse)) {
-                if (!this.isPlaying("BrwdBrwd")) {
-                    this.stop().animate("BrwdBrwd", 10, -1)
-                } 
-            } else if( this.isDown(this._keyLeft) ) {
-                if (!this.isPlaying("FrwdBrwd")) {
-                    this.stop().animate("FrwdBrwd", 10, -1);
-                }
-            } else if( this.isDown(this._keyRight)) {
-                if (!this.isPlaying("BrwdFrwd")) {
-                    this.stop().animate("BrwdFrwd", 10, -1)
-                }
-            }
-            
-        })
         .bind('KeyUp', function(e) {
             // stop * animations
             this.stop();
         })
-/*
-        .onHit("Tractor",
-            function(ent) {
-                var obj = ent[0].obj;
-                var hitType = 0;
-                if (obj.weightValue > 0) {
-                    hitType += 1;
-                }
-                if (this.weightValue > 0) {
-                    hitType += 2;
-                }
-                if(this.firstHit) {
-                    switch (hitType) {
-                        case 1: // tractor drops weight
-                            this.weightValue = obj.weightValue;
-                            obj.weightValue = 0;
-                            break;
-                        case 2: // tractor picks up weight
-                            obj.weightValue = this.weightValue;
-                            this.weightValue = 0;
-                            break;
-                        case 3: // no access
-                            var tmp = this.weightValue;
-                            this.weightValue = obj.weightValue;
-                            obj.weightValue = tmp;
-                            break;
-                    }
-                    // Crafty.audio.play("weight-switch");
-                    this.firstHit = 0;
-                    var entities = Crafty.map.search({_x: this._x, _y: this._y, _w: 64, _h: 64 });
-                    var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
-                    if (!_.isUndefined(weights)) {
-                        for (var i = 0; i < weights.length; i++) {
-                            weights[i].destroy();
-                        }
-                    }
-                    if (this.weightValue > 0) {
-                        var e = Crafty.e("WeightOnWheels", "ww"+this.weightValue+"g").attr({ x: this._x + 20, y: this._y + 20, z: 3 });
-                    }
-                }
-            }, function() {
-                this.firstHit = 1;
-            }
-        )
-*/
+
     }
 });
 
