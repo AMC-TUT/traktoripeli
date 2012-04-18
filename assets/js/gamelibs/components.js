@@ -103,7 +103,6 @@ Crafty.c("Tractor", {
                 }
 
                 if(this._speed == 0) {
-                    this.trigger("KeyDown", this._keyForward);
                     this._speed = 1.5;
                 }
                 // log('speed:' + this._speed);
