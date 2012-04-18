@@ -145,7 +145,7 @@
     // Triggered when a game message is received
 
     function moveMessageListener(clientID, message) {
-        displayChatMessage("clientID: " + clientID + ", message: " + message);
+        //displayChatMessage("clientID: " + clientID + ", message: " + message);
 
         var attrs = message.split(";");
         // attrs[0] = action

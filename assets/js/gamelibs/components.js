@@ -69,7 +69,7 @@ Crafty.c("Tractor", {
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
-            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : 1.5; //this._speed; //(( this._accLeft + this._accRight ) / 2);
+            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : 2; //this._speed; //(( this._accLeft + this._accRight ) / 2);
             // accDiff < -4 turn left
             // accDiff > 4 turn right
             // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
