@@ -151,11 +151,11 @@ Crafty.c("Tractor", {
               item, normal = {x: 0, y: 0};
 
             if(hitBase) {
-                item = hitBase[0];
-                if (this.weightValue > 0 && item.obj.weightValue > 0) {
-                    this.x += Math.ceil(item.normal.x * -item.overlap);
-                    this.y += Math.ceil(item.normal.y * -item.overlap);
-                }
+                //item = hitBase[0];
+                //if (this.weightValue > 0 && item.obj.weightValue > 0) {
+                //    this.x += Math.ceil(item.normal.x * -item.overlap);
+                //    this.y += Math.ceil(item.normal.y * -item.overlap);
+                //}
                 var entities = Crafty.map.search({_x: this.cargo_x -8, _y: this.cargo_y - 8, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
@@ -173,11 +173,11 @@ Crafty.c("Tractor", {
               item, normal = {x: 0, y: 0};
 
             if(hitHomebase) {
-                item = hitHomebase[0];
-                if (this.weightValue > 0 && item.obj.weightValue > 0) {
-                    this.x += Math.ceil(item.normal.x * -item.overlap);
-                    this.y += Math.ceil(item.normal.y * -item.overlap);
-                }
+                //item = hitHomebase[0];
+                //if (this.weightValue > 0 && item.obj.weightValue > 0) {
+                //    this.x += Math.ceil(item.normal.x * -item.overlap);
+                //    this.y += Math.ceil(item.normal.y * -item.overlap);
+                //}
                 var entities = Crafty.map.search({_x: this.cargo_x -8, _y: this.cargo_y - 8, _w: 32, _h: 32 });
                 var weights = _.filter(entities, function(entity){ return entity.__c.WeightOnWheels == true; });
                 if (!_.isUndefined(weights)) {
@@ -385,6 +385,12 @@ Crafty.c("Homebase", {
                             case 2: // tractor picks up weight
                                 obj.weightValue = this.weightValue;
                                 this.weightValue = 0;
+                                Crafty.audio.play("weight-up");
+                                break;
+                            case 3: 
+                                var tmp = obj.weightValue;
+                                obj.weightValue = this.weightValue;
+                                this.weightValue = tmp;
                                 Crafty.audio.play("weight-up");
                                 break;
                         }

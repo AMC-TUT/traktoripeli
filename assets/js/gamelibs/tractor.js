@@ -174,7 +174,8 @@ var Game = {
     farms:[
         { 
             "id" : 1,
-            "attr": { c: "farm1", _x: 228, _y: 50, _rotate: 0 },
+            //"attr": { c: "farm1", _x: 228, _y: 50, _rotate: 0 },
+            "attr": { c: "farm", _x: 228, _y: 50, _rotate: 0 },
             "homebases" : [
                 { _x: 254, _y: 76 },
                 { _x: 328, _y: 76 },
@@ -203,7 +204,8 @@ var Game = {
         },
         {
             "id" : 2,
-            "attr": { c: "farm1", _x: 746, _y: 50, _rotate: 0 },
+            //"attr": { c: "farm1", _x: 746, _y: 50, _rotate: 0 },
+            "attr": { c: "farm", _x: 746, _y: 50, _rotate: 0 },
             "homebases" : [
                 { _x: 772, _y: 76 },
                 { _x: 846, _y: 76 },
@@ -232,7 +234,8 @@ var Game = {
         },
         { 
             "id" : 3,
-            "attr": { c: "farm2", _x: 228, _y: 676, _rotate: 0 },
+            //"attr": { c: "farm2", _x: 228, _y: 676, _rotate: 0 },
+            "attr": { c: "farm", _x: 534, _y: 750, _rotate: 180 },
             "homebases" : [
                 { _x: 254, _y: 692 },
                 { _x: 328, _y: 692 },
@@ -261,7 +264,8 @@ var Game = {
         },
         { 
             "id" : 4,
-            "attr": { c: "farm2", _x: 746, _y: 676, _rotate: 0 },
+            //"attr": { c: "farm2", _x: 746, _y: 676, _rotate: 0 },
+            "attr": { c: "farm", _x: 1052, _y: 750, _rotate: 180 },
             "homebases" : [
                 { _x: 772, _y: 692 },
                 { _x: 846, _y: 692 },
@@ -290,7 +294,8 @@ var Game = {
         },
         { 
             "id" : 5,
-            "attr": { c: "farm4", _x: 154, _y: 247, _rotate: 90 },
+            //"attr": { c: "farm4", _x: 154, _y: 247, _rotate: 90 },
+            "attr": { c: "farm", _x: 50, _y: 553, _rotate: 270 },
             "homebases" : [
                 { _x: 76, _y: 273 },
                 { _x: 76, _y: 347 },
@@ -319,7 +324,8 @@ var Game = {
         },
         { 
             "id" : 6,
-            "attr": { c: "farm3", _x: 1256, _y: 247, _rotate: 90 },
+            //"attr": { c: "farm3", _x: 1256, _y: 247, _rotate: 90 },
+            "attr": { c: "farm", _x: 1256, _y: 247, _rotate: 90 },
             "homebases" : [
                 { _x: 1172, _y: 273 },
                 { _x: 1172, _y: 347 },
