@@ -128,26 +128,30 @@
     // Triggered when a game message is received
 
     function moveMessageListener(clientID, message) {
-        //displayChatMessage("clientID: " + clientID + ", message: " + message);
+        displayChatMessage("clientID: " + clientID + ", message: " + message);
 
         var attrs = message.split(";");
         // attrs[0] = action
         // attrs[1] = accelerometer value
 
-        if(attrs[0] == "run") {
+        //attrs[1] = typeof attrs[1] !== "undefined" ? 0 : attrs[1];
+        //if( attrs[1] < 25 ) {
             //log( GameController[clientID].ent )
             // running value from accelerometer
             if(GameController[clientID].tractorTyre == "left") {
+
                 GameController[clientID].ent._accLeft = attrs[1];
             } else {
                 GameController[clientID].ent._accRight = attrs[1];
             }
 
-        } else if(attrs[0] == "jump") {
+        //} 
+
+        //if( attrs[1] > 25 ) {
             // toggle moving direction forward||reverse
             // call toggler
-            GameController[clientID].ent.toggleDirection();
-        }
+            // GameController[clientID].ent.toggleDirection();
+        //}
 
     }
 

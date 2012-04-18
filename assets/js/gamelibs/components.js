@@ -7,6 +7,7 @@ Crafty.c("Tractor", {
     cargo_x: 0,
     cargo_y: 0,
     _reverse: 0,
+    _speed: 0,
     toggleDirection: function() {
         //log("--- toggleDirection: function()");
         log('menosuunta vaihtui')
@@ -27,6 +28,7 @@ Crafty.c("Tractor", {
         this._keyRight = "RIGHT_ARROW",
         /* --- */
         this._reverse = 0,
+        this._speed = 0,
         this._accLeft = 0,
         this._accRight = 0,
         this.cargo_x = 0,
@@ -66,30 +68,44 @@ Crafty.c("Tractor", {
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
-            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : (( this._accLeft + this._accRight ) / 2);
+            this._speed = (this._accLeft == 0 || this._accRight == 0) ? 0 : this._speed; //(( this._accLeft + this._accRight ) / 2);
             // accDiff < -4 turn left
             // accDiff > 4 turn right
             // log("this._accDiff:" + this._accDiff + ",this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
+            
+            if(this._speed > 0) {
+                if(this._accLeft > 20 && this._accRight > 20) {
+                    this._speed = this._speed + 0.5
+                }
+
+                if(Math.abs(this._accDiff) < 2) {
+                    this._speed = this._speed + 0.5;
+                }
+            }
+
+            this._speed = this._speed < 3 ? this._speed : 3; // max speed = 3 
 
             var angle = this._rotation * (Math.PI / 180),
                 vx = Math.sin(angle),
                 vy = -Math.cos(angle);
             
-            log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
+            //log("_speed:" + this._speed + ", _accDiff:" + this._accDiff + ", this._accLeft:" + this._accLeft + ", this._accRight:" + this._accRight);
 
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
             if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
-                this.x += vx * 1.5;
-                this.y += vy * 1.5;
+                this._speed = this._speed > 0 ? this._speed : 1.5;
+                log('speed:' + this._speed + ', angle:' + angle);
+                this.x += vx * this._speed;
+                this.y += vy * this._speed;
             } else if(this.isDown(this._keyReverse) || (this._speed > 0 && this._reverse)) {
                 this.x += -vx * 0.8;
                 this.y += -vy * 0.8;
             }
             //log(this._keyLeft)
             /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
-            if( this.isDown(this._keyLeft) || this._accDiff < -4 ) {
+            if( this.isDown(this._keyLeft) || this._accDiff < -10 ) {
                 if (this._reverse) {
                     this.rotation += 1;
                 } else {
@@ -99,7 +115,7 @@ Crafty.c("Tractor", {
             }
 
             /*this.isDown(Crafty.keys.RIGHT_ARROW) ||*/ 
-            if( this.isDown(this._keyRight) || this._accDiff > 4 ) {
+            else if( this.isDown(this._keyRight) || this._accDiff > 10 ) {
                 if (this._reverse) {
                     this.rotation -= 1;
                 } else {
@@ -283,13 +299,19 @@ Crafty.c("Base", {
                 if(this.firstHit) {
                     switch (hitType) {
                         case 1: // tractor drops weight
-                            this.weightValue = obj.weightValue;
-                            obj.weightValue = 0;
-                            Crafty.audio.play("weight-down-base");
+                         //   this.weightValue = obj.weightValue;
+                         //   obj.weightValue = 0;
+                         //   Crafty.audio.play("weight-down-base");
                             break;
                         case 2: // tractor picks up weight
                             obj.weightValue = this.weightValue;
                             this.weightValue = 0;
+                            Crafty.audio.play("weight-up");
+                            break;
+                        case 3: 
+                            var tmp = obj.weightValue;
+                            obj.weightValue = this.weightValue;
+                            this.weightValue = tmp;
                             Crafty.audio.play("weight-up");
                             break;
                     }
