@@ -32,14 +32,14 @@ var Game = {
     dashboard: { 
         generated: false },
     // TODO tama kuuluu kentan yhteyteen
-    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta. Hyppäämällä vaihdetaan renkaiden pyörimissuuntaa.",
+    description: "Kerää kentältä farmisi neljään karsinaan traktorilla neljä punnusta niin, että punnusten yhteenlaskettu summa on 1000. Nopein farmi voittaa. Traktoria liikutetaan niin että toisen pelaajan juoksu pyörittää vasenta rengasta ja toisen pelaajan juoksu oikeaa rengasta.",
     qrcodes: {
         generated: 0,
         images: [
         { _x: 95, _y: 5, action: 'join', id: 1, _ly: 135, label: 'Liity farmiin' }, // 1
         { _x: 610, _y: 5, action: 'join', id: 2, _ly: 135, label: 'Liity farmiin' }, // 2
-        { _x: 1067, _y: 674, action: 'join', id: 3, _ly: 644, label: 'Liity farmiin' }, // 3
-        { _x: 550, _y: 674, action: 'join', id: 4, _ly: 644, label: 'Liity farmiin' }, // 4
+        { _x: 1067, _y: 674, action: 'join', id: 4, _ly: 644, label: 'Liity farmiin' }, // 3
+        { _x: 550, _y: 674, action: 'join', id: 3, _ly: 644, label: 'Liity farmiin' }, // 4
         { _x: 20, _y: 608, action: 'join', id: 5, _ly: 738, label: 'Liity farmiin' }, // 5
         { _x: 1140, _y: 70, action: 'join', id: 6, _ly: 40, label: 'Liity farmiin' }, // 6
         { _x: 440, _y: 280, action: 'start', _ly: 410, label: 'Aloita peli' }, // start
@@ -181,7 +181,7 @@ var Game = {
                 { _x: 402, _y: 76 },
                 { _x: 476, _y: 76 }
             ],
-            "walls" : [
+   /*         "walls" : [
                 { _x: 228, _y: 50, _rotate: 0 },
                 { _x: 302, _y: 50, _rotate: 0 },
                 { _x: 396, _y: 50, _rotate: 0 },
@@ -191,7 +191,7 @@ var Game = {
                 { _x: 386, _y: 60, _rotate: 90 },
                 { _x: 460, _y: 60, _rotate: 90 },
                 { _x: 534, _y: 60, _rotate: 90 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 228, _y: 5 },
                 { _x: 381, _y: 5 }
@@ -210,7 +210,7 @@ var Game = {
                 { _x: 920, _y: 76 },
                 { _x: 994, _y: 76 },
             ],
-            "walls" : [
+   /*         "walls" : [
                 { _x: 746, _y: 50, _rotate: 0 },
                 { _x: 820, _y: 50, _rotate: 0 },
                 { _x: 914, _y: 50, _rotate: 0 },
@@ -220,7 +220,7 @@ var Game = {
                 { _x: 904, _y: 60, _rotate: 90 },
                 { _x: 978, _y: 60, _rotate: 90 },
                 { _x: 1052, _y: 60, _rotate: 90 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 746, _y: 5 },
                 { _x: 899, _y: 5 }
@@ -239,7 +239,7 @@ var Game = {
                 { _x: 402, _y: 692 },
                 { _x: 476, _y: 692 },
             ],
-            "walls" : [
+   /*         "walls" : [
                 { _x: 228, _y: 740, _rotate: 0 },
                 { _x: 302, _y: 740, _rotate: 0 },
                 { _x: 396, _y: 740, _rotate: 0 },
@@ -249,7 +249,7 @@ var Game = {
                 { _x: 386, _y: 676, _rotate: 90 },
                 { _x: 460, _y: 676, _rotate: 90 },
                 { _x: 534, _y: 676, _rotate: 90 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 228, _y: 755 },
                 { _x: 381, _y: 755 }
@@ -268,7 +268,7 @@ var Game = {
                 { _x: 920, _y: 692 },
                 { _x: 994, _y: 692 },
             ],
-            "walls" : [
+  /*          "walls" : [
                 { _x: 746, _y: 740, _rotate: 0 },
                 { _x: 820, _y: 740, _rotate: 0 },
                 { _x: 914, _y: 740, _rotate: 0 },
@@ -278,7 +278,7 @@ var Game = {
                 { _x: 904, _y: 676, _rotate: 90 },
                 { _x: 978, _y: 676, _rotate: 90 },
                 { _x: 1052, _y: 676, _rotate: 90 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 745, _y: 755 },
                 { _x: 899, _y: 755 }
@@ -297,7 +297,7 @@ var Game = {
                 { _x: 76, _y: 421 },
                 { _x: 76, _y: 495 },
             ],
-            "walls" : [
+ /*           "walls" : [
                 { _x: 60, _y: 247, _rotate: 90 },
                 { _x: 60, _y: 321, _rotate: 90 },
                 { _x: 60, _y: 415, _rotate: 90 },
@@ -307,7 +307,7 @@ var Game = {
                 { _x: 60, _y: 395, _rotate: 0 },
                 { _x: 60, _y: 469, _rotate: 0 },
                 { _x: 60, _y: 543, _rotate: 0 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 0, _y: 203 },
                 { _x: 0, _y: 557 }
@@ -326,7 +326,7 @@ var Game = {
                 { _x: 1172, _y: 421 },
                 { _x: 1172, _y: 495 },
             ],
-            "walls" : [
+   /*         "walls" : [
                 { _x: 1230, _y: 247, _rotate: 90 },
                 { _x: 1230, _y: 321, _rotate: 90 },
                 { _x: 1230, _y: 415, _rotate: 90 },
@@ -336,7 +336,7 @@ var Game = {
                 { _x: 1156, _y: 395, _rotate: 0 },
                 { _x: 1156, _y: 469, _rotate: 0 },
                 { _x: 1156, _y: 543, _rotate: 0 },
-            ],
+            ], */
             "nameplates" : [
                 { _x: 1128, _y: 203 },
                 { _x: 1128, _y: 557 }
@@ -506,9 +506,9 @@ var Game = {
                 });
 
                 // create farm walls
-                _.each(farm.walls, function(wall){
-                    var ent = Crafty.e('Wall').attr({ x: wall._x, y: wall._y, z: 2, rotation: wall._rotate, w: 64, h: 64 });
-                });
+                //_.each(farm.walls, function(wall){
+                //    var ent = Crafty.e('Wall').attr({ x: wall._x, y: wall._y, z: 2, rotation: wall._rotate, w: 64, h: 64 });
+                //});
 
                 // add nameplates to farm
                 Game.generateFarmNameplates(farm);

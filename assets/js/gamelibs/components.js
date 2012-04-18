@@ -134,6 +134,8 @@ Crafty.c("Tractor", {
             this._accLeft = this._accLeft < 0.5 ? 0 : this._accLeft-0.5;
             this._accRight = this._accRight < 0.5 ? 0 : this._accRight-0.5;
 
+
+/*
             //check for collision with farms
             var hitWall = this.hit("Wall"), 
               item, normal = {x: 0, y: 0};
@@ -143,7 +145,7 @@ Crafty.c("Tractor", {
                 this.x += Math.ceil(item.normal.x * -item.overlap);
                 this.y += Math.ceil(item.normal.y * -item.overlap);
             }
-
+*/
             //check for collision with base
             var hitBase = this.hit("Base"), 
               item, normal = {x: 0, y: 0};
@@ -601,14 +603,14 @@ Crafty.c("Nameplate", {
         this.addComponent("2D", "DOM");
     }
 });
-
+/*
 Crafty.c("Wall", {
     init: function() {
         this.addComponent("2D", "Canvas", "Collision")
         .collision(new Crafty.polygon([0,0], [64,0], [64,10], [0,10]))
     }
 });
-
+*/
 Crafty.c('Timer', {
     interval: null,
     timeWas: 0,

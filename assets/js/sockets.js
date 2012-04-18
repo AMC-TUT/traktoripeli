@@ -110,15 +110,32 @@
         displayChatMessage("User" + clientID + " left the lobby.");
         //displayChatMessage("function clientRemovedListener(roomID, clientID) ");
         // remove player from Game.teams[n].tyres
-        _.each(Game.teams, function(team) {
-            _.each(team.tractors, function(tractor) {
-                if(tractor.tyres.left.id == clientID) tractor.tyres.left = 0;
-                if(tractor.tyres.right.id == clientID) tractor.tyres.right = 0;
-            });
-        });
+        
+        
+        GameController.clientID.ent = null;
 
+
+        //_.each(Game.teams, function(team) {
+        //    _.each(team.tractors, function(tractor) {
+
+                //if(tractor.tyres.left != 0 || tractor.tyres.right != 0) {
+                //    playerOnline = true;
+                //}
+
+        //        if(tractor.tyres.left.id == clientID) tractor.tyres.left = 0;
+        //        if(tractor.tyres.right.id == clientID) tractor.tyres.right = 0;
+        //    });
+        //});
+
+        var enti = _.find(GameController, function(controller) { return controller.ent != null; });
+        log(enti);
+        var playerOnline = false;
+
+        if(!playerOnline) {
+            Crafty.scene("DashBoard");
+        }
         // update view
-        Game.updateDashBoardTextsAndTractors();
+        //Game.updateDashBoardTextsAndTractors();
 
     }
 
