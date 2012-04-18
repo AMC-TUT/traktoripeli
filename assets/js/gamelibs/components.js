@@ -208,14 +208,14 @@ Crafty.c("Tractor", {
             if (this.x < 5) {
                 this.x = 5;
             }
-            if (this.x > 1275) {
-                this.x = 1275;
+            if (this.x > 1216) {
+                this.x = 1216;
             }
             if (this.y < 5) {
                 this.y = 5;
             }
-            if (this.y > 795) {
-                this.y = 795;
+            if (this.y > 736) {
+                this.y = 736;
             }
 
         })
