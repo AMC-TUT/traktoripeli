@@ -155,6 +155,8 @@
         //if( attrs[1] < 25 ) {
             //log( GameController[clientID].ent )
             // running value from accelerometer
+
+        if( typeof GameController[clientID] !== "undefined" && typeof GameController[clientID].ent !== "undefined" ) {
             if(GameController[clientID].tractorTyre == "left") {
                 if(typeof GameController[clientID].ent._accLeft !== "undefined") {
                     GameController[clientID].ent._accLeft = attrs[1];
@@ -164,6 +166,7 @@
                     GameController[clientID].ent._accRight = attrs[1];
                 }
             }
+        }
 
         //} 
 

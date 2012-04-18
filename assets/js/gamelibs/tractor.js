@@ -534,7 +534,6 @@ var Game = {
 
                     ent._keyForward = farm.tractors[i]._keyForward;
                     ent._keyReverse = farm.tractors[i]._keyReverse;
-
                     ent._keyLeft = farm.tractors[i]._keyLeft;
                     ent._keyRight = farm.tractors[i]._keyRight;
 
@@ -701,6 +700,8 @@ var Game = {
         Game.generateBases();
         //
         _.each(this.teams, function(team){
+            if( (typeof team.tractors[0] !== "undefined" && team.tractors[0].tyres.left.id > 0 && team.tractors[0].tyres.right.id > 0) 
+                || (typeof team.tractors[1] !== "undefined" && team.tractors[1].tyres.left.id > 0 && team.tractors[1].tyres.right.id > 0) )
             Game.generateFarm( team.farmId ); //, team.id );
         });
         //

@@ -103,6 +103,9 @@ Crafty.c("Tractor", {
                 
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
+
+                this.stop().animate("FrwdFrwd", 10, 1);
+
             } else if(this.isDown(this._keyReverse) || (this._speed > 0 && this._reverse)) {
                 this.x += -vx * 0.8;
                 this.y += -vy * 0.8;

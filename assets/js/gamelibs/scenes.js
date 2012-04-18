@@ -133,6 +133,14 @@ function() {
         .attr({ x: 320, y: 455, z: 4, w: 640, h: 156 })
         .text("<strong>Tavoite: </strong>" + Game.description);
 
+
+    // TODO ei näin vaan tarkasta olemassa olevat clientit 
+    // GameControllerista ja luo näille traktorit valmiiksi 
+    // dashboardiin ja valmistele Game.team taulu samaa 
+    // tarkoitusta varten kuntoon.
+    GameController = {};
+    Game.teams = [];
+
     Game.dashboard.generated = true;
 
 
