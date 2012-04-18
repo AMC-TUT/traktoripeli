@@ -54,5 +54,5 @@ $('.QRCode.START').live('click tap', function(event) {
 });
 
 $('.QRCode.CLOSE').live('click tap', function(event) {
-	window.location = game.path;
+	window.location = 'http://sportti.dreamschool.fi/hikiboksi/';
 });

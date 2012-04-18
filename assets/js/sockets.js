@@ -201,7 +201,7 @@
         }
 
         if(message == "CLOSE") {
-            window.location = game.path;
+            window.location = 'http://sportti.dreamschool.fi/hikiboksi/'; //game.path;
         }
 
     }
