@@ -50,9 +50,23 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
 $('.QRCode.START').live('click tap', function(event) {
     // stop playing audio 
     //Game.audio.mute();
+    
+    /* disabled for dev purposes 
+    var tractorCount = 0;
 
-    // go to Game scene
-    Crafty.scene("Game");
+    _.each(Game.teams, function(team) {
+    	_.each(team.tractors, function(tractor) {
+    		if(tractor.tyres.left != 0 && tractor.tyres.right != 0) {
+    			tractorCount += 1;
+    		}
+    	});
+    });
+
+    if(tractorCount > 1) {
+    	Crafty.scene("Game");
+    }
+    */
+    
 });
 
 $('.QRCode.CLOSE').live('click tap', function(event) {

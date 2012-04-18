@@ -162,8 +162,19 @@
         displayChatMessage("fromClientID" + fromClientID + ", message" + message);
 
         if(message == "START") {
-            // go to Game scene
-            Crafty.scene("Game");
+                var tractorCount = 0;
+
+                _.each(Game.teams, function(team) {
+                    _.each(team.tractors, function(tractor) {
+                        if(tractor.tyres.left != 0 && tractor.tyres.right != 0) {
+                            tractorCount += 1;
+                        }
+                    });
+                });
+
+                if(tractorCount > 1) {
+                    Crafty.scene("Game");
+                }
         }
 
         if(message == "CLOSE") {
