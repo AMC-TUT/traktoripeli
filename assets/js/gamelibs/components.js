@@ -353,7 +353,6 @@ Crafty.c("WeightOnWheels", {
     }
 });
 
-
 Crafty.c("Farm", {
     weightValue: 0,
     id: 0,
@@ -528,14 +527,7 @@ Crafty.c("Nameplate", {
         this.addComponent("2D", "DOM");
     }
 });
-/*
-Crafty.c("Wall", {
-    init: function() {
-        this.addComponent("2D", "Canvas", "Collision")
-        .collision(new Crafty.polygon([0,0], [64,0], [64,10], [0,10]))
-    }
-});
-*/
+
 Crafty.c('Timer', {
     interval: null,
     timeWas: 0,
