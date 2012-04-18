@@ -110,11 +110,11 @@ Crafty.c("Tractor", {
             }
 
             if( this.isDown(this._keyLeft) || this._accDiff < -7 ) {
-                this.rotation = this._speed == 0 ? this.rotation-2 : this.rotation-1;
+                this.rotation = this._speed == 0 ? this.rotation-1.5 : this.rotation-1;
             }
 
             else if( this.isDown(this._keyRight) || this._accDiff > 7 ) {
-                this.rotation = this._speed == 0 ? this.rotation+2 : this.rotation+1;
+                this.rotation = this._speed == 0 ? this.rotation+1.5 : this.rotation+1;
 
             } 
 
@@ -394,11 +394,8 @@ Crafty.c("Farm", {
                 });
                 // play some unspirational music and cheer for winner
                 // cheer first
-                setTimeout(function() {
-                    if(Game.audio._muted) {
-                        Crafty.audio.play("cheer");
-                    }
-                }, 4000);
+                setTimeout(function() { Crafty.audio.play("cheer"); }, 3000);
+
                 // march then
                 /*
                 setTimeout(function() {
