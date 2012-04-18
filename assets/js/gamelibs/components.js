@@ -115,33 +115,24 @@ Crafty.c("Tractor", {
                 this.x += -vx * 0.8;
                 this.y += -vy * 0.8;
             }
-            //log(this._keyLeft)
-            /*this.isDown(Crafty.keys.LEFT_ARROW) ||*/
+
             if( this.isDown(this._keyLeft) || this._accDiff < -10 ) {
 
                 if (!this.isPlaying("FrwdBrwd")) {
                     this.stop().animate("FrwdBrwd", 10, -1);
                 }
 
-                if (this._reverse) {
-                    this.rotation += 1;
-                } else {
-                    this.rotation -= 1;
-                }
+                this.rotation = this._speed == 0 ? this.rotation-2 : this.rotation-1;
             }
 
-            /*this.isDown(Crafty.keys.RIGHT_ARROW) ||*/ 
             else if( this.isDown(this._keyRight) || this._accDiff > 10 ) {
 
                 if (!this.isPlaying("BrwdFrwd")) {
                     this.stop().animate("BrwdFrwd", 10, -1)
                 }
 
-                if (this._reverse) {
-                    this.rotation -= 1;
-                } else {
-                    this.rotation += 1;
-                }
+                this.rotation = this._speed == 0 ? this.rotation+2 : this.rotation+1;
+
             } 
 
             // drop acc values on each frame so that tractor tyre 
