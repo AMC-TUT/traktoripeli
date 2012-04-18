@@ -194,6 +194,20 @@ Crafty.c("Tractor", {
                 this.y += Math.ceil(item.normal.y * -item.overlap);
             }
 
+            // set game area
+            if (this.x < 5) {
+                this.x = 5;
+            }
+            if (this.x > 1275) {
+                this.x = 1275;
+            }
+            if (this.y < 5) {
+                this.y = 5;
+            }
+            if (this.y > 795) {
+                this.y = 795;
+            }
+
         })
         .bind('KeyDown', function(e) {
             /*if( this.isDown('RIGHT_ARROW')) {
