@@ -67,9 +67,9 @@ Crafty.c("Tractor", {
                 if(Math.abs(this._accDiff) < 2) {
                     this._speed = this._speed + 0.5;
                 }
-            } else {
+            } /*else {
                 this.stop();
-            }
+            }*/
 
             this._speed = this._speed < 3 ? this._speed : 3; // max speed = 3 
 
@@ -81,13 +81,25 @@ Crafty.c("Tractor", {
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
-            if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
-                
+
+            if(this._speed > 0) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)
                 }
+            } else if(this._accDiff > 7) {
+                if (!this.isPlaying("FrwdBrwd")) {
+                    this.stop().animate("FrwdBrwd", 10, -1);
+                }                
+            } else if(this._accDiff < -7) {
+                if (!this.isPlaying("BrwdFrwd")) {
+                    this.stop().animate("BrwdFrwd", 10, -1);
+                }                
+            } else {
+                this.stop();
+            }
 
-                if(this._speed == 0) { this._speed = 1.5; } // keyDown
+            if(this.isDown(this._keyForward) || (this._speed > 0 && !this._reverse)) {
+                if(this._speed == 0) { this._speed = 1.5; }
                 
                 this.x += vx * this._speed;
                 this.y += vy * this._speed;
@@ -97,21 +109,11 @@ Crafty.c("Tractor", {
                 this.y += -vy * 0.8;
             }
 
-            if( this.isDown(this._keyLeft) || this._accDiff < -10 ) {
-
-                if (!this.isPlaying("FrwdBrwd")) {
-                    this.stop().animate("FrwdBrwd", 10, -1);
-                }
-
+            if( this.isDown(this._keyLeft) || this._accDiff < -7 ) {
                 this.rotation = this._speed == 0 ? this.rotation-2 : this.rotation-1;
             }
 
-            else if( this.isDown(this._keyRight) || this._accDiff > 10 ) {
-
-                if (!this.isPlaying("BrwdFrwd")) {
-                    this.stop().animate("BrwdFrwd", 10, -1)
-                }
-
+            else if( this.isDown(this._keyRight) || this._accDiff > 7 ) {
                 this.rotation = this._speed == 0 ? this.rotation+2 : this.rotation+1;
 
             } 
@@ -392,7 +394,11 @@ Crafty.c("Farm", {
                 });
                 // play some unspirational music and cheer for winner
                 // cheer first
-                Crafty.audio.play("cheer");
+                setTimeout(function() {
+                    if(Game.audio._muted) {
+                        Crafty.audio.play("cheer");
+                    }
+                }, 4000);
                 // march then
                 /*
                 setTimeout(function() {
