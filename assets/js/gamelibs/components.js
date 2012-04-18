@@ -51,21 +51,6 @@ Crafty.c("Tractor", {
         .animate("BrwdFrwd", [
         [0, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0], [1, 0]
         ])
-/*
-        .bind("Moved", function(from) {
-
-            this._from = from;
-
-            // Dont allow to move the tractor out of the Screen
-            if(this.x + this.w > Crafty.viewport.width ||
-                this.x + this.w - 20 < this.w || 
-                this.y + this.h < this.h || 
-                this.y + this.h > Crafty.viewport.height || this.preparing){
-                this.attr({ x:from.x, y:from.y });
-            }
-
-        })
-*/
         .bind("EnterFrame", function(frame) {
 
             this._accDiff = this._accLeft - this._accRight;
