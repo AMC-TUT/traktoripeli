@@ -145,16 +145,9 @@
     // Triggered when a game message is received
 
     function moveMessageListener(clientID, message) {
-        //displayChatMessage("clientID: " + clientID + ", message: " + message);
 
         var attrs = message.split(";");
-        // attrs[0] = action
         // attrs[1] = accelerometer value
-
-        //attrs[1] = typeof attrs[1] !== "undefined" ? 0 : attrs[1];
-        //if( attrs[1] < 25 ) {
-            //log( GameController[clientID].ent )
-            // running value from accelerometer
 
         if( typeof GameController[clientID] !== "undefined" && typeof GameController[clientID].ent !== "undefined" ) {
             if(GameController[clientID].tractorTyre == "left") {
@@ -167,15 +160,6 @@
                 }
             }
         }
-
-        //} 
-
-        //if( attrs[1] > 25 ) {
-            // toggle moving direction forward||reverse
-            // call toggler
-            // GameController[clientID].ent.toggleDirection();
-        //}
-
     }
 
     // Triggered when a game message is received
@@ -184,7 +168,7 @@
 
         displayChatMessage("fromClientID" + fromClientID + ", message" + message);
 
-        if(message == "START") {
+        if(message == "s") { // START
                 var tractorCount = 0;
 
                 _.each(Game.teams, function(team) {
@@ -200,7 +184,7 @@
                 }
         }
 
-        if(message == "CLOSE") {
+        if(message == "c") { // CLOSE
             window.location = 'http://sportti.dreamschool.fi/hikiboksi/'; //game.path;
         }
 

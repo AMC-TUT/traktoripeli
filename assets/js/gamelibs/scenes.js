@@ -38,7 +38,7 @@ function() {
     function() {
         // show full progress bar
         $(".progress .bar").css("width", "100%");
-     
+
         // show loading scene properly before moving along
         setTimeout(function() {
             // remove loading stuff from DOM
@@ -89,7 +89,7 @@ function() {
     Game.sockets.dashboard = true;
 
     this.bind('SocketsReadyEvent', _.once(function() { // _.once = singleton pattern impl. 
-        
+
         log('SocketsReadyEvent');
 
         _.each(Game.qrcodes.images, function(qrcode) {
@@ -98,7 +98,7 @@ function() {
             .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
             // tid = teamID
-            var json = { "action": qrcode.action, "roomId": Game.sockets.roomID, "tid": qrcode.id };
+            var json = { "a": qrcode.action, "rid": Game.sockets.roomID, "tid": qrcode.id };
 
             $.ajax({
                 type: "GET",
