@@ -25,7 +25,7 @@ body{overflow:hidden;background-color:transparent;}
 .tractor3{background-image:url('../img/traktor_c3.png');background-position:0 0;top:560px;left:400px;-ms-transform:rotate(-15deg)scale(.8,.8);-webkit-transform:rotate(-15deg) scale(.8,.8);-o-transform:rotate(-15deg) scale(.8,.8);-moz-transform:rotate(-15deg) scale(.8,.8);transform:rotate(-15deg) scale(.8,.8);} */
 .NameplateText{color:#FFFFFF;font-family:Arial;font-size:16px;font-weight:bold;}
 .Timer{display:block;font-size:26px;font-weight:bold;color:#EEE;margin-top:.5em;white-space:nowrap;text-shadow:#111 0px 0px 9px;}
-.QRCode.START,.QRCode.CLOSE{cursor:pointer;}
+.QRCode.S,.QRCode.C{cursor:pointer;}
 .modal{border:5px solid #754224;background:#7D4627;color:orange;font-size:15px;}
 .modal-header{border-bottom:1px solid orange;}
 .modal-footer{background:#7D4627;border-top:1px solid orange;-webkit-box-shadow:inset 0 1px 0 orange;-moz-box-shadow:inset 0 1px 0 orange;box-shadow:inset 0 1px 0 orange;}
