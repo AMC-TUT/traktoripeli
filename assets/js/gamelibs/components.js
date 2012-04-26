@@ -81,7 +81,6 @@ Crafty.c("Tractor", {
             this.cargo_x = this.x + 20 - (vx*10);
             this.cargo_y = this.y + 20 - (vy*10);
 
-
             if(this._speed > 0) {
                 if (!this.isPlaying("FrwdFrwd")) {
                     this.stop().animate("FrwdFrwd", 10, -1)

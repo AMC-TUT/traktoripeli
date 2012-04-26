@@ -1,47 +1,40 @@
 
 window.onload = function() {
 
+  var WIDTH = 1280, 
+      HEIGHT = 800;
 
-	var WIDTH = 1280, HEIGHT = 800;
+  // Initialize Crafty
+  Crafty.init(WIDTH, HEIGHT);
 
-    // Initialize Crafty
-    Crafty.init(WIDTH, HEIGHT);
+  // Load first scene
+  Crafty.scene("Loading");
+  
+  $(window).on('resize orientationchange', function(event) {
 
-    // set game area to right size for the screen
-    resizeGameArea();
+          var widthToHeight = WIDTH / HEIGHT;
+          var newWidth = window.innerWidth;
+          var newHeight = window.innerHeight - 54; // -54 header
+          var newWidthToHeight = newWidth / newHeight;
 
-    // Load first scene
-    Crafty.scene("Loading");
+          if (newWidthToHeight > widthToHeight) {
+              newWidth = newHeight * widthToHeight;
+          } else {
+              newHeight = newWidth / widthToHeight;
+          }
 
-    window.addEventListener("resize", resizeGameArea, false);
+          var marginLeft = (window.innerWidth - newWidth) / 2;
+          var fontSize = (newWidth / 1000) + "em";
 
-    // TODO refactor this function to be general and working in all width/height rations
-	function resizeGameArea() {
-		var gameWidth = window.innerWidth;
-		var gameHeight = window.innerHeight;
-		var scaleToFitX = gameWidth / 1280;
-		var scaleToFitY = gameHeight / 800;
+          var $cr = $('#cr-stage');
+          var $canvas = $cr.find('canvas');
 
-		//log("scaleToFitX: " + scaleToFitX + "scaleToFitY: " + scaleToFitY);
+          $canvas.css({ 'width': newWidth, 'height': newHeight, 'margin-left': marginLeft });
+          $cr.css({ 'width': '100%', 'height': newHeight });
+          $('body').css({ 'font-size': fontSize });
 
-		var currentScreenRatio = WIDTH / HEIGHT;
-		var optimalRatio = Math.min(scaleToFitX, scaleToFitY);
-
-		//$('#cr-stage').css("position", "absolute !important"); 
-		
-		//$('#cr-stage').css("-webkit-transform", "scale("+optimalRatio+")");
-
-		//var diffH = HEIGHT-(HEIGHT*optimalRatio);
-    	//log("HEIGHT: " + HEIGHT + " diffY: " + diffH+ ' :: ' + HEIGHT*optimalRatio)
-    	//$('#cr-stage').css("top", -diffH/2);
-
-    	//var diffW = WIDTH-(WIDTH*optimalRatio);
-	    //log("WIDTH: " + WIDTH + " diffW: " + diffW + ' :: ' + WIDTH*optimalRatio)
-	    //$('#cr-stage').css("left", -diffW/2);
-
-		// $canvas.css({ "width": window.innerWidth + "px", "height": window.innerHeight + "px" });
-    	// canvas.style.width = window.innerWidth + 'px';
-    	// canvas.style.height = window.innerHeight + 'px';
-	}
+  });
+  
+  $(window).trigger('resize');
 
 };
