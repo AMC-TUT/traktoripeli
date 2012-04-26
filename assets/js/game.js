@@ -32,6 +32,6 @@ window.onload = function() {
           $cr.css({ 'width': '100%', 'height': newHeight });
   });
   
-  $(window).trigger('resize');
+  // $(window).trigger('resize');
 
 };
