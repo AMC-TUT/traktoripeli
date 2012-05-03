@@ -68,6 +68,8 @@ function() {
 //Game Scene
 Crafty.scene("DashBoard",
 function() {
+
+    Game.on = false;
     // play audio in DashBoard (working but disabled for dev)
     /* TODO miten poistetaan audio instanssi paska kokonaan. Mutetukset eivat toimi kunnolla
     if(!_.isObject(Game.audio)) {
@@ -98,7 +100,7 @@ function() {
             .attr({ x: qrcode._x, y: qrcode._y, z: 4 });
 
             // tid = teamID
-            var json = { "a": qrcode.action, "rid": Game.sockets.roomID, "tid": qrcode.id };
+            var json = { "action": qrcode.action, "roomId": Game.sockets.roomID, "tid": qrcode.id };
 
             $.ajax({
                 type: "GET",
@@ -149,6 +151,8 @@ function() {
 //Game Scene
 Crafty.scene("Game",
 function() {
+
+    Game.on = true;
     // when loaded play sound and...
     // Crafty.audio.play("troot");
 
@@ -156,5 +160,30 @@ function() {
 	Crafty.background("url(" + game.path + "/assets/img/bg.png)");
 
     Game.generateGame();
+
+    var ent = Crafty.e("2D, DOM, Image, QRCode")
+            .attr({ x: 884, y: 610, z: 8 });
+
+            // tid = teamID
+            var json = { "action": 'close', "roomId": Game.sockets.roomID };
+
+            $.ajax({
+                type: "GET",
+                url: 'http://sportti.dreamschool.fi/galaxy/api/qrcode/JSON',
+                data: json,
+                cache: true,
+                success: function(data) {
+                   var qr = $(data)[2];
+
+                    ent.image( $(qr).attr('src') );
+               
+                    ent.addComponent('CLOSE');
+                    ent.addComponent("QRCode-CLOSE");
+
+                    Crafty.e("2D, DOM, Label, Text, QRCode-CLOSE")
+                        .attr({ x: 884, y: 740, z: 4, w: 150, h: 20 })
+                        .text("<strong>" + "Keskeytä" + "</strong>");
+                }
+            });
 
 });

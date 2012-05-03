@@ -23,6 +23,7 @@ var GameController = {
 
 var Game = {
     // add this description to level obj
+    on: false, // game is ongoing, true when gaming
     sockets: { 
         ready: false, 
         roomID: 0, 
@@ -34,14 +35,14 @@ var Game = {
     qrcodes: {
         generated: 0,
         images: [
-        { _x: 294, _y: 137, action: 'j', id: 1, _ly: 267, label: 'Liity farmiin' }, // 1
-        { _x: 614, _y: 137, action: 'j', id: 2, _ly: 267, label: 'Liity farmiin' }, // 2
-        { _x: 294, _y: 489, action: 'j', id: 3, _ly: 619, label: 'Liity farmiin' }, // 3
-        { _x: 614, _y: 489, action: 'j', id: 4, _ly: 619, label: 'Liity farmiin' }, // 4
-        { _x: 137, _y: 320, action: 'j', id: 5, _ly: 450, label: 'Liity farmiin' }, // 5
-        { _x: 774, _y: 320, action: 'j', id: 6, _ly: 450, label: 'Liity farmiin' }, // 6
-        { _x: 884, _y: 10, action: 's', _ly: 140, label: 'Aloita peli' }, // start
-        { _x: 884, _y: 610, action: 'c', _ly: 740, label: 'Sulje peli' } // close
+        { _x: 294, _y: 137, action: 'join', id: 1, _ly: 267, label: 'Liity farmiin' }, // 1
+        { _x: 614, _y: 137, action: 'join', id: 2, _ly: 267, label: 'Liity farmiin' }, // 2
+        { _x: 294, _y: 489, action: 'join', id: 3, _ly: 619, label: 'Liity farmiin' }, // 3
+        { _x: 614, _y: 489, action: 'join', id: 4, _ly: 619, label: 'Liity farmiin' }, // 4
+        { _x: 137, _y: 320, action: 'join', id: 5, _ly: 450, label: 'Liity farmiin' }, // 5
+        { _x: 774, _y: 320, action: 'join', id: 6, _ly: 450, label: 'Liity farmiin' }, // 6
+        { _x: 884, _y: 10, action: 'start', _ly: 140, label: 'Aloita peli' }, // start
+        { _x: 884, _y: 610, action: 'close', _ly: 740, label: 'Sulje peli' } // close
         ]
     },
     teams: [], // add teams when players join to union

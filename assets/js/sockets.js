@@ -168,7 +168,7 @@
 
         displayChatMessage("fromClientID" + fromClientID + ", message" + message);
 
-        if(message == "s") { // START
+        if(message == "START") { // START
                 var tractorCount = 0;
 
                 _.each(Game.teams, function(team) {
@@ -184,7 +184,20 @@
                 }
         }
 
-        if(message == "c") { // CLOSE
+        if(message == "CLOSE" && Game.on) { // CLOSE THE GAME SCENE
+                // open DashBoard
+                Crafty.scene("DashBoard");
+
+                // Reset game
+                _.each(Game.teams, function(team) {
+                    team.score = 0;
+                    _.each(team.tractors, function(tractor) {
+                        tractor.ent = null;
+                    });
+                });
+        }
+
+        if(message == "CLOSE" && !Game.on) { // CLOSE THE GAME
             window.location = 'http://sportti.dreamschool.fi/hikiboksi/'; //game.path;
         }
 
