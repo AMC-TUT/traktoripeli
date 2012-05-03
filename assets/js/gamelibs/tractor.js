@@ -243,8 +243,8 @@ var Game = {
                 { _x: 675, _y: 718 }
             ],
             "tractors" : [
-                { c: "team4vechile1", _x: 608, _y: 676, "_rotate": 0, _keyForward: "U", _keyReverse: "J", _keyLeft: "7", _keyRight: "M" },
-                { c: "team4vechile2", _x: 672, _y: 676, "_rotate": 0, _keyForward: "I", _keyReverse: "K", _keyLeft: "8", _keyRight: "DECIMAL" }
+                { c: "team4vechile1", _x: 608, _y: 643, "_rotate": 0, _keyForward: "U", _keyReverse: "J", _keyLeft: "7", _keyRight: "M" },
+                { c: "team4vechile2", _x: 672, _y: 643, "_rotate": 0, _keyForward: "I", _keyReverse: "K", _keyLeft: "8", _keyRight: "DECIMAL" }
             ]
         },
         { 
@@ -431,7 +431,7 @@ var Game = {
             // if right farm
             if(farm.id == farmId) {
                 // create farm
-                farmEnt = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 3, rotation: farm.attr._rotate });
+                farmEnt = Crafty.e('Farm').attr({ x: farm.attr._x, y: farm.attr._y, z: 1, rotation: farm.attr._rotate });
                 farmEnt.id = farmId;
                 farmEnt.addComponent(farm.attr.c);
 
