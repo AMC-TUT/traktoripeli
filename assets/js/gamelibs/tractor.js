@@ -487,7 +487,7 @@ var Game = {
 
     },
     addTimer: function() {
-        Crafty.e('Timer').attr({ x: 1100, y: 5, z: 4 });
+        Crafty.e('Timer').attr({ x: 844, y: 5, z: 4 });
     },
     generateFarms: function() {
         _.each(this.farms, function(farm){
