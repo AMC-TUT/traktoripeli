@@ -9,7 +9,7 @@ window.onload = function() {
 
   // Load first scene
   Crafty.scene("Loading");
-
+/*
   $(window).on('resize orientationchange', function(event) {
 
           var widthToHeight = WIDTH / HEIGHT;
@@ -35,6 +35,6 @@ window.onload = function() {
           //$cr.css({ 'width': '100%', 'height': newHeight });
   });
 
-  //$(window).trigger('resize');
-
+  $(window).trigger('resize');
+*/
 };
