@@ -1,5 +1,5 @@
 // objects
-Crafty.sprite(64, game.path + "/assets/img/1kg.png", {
+Crafty.sprite(48, game.path + "/assets/img/1kg.png", {
     // weight on bases
     wb100g: [0, 0],
     wb200g: [1, 0],
@@ -24,12 +24,12 @@ Crafty.sprite(336, 104, game.path + "/assets/img/farms.png", {
     farm4: [0, 3] // farm 5
 });
 */
-Crafty.sprite(306, 74, game.path + "/assets/img/farm.png", {
+Crafty.sprite(263, 65, game.path + "/assets/img/farm.png", {
     // farms
     farm: [0, 0], // farms 1 and 2
 });
 
-Crafty.sprite(150, 40, game.path + "/assets/img/nameplates.png", {
+Crafty.sprite(128, 40, game.path + "/assets/img/nameplates.png", {
     nameplate1: [0, 0],
     nameplate2: [0, 1],
 });

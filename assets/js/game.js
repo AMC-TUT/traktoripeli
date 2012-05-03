@@ -1,8 +1,8 @@
 
 window.onload = function() {
 
-  var WIDTH = 1280, 
-      HEIGHT = 800;
+  var WIDTH = 1024, 
+      HEIGHT = 768;
 
   // Initialize Crafty
   Crafty.init(WIDTH, HEIGHT);

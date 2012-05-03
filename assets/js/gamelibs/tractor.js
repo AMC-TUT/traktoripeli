@@ -34,14 +34,14 @@ var Game = {
     qrcodes: {
         generated: 0,
         images: [
-        { _x: 95, _y: 5, action: 'j', id: 1, _ly: 135, label: 'Liity farmiin' }, // 1
-        { _x: 610, _y: 5, action: 'j', id: 2, _ly: 135, label: 'Liity farmiin' }, // 2
-        { _x: 1067, _y: 674, action: 'j', id: 4, _ly: 644, label: 'Liity farmiin' }, // 3
-        { _x: 550, _y: 674, action: 'j', id: 3, _ly: 644, label: 'Liity farmiin' }, // 4
-        { _x: 20, _y: 608, action: 'j', id: 5, _ly: 738, label: 'Liity farmiin' }, // 5
-        { _x: 1140, _y: 70, action: 'j', id: 6, _ly: 40, label: 'Liity farmiin' }, // 6
-        { _x: 440, _y: 280, action: 's', _ly: 410, label: 'Aloita peli' }, // start
-        { _x: 720, _y: 280, action: 'c', _ly: 410, label: 'Sulje peli' } // close
+        { _x: 294, _y: 137, action: 'j', id: 1, _ly: 267, label: 'Liity farmiin' }, // 1
+        { _x: 614, _y: 137, action: 'j', id: 2, _ly: 267, label: 'Liity farmiin' }, // 2
+        { _x: 294, _y: 489, action: 'j', id: 3, _ly: 619, label: 'Liity farmiin' }, // 3
+        { _x: 614, _y: 489, action: 'j', id: 4, _ly: 619, label: 'Liity farmiin' }, // 4
+        { _x: 137, _y: 320, action: 'j', id: 5, _ly: 450, label: 'Liity farmiin' }, // 5
+        { _x: 774, _y: 320, action: 'j', id: 6, _ly: 450, label: 'Liity farmiin' }, // 6
+        { _x: 884, _y: 10, action: 's', _ly: 140, label: 'Aloita peli' }, // start
+        { _x: 884, _y: 610, action: 'c', _ly: 740, label: 'Sulje peli' } // close
         ]
     },
     teams: [], // add teams when players join to union
@@ -143,145 +143,145 @@ var Game = {
     ],
     // base locations
     bases: [
-        { _x: 414, _y: 184 },
-        { _x: 554, _y: 184 },
-        { _x: 694, _y: 184 },
-        { _x: 834, _y: 184 },
-        { _x: 344, _y: 284 },
-        { _x: 484, _y: 284 },
-        { _x: 624, _y: 284 },
-        { _x: 764, _y: 284 },
-        { _x: 904, _y: 284 },
-        { _x: 274, _y: 384 },
-        { _x: 414, _y: 384 },
-        { _x: 554, _y: 384 },
-        { _x: 694, _y: 384 },
-        { _x: 834, _y: 384 },
-        { _x: 974, _y: 384 },
-        { _x: 344, _y: 484 },
-        { _x: 484, _y: 484 },
-        { _x: 624, _y: 484 },
-        { _x: 764, _y: 484 },
-        { _x: 904, _y: 484 },
-        { _x: 414, _y: 584 },
-        { _x: 554, _y: 584 },
-        { _x: 694, _y: 584 },
-        { _x: 834, _y: 584 },
+        { _x: 353, _y: 273 },
+        { _x: 449, _y: 273 },
+        { _x: 545, _y: 273 },
+        { _x: 641, _y: 273 },
+        { _x: 303, _y: 321 },
+        { _x: 401, _y: 321 },
+        { _x: 497, _y: 321 },
+        { _x: 593, _y: 321 },
+        { _x: 689, _y: 321 },
+        { _x: 257, _y: 369 },
+        { _x: 353, _y: 369 },
+        { _x: 449, _y: 369 },
+        { _x: 545, _y: 369 },
+        { _x: 641, _y: 369 },
+        { _x: 737, _y: 369 },
+        { _x: 305, _y: 417 },
+        { _x: 401, _y: 417 },
+        { _x: 497, _y: 417 },
+        { _x: 593, _y: 417 },
+        { _x: 689, _y: 417 },
+        { _x: 353, _y: 465 },
+        { _x: 449, _y: 465 },
+        { _x: 545, _y: 465 },
+        { _x: 641, _y: 465 },
     ],
     // farm locations
     farms:[
         { 
             "id" : 1,
             //"attr": { c: "farm1", _x: 228, _y: 50, _rotate: 0 },
-            "attr": { c: "farm", _x: 228, _y: 50, _rotate: 0 },
+            "attr": { c: "farm", _x: 221, _y: 61, _rotate: 0 },
             "homebases" : [
-                { _x: 254, _y: 76 },
-                { _x: 328, _y: 76 },
-                { _x: 402, _y: 76 },
-                { _x: 476, _y: 76 }
+                { _x: 240, _y: 77 },
+                { _x: 304, _y: 77 },
+                { _x: 368, _y: 77 },
+                { _x: 432, _y: 77 }
             ],
             "nameplates" : [
-                { _x: 228, _y: 5 },
-                { _x: 381, _y: 5 }
+                { _x: 221, _y: 10 },
+                { _x: 355, _y: 10 }
             ],
             "tractors" : [
-                { c: "team1vechile1", _x: 312, _y: 60, "_rotate": 180, _keyForward: "Q", _keyReverse: "A", _keyLeft: "1", _keyRight: "Z" },
-                { c: "team1vechile2", _x: 386, _y: 60, "_rotate": 180, _keyForward: "W", _keyReverse: "S", _keyLeft: "2", _keyRight: "X" }
+                { c: "team1vechile1", _x: 288, _y: 61, "_rotate": 180, _keyForward: "Q", _keyReverse: "A", _keyLeft: "1", _keyRight: "Z" },
+                { c: "team1vechile2", _x: 352, _y: 61, "_rotate": 180, _keyForward: "W", _keyReverse: "S", _keyLeft: "2", _keyRight: "X" }
             ]
         },
         {
             "id" : 2,
             //"attr": { c: "farm1", _x: 746, _y: 50, _rotate: 0 },
-            "attr": { c: "farm", _x: 746, _y: 50, _rotate: 0 },
+            "attr": { c: "farm", _x: 541, _y: 61, _rotate: 0 },
             "homebases" : [
-                { _x: 772, _y: 76 },
-                { _x: 846, _y: 76 },
-                { _x: 920, _y: 76 },
-                { _x: 994, _y: 76 },
+                { _x: 560, _y: 77 },
+                { _x: 624, _y: 77 },
+                { _x: 688, _y: 77 },
+                { _x: 752, _y: 77 },
             ],
             "nameplates" : [
-                { _x: 746, _y: 5 },
-                { _x: 899, _y: 5 }
+                { _x: 541, _y: 10 },
+                { _x: 675, _y: 10 }
             ],
             "tractors" : [
-                { c: "team2vechile1", _x: 830, _y: 60, "_rotate": 180, _keyForward: "E", _keyReverse: "D", _keyLeft: "3", _keyRight: "C" },
-                { c: "team2vechile2", _x: 904, _y: 60, "_rotate": 180, _keyForward: "R", _keyReverse: "F", _keyLeft: "4", _keyRight: "V" }
+                { c: "team2vechile1", _x: 608, _y: 61, "_rotate": 180, _keyForward: "E", _keyReverse: "D", _keyLeft: "3", _keyRight: "C" },
+                { c: "team2vechile2", _x: 672, _y: 61, "_rotate": 180, _keyForward: "R", _keyReverse: "F", _keyLeft: "4", _keyRight: "V" }
             ]
         },
         { 
             "id" : 3,
             //"attr": { c: "farm2", _x: 228, _y: 676, _rotate: 0 },
-            "attr": { c: "farm", _x: 534, _y: 750, _rotate: 180 },
+            "attr": { c: "farm", _x: 482, _y: 706, _rotate: 180 },
             "homebases" : [
-                { _x: 254, _y: 692 },
-                { _x: 328, _y: 692 },
-                { _x: 402, _y: 692 },
-                { _x: 476, _y: 692 },
+                { _x: 240, _y: 659 },
+                { _x: 304, _y: 659 },
+                { _x: 368, _y: 659 },
+                { _x: 443, _y: 659 },
             ],
             "nameplates" : [
-                { _x: 228, _y: 755 },
-                { _x: 381, _y: 755 }
+                { _x: 221, _y: 718 },
+                { _x: 355, _y: 718 }
             ],
             "tractors" : [
-                { c: "team3vechile1", _x: 312, _y: 676, "_rotate": 0, _keyForward: "T", _keyReverse: "G", _keyLeft: "5", _keyRight: "B" },
-                { c: "team3vechile2", _x: 386, _y: 676, "_rotate": 0, _keyForward: "Y", _keyReverse: "H", _keyLeft: "6", _keyRight: "N" }
+                { c: "team3vechile1", _x: 288, _y: 643, "_rotate": 0, _keyForward: "T", _keyReverse: "G", _keyLeft: "5", _keyRight: "B" },
+                { c: "team3vechile2", _x: 352, _y: 643, "_rotate": 0, _keyForward: "Y", _keyReverse: "H", _keyLeft: "6", _keyRight: "N" }
             ]
         },
         { 
             "id" : 4,
             //"attr": { c: "farm2", _x: 746, _y: 676, _rotate: 0 },
-            "attr": { c: "farm", _x: 1052, _y: 750, _rotate: 180 },
+            "attr": { c: "farm", _x: 802, _y: 706, _rotate: 180 },
             "homebases" : [
-                { _x: 772, _y: 692 },
-                { _x: 846, _y: 692 },
-                { _x: 920, _y: 692 },
-                { _x: 994, _y: 692 },
+                { _x: 560, _y: 659 },
+                { _x: 624, _y: 659 },
+                { _x: 688, _y: 659 },
+                { _x: 752, _y: 659 },
             ],
             "nameplates" : [
-                { _x: 745, _y: 755 },
-                { _x: 899, _y: 755 }
+                { _x: 541, _y: 718 },
+                { _x: 675, _y: 718 }
             ],
             "tractors" : [
-                { c: "team4vechile1", _x: 830, _y: 676, "_rotate": 0, _keyForward: "U", _keyReverse: "J", _keyLeft: "7", _keyRight: "M" },
-                { c: "team4vechile2", _x: 904, _y: 676, "_rotate": 0, _keyForward: "I", _keyReverse: "K", _keyLeft: "8", _keyRight: "DECIMAL" }
+                { c: "team4vechile1", _x: 608, _y: 676, "_rotate": 0, _keyForward: "U", _keyReverse: "J", _keyLeft: "7", _keyRight: "M" },
+                { c: "team4vechile2", _x: 672, _y: 676, "_rotate": 0, _keyForward: "I", _keyReverse: "K", _keyLeft: "8", _keyRight: "DECIMAL" }
             ]
         },
         { 
             "id" : 5,
             //"attr": { c: "farm4", _x: 154, _y: 247, _rotate: 90 },
-            "attr": { c: "farm", _x: 50, _y: 553, _rotate: 270 },
+            "attr": { c: "farm", _x: 61, _y: 514, _rotate: 270 },
             "homebases" : [
-                { _x: 76, _y: 273 },
-                { _x: 76, _y: 347 },
-                { _x: 76, _y: 421 },
-                { _x: 76, _y: 495 },
+                { _x: 77, _y: 272 },
+                { _x: 77, _y: 336 },
+                { _x: 77, _y: 400 },
+                { _x: 77, _y: 464 },
             ],
             "nameplates" : [
-                { _x: 0, _y: 203 },
-                { _x: 0, _y: 557 }
+                { _x: 5, _y: 203 },
+                { _x: 5, _y: 524 }
             ],
             "tractors" : [
-                { c: "team5vechile1", _x: 60, _y: 331, "_rotate": 90, _keyForward: "O", _keyReverse: "L", _keyLeft: "9", _keyRight: "COMMA" },
-                { c: "team5vechile2", _x: 60, _y: 405, "_rotate": 90, _keyForward: "NUMPAD_1", _keyReverse: "NUMPAD_2", _keyLeft: "NUMPAD_4", _keyRight: "NUMPAD_5" }
+                { c: "team5vechile1", _x: 61, _y: 320, "_rotate": 90, _keyForward: "O", _keyReverse: "L", _keyLeft: "9", _keyRight: "COMMA" },
+                { c: "team5vechile2", _x: 61, _y: 384, "_rotate": 90, _keyForward: "NUMPAD_1", _keyReverse: "NUMPAD_2", _keyLeft: "NUMPAD_4", _keyRight: "NUMPAD_5" }
             ]
         },
         { 
             "id" : 6,
             //"attr": { c: "farm3", _x: 1256, _y: 247, _rotate: 90 },
-            "attr": { c: "farm", _x: 1256, _y: 247, _rotate: 90 },
+            "attr": { c: "farm", _x: 962, _y: 253, _rotate: 90 },
             "homebases" : [
-                { _x: 1172, _y: 273 },
-                { _x: 1172, _y: 347 },
-                { _x: 1172, _y: 421 },
-                { _x: 1172, _y: 495 },
+                { _x: 915, _y: 272 },
+                { _x: 915, _y: 336 },
+                { _x: 915, _y: 400 },
+                { _x: 915, _y: 464 },
             ],
             "nameplates" : [
-                { _x: 1128, _y: 203 },
-                { _x: 1128, _y: 557 }
+                { _x: 891, _y: 203 },
+                { _x: 891, _y: 524 }
             ],
             "tractors" : [
-                { c: "team6vechile1", _x: 1156, _y: 331, "_rotate": 270, _keyForward: "NUMPAD_6", _keyReverse: "NUMPAD_9", _keyLeft: "NUMPAD_3", _keyRight: "NUMPAD_0" },
-                { c: "team6vechile2", _x: 1156, _y: 405, "_rotate": 270, _keyForward: "UP_ARROW", _keyReverse: "DOWN_ARROW", _keyLeft: "LEFT_ARROW", _keyRight: "RIGHT_ARROW" }
+                { c: "team6vechile1", _x: 899, _y: 320, "_rotate": 270, _keyForward: "NUMPAD_6", _keyReverse: "NUMPAD_9", _keyLeft: "NUMPAD_3", _keyRight: "NUMPAD_0" },
+                { c: "team6vechile2", _x: 899, _y: 384, "_rotate": 270, _keyForward: "UP_ARROW", _keyReverse: "DOWN_ARROW", _keyLeft: "LEFT_ARROW", _keyRight: "RIGHT_ARROW" }
             ]
         }
         
@@ -440,7 +440,7 @@ var Game = {
 
                 // create farm parts
                 _.each(farm.homebases, function(homebase){
-                    var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2, w: 64, h: 64 });
+                    var ent = Crafty.e('Homebase').attr({ x: homebase._x, y: homebase._y, z: 2, w: 32, h: 32 });
                 });
 
                 // create farm walls
@@ -579,7 +579,7 @@ var Game = {
     // add bases to scene
     generateBases: function() {
         _.each(this.bases, function(base){
-            Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2, w: 32, h: 32 });
+            Crafty.e('Base').attr({ x: base._x, y: base._y, z: 2, w: 24, h: 24 });
         });
     },
     generateWeightsOnGround: function() {

@@ -130,7 +130,8 @@ function() {
 
     // description for the game
     Crafty.e("2D, DOM, GameRules, Text")
-        .attr({ x: 320, y: 455, z: 4, w: 640, h: 156 })
+//        .attr({ x: 320, y: 455, z: 4, w: 640, h: 156 })
+        .attr({ x: 294, y: 320, z: 4, w: 420, h: 120 })
         .text("<strong>Tavoite: </strong>" + Game.description);
 
     // TODO ei näin vaan tarkasta olemassa olevat clientit 
