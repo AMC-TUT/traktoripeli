@@ -17,22 +17,22 @@ Crafty.scene("Loading", function() {
 		[
 			Game.path + "/assets/img/bg.png"
 			/*
-			Game.path + "/assets/img/1kg.png", 
-			Game.path + "/assets/img/1000gram.png", 
+			Game.path + "/assets/img/1kg.png",
+			Game.path + "/assets/img/1000gram.png",
 			Game.path + "/assets/img/bg.png",
-			Game.path + "/assets/img/farm.png", 
-			Game.path + "/assets/img/nameplates.png", 
-			Game.path + "/assets/img/tractor11.png", 
-			Game.path + "/assets/img/tractor12.png", 
-			Game.path + "/assets/img/tractor21.png", 
-			Game.path + "/assets/img/tractor22.png", 
-			Game.path + "/assets/img/tractor31.png", 
+			Game.path + "/assets/img/farm.png",
+			Game.path + "/assets/img/nameplates.png",
+			Game.path + "/assets/img/tractor11.png",
+			Game.path + "/assets/img/tractor12.png",
+			Game.path + "/assets/img/tractor21.png",
+			Game.path + "/assets/img/tractor22.png",
+			Game.path + "/assets/img/tractor31.png",
 			Game.path + "/assets/img/tractor32.png",
-			Game.path + "/assets/img/tractor41.png", 
-			Game.path + "/assets/img/tractor42.png", 
-			Game.path + "/assets/img/tractor51.png", 
-			Game.path + "/assets/img/tractor52.png", 
-			Game.path + "/assets/img/tractor61.png", 
+			Game.path + "/assets/img/tractor41.png",
+			Game.path + "/assets/img/tractor42.png",
+			Game.path + "/assets/img/tractor51.png",
+			Game.path + "/assets/img/tractor52.png",
+			Game.path + "/assets/img/tractor61.png",
 			Game.path + "/assets/img/tractor62.png"
 			*/
 		],
@@ -59,7 +59,7 @@ Crafty.scene("Lobby", function() {
 	Game.on = false;
 	Levels.drawAllFarms(0);
 	Game.sockets.dashboard = true;
-	this.bind('SocketsReadyEvent', _.once(function() { // _.once = singleton pattern impl. 
+	this.bind('SocketsReadyEvent', _.once(function() { // _.once = singleton pattern impl.
 		//log('SocketsReadyEvent');
 		_.each(Game.qrcodes.images, function(qrcode) {
 			var ent = Crafty.e("2D, DOM, Image, QRCode")
@@ -93,7 +93,7 @@ Crafty.scene("Lobby", function() {
 		Crafty.trigger("SocketsReadyEvent");
 	}
 	Crafty.e("2D, DOM, GameRules, Text")
-		.attr({ x: 300, y: 280, z: 4, w: 340, h: 115 })
+		.attr({ x: 300, y: 280, z: 4, w: 360, h: 128 })
 		.text("<strong>Tavoite: </strong>" + Game.description);
 	GameController = {};
 	Game.teams = [];
