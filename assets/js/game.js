@@ -23,15 +23,14 @@ var GameController = {
 */
 };
 
-
-var Game = {  
+var Game = {
 	width: 960,
 	height: 704,
-	path: "/traktoripeli",
+	path: "/games/traktoripeli",
 	on: false, // game is ongoing, true when the game is on
 	sockets: {
 		ready: false,
-		roomID: 0, 
+		roomID: 0,
 		dashboard: false
 	},
 	dashboard: {
@@ -62,7 +61,7 @@ var Game = {
 				{
 					id: 1,
 					weights: 0,
-					tyres: 
+					tyres:
 						{
 							left: {
 								name : "Matti",
@@ -71,13 +70,13 @@ var Game = {
 							right: {
 								name : "Maija",
 								id : Crafty.math.randomInt(1000, 2000)
-							}                            
+							}
 						}
 				},
 				{
 					id: 2,
 					weights: 0,
-					tyres: 
+					tyres:
 						{
 							left: {
 								name : "Marti",
@@ -86,7 +85,7 @@ var Game = {
 							right: {
 								name : "Marja",
 								id : Crafty.math.randomInt(1000, 2000)
-							}                            
+							}
 						}
 				}
 			]
@@ -99,7 +98,7 @@ var Game = {
 				{
 					id: 1,
 					weights: 0,
-					tyres: 
+					tyres:
 						{
 							left: {
 								name : "Reijo",
@@ -108,7 +107,7 @@ var Game = {
 							right: {
 								name : "Raija",
 								id : Crafty.math.randomInt(1000, 2000)
-							}                            
+							}
 						}
 				}
 			]

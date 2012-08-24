@@ -1,0 +1,60 @@
+
+body {
+    background:#aaa;
+}
+.QRCode {
+    width:120px !important;
+    height:120px !important;
+    box-shadow:0 0 20px #111;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover !important;
+}
+.QRCode.START,.QRCode.CLOSE {
+    cursor:pointer;
+}
+.Label {
+    color:#fff;
+    font-size:18px;
+}
+.GameRules {
+    font-size:14px;
+    box-sizing:border-box;
+    padding:.3em .5em;
+    box-shadow:0 0 25px #222;
+    -webkit-border-radius:.5em;
+    -moz-border-radius:.5em;
+    -ms-border-radius:.5em;
+    -o-border-radius:.5em;
+    border-radius:.5em;
+    border:5px solid #5b7f40;
+    background:#907c59;
+    color:orange;
+}
+.NameplateText {
+    color:#FFFFFF;
+    font-family:Arial;
+    font-size:12px;
+}
+.Timer {
+    display:block;
+    font-size:26px;
+    font-weight:bold;
+    color:#EEE;margin-top:.5em;
+    white-space:nowrap;
+    text-shadow:#111 0px 0px 9px;
+}
+.ScoreTable {
+    font-size:14px;
+    box-sizing:border-box;
+    padding:.3em .5em;
+    box-shadow:0 0 25px #222;
+    -webkit-border-radius:.5em;
+    -moz-border-radius:.5em;
+    -ms-border-radius:.5em;
+    -o-border-radius:.5em;
+    border-radius:.5em;
+    border:5px solid #5b7f40;
+    background:#907c59;
+    color:white;
+}
