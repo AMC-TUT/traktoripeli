@@ -55,7 +55,7 @@ Crafty.scene("Loading", function() {
 });
 
 Crafty.scene("Lobby", function() {
-	Crafty.background("url(/assets/img/bg.png)");
+	Crafty.background("url(assets/img/bg.png)");
 	Game.on = false;
 	Levels.drawAllFarms(0);
 	Game.sockets.dashboard = true;
@@ -101,7 +101,7 @@ Crafty.scene("Lobby", function() {
 });
 
 Crafty.scene("Game", function() {
-	Crafty.background("url(/assets/img/bg.png)");
+	Crafty.background("url(assets/img/bg.png)");
 	Game.on = true;
 	Game.generateGame(0);
 	var ent = Crafty.e("2D, DOM, Image, QRCode")
@@ -125,7 +125,7 @@ Crafty.scene("Game", function() {
 });
 
 Crafty.scene("GameOver", function() {
-	Crafty.background("url(/assets/img/bg.png)");
+	Crafty.background("url(assets/img/bg.png)");
 	var table = '<h3>Tulokset</h3><table class="table"> <thead> <tr> <th>#</th> <th>Pisteet</th> <th>Joukkuebonus</th> <th>Aikabonus</th> <th>Kokonaispisteet</th> <th>Pelaajat</th> </tr> </thead> <tbody>';
 	for (var i = 0; i < Game.hiScore.length; i++) {
 		table += "<tr><td>" + (i + 1) + "</td><td>" + Game.hiScore[i].score + "</td><td>" + Game.hiScore[i].teamBonus + "</td><td>" + Game.hiScore[i].timeBonus + "</td><td>" + Game.hiScore[i].totalScore +"</td><td>" + Game.hiScore[i].name + "</td></tr>";
