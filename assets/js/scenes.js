@@ -15,25 +15,25 @@ Crafty.scene("Loading", function() {
 		+ ' </div>');
 	Crafty.load(
 		[
-			Game.path + "/assets/img/bg.png"
+			"assets/img/bg.png"
 			/*
-			Game.path + "/assets/img/1kg.png",
-			Game.path + "/assets/img/1000gram.png",
-			Game.path + "/assets/img/bg.png",
-			Game.path + "/assets/img/farm.png",
-			Game.path + "/assets/img/nameplates.png",
-			Game.path + "/assets/img/tractor11.png",
-			Game.path + "/assets/img/tractor12.png",
-			Game.path + "/assets/img/tractor21.png",
-			Game.path + "/assets/img/tractor22.png",
-			Game.path + "/assets/img/tractor31.png",
-			Game.path + "/assets/img/tractor32.png",
-			Game.path + "/assets/img/tractor41.png",
-			Game.path + "/assets/img/tractor42.png",
-			Game.path + "/assets/img/tractor51.png",
-			Game.path + "/assets/img/tractor52.png",
-			Game.path + "/assets/img/tractor61.png",
-			Game.path + "/assets/img/tractor62.png"
+			"assets/img/1kg.png",
+			"assets/img/1000gram.png",
+			"assets/img/bg.png",
+			"assets/img/farm.png",
+			"assets/img/nameplates.png",
+			"assets/img/tractor11.png",
+			"assets/img/tractor12.png",
+			"assets/img/tractor21.png",
+			"assets/img/tractor22.png",
+			"assets/img/tractor31.png",
+			"assets/img/tractor32.png",
+			"assets/img/tractor41.png",
+			"assets/img/tractor42.png",
+			"assets/img/tractor51.png",
+			"assets/img/tractor52.png",
+			"assets/img/tractor61.png",
+			"assets/img/tractor62.png"
 			*/
 		],
 		function() {
@@ -55,7 +55,7 @@ Crafty.scene("Loading", function() {
 });
 
 Crafty.scene("Lobby", function() {
-	Crafty.background("url(" + Game.path + "/assets/img/bg.png)");
+	Crafty.background("url(/assets/img/bg.png)");
 	Game.on = false;
 	Levels.drawAllFarms(0);
 	Game.sockets.dashboard = true;
@@ -101,7 +101,7 @@ Crafty.scene("Lobby", function() {
 });
 
 Crafty.scene("Game", function() {
-	Crafty.background("url(" + Game.path + "/assets/img/bg.png)");
+	Crafty.background("url(/assets/img/bg.png)");
 	Game.on = true;
 	Game.generateGame(0);
 	var ent = Crafty.e("2D, DOM, Image, QRCode")
@@ -125,7 +125,7 @@ Crafty.scene("Game", function() {
 });
 
 Crafty.scene("GameOver", function() {
-	Crafty.background("url(" + Game.path + "/assets/img/bg.png)");
+	Crafty.background("url(/assets/img/bg.png)");
 	var table = '<h3>Tulokset</h3><table class="table"> <thead> <tr> <th>#</th> <th>Pisteet</th> <th>Joukkuebonus</th> <th>Aikabonus</th> <th>Kokonaispisteet</th> <th>Pelaajat</th> </tr> </thead> <tbody>';
 	for (var i = 0; i < Game.hiScore.length; i++) {
 		table += "<tr><td>" + (i + 1) + "</td><td>" + Game.hiScore[i].score + "</td><td>" + Game.hiScore[i].teamBonus + "</td><td>" + Game.hiScore[i].timeBonus + "</td><td>" + Game.hiScore[i].totalScore +"</td><td>" + Game.hiScore[i].name + "</td></tr>";

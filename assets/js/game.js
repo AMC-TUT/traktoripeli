@@ -26,7 +26,6 @@ var GameController = {
 var Game = {
 	width: 960,
 	height: 704,
-	path: "/games/traktoripeli",
 	on: false, // game is ongoing, true when the game is on
 	sockets: {
 		ready: false,
