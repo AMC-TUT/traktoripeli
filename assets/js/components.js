@@ -390,7 +390,7 @@ Crafty.c('Timer', {
 	init: function() {
 		this.timeWas = 0,
 		this.timeNow = 0,
-		this.timeLeft = 30,
+		this.timeLeft = 300,
 		this.addComponent("2D", "DOM", "Text")
 		this.interval = setInterval('Crafty.trigger("Tick")', 1000);
 		this.text("Aika: " + this.timeLeft);

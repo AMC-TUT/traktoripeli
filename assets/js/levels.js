@@ -211,6 +211,7 @@ var Levels = {
 	generateBases: function(level) {
 		for (var i = 0; i < Levels.level[level].bases.length; i++) {
 			var ent = Crafty.e('Base').attr({ x: Levels.level[level].bases[i]._x, y: Levels.level[level].bases[i]._y, z: 2, w: 32, h: 32 });
+			ent.addComponent('Collision').collision(new Crafty.polygon([0,0], [32,0], [32,32], [0,32]));
 			//ent.addComponent('Color').color('red');
 		}
 	},
@@ -223,6 +224,7 @@ var Levels = {
 					ent.addComponent(Levels.level[level].farms[j].attr.c);
 					for (var k = 0; k < 4; k++) {
 						var ent = Crafty.e('Homebase').attr({ x: Levels.level[level].farms[j].homebases[k]._x, y: Levels.level[level].farms[j].homebases[k]._y, z: 2, w: 32, h: 32 });
+						ent.addComponent('Collision').collision(new Crafty.polygon([0,0], [32,0], [32,32], [0,32]));
 						//ent.addComponent('Color').color('blue');
 						ent.farmId = Game.teams[i].id;
 					}
