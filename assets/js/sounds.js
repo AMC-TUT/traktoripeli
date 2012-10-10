@@ -40,3 +40,17 @@ Crafty.audio.add({
 		"assets/audio/wav/weight_down_homebase.wav"
 	]
 });
+Crafty.audio.add({
+	"time_running": [
+		"assets/audio/ogg/time.ogg",
+		"assets/audio/mp3/time.mp3",
+		"assets/audio/wav/time.wav"
+	]
+});
+Crafty.audio.add({
+	"time_out": [
+		"assets/audio/ogg/timeout.ogg",
+		"assets/audio/mp3/timeout.mp3",
+		"assets/audio/wav/timeout.wav"
+	]
+});

@@ -371,6 +371,11 @@ Crafty.c("Engine", {
 					}
 				}
 				Game.hiScore = Game.hiScore.sort( function(a, b) { return b.totalScore - a.totalScore});
+				var entities = Crafty.map.search({_x: 0, _y: 0, _w: Game.width, _h: Game.height });
+				for (var i = 0; i < entities.length; i++) {
+					entities[i].destroy();
+				}
+				this.destroy();
 				Crafty.scene("GameOver");
 			}
 		})
@@ -385,7 +390,7 @@ Crafty.c('Timer', {
 	init: function() {
 		this.timeWas = 0,
 		this.timeNow = 0,
-		this.timeLeft = 300,
+		this.timeLeft = 30,
 		this.addComponent("2D", "DOM", "Text")
 		this.interval = setInterval('Crafty.trigger("Tick")', 1000);
 		this.text("Aika: " + this.timeLeft);
@@ -398,6 +403,13 @@ Crafty.c('Timer', {
 				if (this.timeNow > this.timeWas) {
 					if (this.timeLeft > 0) {
 						this.timeLeft -= 1;
+						if (this.timeLeft < 11) {
+							if (this.timeLeft > 0) {
+								Crafty.audio.play("time_running");
+							} else {
+								Crafty.audio.play("time_out");
+							}
+						}
 					}
 					this.text("Aika: " + this.timeLeft);
 				}
