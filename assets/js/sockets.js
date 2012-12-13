@@ -156,7 +156,7 @@
 				};
 			};
 		} else if (message == "CLOSE" && !Game.on) { // CLOSE THE GAME
-			window.location = 'http://sportti.dreamschool.fi/hikiboksi/'; //game.path;
+			window.location = 'http://sportti.dreamschool.fi/'; //game.path;
 		}
 	}
 
