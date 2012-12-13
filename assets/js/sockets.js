@@ -25,8 +25,8 @@
 		orbiter.addEventListener(net.user1.orbiter.OrbiterEvent.READY, readyListener, this);
 		orbiter.addEventListener(net.user1.orbiter.OrbiterEvent.CLOSE, closeListener, this);
 		// Connect to Union
-		//orbiter.connect("socket.dreamschool.fi", 443);
-		orbiter.connect("amc.pori.tut.fi/game-server/", 80);
+		orbiter.connect("socket.dreamschool.fi", 443);
+		//orbiter.connect("amc.pori.tut.fi/game-server/", 80);
 		displayChatMessage("Connecting to Union...");
 	}
 
