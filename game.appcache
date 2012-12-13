@@ -3,24 +3,24 @@ CACHE MANIFEST
 # Build 2012-12-13:v8
 
 CACHE:
-#assets/img/1kg.png
-#assets/img/1000gram.png
-#assets/img/bg.png
-#assets/img/farm.png
-#assets/img/nameplates.png
-#assets/img/splash.png
-#assets/img/traktor11.png
-#assets/img/traktor12.png
-#assets/img/traktor21.png
-#assets/img/traktor22.png
-#assets/img/traktor31.png
-#assets/img/traktor32.png
-#assets/img/traktor41.png
-#assets/img/traktor42.png
-#assets/img/traktor51.png
-#assets/img/traktor52.png
-#assets/img/traktor61.png
-#assets/img/traktor62.png
+assets/img/1kg.png
+assets/img/1000gram.png
+assets/img/bg.png
+assets/img/farm.png
+assets/img/nameplates.png
+assets/img/splash.png
+assets/img/traktor11.png
+assets/img/traktor12.png
+assets/img/traktor21.png
+assets/img/traktor22.png
+assets/img/traktor31.png
+assets/img/traktor32.png
+assets/img/traktor41.png
+assets/img/traktor42.png
+assets/img/traktor51.png
+assets/img/traktor52.png
+assets/img/traktor61.png
+assets/img/traktor62.png
 
 NETWORK:
 *

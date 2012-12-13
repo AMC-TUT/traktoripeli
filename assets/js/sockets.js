@@ -235,13 +235,13 @@
 	init();
 })(window.jQuery);
 
-$('.QRCode.START').live('click tap', function(event) {
+$(document).on("click tap", ".QRCode.START", function(event) {
 	Crafty.scene("Game");
 });
 
-$('.QRCode.CLOSE').live('click tap', function(event) {
+$(document).on("click tap", ".QRCode.CLOSE", function(event) {
 	if (!Game.on) {
-		window.location = 'http://sportti.dreamschool.fi/hikiboksi/';
+		window.location = 'http://sportti.dreamschool.fi/';
 	} else {
 		// open Lobby
 		Crafty.scene("Lobby");
