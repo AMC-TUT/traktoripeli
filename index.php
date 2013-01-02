@@ -11,6 +11,16 @@
 		<div class="row">
 			<div id="cr-stage" class="span12"></div>
 		</div>
+<?php
+	if (isset($_REQUEST["box"])) {
+		switch ($_REQUEST["box"]) {
+			case 1: echo "var boxi = 'http://sportti.dreamschool.fi/hikiboksi/';";
+				break;
+			default: echo "var boxi = 'http://sportti.dreamschool.fi/';";
+				break;
+		}
+	}
+?>
 		<script src="assets/js/vendor/jquery-1.7.1.min.js"></script>
 		<script src="assets/js/plugins.js"></script>
 		<script src="assets/js/vendor/crafty-0.5.1.js"></script>

@@ -156,7 +156,7 @@
 				};
 			};
 		} else if (message == "CLOSE" && !Game.on) { // CLOSE THE GAME
-			window.location = 'http://sportti.dreamschool.fi/'; //game.path;
+			window.location = boxi; //game.path;
 		}
 	}
 
@@ -241,7 +241,7 @@ $(document).on("click tap", ".QRCode.START", function(event) {
 
 $(document).on("click tap", ".QRCode.CLOSE", function(event) {
 	if (!Game.on) {
-		window.location = 'http://sportti.dreamschool.fi/';
+		window.location = boxi;
 	} else {
 		// open Lobby
 		Crafty.scene("Lobby");
