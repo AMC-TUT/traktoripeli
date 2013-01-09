@@ -141,7 +141,7 @@ var Game = {
 		Game.teams.push(team);
 		return true;
 	},
-	createTractor: function(teamId, playerId, playerName) {
+	createTractor: function(teamId, playerId, userId, playerName) {
 		var success = false;
 		for (var i = 0; i < Game.teams.length; i++) {
 			if (Game.teams[i].id == teamId) {
@@ -155,6 +155,7 @@ var Game = {
 				}
 				var left = {
 					id: parseInt(playerId),
+					user_id: parseInt(userId),
 					name: playerName
 				}
 				tractor.tyres.left = left;
@@ -164,12 +165,13 @@ var Game = {
 		}
 		return success;
 	},
-	joinTractor: function(tractor, teamId, playerId, playerName) {
+	joinTractor: function(tractor, teamId, playerId, userId, playerName) {
 		var success = false;
 		for (var i = 0; i < Game.teams.length; i++) {
 			if (Game.teams[i].id == teamId) {
 				var right = {
 					id: parseInt(playerId),
+					user_id: parseInt(userId),
 					name: playerName
 				}
 				Game.teams[i].tractors[tractor].tyres.right = right;

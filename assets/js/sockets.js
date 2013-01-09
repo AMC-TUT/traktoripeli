@@ -167,9 +167,10 @@
 		if (attrScope == roomID) {
 			var addOk = false;
 			if (attrName == "USERINFO") {
+				var userId = attrVal.split(";")[0];
 				var playerName = attrVal.split(";")[2];
 				var teamId = attrVal.split(";")[3];
-				addOk = addPlayerToTeam(teamId, clientID, playerName);
+				addOk = addPlayerToTeam(teamId, clientID, userId, playerName);
 			}
 			if (addOk) {
 				var pairs = 0;
@@ -198,28 +199,28 @@
 		}
 	}
 
-	function addPlayerToTeam(teamId, playerId, playerName) {
+	function addPlayerToTeam(teamId, playerId, userId, playerName) {
 		var players = Game.playersInTeam(teamId);
 		var vacant = true;
 		$(".QRCode-"+teamId).show();
 		switch (players) {
 			case 0: vacant = Game.createTeam(teamId);
-				vacant = Game.createTractor(teamId, playerId, playerName);
+				vacant = Game.createTractor(teamId, playerId, userId, playerName);
 				if (vacant) {
 					Game.drawNameplate(0, teamId, playerName);
 				}
 				break;
-			case 1: vacant = Game.joinTractor(0, teamId, playerId, playerName);
+			case 1: vacant = Game.joinTractor(0, teamId, playerId, userId, playerName);
 				if (vacant) {
 					Game.drawTractor(0, teamId, playerName);
 				}
 				break;
-			case 2: vacant = Game.createTractor(teamId, playerId, playerName);
+			case 2: vacant = Game.createTractor(teamId, playerId, userId, playerName);
 				if (vacant) {
 					Game.drawNameplate(1, teamId, playerName);
 				}
 				break;
-			case 3: vacant = Game.joinTractor(1, teamId, playerId, playerName);
+			case 3: vacant = Game.joinTractor(1, teamId, playerId, userId, playerName);
 				if (vacant) {
 					Game.drawTractor(1, teamId, playerName);
 					$(".QRCode-"+teamId).hide();

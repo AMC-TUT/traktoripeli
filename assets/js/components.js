@@ -352,6 +352,7 @@ Crafty.c("Engine", {
 						var tractorScore = Math.floor((teamBonus * Game.teams[i].tractors[j].weights)/4);
 						var timeBonus = Math.floor((multiplier * tractorScore) - tractorScore);
 						var player = {
+							user_id: Game.teams[i].tractors[j].tyres.left.user_id,
 							name: Game.teams[i].tractors[j].tyres.left.name,
 							score: tractorScore,
 							teamBonus: teamBonus,
@@ -360,6 +361,7 @@ Crafty.c("Engine", {
 						}
 						Game.hiScore.push(player);
 						player = {
+							user_id: Game.teams[i].tractors[j].tyres.right.user_id,
 							name: Game.teams[i].tractors[j].tyres.right.name,
 							score: tractorScore,
 							teamBonus: teamBonus,

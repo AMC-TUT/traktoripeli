@@ -129,6 +129,15 @@ Crafty.scene("GameOver", function() {
 	var table = '<h3>Tulokset</h3><table class="table"> <thead> <tr> <th>#</th> <th>Pisteet</th> <th>Joukkuebonus</th> <th>Aikabonus</th> <th>Kokonaispisteet</th> <th>Pelaajat</th> </tr> </thead> <tbody>';
 	for (var i = 0; i < Game.hiScore.length; i++) {
 		table += "<tr><td>" + (i + 1) + "</td><td>" + Game.hiScore[i].score + "</td><td>" + Game.hiScore[i].teamBonus + "</td><td>" + Game.hiScore[i].timeBonus + "</td><td>" + Game.hiScore[i].totalScore +"</td><td>" + Game.hiScore[i].name + "</td></tr>";
+		var json = { "game_id": 5, "xp": ???, "user_id": Game.hiScore[i].user_id, "play_duration": ???, "score": Game.hiScore[i].totalScore };
+		$.ajax({
+			type: "GET",
+			url: 'http://sportti.dreamschool.fi/galaxy/api/xp',
+			data: json,
+			cache: true,
+			success: function(data) {
+			}
+		});
 	}
 	table += '</tbody> </table>';
 	Crafty.e("2D, DOM, ScoreTable, Text")
