@@ -347,8 +347,12 @@ Crafty.c("Engine", {
 					multiplier = 1 + bonusTime/60;
 				}
 				for (var i = 0; i < Game.teams.length; i++) {
+					var xp = Math.floor(Game.teams.length/2);
 					var teamBonus = Game.teams[i].weight;
 					for (var j = 0; j < Game.teams[i].tractors.length; j++) {
+						if (Game.teams[i].tractors.length == 1) {
+							xp = xp + 1;
+						}
 						var tractorScore = Math.floor((teamBonus * Game.teams[i].tractors[j].weights)/4);
 						var timeBonus = Math.floor((multiplier * tractorScore) - tractorScore);
 						var player = {
@@ -357,7 +361,8 @@ Crafty.c("Engine", {
 							score: tractorScore,
 							teamBonus: teamBonus,
 							timeBonus: timeBonus,
-							totalScore: tractorScore + teamBonus + timeBonus
+							totalScore: tractorScore + teamBonus + timeBonus,
+							xp: xp
 						}
 						Game.hiScore.push(player);
 						player = {
@@ -366,7 +371,8 @@ Crafty.c("Engine", {
 							score: tractorScore,
 							teamBonus: teamBonus,
 							timeBonus: timeBonus,
-							totalScore: tractorScore + teamBonus + timeBonus
+							totalScore: tractorScore + teamBonus + timeBonus,
+							xp: xp
 						}
 						Game.hiScore.push(player);
 						

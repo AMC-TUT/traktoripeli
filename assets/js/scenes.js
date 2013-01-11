@@ -127,15 +127,26 @@ Crafty.scene("Game", function() {
 Crafty.scene("GameOver", function() {
 	Crafty.background("url(assets/img/bg.png)");
 	var table = '<h3>Tulokset</h3><table class="table"> <thead> <tr> <th>#</th> <th>Pisteet</th> <th>Joukkuebonus</th> <th>Aikabonus</th> <th>Kokonaispisteet</th> <th>Pelaajat</th> </tr> </thead> <tbody>';
+	var kello = new Date();
+	var duration = Math.floor(kello.getTime()/1000) - Game.startTime;
+	var rank_bonus = 4;
+	var xp = 0;
 	for (var i = 0; i < Game.hiScore.length; i++) {
 		table += "<tr><td>" + (i + 1) + "</td><td>" + Game.hiScore[i].score + "</td><td>" + Game.hiScore[i].teamBonus + "</td><td>" + Game.hiScore[i].timeBonus + "</td><td>" + Game.hiScore[i].totalScore +"</td><td>" + Game.hiScore[i].name + "</td></tr>";
-		var json = { "game_id": 5, "xp": ???, "user_id": Game.hiScore[i].user_id, "play_duration": ???, "score": Game.hiScore[i].totalScore };
+		if (rank_bonus > 0) {
+			xp = Math.ceil(rank_bonus/2) + parseInt(Game.hiScore[i].xp);
+			rank_bonus = rank_bonus - 1;
+		} else {
+			xp = parseInt(Game.hiScore[i].xp);			
+		}
+		var json = { "game_id": 5, "xp": xp, "user_id": Game.hiScore[i].user_id, "play_duration": duration, "score": Game.hiScore[i].totalScore };
 		$.ajax({
-			type: "GET",
+			type: "POST",
 			url: 'http://sportti.dreamschool.fi/galaxy/api/xp',
 			data: json,
 			cache: true,
 			success: function(data) {
+				//console.log(":: "+data);
 			}
 		});
 	}

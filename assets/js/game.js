@@ -114,6 +114,7 @@ var Game = {
 	],
 */
 	hiScore: [],
+	startTime: 0,
 	playersInTeam: function(teamId) {
 		var counter = 0;
 		for (var i = 0; i < Game.teams.length; i++) {
@@ -202,6 +203,10 @@ var Game = {
 		Levels.generateBases(level);
 		Levels.generateFarms(level);
 		Levels.generateWeights(level);
+		if (level == 0) {
+			var kello = new Date();
+			Game.startTime = Math.floor(kello.getTime()/1000);
+		}
 		Crafty.e('Engine');
 		Crafty.e('Timer').attr({ x: 804, y: 10, z: 4 });
 	}
