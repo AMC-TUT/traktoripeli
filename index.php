@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html manifest="game.appcache">
 	<head>

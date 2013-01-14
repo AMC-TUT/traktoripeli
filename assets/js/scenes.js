@@ -144,9 +144,9 @@ Crafty.scene("GameOver", function() {
 			type: "POST",
 			url: 'http://sportti.dreamschool.fi/galaxy/api/xp',
 			data: json,
-			cache: true,
+			cache: false,
 			success: function(data) {
-				//console.log(":: "+data);
+				console.log("XP OK");
 			}
 		});
 	}
